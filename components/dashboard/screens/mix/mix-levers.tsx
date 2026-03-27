@@ -46,24 +46,24 @@ const mixLevers = [
     impactOnMix: "+1.4pp Premium",
     difficulty: "High" as const,
     actions: [
-      { action: "Expand Brand A Zero 330ml to 85% WD in convenience (from 72%)", impact: "+1.2pp convenience volume" },
+      { action: "Expand Brand B 330ml to 85% WD in convenience (from 72%)", impact: "+1.2pp convenience volume" },
       { action: "Launch on-premise 200ml glass for restaurant chains", impact: "+0.5pp on-premise at \u20ac3.40/L PPL" },
       { action: "Reduce MT promotional frequency by 15%", impact: "Prevents further MT volume pull at low margin" },
     ],
   },
   {
     lever: "Brand-Up Migration",
-    description: "Drive consumers from Brand D/Brand C towards Brand A Classic/Brand A Zero for higher revenue per transaction",
-    currentState: "Brand A variants are 62% of revenue; Brand D/Brand C at 38% with lower PPL",
-    targetState: "Brand A variants to 66% of revenue through targeted activation",
+    description: "Drive consumers from Brand D/Brand E towards Brand A/Brand B for higher revenue per transaction",
+    currentState: "Brand A and B are 62% of revenue; Brand D/Brand E at 38% with lower PPL",
+    targetState: "Brand A and B to 66% of revenue through targeted activation",
     impactOnPPL: "+\u20ac0.06/L",
     impactOnGP: "+\u20ac0.4M",
     impactOnMix: "+0.8pp Premium",
     difficulty: "Low" as const,
     actions: [
-      { action: "Co-promote Brand A Zero with Brand A Classic as 'taste upgrade' bundle", impact: "+0.4pp Brand A volume share" },
-      { action: "Increase Brand A Zero media spend by 20% in digital", impact: "+0.3pp trial rate for health-conscious segment" },
-      { action: "Position Brand A Classic premium glass in impulse zone", impact: "+\u20ac0.15/unit margin uplift" },
+      { action: "Co-promote Brand B with Brand A as 'taste upgrade' bundle", impact: "+0.4pp Brand A/B volume share" },
+      { action: "Increase Brand B media spend by 20% in digital", impact: "+0.3pp trial rate for health-conscious segment" },
+      { action: "Position Brand A premium glass in impulse zone", impact: "+\u20ac0.15/unit margin uplift" },
     ],
   },
   {
@@ -91,7 +91,7 @@ const difficultyColor = {
 
 const aiInsights = [
   { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Pack Size Trade-Up and Promotional Discipline together can shift +3.7pp of revenue towards Premium tier, adding \u20ac1.3M in GP. These two levers have the best effort-to-impact ratio." },
-  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Channel Mix is the highest-impact lever long-term but requires distribution investment. Start with convenience expansion for Brand A Zero 330ml which has proven velocity at 85%+ stores." },
+  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Channel Mix is the highest-impact lever long-term but requires distribution investment. Start with convenience expansion for Brand B 330ml which has proven velocity at 85%+ stores." },
   { icon: TrendingDown, color: "text-red-400", bg: "bg-red-500/10", text: "Current promotional depth is eroding mix at -1.4pp/year. Without intervention, the portfolio will shift further towards Traffic tier -- costing \u20ac0.8M in annual GP." },
 ]
 

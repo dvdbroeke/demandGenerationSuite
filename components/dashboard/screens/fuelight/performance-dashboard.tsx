@@ -87,7 +87,7 @@ const baseBrandPerformance = [
     hasIssue: false
   },
   { 
-    name: "Brand A Zero", 
+    name: "Brand B", 
     volume: "14 MUC", 
     volumeChange: "-4%", 
     nsr: 4650, 
@@ -201,7 +201,7 @@ export function FuelightPerformanceDashboard({ onNavigateToWaterfall, onNavigate
             </SelectContent>
           </Select>
           <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/30 text-emerald-400 px-3 py-1">
-            Brand A Zero
+            Brand B
           </Badge>
         </div>
       </div>

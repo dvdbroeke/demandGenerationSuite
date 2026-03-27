@@ -135,7 +135,7 @@ const dcrEntities = [
 
 export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToFuelight, onNavigateToAssortmentMix, onNavigateToPromotion }: SimulateForecastProps) {
   const [scenario, setScenario] = useState("price-increase")
-  const [selectedSkus, setSelectedSkus] = useState<string[]>(["Brand D 330ml", "Brand D 500ml", "Brand C Orange 330ml", "Brand C Orange 500ml"])
+  const [selectedSkus, setSelectedSkus] = useState<string[]>(["Brand D 330ml", "Brand D 500ml", "Brand C 330ml", "Brand C 500ml"])
   const [channel, setChannel] = useState("All Channels")
   const [period, setPeriod] = useState("q3-2026")
   const [hasRun, setHasRun] = useState(false) // Results appear after clicking "Run Simulation"

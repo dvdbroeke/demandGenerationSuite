@@ -39,15 +39,15 @@ type ResultRow = { sku: string; action: string; volDelta: string; revDelta: stri
 
 const mockResults: ResultRow[] = [
   { sku: "Brand C 500ml", action: "Delist (bottom 30%)", volDelta: "-4.2K L", revDelta: "-\u00a3180K", gpDelta: "-\u00a350K", mixImpact: "+0.3pp margin", confidence: "High", recommendation: "Delist from bottom 30% stores -- reallocate facing to Brand D 330ml" },
-  { sku: "Brand A Zero 2L", action: "Expand to 70% dist.", volDelta: "+14.6%", revDelta: "+\u00a3310K", gpDelta: "+\u00a362K", mixImpact: "-0.1pp margin", confidence: "Medium", recommendation: "Only 58% WD -- convenience gap addressable with targeted listing" },
+  { sku: "Brand B 2L", action: "Expand to 70% dist.", volDelta: "+14.6%", revDelta: "+\u00a3310K", gpDelta: "+\u00a362K", mixImpact: "-0.1pp margin", confidence: "Medium", recommendation: "Only 58% WD -- convenience gap addressable with targeted listing" },
   { sku: "Brand D 330ml", action: "Expand to 85% dist.", volDelta: "+9.2K L", revDelta: "+\u00a3680K", gpDelta: "+\u00a3240K", mixImpact: "+0.4pp margin", confidence: "Medium", recommendation: "Strong ROS justifies distribution push in convenience" },
-  { sku: "Brand B 500ml", action: "Reduce facing by 1", volDelta: "-2.8%", revDelta: "-\u00a3120K", gpDelta: "-\u00a338K", mixImpact: "+0.1pp margin", confidence: "Low", recommendation: "Facing reallocation to Brand A Zero 500ml yields net +\u00a352K GP" },
-  { sku: "Brand A Classic 2L", action: "Maintain dist.", volDelta: "+1.2%", revDelta: "+\u00a3140K", gpDelta: "+\u00a325K", mixImpact: "-0.2pp margin", confidence: "Medium", recommendation: "Hold distribution at 85% -- heavy cannib on 1.5L if expanded" },
-  { sku: "Brand A Classic 6x330ml", action: "Increase facing +1", volDelta: "+8.4%", revDelta: "+\u00a3720K", gpDelta: "+\u00a3202K", mixImpact: "+0.2pp margin", confidence: "High", recommendation: "Multipack demand growing +3.4% -- capture weekend bulk-buy occasion" },
-  { sku: "Brand D Orange 2L", action: "Review (low velocity)", volDelta: "-3.2%", revDelta: "-\u00a364K", gpDelta: "-\u00a312K", mixImpact: "+0.1pp margin", confidence: "Low", recommendation: "Lowest GP/store in Brand D range -- consider rationalisation in bottom 20% stores" },
-  { sku: "Brand B 1.5L", action: "Delist (low stores)", volDelta: "-6.8K L", revDelta: "-\u00a3200K", gpDelta: "-\u00a340K", mixImpact: "+0.2pp margin", confidence: "Medium", recommendation: "Declining -3% with 16% cannib -- shift facings to Brand A Zero 1.5L" },
+  { sku: "Brand C 500ml", action: "Reduce facing by 1", volDelta: "-2.8%", revDelta: "-\u00a3120K", gpDelta: "-\u00a338K", mixImpact: "+0.1pp margin", confidence: "Low", recommendation: "Facing reallocation to Brand B 500ml yields net +\u00a352K GP" },
+  { sku: "Brand A 2L", action: "Maintain dist.", volDelta: "+1.2%", revDelta: "+\u00a3140K", gpDelta: "+\u00a325K", mixImpact: "-0.2pp margin", confidence: "Medium", recommendation: "Hold distribution at 85% -- heavy cannib on 1.5L if expanded" },
+  { sku: "Brand A 6x330ml", action: "Increase facing +1", volDelta: "+8.4%", revDelta: "+\u00a3720K", gpDelta: "+\u00a3202K", mixImpact: "+0.2pp margin", confidence: "High", recommendation: "Multipack demand growing +3.4% -- capture weekend bulk-buy occasion" },
+  { sku: "Brand D 2L", action: "Review (low velocity)", volDelta: "-3.2%", revDelta: "-\u00a364K", gpDelta: "-\u00a312K", mixImpact: "+0.1pp margin", confidence: "Low", recommendation: "Lowest GP/store in Brand D range -- consider rationalisation in bottom 20% stores" },
+  { sku: "Brand C 1.5L", action: "Delist (low stores)", volDelta: "-6.8K L", revDelta: "-\u00a3200K", gpDelta: "-\u00a340K", mixImpact: "+0.2pp margin", confidence: "Medium", recommendation: "Declining -3% with 16% cannib -- shift facings to Brand B 1.5L" },
   { sku: "Brand C 1.5L", action: "Delist (bottom 40%)", volDelta: "-3.2K L", revDelta: "-\u00a396K", gpDelta: "-\u00a321K", mixImpact: "+0.1pp margin", confidence: "Medium", recommendation: "Weakest GP/store -- reallocate to Brand D 2L or multipack launch" },
-  { sku: "Brand A Zero 6x330ml", action: "Add to conv. range", volDelta: "+5.2K L", revDelta: "+\u00a3280K", gpDelta: "+\u00a3108K", mixImpact: "+0.3pp margin", confidence: "High", recommendation: "Strong growth (8.2%) -- list in top 60% convenience stores" },
+  { sku: "Brand B 6x330ml", action: "Add to conv. range", volDelta: "+5.2K L", revDelta: "+\u00a3280K", gpDelta: "+\u00a3108K", mixImpact: "+0.3pp margin", confidence: "High", recommendation: "Strong growth (8.2%) -- list in top 60% convenience stores" },
   { sku: "Brand D 6x330ml", action: "New listing", volDelta: "+8.8K L", revDelta: "+\u00a3420K", gpDelta: "+\u00a3145K", mixImpact: "+0.2pp margin", confidence: "Medium", recommendation: "Multipack whitespace -- address bulk-buy occasion in MT" },
 ]
 
@@ -57,7 +57,7 @@ const existingInitiatives = ["Assortment Reset Q3 2026", "Convenience Range Revi
 
 export function PAMSimulateForecast({ onNavigate, onLaunchInitiative }: SimulateForecastProps) {
   const [scenario, setScenario] = useState("delist")
-  const [selectedSkus, setSelectedSkus] = useState<string[]>(["Brand A Zero 330ml", "Brand A Classic 500ml", "Brand C 500ml"])
+  const [selectedSkus, setSelectedSkus] = useState<string[]>(["Brand B 330ml", "Brand A 500ml", "Brand C 500ml"])
   const [channel, setChannel] = useState("All Channels")
   const [retailer, setRetailer] = useState("All Retailers")
   const [period, setPeriod] = useState("q3-2026")

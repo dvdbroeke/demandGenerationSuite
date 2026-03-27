@@ -89,12 +89,12 @@ const insightSections: InsightSection[] = [
       {
         impact: "High Impact",
         title: "Brand A Loyalty Gap",
-        description: "Brand A has inferior loyalty metrics vs. Competitor B (4.8 vs 14.2 index). Brand A Classic consumers switching to Competitor B rather than Brand A Premium."
+        description: "Brand A has inferior loyalty metrics vs. Competitor B (4.8 vs 14.2 index). Brand A consumers switching to Competitor B rather than Brand A Premium."
       },
       {
         impact: "Medium Impact",
         title: "Classic Segment Skews Older",
-        description: "Brand A Classic consumers tend to be >50 years old. Need to defend partition with older generations while capturing migration to premium."
+        description: "Brand A consumers tend to be >50 years old. Need to defend partition with older generations while capturing migration to premium."
       }
     ]
   },

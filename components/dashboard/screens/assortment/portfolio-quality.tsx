@@ -70,13 +70,13 @@ function generateSKUData(country: string, channel: string, customer: string): SK
   const rng = seededRandom(seed)
   
   const skus = [
-    { sku: "Brand A Classic 330ml", brand: "Brand A Classic", packSize: "330ml", baseAvail: 95, baseVel: 42, baseRev: 8.2, margin: 38 },
-    { sku: "Brand A Classic 500ml", brand: "Brand A Classic", packSize: "500ml", baseAvail: 92, baseVel: 35, baseRev: 6.8, margin: 36 },
-    { sku: "Brand A Classic 1.5L", brand: "Brand A Classic", packSize: "1.5L", baseAvail: 88, baseVel: 28, baseRev: 5.4, margin: 32 },
-    { sku: "Brand A Classic 2L", brand: "Brand A Classic", packSize: "2L", baseAvail: 82, baseVel: 22, baseRev: 4.1, margin: 30 },
-    { sku: "Brand A Zero 330ml", brand: "Brand A Zero", packSize: "330ml", baseAvail: 90, baseVel: 32, baseRev: 5.8, margin: 40 },
-    { sku: "Brand A Zero 500ml", brand: "Brand A Zero", packSize: "500ml", baseAvail: 85, baseVel: 26, baseRev: 4.5, margin: 38 },
-    { sku: "Brand A Zero 1.5L", brand: "Brand A Zero", packSize: "1.5L", baseAvail: 78, baseVel: 18, baseRev: 3.2, margin: 35 },
+    { sku: "Brand A 330ml", brand: "Brand A", packSize: "330ml", baseAvail: 95, baseVel: 42, baseRev: 8.2, margin: 38 },
+    { sku: "Brand A 500ml", brand: "Brand A", packSize: "500ml", baseAvail: 92, baseVel: 35, baseRev: 6.8, margin: 36 },
+    { sku: "Brand A 1.5L", brand: "Brand A", packSize: "1.5L", baseAvail: 88, baseVel: 28, baseRev: 5.4, margin: 32 },
+    { sku: "Brand A 2L", brand: "Brand A", packSize: "2L", baseAvail: 82, baseVel: 22, baseRev: 4.1, margin: 30 },
+    { sku: "Brand B 330ml", brand: "Brand B", packSize: "330ml", baseAvail: 90, baseVel: 32, baseRev: 5.8, margin: 40 },
+    { sku: "Brand B 500ml", brand: "Brand B", packSize: "500ml", baseAvail: 85, baseVel: 26, baseRev: 4.5, margin: 38 },
+    { sku: "Brand B 1.5L", brand: "Brand B", packSize: "1.5L", baseAvail: 78, baseVel: 18, baseRev: 3.2, margin: 35 },
     { sku: "Brand B 330ml", brand: "Brand B", packSize: "330ml", baseAvail: 75, baseVel: 20, baseRev: 3.0, margin: 42 },
     { sku: "Brand B 500ml", brand: "Brand B", packSize: "500ml", baseAvail: 70, baseVel: 15, baseRev: 2.4, margin: 40 },
     { sku: "Brand C 330ml", brand: "Brand C", packSize: "330ml", baseAvail: 85, baseVel: 28, baseRev: 4.8, margin: 36 },
@@ -85,14 +85,14 @@ function generateSKUData(country: string, channel: string, customer: string): SK
     { sku: "Brand D 330ml", brand: "Brand D", packSize: "330ml", baseAvail: 82, baseVel: 24, baseRev: 4.2, margin: 35 },
     { sku: "Brand D 500ml", brand: "Brand D", packSize: "500ml", baseAvail: 75, baseVel: 18, baseRev: 3.1, margin: 33 },
     { sku: "Brand D 1.5L", brand: "Brand D", packSize: "1.5L", baseAvail: 65, baseVel: 12, baseRev: 2.0, margin: 28 },
-    { sku: "Brand A Classic 6x330ml", brand: "Brand A Classic", packSize: "6x330ml", baseAvail: 60, baseVel: 8, baseRev: 1.8, margin: 28 },
-    { sku: "Brand A Zero 6x330ml", brand: "Brand A Zero", packSize: "6x330ml", baseAvail: 55, baseVel: 6, baseRev: 1.4, margin: 30 },
+    { sku: "Brand A 6x330ml", brand: "Brand A", packSize: "6x330ml", baseAvail: 60, baseVel: 8, baseRev: 1.8, margin: 28 },
+    { sku: "Brand B 6x330ml", brand: "Brand B", packSize: "6x330ml", baseAvail: 55, baseVel: 6, baseRev: 1.4, margin: 30 },
     { sku: "Brand E 200ml", brand: "Brand E", packSize: "200ml", baseAvail: 45, baseVel: 10, baseRev: 1.2, margin: 45 },
   ]
   
   const brandColors: Record<string, string> = {
-    "Brand A Classic": "#ef4444",
-    "Brand A Zero": "#000000",
+    "Brand A": "#ef4444",
+    "Brand B": "#000000",
     "Brand B": "#dc2626",
     "Brand C": "#f97316",
     "Brand D": "#22c55e",
@@ -180,7 +180,7 @@ export function PortfolioQuality({ onNavigate }: Props) {
       icon: TrendingDown, 
       color: "text-red-400", 
       bg: "bg-red-500/10",
-      text: `8 Underperformers identified in the bottom-left quadrant, with Brand A Zero 1.5L and Brand B 500ml flagged as delist candidates. These SKUs have low velocity and limited distribution.`,
+      text: `8 Underperformers identified in the bottom-left quadrant, with Brand B 1.5L and Brand B 500ml flagged as delist candidates. These SKUs have low velocity and limited distribution.`,
       highlight: true
     },
     { 
@@ -364,8 +364,8 @@ export function PortfolioQuality({ onNavigate }: Props) {
             
             {/* Legend */}
             <div className="flex items-center gap-4 mt-3 text-[9px] text-zinc-400">
-              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-red-500" />Brand A Classic</span>
-              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-black border border-zinc-600" />Brand A Zero</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-red-500" />Brand A</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-black border border-zinc-600" />Brand B</span>
               <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-orange-500" />Brand C</span>
               <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-green-500" />Brand D</span>
               <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-yellow-500" />Brand E</span>

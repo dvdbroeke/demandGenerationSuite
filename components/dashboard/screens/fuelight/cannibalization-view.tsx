@@ -69,14 +69,14 @@ const fanBaseData = {
   columns: [
     { category: "Regular", brands: ["Brand A Regular", "Brand B"] },
     { category: "Diet", brands: ["Brand A Diet", "Brand B Diet"] },
-    { category: "Zero", brands: ["Brand A Zero", "Brand B Max"] },
+    { category: "Zero", brands: ["Brand B", "Brand B Max"] },
   ],
   rows: [
     { category: "Regular", brand: "Brand A Regular", values: [6.6, 3.7, 3.7, 0.8, 1.8, 1.0] },
     { category: "Regular", brand: "Brand B", values: [3.7, 8.4, 0.9, 2.4, 1.2, 1.8] },
     { category: "Diet", brand: "Brand A Diet", values: [3.7, 0.9, 14.1, 3.4, 3.3, 7.5] },
     { category: "Diet", brand: "Brand B Diet", values: [0.8, 2.4, 3.4, 7.3, 3.0, 4.6] },
-    { category: "Zero", brand: "Brand A Zero", values: [1.8, 1.2, 3.3, 3.0, 5.5, 3.7], highlightCol: 4 },
+    { category: "Zero", brand: "Brand B", values: [1.8, 1.2, 3.3, 3.0, 5.5, 3.7], highlightCol: 4 },
     { category: "Zero", brand: "Brand B Max", values: [1.0, 1.8, 7.5, 4.6, 3.7, 15.9] },
   ]
 }
@@ -226,7 +226,7 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
           <div className="flex items-start justify-between">
             <div>
               <CardTitle className="text-base font-semibold text-zinc-100">
-                Brand A Zero with inferior fan base vs. Brand A Diet and Brand B Max
+                Brand B with inferior fan base vs. Brand A Diet and Brand B Max
               </CardTitle>
               <p className="text-xs text-zinc-500 mt-1">
                 Brand loyalty index - All ages. Higher values indicate stronger exclusive preference.
@@ -262,7 +262,7 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
                   <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand B</th>
                   <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand A Diet</th>
                   <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand B Diet</th>
-                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand A Zero</th>
+                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand B</th>
                   <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand B Max</th>
                 </tr>
               </thead>
@@ -352,8 +352,8 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
             <div className="flex items-start gap-2">
               <Info className="h-4 w-4 text-amber-400 flex-shrink-0 mt-0.5" />
               <p className="text-xs text-amber-300">
-                Brand A Zero has a fan base score of only <strong>5.5</strong> compared to Brand A Diet&apos;s <strong>14.1</strong> and Brand B Max&apos;s <strong>15.9</strong>. 
-                This makes Brand A Zero vulnerable to competitive and internal cannibalization.
+                Brand B has a fan base score of only <strong>5.5</strong> compared to Brand A Diet&apos;s <strong>14.1</strong> and Brand B Max&apos;s <strong>15.9</strong>. 
+                This makes Brand B vulnerable to competitive and internal cannibalization.
               </p>
             </div>
           </div>

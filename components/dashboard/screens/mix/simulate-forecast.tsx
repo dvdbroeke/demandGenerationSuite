@@ -37,21 +37,21 @@ const scenarioTypes = [
 const skuOptions = allSkuNames
 
 // Pre-selected SKUs based on storyline findings:
-// - 8 underperformers from PQA (Brand A Zero 1.5L, Brand B 500ml, etc.)
-// - Brand A Classic 500ml to 330ml shift opportunity
+// - 8 underperformers from PQA (Brand B 1.5L, Brand C 500ml, etc.)
+// - Brand A 500ml to 330ml shift opportunity
 const storylinePreselectedSkus = [
   // Underperformers flagged for delist
-  "Brand A Zero 1.5L",
-  "Brand B 500ml", 
-  "Brand B 1.25L",
-  "Brand B 1.75L",
-  "Brand D Orange 1.25L",
-  "Brand D Orange 1.75L",
+  "Brand B 1.5L",
+  "Brand C 500ml", 
+  "Brand C 1.25L",
   "Brand C 1.75L",
-  "Brand C 2L",
-  // Brand A Classic pack size shift opportunity
-  "Brand A Classic 500ml",
-  "Brand A Classic 330ml",
+  "Brand D 1.25L",
+  "Brand D 1.75L",
+  "Brand E 1.75L",
+  "Brand E 2L",
+  // Brand A pack size shift opportunity
+  "Brand A 500ml",
+  "Brand A 330ml",
 ]
 
 const channelOptions = ["All Channels", "Convenience", "Modern Trade", "Ecommerce", "On-Premise"]
@@ -74,13 +74,13 @@ interface ActionItem {
 // Storyline-aligned actions based on PQA findings
 const baseActions: ActionItem[] = [
   // Pack size shift: reduce 500ml, expand 330ml in Convenience
-  { id: "1", sku: "Brand A Classic 330ml", actionType: "expand", metric: "WD in Convenience", baseValue: 15, minValue: 0, maxValue: 25, unit: "%", confidence: "High" },
-  { id: "2", sku: "Brand A Classic 500ml", actionType: "reduce", metric: "Facing reduction", baseValue: 2, minValue: 0, maxValue: 4, unit: " facings", confidence: "High" },
+  { id: "1", sku: "Brand A 330ml", actionType: "expand", metric: "WD in Convenience", baseValue: 15, minValue: 0, maxValue: 25, unit: "%", confidence: "High" },
+  { id: "2", sku: "Brand A 500ml", actionType: "reduce", metric: "Facing reduction", baseValue: 2, minValue: 0, maxValue: 4, unit: " facings", confidence: "High" },
   // Delist underperformers
-  { id: "3", sku: "Brand A Zero 1.5L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 30, minValue: 0, maxValue: 50, unit: "%", confidence: "High" },
-  { id: "4", sku: "Brand B 500ml", actionType: "delist", metric: "Delist from bottom stores", baseValue: 25, minValue: 0, maxValue: 40, unit: "%", confidence: "Medium" },
-  { id: "5", sku: "Brand D Orange 1.75L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 40, minValue: 0, maxValue: 60, unit: "%", confidence: "High" },
-  { id: "6", sku: "Brand B 330ml", actionType: "add-facing", metric: "Add facings (Sleeper activation)", baseValue: 1, minValue: 0, maxValue: 3, unit: "", confidence: "Medium" },
+  { id: "3", sku: "Brand B 1.5L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 30, minValue: 0, maxValue: 50, unit: "%", confidence: "High" },
+  { id: "4", sku: "Brand C 500ml", actionType: "delist", metric: "Delist from bottom stores", baseValue: 25, minValue: 0, maxValue: 40, unit: "%", confidence: "Medium" },
+  { id: "5", sku: "Brand D 1.75L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 40, minValue: 0, maxValue: 60, unit: "%", confidence: "High" },
+  { id: "6", sku: "Brand C 330ml", actionType: "add-facing", metric: "Add facings (Sleeper activation)", baseValue: 1, minValue: 0, maxValue: 3, unit: "", confidence: "Medium" },
 ]
 
 // Calculate impact based on action values - aligned to storyline
@@ -132,12 +132,12 @@ interface ImpactItem {
 
 // Storyline-aligned impacts on other SKUs
 const otherImpacts: ImpactItem[] = [
-  { sku: "Brand A Classic 500ml", impact: "-4.2% volume", direction: "negative", detail: "Facing reduction & cannibalization from 330ml expansion" },
-  { sku: "Brand A Classic 330ml", impact: "+8.5% volume", direction: "positive", detail: "Distribution expansion in Convenience captures 500ml demand" },
-  { sku: "Brand A Zero 330ml", impact: "+2.1% volume", direction: "positive", detail: "Halo effect from improved shelf presence" },
-  { sku: "Brand A Classic 1.5L", impact: "+1.2% volume", direction: "positive", detail: "Multi-serve benefits from cleaner assortment" },
-  { sku: "Brand B 330ml", impact: "+3.8% volume", direction: "positive", detail: "Sleeper activation from added facings" },
-  { sku: "Brand C 330ml", impact: "No change", direction: "neutral", detail: "Different brand, separate consumption occasion" },
+  { sku: "Brand A 500ml", impact: "-4.2% volume", direction: "negative", detail: "Facing reduction & cannibalization from 330ml expansion" },
+  { sku: "Brand A 330ml", impact: "+8.5% volume", direction: "positive", detail: "Distribution expansion in Convenience captures 500ml demand" },
+  { sku: "Brand B 330ml", impact: "+2.1% volume", direction: "positive", detail: "Halo effect from improved shelf presence" },
+  { sku: "Brand A 1.5L", impact: "+1.2% volume", direction: "positive", detail: "Multi-serve benefits from cleaner assortment" },
+  { sku: "Brand C 330ml", impact: "+3.8% volume", direction: "positive", detail: "Sleeper activation from added facings" },
+  { sku: "Brand D 330ml", impact: "No change", direction: "neutral", detail: "Different brand, separate consumption occasion" },
 ]
 
 const existingInitiatives = ["Mix Upgrade Programme Q3 2026", "Promo Discipline Wave 2"]

@@ -20,8 +20,8 @@ interface CommunicationPlanProps {
 const campaigns = [
   {
     id: 1,
-    name: "Brand A Zero TikTok Challenge",
-    brand: "Brand A Zero",
+    name: "Brand B TikTok Challenge",
+    brand: "Brand B",
     status: "active",
     startDate: "Jan 2026",
     endDate: "Mar 2026",
@@ -47,7 +47,7 @@ const campaigns = [
   {
     id: 3,
     name: "Summer Real Magic",
-    brand: "Brand A Classic",
+    brand: "Brand A",
     status: "planned",
     startDate: "May 2026",
     endDate: "Aug 2026",
@@ -73,8 +73,8 @@ const campaigns = [
 ]
 
 const budgetAllocation = [
-  { brand: "Brand A Classic", budget: 12.5, percentage: 45 },
-  { brand: "Brand A Zero", budget: 8.2, percentage: 30 },
+  { brand: "Brand A", budget: 12.5, percentage: 45 },
+  { brand: "Brand B", budget: 8.2, percentage: 30 },
   { brand: "Brand D", budget: 4.1, percentage: 15 },
   { brand: "Brand C", budget: 2.8, percentage: 10 },
 ]

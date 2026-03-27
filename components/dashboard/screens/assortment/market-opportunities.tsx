@@ -29,35 +29,35 @@ const categories = [
 // Brands per category
 const brandsByCategory: Record<string, { name: string; shortName: string; color: string; isTccc: boolean }[]> = {
   "cola-regular": [
-    { name: "Brand A Classic", shortName: "Brand A", color: "#ef4444", isTccc: true },
+    { name: "Brand A", shortName: "Brand A", color: "#ef4444", isTccc: true },
     { name: "Competitor X Regular", shortName: "Comp X", color: "#2563eb", isTccc: false },
     { name: "Competitor Y", shortName: "Comp Y", color: "#7c3aed", isTccc: false },
     { name: "Competitor Z", shortName: "Comp Z", color: "#4338ca", isTccc: false },
     { name: "Private Label Cola", shortName: "PL Cola", color: "#6b7280", isTccc: false },
   ],
   "cola-zero": [
-    { name: "Brand A Zero", shortName: "Brand A Zero", color: "#ef4444", isTccc: true },
+    { name: "Brand B", shortName: "Brand B", color: "#ef4444", isTccc: true },
     { name: "Brand B", shortName: "Brand B", color: "#dc2626", isTccc: true },
     { name: "Competitor X Max", shortName: "Comp X Max", color: "#2563eb", isTccc: false },
     { name: "Competitor X Zero", shortName: "Comp X Zero", color: "#1d4ed8", isTccc: false },
     { name: "Competitor Y Zero", shortName: "Comp Y Zero", color: "#7c3aed", isTccc: false },
   ],
   "citrus-fruity": [
-    { name: "Brand C Orange", shortName: "Brand C", color: "#f97316", isTccc: true },
+    { name: "Brand C", shortName: "Brand C", color: "#f97316", isTccc: true },
     { name: "Brand D", shortName: "Brand D", color: "#22c55e", isTccc: true },
     { name: "Competitor W", shortName: "Comp W", color: "#10b981", isTccc: false },
     { name: "Competitor V", shortName: "Comp V", color: "#f59e0b", isTccc: false },
     { name: "Competitor U", shortName: "Comp U", color: "#84cc16", isTccc: false },
   ],
   "energy": [
-    { name: "Brand E Energy", shortName: "Brand E", color: "#22c55e", isTccc: true },
+    { name: "Brand E", shortName: "Brand E", color: "#22c55e", isTccc: true },
     { name: "Competitor T", shortName: "Comp T", color: "#3b82f6", isTccc: false },
     { name: "Competitor S", shortName: "Comp S", color: "#eab308", isTccc: false },
     { name: "Competitor R", shortName: "Comp R", color: "#ef4444", isTccc: false },
   ],
   "water": [
-    { name: "Brand F Water", shortName: "Brand F", color: "#06b6d4", isTccc: true },
-    { name: "Brand G Water", shortName: "Brand G", color: "#0ea5e9", isTccc: true },
+    { name: "Brand F", shortName: "Brand F", color: "#06b6d4", isTccc: true },
+    { name: "Brand G", shortName: "Brand G", color: "#0ea5e9", isTccc: true },
     { name: "Competitor Q", shortName: "Comp Q", color: "#ec4899", isTccc: false },
     { name: "Competitor P", shortName: "Comp P", color: "#2563eb", isTccc: false },
     { name: "Private Label Water", shortName: "PL Water", color: "#6b7280", isTccc: false },
@@ -110,9 +110,9 @@ function generateBrandData(brandName: string, categoryId: string) {
   const rng = seededRandom(seed)
   
   const isTccc = brandsByCategory[categoryId]?.find(b => b.name === brandName)?.isTccc || false
-  const isBrandAClassic = brandName === "Brand A Classic"
+  const isBrandAClassic = brandName === "Brand A"
   
-  // Channel split - STORYLINE: Brand A Classic skewed toward HoReCa
+  // Channel split - STORYLINE: Brand A skewed toward HoReCa
   const channelRaw: Record<string, number> = {}
   channelSegments.forEach(ch => {
     let base = 8 + rng() * 15
@@ -137,7 +137,7 @@ function generateBrandData(brandName: string, categoryId: string) {
   const channels: Record<string, number> = {}
   Object.keys(channelRaw).forEach(k => { channels[k] = Math.round(channelRaw[k] / chTotal * 100) })
   
-  // Pack type split - STORYLINE: Brand A Classic over-indexed on Cans
+  // Pack type split - STORYLINE: Brand A over-indexed on Cans
   const packTypeRaw: Record<string, number> = {}
   packTypeSegments.forEach(pt => {
     let base = 10 + rng() * 20
@@ -158,7 +158,7 @@ function generateBrandData(brandName: string, categoryId: string) {
   const packTypes: Record<string, number> = {}
   Object.keys(packTypeRaw).forEach(k => { packTypes[k] = Math.round(packTypeRaw[k] / ptTotal * 100) })
   
-  // Pack size split - STORYLINE: Brand A Classic concentrated in 500ml
+  // Pack size split - STORYLINE: Brand A concentrated in 500ml
   const packSizeRaw: Record<string, number> = {}
   packSizeSegments.forEach(ps => {
     let base = 8 + rng() * 18
@@ -255,9 +255,9 @@ export function MarketOpportunities({ onNavigate }: Props) {
     return map
   }, [brands, selectedCategory])
 
-// Storyline highlights for Brand A Classic
+// Storyline highlights for Brand A
   const getHighlights = (brandName: string, dimension: "channel" | "packType" | "packSize"): string[] | undefined => {
-  if (brandName !== "Brand A Classic") return undefined
+  if (brandName !== "Brand A") return undefined
     if (dimension === "channel") return ["HoReCa", "E-commerce", "Supermarket"]
     if (dimension === "packType") return ["Can"]
     if (dimension === "packSize") return ["500ml", "330ml"]
@@ -332,7 +332,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
                 <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 text-[9px]">Pack Size Gap</Badge>
               </div>
               <p className="text-xs text-zinc-300">
-Brand A Classic is <span className="text-amber-300 font-medium">skewed toward HoReCa (28%) & Cans (42%)</span> while competitors lead in Supermarket and E-commerce.
+Brand A is <span className="text-amber-300 font-medium">skewed toward HoReCa (28%) & Cans (42%)</span> while competitors lead in Supermarket and E-commerce.
   Pack size mix is <span className="text-amber-300 font-medium">concentrated in 500ml (32%)</span> while competitors show stronger 330ml representation (22-25%).
               </p>
             </div>
@@ -362,7 +362,7 @@ Brand A Classic is <span className="text-amber-300 font-medium">skewed toward Ho
           <div className="flex justify-around items-end gap-4">
             {brands.map(brand => {
               const data = brandDataMap[brand.name]
-              const isBrandAClassic = brand.name === "Brand A Classic"
+              const isBrandAClassic = brand.name === "Brand A"
               return (
                 <div key={brand.name} className="flex flex-col items-center">
                   <VerticalStackedBar
@@ -404,7 +404,7 @@ Brand A Classic is <span className="text-amber-300 font-medium">skewed toward Ho
           <div className="flex justify-around items-end gap-4">
             {brands.map(brand => {
               const data = brandDataMap[brand.name]
-              const isBrandAClassic = brand.name === "Brand A Classic"
+              const isBrandAClassic = brand.name === "Brand A"
               return (
                 <div key={brand.name} className="flex flex-col items-center">
                   <VerticalStackedBar
@@ -446,7 +446,7 @@ Brand A Classic is <span className="text-amber-300 font-medium">skewed toward Ho
           <div className="flex justify-around items-end gap-4">
             {brands.map(brand => {
               const data = brandDataMap[brand.name]
-              const isBrandAClassic = brand.name === "Brand A Classic"
+              const isBrandAClassic = brand.name === "Brand A"
               return (
                 <div key={brand.name} className="flex flex-col items-center">
                   <VerticalStackedBar

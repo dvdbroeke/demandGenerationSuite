@@ -105,7 +105,7 @@ export function BAMOverview({ onNavigate }: BAMOverviewProps) {
       type: "brand",
       impact: "High Impact",
       title: "Brand A Loyalty Gap",
-      description: "Brand A has inferior loyalty metrics vs. Competitor B (4.8 vs 14.2 index). Brand A Classic consumers switching to Competitor B rather than Brand A Premium."
+      description: "Brand A has inferior loyalty metrics vs. Competitor B (4.8 vs 14.2 index). Brand A consumers switching to Competitor B rather than Brand A Premium."
     },
     {
       type: "action",
