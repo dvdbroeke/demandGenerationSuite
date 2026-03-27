@@ -55,15 +55,15 @@ interface PriceActionItem {
 const citrusFruityPriceActions: PriceActionItem[] = [
   { id: "brand-d-330", sku: "Brand D 330ml", currentPrice: 1.10, suggestedPrice: 1.25, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.25, confidence: "High" },
   { id: "brand-d-500", sku: "Brand D 500ml", currentPrice: 1.48, suggestedPrice: 1.59, minPrice: 1.40, maxPrice: 1.70, elasticity: -0.35, confidence: "High" },
-  { id: "brand-c-330", sku: "Brand C Orange 330ml", currentPrice: 1.12, suggestedPrice: 1.22, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.30, confidence: "High" },
-  { id: "brand-c-500", sku: "Brand C Orange 500ml", currentPrice: 1.55, suggestedPrice: 1.65, minPrice: 1.45, maxPrice: 1.79, elasticity: -0.40, confidence: "Medium" },
+  { id: "brand-e-330", sku: "Brand E 330ml", currentPrice: 1.12, suggestedPrice: 1.22, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.30, confidence: "High" },
+  { id: "brand-e-500", sku: "Brand E 500ml", currentPrice: 1.55, suggestedPrice: 1.65, minPrice: 1.45, maxPrice: 1.79, elasticity: -0.40, confidence: "Medium" },
 ]
 
 const basePriceActions: PriceActionItem[] = [
-  { id: "1", sku: "Brand A Classic 330ml", currentPrice: 1.35, suggestedPrice: 1.39, minPrice: 1.25, maxPrice: 1.49, elasticity: -0.3, confidence: "High" },
-  { id: "2", sku: "Brand A Zero 330ml", currentPrice: 1.39, suggestedPrice: 1.45, minPrice: 1.29, maxPrice: 1.55, elasticity: -0.15, confidence: "High" },
-  { id: "3", sku: "Brand A Classic 500ml", currentPrice: 1.89, suggestedPrice: 1.79, minPrice: 1.59, maxPrice: 1.99, elasticity: -1.2, confidence: "Medium" },
-  { id: "4", sku: "Brand A Classic 8x330ml", currentPrice: 4.00, suggestedPrice: 3.75, minPrice: 3.50, maxPrice: 4.50, elasticity: -2.5, confidence: "Medium" },
+  { id: "1", sku: "Brand A 330ml", currentPrice: 1.35, suggestedPrice: 1.39, minPrice: 1.25, maxPrice: 1.49, elasticity: -0.3, confidence: "High" },
+  { id: "2", sku: "Brand B 330ml", currentPrice: 1.39, suggestedPrice: 1.45, minPrice: 1.29, maxPrice: 1.55, elasticity: -0.15, confidence: "High" },
+  { id: "3", sku: "Brand A 500ml", currentPrice: 1.89, suggestedPrice: 1.79, minPrice: 1.59, maxPrice: 1.99, elasticity: -1.2, confidence: "Medium" },
+  { id: "4", sku: "Brand A 8x330ml", currentPrice: 4.00, suggestedPrice: 3.75, minPrice: 3.50, maxPrice: 4.50, elasticity: -2.5, confidence: "Medium" },
 ]
 
 // Calculate impact based on price values
@@ -101,10 +101,10 @@ interface PriceImpactItem {
 }
 
 const otherPriceImpacts: PriceImpactItem[] = [
-  { sku: "Brand A Classic 1.5L", impact: "-3.2% volume", direction: "negative", cannibRate: "8.4%", detail: "Price cut on 500ml draws take-home buyers" },
-  { sku: "Brand B 330ml", impact: "+1.5% volume", direction: "positive", cannibRate: "2.1%", detail: "Price increase on Classic 330ml shifts some demand" },
+  { sku: "Brand A 1.5L", impact: "-3.2% volume", direction: "negative", cannibRate: "8.4%", detail: "Price cut on 500ml draws take-home buyers" },
+  { sku: "Brand C 330ml", impact: "+1.5% volume", direction: "positive", cannibRate: "2.1%", detail: "Price increase on Brand A 330ml shifts some demand" },
   { sku: "Competitor X Regular 330ml", impact: "+2.8% volume", direction: "negative", cannibRate: "-", detail: "Competitor gains from our price increase" },
-  { sku: "Brand A Zero 500ml", impact: "No change", direction: "neutral", cannibRate: "0%", detail: "Different pack size occasion" },
+  { sku: "Brand B 500ml", impact: "No change", direction: "neutral", cannibRate: "0%", detail: "Different pack size occasion" },
 ]
 
 const existingInitiatives = ["Price Ladder Review Q3", "Premium SKU Price Increase"]

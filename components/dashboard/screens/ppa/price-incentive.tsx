@@ -20,36 +20,36 @@ const tabs: { id: PPAScreen; label: string }[] = [
 
 // Competitor SKUs mapped by brand -- market competitors
 const competitorSkus: Record<string, Array<{ sku: string; brand: string; packMl: number; ppl: number; revM: number }>> = {
-  "Brand A Classic": [
+  "Brand A": [
     { sku: "Competitor X 150ml",       brand: "Competitor X",    packMl: 150,  ppl: 6.00, revM: 0.4 },
     { sku: "Competitor X 330ml",       brand: "Competitor X",    packMl: 330,  ppl: 3.64, revM: 4.2 },
     { sku: "Competitor X 500ml",       brand: "Competitor X",    packMl: 500,  ppl: 3.38, revM: 3.1 },
     { sku: "Competitor X 1.5L",        brand: "Competitor X",    packMl: 1500, ppl: 1.26, revM: 2.8 },
     { sku: "Competitor X 2L",          brand: "Competitor X",    packMl: 2000, ppl: 1.00, revM: 1.9 },
   ],
-  "Brand A Zero": [
+  "Brand B": [
     { sku: "Competitor X Max 150ml",   brand: "Competitor X Max", packMl: 150,  ppl: 6.33, revM: 0.3 },
     { sku: "Competitor X Max 330ml",   brand: "Competitor X Max", packMl: 330,  ppl: 3.79, revM: 3.0 },
     { sku: "Competitor X Max 500ml",   brand: "Competitor X Max", packMl: 500,  ppl: 3.58, revM: 2.2 },
     { sku: "Competitor X Max 1.5L",    brand: "Competitor X Max", packMl: 1500, ppl: 1.33, revM: 1.8 },
     { sku: "Competitor X Max 2L",      brand: "Competitor X Max", packMl: 2000, ppl: 1.05, revM: 1.2 },
   ],
-  "Brand B": [
+  "Brand C": [
     { sku: "Competitor X Max 330ml",   brand: "Competitor X Max", packMl: 330,  ppl: 3.79, revM: 3.0 },
     { sku: "Competitor X Max 500ml",   brand: "Competitor X Max", packMl: 500,  ppl: 3.58, revM: 2.2 },
     { sku: "Competitor X Max 1.5L",    brand: "Competitor X Max", packMl: 1500, ppl: 1.33, revM: 1.8 },
   ],
-  "Brand C": [
-    { sku: "Competitor Y Orange 330ml", brand: "Competitor Y", packMl: 330,  ppl: 4.85, revM: 1.6 },
-    { sku: "Competitor Y Orange 500ml", brand: "Competitor Y", packMl: 500,  ppl: 3.80, revM: 1.0 },
-    { sku: "Competitor Y Orange 1.25L", brand: "Competitor Y", packMl: 1250, ppl: 2.00, revM: 0.6 },
-    { sku: "Competitor Z Lemon 330ml",  brand: "Competitor Z", packMl: 330,  ppl: 4.24, revM: 1.2 },
-  ],
   "Brand D": [
+    { sku: "Competitor Y 330ml",        brand: "Competitor Y", packMl: 330,  ppl: 4.85, revM: 1.6 },
+    { sku: "Competitor Y 500ml",        brand: "Competitor Y", packMl: 500,  ppl: 3.80, revM: 1.0 },
+    { sku: "Competitor Y 1.25L",        brand: "Competitor Y", packMl: 1250, ppl: 2.00, revM: 0.6 },
+    { sku: "Competitor Z 330ml",        brand: "Competitor Z", packMl: 330,  ppl: 4.24, revM: 1.2 },
+  ],
+  "Brand E": [
     { sku: "Competitor W 330ml",         brand: "Competitor W",  packMl: 330,  ppl: 3.33, revM: 1.4 },
     { sku: "Competitor W 500ml",         brand: "Competitor W",  packMl: 500,  ppl: 2.98, revM: 0.9 },
     { sku: "Competitor W 1.5L",          brand: "Competitor W",  packMl: 1500, ppl: 1.13, revM: 0.8 },
-    { sku: "Competitor V Lemon 330ml",   brand: "Competitor V",  packMl: 330,  ppl: 4.09, revM: 0.7 },
+    { sku: "Competitor V 330ml",         brand: "Competitor V",  packMl: 330,  ppl: 4.09, revM: 0.7 },
   ],
 }
 
@@ -314,8 +314,8 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
 
   // Category definitions for price curve analysis
   const categoryDefs = [
-{ id: "cola", label: "Category A", brands: ["Brand A Classic", "Brand A Zero", "Brand B"], color: "#ef4444", compBrands: ["Competitor X", "Competitor X Max"] },
-  { id: "citrus", label: "Category D", brands: ["Brand D", "Brand C"], color: "#22c55e", compBrands: ["Competitor W", "Competitor Y"] },
+    { id: "cola", label: "Category A", brands: ["Brand A", "Brand B", "Brand C"], color: "#ef4444", compBrands: ["Competitor X", "Competitor X Max"] },
+    { id: "citrus", label: "Category D", brands: ["Brand D", "Brand E"], color: "#22c55e", compBrands: ["Competitor W", "Competitor Y"] },
   ]
 
   // Calculate category-level curves for Portfolio
@@ -432,21 +432,21 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
   const priceAlerts = useMemo((): PriceAlert[] => {
     const alerts: PriceAlert[] = []
     
-    // Check for Single Serve Brand D underpricing (key storyline item)
-    // Brand D 330ml at ppl 2.73 vs expected ~4.0 for 330ml = -32% below ladder
-    const brandD330 = skuData.find(d => d.sku.toLowerCase().includes("brand d") && d.packMl === 330)
-    if (brandD330) {
+// Check for Single Serve Brand E underpricing (key storyline item)
+  // Brand E 330ml at ppl 2.73 vs expected ~4.0 for 330ml = -32% below ladder
+  const brandE330 = skuData.find(d => d.sku.toLowerCase().includes("brand e") && d.packMl === 330)
+    if (brandE330) {
       const expectedPpl = getExpectedPpl(330)
-      const actualPpl = brandD330.ppl
+      const actualPpl = brandE330.ppl
       const gap = ((actualPpl - expectedPpl) / expectedPpl * 100)
-      // This should trigger since Brand D 330ml is at 2.73 vs expected ~4.0 = -32%
+      // This should trigger since Brand E 330ml is at 2.73 vs expected ~4.0 = -32%
       if (gap < -15) {
         alerts.push({
-          id: "brand-d-330",
+          id: "brand-e-330",
           type: "anomaly",
-          title: "Price ladder anomaly for Single Serve Brand D",
-          detail: `Brand D 330ml priced at \u20ac${actualPpl.toFixed(2)}/L vs. portfolio avg \u20ac${expectedPpl.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% below pack-size expectation - significantly underpriced vs pack ladder.`,
-          sku: brandD330.sku,
+          title: "Price ladder anomaly for Single Serve Brand E",
+          detail: `Brand E 330ml priced at \u20ac${actualPpl.toFixed(2)}/L vs. portfolio avg \u20ac${expectedPpl.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% below pack-size expectation - significantly underpriced vs pack ladder.`,
+          sku: brandE330.sku,
           packMl: 330,
           gap: `${gap.toFixed(0)}%`,
           actionable: true
@@ -454,25 +454,25 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
       }
     }
     
-// Check for Citrus/Fruity category underpricing vs competitors
+// Check for Category D underpricing vs competitors
       if (showCompetitors) {
-        const citrusBrands = ["Brand C", "Brand D"]
-        const citrusSkus = skuData.filter(d => citrusBrands.some(b => d.brand.includes(b)))
-        const citrusCompSkus = Object.values(competitorSkus).flat().filter(d => 
+        const catDBrands = ["Brand D", "Brand E"]
+        const catDSkus = skuData.filter(d => catDBrands.some(b => d.brand.includes(b)))
+        const catDCompSkus = Object.values(competitorSkus).flat().filter(d => 
           ["Competitor Y", "Competitor Z", "Competitor W"].some(b => d.brand.includes(b))
         )
       
-      if (citrusSkus.length > 0 && citrusCompSkus.length > 0) {
-        const citrusAvg = citrusSkus.reduce((s, d) => s + d.ppl, 0) / citrusSkus.length
-        const citrusCompAvg = citrusCompSkus.reduce((s, d) => s + d.ppl, 0) / citrusCompSkus.length
-        const gap = ((citrusAvg - citrusCompAvg) / citrusCompAvg * 100)
+      if (catDSkus.length > 0 && catDCompSkus.length > 0) {
+        const catDAvg = catDSkus.reduce((s, d) => s + d.ppl, 0) / catDSkus.length
+        const catDCompAvg = catDCompSkus.reduce((s, d) => s + d.ppl, 0) / catDCompSkus.length
+        const gap = ((catDAvg - catDCompAvg) / catDCompAvg * 100)
         
         if (gap < -10) {
           alerts.push({
-            id: "citrus-underpriced",
+            id: "category-d-underpriced",
             type: "opportunity",
             title: "Category D underpriced vs. competitors",
-            detail: `Brand D & Brand C avg \u20ac${citrusAvg.toFixed(2)}/L vs. competitor avg \u20ac${citrusCompAvg.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% margin opportunity.`,
+            detail: `Brand D & Brand E avg \u20ac${catDAvg.toFixed(2)}/L vs. competitor avg \u20ac${catDCompAvg.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% margin opportunity.`,
             gap: `${gap.toFixed(0)}%`,
             actionable: true
           })

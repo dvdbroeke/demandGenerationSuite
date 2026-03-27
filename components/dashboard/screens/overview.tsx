@@ -94,7 +94,7 @@ const priorityInsights = [
     type: "Brand",
     title: "Zero Portfolio Momentum",
     insight:
-      "Brand A Zero capturing 68% of zero-segment growth. Opportunity to extend zero positioning to Brand C and Brand D.",
+      "Brand B capturing 68% of zero-segment growth. Opportunity to extend zero positioning to Brand C and Brand D.",
     impact: "High",
   },
   {

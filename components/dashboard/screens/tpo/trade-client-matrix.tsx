@@ -75,33 +75,33 @@ function generateEvents(filterSeed: number, selectedBrand: string, selectedSku: 
   const mechanics = selectedMechanic !== "All Mechanics" ? [selectedMechanic] : ["TPR", "Multibuy", "BOGOF", "Display Only"]
 
   let id = 0
-  let brandBGoodPerformerCount = 0 // Track to limit to 2 good performers for Brand B
+  let brandCGoodPerformerCount = 0 // Track to limit to 2 good performers for Brand C
   
   for (const sku of skus) {
-    const brand = skuBrandMap[sku] || "Brand A Classic"
+    const brand = skuBrandMap[sku] || "Brand A"
     if (selectedBrand !== "All Brands" && brand !== selectedBrand) continue
     for (const ret of retailers) {
       for (const mech of mechanics) {
         if (rng() > 0.35) continue // not every combination has an event
         
-        // STORYLINE: Brand B has mostly BAD promo performance
+        // STORYLINE: Brand C has mostly BAD promo performance
         // Most events should be in lose-lose quadrant with shallow discounts
         // Only 1-2 good performers with 30-45% price cuts and shorter duration
-        const isBrandB = brand === "Brand B"
+        const isBrandC = brand === "Brand C"
         
         let clientKPI: number
         let tradeKPI: number
         let discountDepth: number
         let incrVolume: number
         
-        if (isBrandB) {
-          // Brand B: More realistic distribution
+        if (isBrandC) {
+          // Brand C: More realistic distribution
           // ~60% lose-lose (spread within quadrant), ~15% CCH win, ~15% Retailer win, ~10% win-win
           const quadrantRoll = rng()
           
-          if (quadrantRoll < 0.10 && brandBGoodPerformerCount < 2) {
+          if (quadrantRoll < 0.10 && brandCGoodPerformerCount < 2) {
             // Win-win quadrant (top-right): 10%, max 2 - good performers with 30-45% price cut
-            brandBGoodPerformerCount++
+            brandCGoodPerformerCount++
             clientKPI = 60 + rng() * 200 // 60-260
             tradeKPI = 50 + rng() * 180 // 50-230
             discountDepth = Math.round(30 + rng() * 15) // 30-45%
@@ -214,7 +214,7 @@ function computeSummaries(events: PromoEvent[]): QuadrantSummary[] {
 const aiInsights = [
   { type: "negative" as const, text: "Brand B SKUs dominate the Lose-Lose quadrant (bottom-left): 18 of 24 events are Brand B with long promo duration (4+ weeks) and shallow price cuts (<15%). These are destroying value.", highlight: true },
   { type: "negative" as const, text: "Brand B 500ml and 1.5L show worst Trade KPI (-180 to -220) with average Client KPI. Long promo windows causing forward buying without incremental lift.", highlight: true },
-  { type: "warning" as const, text: "Compare with Brand A Zero in Win-Win quadrant: shorter durations (2 weeks), deeper cuts (25-30%), and display support driving both Trade and Client KPI positive." },
+  { type: "warning" as const, text: "Compare with Brand B in Win-Win quadrant: shorter durations (2 weeks), deeper cuts (25-30%), and display support driving both Trade and Client KPI positive." },
   { type: "warning" as const, text: "Recommendation: Navigate to Performance by Lever to understand what promo mechanics and depths drive success, then optimize Brand B promos accordingly." },
 ]
 

@@ -22,11 +22,11 @@ interface SimulateForecastProps {
 // ---------- Config options ----------
 const brands = [
   { value: "all", label: "All Brands" },
-  { value: "brand-a-classic", label: "Brand A Classic" },
-  { value: "brand-a-zero", label: "Brand A Zero" },
+  { value: "brand-a", label: "Brand A" },
   { value: "brand-b", label: "Brand B" },
   { value: "brand-c", label: "Brand C" },
   { value: "brand-d", label: "Brand D" },
+  { value: "brand-e", label: "Brand E" },
 ]
 const skuOptions = allSkuNames
 const retailerOptions = [...sharedRetailers] as string[]
@@ -66,19 +66,19 @@ interface PromoRecommendation {
 }
 
 const recommendations: PromoRecommendation[] = [
-  { sku: "Brand A Zero 330ml", retailer: "Retailer A", mechanic: "TPR -15%", depth: "15%", weeks: "W22-W25", currentROI: 1.12, forecastROI: 1.68, incrVolume: "+42K L", cannibPct: 8.2, confidence: "High" },
-  { sku: "Brand A Classic 500ml", retailer: "Retailer B", mechanic: "Multibuy 2 for \u20ac2", depth: "22%", weeks: "W24-W27", currentROI: 0.98, forecastROI: 1.45, incrVolume: "+38K L", cannibPct: 12.1, confidence: "High" },
-  { sku: "Brand C Orange 330ml", retailer: "Retailer D", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W24", currentROI: 1.24, forecastROI: 1.82, incrVolume: "+31K L", cannibPct: 5.4, confidence: "High" },
-  { sku: "Brand A Classic 1.5L", retailer: "Retailer C", mechanic: "\u20ac1 PMP", depth: "18%", weeks: "W26-W29", currentROI: 0.88, forecastROI: 1.22, incrVolume: "+22K L", cannibPct: 18.7, confidence: "Medium" },
-  { sku: "Brand B 500ml", retailer: "Retailer E", mechanic: "Meal Deal", depth: "12%", weeks: "W23-W26", currentROI: 0.72, forecastROI: 1.08, incrVolume: "+15K L", cannibPct: 22.3, confidence: "Medium" },
-  { sku: "Brand D 330ml", retailer: "Retailer F", mechanic: "TPR -12%", depth: "12%", weeks: "W28-W30", currentROI: 0.91, forecastROI: 1.15, incrVolume: "+12K L", cannibPct: 14.5, confidence: "Medium" },
-  { sku: "Brand A Zero 1.5L", retailer: "Retailer H", mechanic: "BOGOF", depth: "50%", weeks: "W25-W26", currentROI: 0.65, forecastROI: 0.92, incrVolume: "+8K L", cannibPct: 28.1, confidence: "Low" },
-  { sku: "Brand A Classic 2L", retailer: "Retailer D", mechanic: "TPR -12%", depth: "12%", weeks: "W23-W26", currentROI: 0.82, forecastROI: 1.18, incrVolume: "+18K L", cannibPct: 14.2, confidence: "Medium" },
-  { sku: "Brand A Classic 8x330ml", retailer: "Retailer A", mechanic: "Multibuy 2 for \u20ac7", depth: "12.5%", weeks: "W24-W28", currentROI: 1.08, forecastROI: 1.52, incrVolume: "+28K L", cannibPct: 10.0, confidence: "High" },
-  { sku: "Brand A Zero 8x330ml", retailer: "Retailer B", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W25", currentROI: 0.95, forecastROI: 1.38, incrVolume: "+22K L", cannibPct: 15.2, confidence: "Medium" },
-  { sku: "Brand C Orange 2L", retailer: "Retailer C", mechanic: "\u20ac1 PMP", depth: "20%", weeks: "W26-W29", currentROI: 0.78, forecastROI: 1.12, incrVolume: "+14K L", cannibPct: 12.0, confidence: "Medium" },
-  { sku: "Brand B 1.5L", retailer: "Retailer G", mechanic: "TPR -10%", depth: "10%", weeks: "W24-W27", currentROI: 0.68, forecastROI: 0.98, incrVolume: "+10K L", cannibPct: 16.0, confidence: "Low" },
-  { sku: "Brand D 1.5L", retailer: "Retailer D", mechanic: "Multibuy 2 for \u20ac3", depth: "16%", weeks: "W25-W28", currentROI: 0.72, forecastROI: 1.05, incrVolume: "+8K L", cannibPct: 14.0, confidence: "Low" },
+  { sku: "Brand B 330ml", retailer: "Retailer A", mechanic: "TPR -15%", depth: "15%", weeks: "W22-W25", currentROI: 1.12, forecastROI: 1.68, incrVolume: "+42K L", cannibPct: 8.2, confidence: "High" },
+  { sku: "Brand A 500ml", retailer: "Retailer B", mechanic: "Multibuy 2 for \u20ac2", depth: "22%", weeks: "W24-W27", currentROI: 0.98, forecastROI: 1.45, incrVolume: "+38K L", cannibPct: 12.1, confidence: "High" },
+  { sku: "Brand D 330ml", retailer: "Retailer D", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W24", currentROI: 1.24, forecastROI: 1.82, incrVolume: "+31K L", cannibPct: 5.4, confidence: "High" },
+  { sku: "Brand A 1.5L", retailer: "Retailer C", mechanic: "\u20ac1 PMP", depth: "18%", weeks: "W26-W29", currentROI: 0.88, forecastROI: 1.22, incrVolume: "+22K L", cannibPct: 18.7, confidence: "Medium" },
+  { sku: "Brand C 500ml", retailer: "Retailer E", mechanic: "Meal Deal", depth: "12%", weeks: "W23-W26", currentROI: 0.72, forecastROI: 1.08, incrVolume: "+15K L", cannibPct: 22.3, confidence: "Medium" },
+  { sku: "Brand E 330ml", retailer: "Retailer F", mechanic: "TPR -12%", depth: "12%", weeks: "W28-W30", currentROI: 0.91, forecastROI: 1.15, incrVolume: "+12K L", cannibPct: 14.5, confidence: "Medium" },
+  { sku: "Brand B 1.5L", retailer: "Retailer H", mechanic: "BOGOF", depth: "50%", weeks: "W25-W26", currentROI: 0.65, forecastROI: 0.92, incrVolume: "+8K L", cannibPct: 28.1, confidence: "Low" },
+  { sku: "Brand A 2L", retailer: "Retailer D", mechanic: "TPR -12%", depth: "12%", weeks: "W23-W26", currentROI: 0.82, forecastROI: 1.18, incrVolume: "+18K L", cannibPct: 14.2, confidence: "Medium" },
+  { sku: "Brand A 8x330ml", retailer: "Retailer A", mechanic: "Multibuy 2 for \u20ac7", depth: "12.5%", weeks: "W24-W28", currentROI: 1.08, forecastROI: 1.52, incrVolume: "+28K L", cannibPct: 10.0, confidence: "High" },
+  { sku: "Brand B 8x330ml", retailer: "Retailer B", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W25", currentROI: 0.95, forecastROI: 1.38, incrVolume: "+22K L", cannibPct: 15.2, confidence: "Medium" },
+  { sku: "Brand D 2L", retailer: "Retailer C", mechanic: "\u20ac1 PMP", depth: "20%", weeks: "W26-W29", currentROI: 0.78, forecastROI: 1.12, incrVolume: "+14K L", cannibPct: 12.0, confidence: "Medium" },
+  { sku: "Brand C 1.5L", retailer: "Retailer G", mechanic: "TPR -10%", depth: "10%", weeks: "W24-W27", currentROI: 0.68, forecastROI: 0.98, incrVolume: "+10K L", cannibPct: 16.0, confidence: "Low" },
+  { sku: "Brand E 1.5L", retailer: "Retailer D", mechanic: "Multibuy 2 for \u20ac3", depth: "16%", weeks: "W25-W28", currentROI: 0.72, forecastROI: 1.05, incrVolume: "+8K L", cannibPct: 14.0, confidence: "Low" },
 ]
 
 // Forecast ROI over weeks
@@ -89,15 +89,15 @@ const forecastOptimized = [1.02, 1.28, 1.52, 1.61, 1.55, 1.48, 1.42, 1.38, 1.22,
 // ---------- Component ----------
 export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToFuelight }: SimulateForecastProps) {
   const [hasRun, setHasRun] = useState(false)
-  const [selectedBrand, setSelectedBrand] = useState("brand-b") // STORYLINE: Pre-select Brand B
-  // STORYLINE: Pre-select the bad performing Brand B SKUs from Trade v Client Matrix
+  const [selectedBrand, setSelectedBrand] = useState("brand-c") // STORYLINE: Pre-select Brand C
+  // STORYLINE: Pre-select the bad performing Brand C SKUs from Trade v Client Matrix
   const [selectedSkus, setSelectedSkus] = useState<string[]>([
-    "Brand B 330ml",
-    "Brand B 500ml", 
-    "Brand B 1.25L",
-    "Brand B 1.5L",
-    "Brand B 1.75L",
-    "Brand B 2L"
+    "Brand C 330ml",
+    "Brand C 500ml", 
+    "Brand C 1.25L",
+    "Brand C 1.5L",
+    "Brand C 1.75L",
+    "Brand C 2L"
   ])
   const [selectedRetailers, setSelectedRetailers] = useState<string[]>(["All Retailers"])
   const [selectedMechanic, setSelectedMechanic] = useState("Price Cut") // STORYLINE: Price Cut mechanic
@@ -372,7 +372,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
               </div>
               <div className="space-y-2 text-[11px] text-zinc-300 leading-relaxed">
                 <p>The optimized promo plan delivers a <span className="text-emerald-400 font-semibold">1.42x portfolio ROI</span> vs. the 1.08x current baseline, generating <span className="text-emerald-400 font-semibold">+168K L incremental volume</span> within the <span className="text-zinc-100 font-semibold">€218K</span> budget (vs. €250K cap).</p>
-                <p>Key recommendations: Lead with <span className="text-zinc-100">Brand A Zero 330ml TPR at Esselunga</span> (highest confidence, 1.68x ROI) and <span className="text-zinc-100">Brand D Orange 330ml Display+TPR at Carrefour IT</span> (strongest category expansion at 38%). Avoid BOGOF on Brand A Zero 1.5L at Eurospin where cannibalization reaches 28% and ROI stays below 1.0x.</p>
+                <p>Key recommendations: Lead with <span className="text-zinc-100">Brand B 330ml TPR at Esselunga</span> (highest confidence, 1.68x ROI) and <span className="text-zinc-100">Brand D 330ml Display+TPR at Carrefour IT</span> (strongest category expansion at 38%). Avoid BOGOF on Brand B 1.5L at Eurospin where cannibalization reaches 28% and ROI stays below 1.0x.</p>
                 <p>Timing-wise, concentrate promos in W22-W27 to align with the summer media campaign window for maximum synergy lift.</p>
               </div>
             </CardContent>
@@ -399,7 +399,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                 // Media flight windows
                 const mediaFlights = [
                   { label: "Summer Campaign TV + Digital", start: 0, end: 4, color: "bg-blue-500", textColor: "text-blue-300", borderColor: "border-blue-500/40" },
-                  { label: "Brand A Zero Social Push", start: 2, end: 5, color: "bg-cyan-500", textColor: "text-cyan-300", borderColor: "border-cyan-500/40" },
+                  { label: "Brand B Social Push", start: 2, end: 5, color: "bg-cyan-500", textColor: "text-cyan-300", borderColor: "border-cyan-500/40" },
                   { label: "Brand D Festival Activation", start: 5, end: 7, color: "bg-orange-500", textColor: "text-orange-300", borderColor: "border-orange-500/40" },
                 ]
 
@@ -414,10 +414,10 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
 
                 // Recommended promo activations (from simulation results)
                 const promoActivations = [
-                  { sku: "Brand A Zero 330ml", retailer: "Esselunga", start: 0, end: 3, roi: 1.68, color: "bg-emerald-500" },
-                  { sku: "Brand A Classic 500ml", retailer: "Conad", start: 2, end: 5, roi: 1.45, color: "bg-emerald-500" },
-                  { sku: "Brand D Orange 330ml", retailer: "Carrefour IT", start: 0, end: 2, roi: 1.82, color: "bg-emerald-500" },
-                  { sku: "Brand A Classic 1.5L", retailer: "Coop Italia", start: 4, end: 7, roi: 1.22, color: "bg-amber-500" },
+                  { sku: "Brand B 330ml", retailer: "Esselunga", start: 0, end: 3, roi: 1.68, color: "bg-emerald-500" },
+                  { sku: "Brand A 500ml", retailer: "Conad", start: 2, end: 5, roi: 1.45, color: "bg-emerald-500" },
+                  { sku: "Brand D 330ml", retailer: "Carrefour IT", start: 0, end: 2, roi: 1.82, color: "bg-emerald-500" },
+                  { sku: "Brand A 1.5L", retailer: "Coop Italia", start: 4, end: 7, roi: 1.22, color: "bg-amber-500" },
                   { sku: "Brand B 500ml", retailer: "PAM", start: 1, end: 4, roi: 1.08, color: "bg-amber-500" },
                 ]
 
@@ -617,7 +617,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                       <SelectTrigger className="h-8 w-[220px] bg-zinc-900 border-zinc-800 text-zinc-200 text-[11px]"><SelectValue /></SelectTrigger>
                       <SelectContent className="bg-zinc-900 border-zinc-800">
                         <SelectItem value="init-1" className="text-zinc-200 text-xs">Summer Promo Activation 2026</SelectItem>
-                        <SelectItem value="init-2" className="text-zinc-200 text-xs">Brand A Zero Growth Plan Q3</SelectItem>
+                        <SelectItem value="init-2" className="text-zinc-200 text-xs">Brand B Growth Plan Q3</SelectItem>
                         <SelectItem value="init-3" className="text-zinc-200 text-xs">Brand D Relaunch Modern Trade</SelectItem>
                       </SelectContent>
                     </Select>

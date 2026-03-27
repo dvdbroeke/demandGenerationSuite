@@ -55,7 +55,7 @@ interface BrandYearlyData {
 
 // Brand Owner data with more realistic promo/non-promo spreads
 const tcccBrandData: Record<string, BrandYearlyData> = {
-  "Brand A Classic": {
+  "Brand A": {
     category: "cola-regular",
     yearly: {
       "2023": { overall: 100, promo: 82, noPromo: 122, volume: 118.2 },
@@ -63,7 +63,7 @@ const tcccBrandData: Record<string, BrandYearlyData> = {
       "2025": { overall: 104, promo: 86, noPromo: 128, volume: 124.4 },
     }
   },
-  "Brand A Zero": {
+  "Brand B": {
     category: "cola-zero",
     yearly: {
       "2023": { overall: 98, promo: 80, noPromo: 120, volume: 82.1 },
@@ -71,7 +71,7 @@ const tcccBrandData: Record<string, BrandYearlyData> = {
       "2025": { overall: 100, promo: 82, noPromo: 124, volume: 90.4 },
     }
   },
-  "Brand B": {
+  "Brand C": {
     category: "cola-diet",
     yearly: {
       "2023": { overall: 102, promo: 85, noPromo: 125, volume: 52.8 },
@@ -79,7 +79,7 @@ const tcccBrandData: Record<string, BrandYearlyData> = {
       "2025": { overall: 104, promo: 87, noPromo: 130, volume: 56.4 },
     }
   },
-  "Brand C Orange": {
+  "Brand D": {
     category: "citrus-fruity",
     yearly: {
       "2023": { overall: 92, promo: 75, noPromo: 115, volume: 62.5 },
@@ -87,44 +87,12 @@ const tcccBrandData: Record<string, BrandYearlyData> = {
       "2025": { overall: 94, promo: 77, noPromo: 120, volume: 67.2 },
     }
   },
-  "Brand C Zero": {
-    category: "citrus-zero",
-    yearly: {
-      "2023": { overall: 96, promo: 78, noPromo: 118, volume: 18.5 },
-      "2024": { overall: 97, promo: 79, noPromo: 120, volume: 20.2 },
-      "2025": { overall: 98, promo: 80, noPromo: 122, volume: 22.2 },
-    }
-  },
-  "Brand D": {
+  "Brand E": {
     category: "citrus-fruity",
     yearly: {
       "2023": { overall: 94, promo: 76, noPromo: 116, volume: 48.5 },
       "2024": { overall: 95, promo: 77, noPromo: 118, volume: 50.4 },
       "2025": { overall: 96, promo: 78, noPromo: 120, volume: 52.3 },
-    }
-  },
-  "Brand D Zero": {
-    category: "citrus-zero",
-    yearly: {
-      "2023": { overall: 97, promo: 79, noPromo: 119, volume: 12.2 },
-      "2024": { overall: 98, promo: 80, noPromo: 121, volume: 13.4 },
-      "2025": { overall: 99, promo: 81, noPromo: 123, volume: 14.7 },
-    }
-  },
-  "Brand A Cherry": {
-    category: "bold",
-    yearly: {
-      "2023": { overall: 108, promo: 88, noPromo: 135, volume: 18.2 },
-      "2024": { overall: 110, promo: 90, noPromo: 138, volume: 19.4 },
-      "2025": { overall: 112, promo: 92, noPromo: 142, volume: 20.7 },
-    }
-  },
-  "Brand A Vanilla": {
-    category: "bold",
-    yearly: {
-      "2023": { overall: 112, promo: 92, noPromo: 140, volume: 9.8 },
-      "2024": { overall: 114, promo: 94, noPromo: 143, volume: 10.5 },
-      "2025": { overall: 116, promo: 96, noPromo: 146, volume: 11.3 },
     }
   },
 }

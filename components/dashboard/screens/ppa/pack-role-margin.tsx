@@ -32,12 +32,12 @@ interface CompetitorSku {
 }
 
 const competitorPricing: CompetitorSku[] = [
-  // vs Brand A Classic
+  // vs Brand A
   { sku: "Competitor X 330ml", brand: "Competitor X", competitor: "Competitor Corp", packMl: 330, rsp: 1.20, ppl: 3.64, marketShare: 18 },
   { sku: "Competitor X 500ml", brand: "Competitor X", competitor: "Competitor Corp", packMl: 500, rsp: 1.69, ppl: 3.38, marketShare: 14 },
   { sku: "Competitor X 1.5L", brand: "Competitor X", competitor: "Competitor Corp", packMl: 1500, rsp: 1.89, ppl: 1.26, marketShare: 12 },
   { sku: "Competitor X 2L", brand: "Competitor X", competitor: "Competitor Corp", packMl: 2000, rsp: 2.00, ppl: 1.00, marketShare: 10 },
-  // vs Brand A Zero / Brand B
+  // vs Brand B / Brand B
   { sku: "Competitor X Max 330ml", brand: "Competitor X Max", competitor: "Competitor Corp", packMl: 330, rsp: 1.25, ppl: 3.79, marketShare: 12 },
   { sku: "Competitor X Max 500ml", brand: "Competitor X Max", competitor: "Competitor Corp", packMl: 500, rsp: 1.79, ppl: 3.58, marketShare: 9 },
   { sku: "Competitor X Max 1.5L", brand: "Competitor X Max", competitor: "Competitor Corp", packMl: 1500, rsp: 1.99, ppl: 1.33, marketShare: 7 },
@@ -77,27 +77,27 @@ const geographies = ["Italy", "Spain", "Germany", "France", "UK"]
 // <1 = inelastic (low sensitivity, safe to raise prices)
 // >1 = elastic (high sensitivity, caution on price increases)
 const skuElasticity: Record<string, number> = {
-  "Brand A Classic 150ml": 0.4,
-  "Brand A Classic 330ml": 0.7,
-  "Brand A Classic 500ml": 1.2,
-  "Brand A Classic 1.5L": 1.5,
-  "Brand A Classic 2L": 1.8,
-  "Brand A Zero 330ml": 0.5,
-  "Brand A Zero 500ml": 0.8,
-  "Brand A Zero 1.5L": 1.1,
-  "Brand A Zero 2L": 1.4,
-  "Brand B 330ml": 0.6,
-  "Brand B 500ml": 0.9,
-  "Brand B 1.5L": 1.3,
-  "Brand C Orange 330ml": 0.8,
-  "Brand C Orange 500ml": 1.1,
-  "Brand C Orange 2L": 0.9,
-  "Brand D 330ml": 0.9,
-  "Brand D 500ml": 1.3,
-  "Brand D 1.5L": 1.6,
-  "Brand A Classic 8x330ml": 0.3,
-  "Brand A Zero 8x330ml": 0.3,
-  "Brand C Orange 8x330ml": 0.5,
+  "Brand A 150ml": 0.4,
+  "Brand A 330ml": 0.7,
+  "Brand A 500ml": 1.2,
+  "Brand A 1.5L": 1.5,
+  "Brand A 2L": 1.8,
+  "Brand B 330ml": 0.5,
+  "Brand B 500ml": 0.8,
+  "Brand B 1.5L": 1.1,
+  "Brand B 2L": 1.4,
+  "Brand C 330ml": 0.6,
+  "Brand C 500ml": 0.9,
+  "Brand C 1.5L": 1.3,
+  "Brand D 330ml": 0.8,
+  "Brand D 500ml": 1.1,
+  "Brand D 2L": 0.9,
+  "Brand E 330ml": 0.9,
+  "Brand E 500ml": 1.3,
+  "Brand E 1.5L": 1.6,
+  "Brand A 8x330ml": 0.3,
+  "Brand B 8x330ml": 0.3,
+  "Brand D 8x330ml": 0.5,
 }
 
 // Elasticity interpretation helper
@@ -111,10 +111,10 @@ const getElasticityLabel = (e: number) => {
 }
 
 const aiInsights = [
-  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Brand A Zero 8x330ml and Brand A Classic 8x330ml show very low elasticity (0.3). A +3% price increase would yield ~\u20ac0.4M incremental GP with less than 1% volume loss. Multipacks are the safest pricing lever." },
-  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Brand A Classic 150ml has elasticity of 0.4 (very inelastic). Impulse singles are price-protected by occasion urgency -- recommend +5% increase in convenience and petrol channels." },
-  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Brand A Classic 500ml shows elasticity of 1.2 and is priced +11.8% vs Competitor X 500ml. Price increases here risk volume loss -- hold current price and focus margin growth on less elastic SKUs." },
-  { icon: TrendingDown, color: "text-red-400", bg: "bg-red-500/10", text: "Brand A Classic 2L (1.8) and Brand D 1.5L (1.6) are highly elastic take-home packs. Price increases will trigger significant switching to Private Label. Recommend holding or tactical promo support." },
+  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Brand B 8x330ml and Brand A 8x330ml show very low elasticity (0.3). A +3% price increase would yield ~\u20ac0.4M incremental GP with less than 1% volume loss. Multipacks are the safest pricing lever." },
+  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Brand A 150ml has elasticity of 0.4 (very inelastic). Impulse singles are price-protected by occasion urgency -- recommend +5% increase in convenience and petrol channels." },
+  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Brand A 500ml shows elasticity of 1.2 and is priced +11.8% vs Competitor X 500ml. Price increases here risk volume loss -- hold current price and focus margin growth on less elastic SKUs." },
+  { icon: TrendingDown, color: "text-red-400", bg: "bg-red-500/10", text: "Brand A 2L (1.8) and Brand D 1.5L (1.6) are highly elastic take-home packs. Price increases will trigger significant switching to Private Label. Recommend holding or tactical promo support." },
   { icon: Sparkles, color: "text-blue-400", bg: "bg-blue-500/10", text: "Brand C 2L shows unusually low elasticity (0.9) for its tier due to no direct competitor. A +5% increase could yield \u20ac0.3M GP with minimal volume risk -- favourable trade-off." },
 ]
 

@@ -44,16 +44,11 @@ const categories = [
 
 // Brand to category mapping
 const brandCategoryMap: Record<string, string> = {
-  "Brand A Classic": "cola-regular",
-  "Brand A Zero": "cola-zero",
-  "Brand B": "cola-diet",
-  "Brand C": "citrus-fruity",
-  "Brand C Zero": "citrus-zero",
+  "Brand A": "cola-regular",
+  "Brand B": "cola-zero",
+  "Brand C": "cola-diet",
   "Brand D": "citrus-fruity",
-  "Brand D Zero": "citrus-zero",
-  "Brand E Tonic": "citrus-fruity",
-  "Brand A Cherry": "bold",
-  "Brand A Vanilla": "bold",
+  "Brand E": "citrus-fruity",
 }
 
 // Seeded random
@@ -76,15 +71,11 @@ interface BrandPromoData {
 }
 
 const portfolioBrandData: Record<string, BrandPromoData> = {
-  "Brand A Classic": { category: "cola-regular", promoIntensity: [48, 55, 62], priceCut: [20, 28, 32], promoPressure: [10, 15, 18] },
-  "Brand A Zero": { category: "cola-zero", promoIntensity: [39, 51, 58], priceCut: [15, 26, 30], promoPressure: [6, 13, 16] },
-  "Brand B": { category: "cola-diet", promoIntensity: [68, 73, 78], priceCut: [30, 35, 38], promoPressure: [21, 25, 28] },
-  "Brand C": { category: "citrus-fruity", promoIntensity: [42, 48, 54], priceCut: [22, 26, 29], promoPressure: [13, 16, 19] },
-  "Brand C Zero": { category: "citrus-zero", promoIntensity: [35, 42, 48], priceCut: [18, 22, 26], promoPressure: [10, 14, 17] },
-  "Brand D": { category: "citrus-fruity", promoIntensity: [44, 50, 56], priceCut: [24, 28, 31], promoPressure: [15, 18, 21] },
-  "Brand D Zero": { category: "citrus-zero", promoIntensity: [32, 40, 46], priceCut: [16, 20, 24], promoPressure: [8, 12, 15] },
-  "Brand A Cherry": { category: "bold", promoIntensity: [52, 58, 64], priceCut: [26, 30, 34], promoPressure: [16, 20, 24] },
-  "Brand A Vanilla": { category: "bold", promoIntensity: [48, 54, 60], priceCut: [24, 28, 32], promoPressure: [14, 18, 22] },
+  "Brand A": { category: "cola-regular", promoIntensity: [48, 55, 62], priceCut: [20, 28, 32], promoPressure: [10, 15, 18] },
+  "Brand B": { category: "cola-zero", promoIntensity: [39, 51, 58], priceCut: [15, 26, 30], promoPressure: [6, 13, 16] },
+  "Brand C": { category: "cola-diet", promoIntensity: [68, 73, 78], priceCut: [30, 35, 38], promoPressure: [21, 25, 28] },
+  "Brand D": { category: "citrus-fruity", promoIntensity: [42, 48, 54], priceCut: [22, 26, 29], promoPressure: [13, 16, 19] },
+  "Brand E": { category: "citrus-fruity", promoIntensity: [44, 50, 56], priceCut: [24, 28, 31], promoPressure: [15, 18, 21] },
 }
 
 // Competitor promo data with portfolio grouping
