@@ -129,11 +129,10 @@ export function CompanyLogo({
   const resolvedSize = resolveSize(size)
   return (
     <div 
-      className={cn("flex items-center justify-center", className)}
-      style={{ width: resolvedSize, height: resolvedSize * 0.5 }}
+      className={cn("flex items-center justify-center flex-shrink-0", className)}
+      style={{ width: resolvedSize, height: resolvedSize }}
     >
-      <Hexagon className="h-8 w-8 text-emerald-500" strokeWidth={1.5} />
-      <span className="ml-2 text-xl font-bold text-zinc-100">Enterprise</span>
+      <Hexagon className="h-full w-full text-emerald-500" strokeWidth={1.5} />
     </div>
   )
 }

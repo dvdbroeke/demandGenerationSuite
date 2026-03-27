@@ -37,21 +37,21 @@ const scenarioTypes = [
 const skuOptions = allSkuNames
 
 // Pre-selected SKUs based on storyline findings:
-// - 8 underperformers from PQA (CC Zero 1.5L, Diet Coke 500ml, etc.)
-// - CC Classic 500ml to 330ml shift opportunity
+// - 8 underperformers from PQA (Brand A Zero 1.5L, Brand B 500ml, etc.)
+// - Brand A Classic 500ml to 330ml shift opportunity
 const storylinePreselectedSkus = [
   // Underperformers flagged for delist
-  "CC Zero 1.5L",
-  "Diet Coke 500ml", 
-  "Diet Coke 1.25L",
-  "Diet Coke 1.75L",
-  "Fanta Orange 1.25L",
-  "Fanta Orange 1.75L",
-  "Sprite 1.75L",
-  "Sprite 2L",
-  // CC Classic pack size shift opportunity
-  "CC Classic 500ml",
-  "CC Classic 330ml",
+  "Brand A Zero 1.5L",
+  "Brand B 500ml", 
+  "Brand B 1.25L",
+  "Brand B 1.75L",
+  "Brand D Orange 1.25L",
+  "Brand D Orange 1.75L",
+  "Brand C 1.75L",
+  "Brand C 2L",
+  // Brand A Classic pack size shift opportunity
+  "Brand A Classic 500ml",
+  "Brand A Classic 330ml",
 ]
 
 const channelOptions = ["All Channels", "Convenience", "Modern Trade", "Ecommerce", "On-Premise"]
@@ -74,13 +74,13 @@ interface ActionItem {
 // Storyline-aligned actions based on PQA findings
 const baseActions: ActionItem[] = [
   // Pack size shift: reduce 500ml, expand 330ml in Convenience
-  { id: "1", sku: "CC Classic 330ml", actionType: "expand", metric: "WD in Convenience", baseValue: 15, minValue: 0, maxValue: 25, unit: "%", confidence: "High" },
-  { id: "2", sku: "CC Classic 500ml", actionType: "reduce", metric: "Facing reduction", baseValue: 2, minValue: 0, maxValue: 4, unit: " facings", confidence: "High" },
+  { id: "1", sku: "Brand A Classic 330ml", actionType: "expand", metric: "WD in Convenience", baseValue: 15, minValue: 0, maxValue: 25, unit: "%", confidence: "High" },
+  { id: "2", sku: "Brand A Classic 500ml", actionType: "reduce", metric: "Facing reduction", baseValue: 2, minValue: 0, maxValue: 4, unit: " facings", confidence: "High" },
   // Delist underperformers
-  { id: "3", sku: "CC Zero 1.5L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 30, minValue: 0, maxValue: 50, unit: "%", confidence: "High" },
-  { id: "4", sku: "Diet Coke 500ml", actionType: "delist", metric: "Delist from bottom stores", baseValue: 25, minValue: 0, maxValue: 40, unit: "%", confidence: "Medium" },
-  { id: "5", sku: "Fanta Orange 1.75L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 40, minValue: 0, maxValue: 60, unit: "%", confidence: "High" },
-  { id: "6", sku: "Diet Coke 330ml", actionType: "add-facing", metric: "Add facings (Sleeper activation)", baseValue: 1, minValue: 0, maxValue: 3, unit: "", confidence: "Medium" },
+  { id: "3", sku: "Brand A Zero 1.5L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 30, minValue: 0, maxValue: 50, unit: "%", confidence: "High" },
+  { id: "4", sku: "Brand B 500ml", actionType: "delist", metric: "Delist from bottom stores", baseValue: 25, minValue: 0, maxValue: 40, unit: "%", confidence: "Medium" },
+  { id: "5", sku: "Brand D Orange 1.75L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 40, minValue: 0, maxValue: 60, unit: "%", confidence: "High" },
+  { id: "6", sku: "Brand B 330ml", actionType: "add-facing", metric: "Add facings (Sleeper activation)", baseValue: 1, minValue: 0, maxValue: 3, unit: "", confidence: "Medium" },
 ]
 
 // Calculate impact based on action values - aligned to storyline
@@ -132,12 +132,12 @@ interface ImpactItem {
 
 // Storyline-aligned impacts on other SKUs
 const otherImpacts: ImpactItem[] = [
-  { sku: "CC Classic 500ml", impact: "-4.2% volume", direction: "negative", detail: "Facing reduction & cannibalization from 330ml expansion" },
-  { sku: "CC Classic 330ml", impact: "+8.5% volume", direction: "positive", detail: "Distribution expansion in Convenience captures 500ml demand" },
-  { sku: "CC Zero 330ml", impact: "+2.1% volume", direction: "positive", detail: "Halo effect from improved shelf presence" },
-  { sku: "CC Classic 1.5L", impact: "+1.2% volume", direction: "positive", detail: "Multi-serve benefits from cleaner assortment" },
-  { sku: "Diet Coke 330ml", impact: "+3.8% volume", direction: "positive", detail: "Sleeper activation from added facings" },
-  { sku: "Sprite 330ml", impact: "No change", direction: "neutral", detail: "Different brand, separate consumption occasion" },
+  { sku: "Brand A Classic 500ml", impact: "-4.2% volume", direction: "negative", detail: "Facing reduction & cannibalization from 330ml expansion" },
+  { sku: "Brand A Classic 330ml", impact: "+8.5% volume", direction: "positive", detail: "Distribution expansion in Convenience captures 500ml demand" },
+  { sku: "Brand A Zero 330ml", impact: "+2.1% volume", direction: "positive", detail: "Halo effect from improved shelf presence" },
+  { sku: "Brand A Classic 1.5L", impact: "+1.2% volume", direction: "positive", detail: "Multi-serve benefits from cleaner assortment" },
+  { sku: "Brand B 330ml", impact: "+3.8% volume", direction: "positive", detail: "Sleeper activation from added facings" },
+  { sku: "Brand C 330ml", impact: "No change", direction: "neutral", detail: "Different brand, separate consumption occasion" },
 ]
 
 const existingInitiatives = ["Mix Upgrade Programme Q3 2026", "Promo Discipline Wave 2"]
@@ -419,7 +419,7 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                         </div>
                         <span className="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full px-2 py-0.5">Imported</span>
                       </div>
-                      <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Sprite & Fanta SKUs (+4% revenue impact)</p>
+                      <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Brand C & Brand D SKUs (+4% revenue impact)</p>
                     </div>
                     
                     {/* Assortment & Mix Simulation - current */}

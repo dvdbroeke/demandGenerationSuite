@@ -415,7 +415,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
                   <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30 text-[9px]">High Confidence</Badge>
                 </div>
                 <p className="text-xs text-amber-400/90 mb-2">
-                  Citrus/Fruity category (Fanta, Sprite) is underpriced vs. competitors by 8-12%. 
+                  Citrus/Fruity category (Brand D, Brand C) is underpriced vs. competitors by 8-12%. 
                   Price index at 94-96 vs. competitor average of 105-110. Opportunity to increase margin without volume loss.
                 </p>
                 <button 

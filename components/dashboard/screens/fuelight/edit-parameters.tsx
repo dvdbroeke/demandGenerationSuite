@@ -133,7 +133,7 @@ export function FuelightEditParameters({ onNavigateToView, onNavigateToOptimize 
         
         {/* Filters Row */}
         <div className="flex items-center gap-3 mt-4">
-          {["TR", "₺ - TRY", "360", "Jun 30, 2024 - Oct 5, 2024", "System Funding", "Brand A"].map((filter, i) => (
+          {["TR", "₺ - TRY", "360", "Jun 30, 2024 - Oct 5, 2024", "Total Investment", "Brand A"].map((filter, i) => (
             <button 
               key={i}
               className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 rounded-lg text-sm text-zinc-300 hover:bg-zinc-700"

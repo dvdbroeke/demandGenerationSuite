@@ -20,8 +20,8 @@ interface CommunicationPlanProps {
 const campaigns = [
   {
     id: 1,
-    name: "Coke Zero TikTok Challenge",
-    brand: "Coca-Cola Zero Sugar",
+    name: "Brand A Zero TikTok Challenge",
+    brand: "Brand A Zero",
     status: "active",
     startDate: "Jan 2026",
     endDate: "Mar 2026",
@@ -34,7 +34,7 @@ const campaigns = [
   {
     id: 2,
     name: "Value for Money Multi-Pack",
-    brand: "Coca-Cola Portfolio",
+    brand: "Brand Portfolio",
     status: "planned",
     startDate: "Apr 2026",
     endDate: "Jun 2026",
@@ -47,7 +47,7 @@ const campaigns = [
   {
     id: 3,
     name: "Summer Real Magic",
-    brand: "Coca-Cola Classic",
+    brand: "Brand A Classic",
     status: "planned",
     startDate: "May 2026",
     endDate: "Aug 2026",
@@ -59,8 +59,8 @@ const campaigns = [
   },
   {
     id: 4,
-    name: "Fanta Halloween",
-    brand: "Fanta",
+    name: "Brand D Halloween",
+    brand: "Brand D",
     status: "planned",
     startDate: "Sep 2026",
     endDate: "Oct 2026",
@@ -73,10 +73,10 @@ const campaigns = [
 ]
 
 const budgetAllocation = [
-  { brand: "Coca-Cola Classic", budget: 12.5, percentage: 45 },
-  { brand: "Coca-Cola Zero Sugar", budget: 8.2, percentage: 30 },
-  { brand: "Fanta", budget: 4.1, percentage: 15 },
-  { brand: "Sprite", budget: 2.8, percentage: 10 },
+  { brand: "Brand A Classic", budget: 12.5, percentage: 45 },
+  { brand: "Brand A Zero", budget: 8.2, percentage: 30 },
+  { brand: "Brand D", budget: 4.1, percentage: 15 },
+  { brand: "Brand C", budget: 2.8, percentage: 10 },
 ]
 
 const calendarMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
