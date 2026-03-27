@@ -37,15 +37,15 @@ const packSizes = [
 
 // Brand to category mapping
 const brandCategoryMap: Record<string, string> = {
-  "CC Classic": "cola-regular",
-  "CC Zero": "cola-zero",
-  "Diet Coke": "cola-diet",
-  "Fanta": "citrus-fruity",
-  "Fanta Zero": "citrus-zero",
-  "Sprite": "citrus-fruity",
-  "Sprite Zero": "citrus-zero",
-  "Cherry Coke": "bold",
-  "Vanilla Coke": "bold",
+  "Brand A Classic": "cola-regular",
+  "Brand A Zero": "cola-zero",
+  "Brand B": "cola-diet",
+  "Brand C": "citrus-fruity",
+  "Brand C Zero": "citrus-zero",
+  "Brand D": "citrus-fruity",
+  "Brand D Zero": "citrus-zero",
+  "Brand A Cherry": "bold",
+  "Brand A Vanilla": "bold",
 }
 
 // Seeded random
@@ -59,7 +59,7 @@ function hashStr(str: string): number {
   return Math.abs(h)
 }
 
-// Coca-Cola Brand promo performance data
+// Brand Owner promo performance data
 interface BrandPerformanceData {
   category: string
   roi: number
@@ -72,18 +72,18 @@ interface BrandPerformanceData {
   incrementalRevenue: number
 }
 
-// STORYLINE: Diet Coke category showing declining ROI over last 3 months
+// STORYLINE: Brand B category showing declining ROI over last 3 months
 const tcccBrandData: Record<string, BrandPerformanceData> = {
-  "CC Classic": { category: "cola-regular", roi: 1.42, roiChange: 0.08, totalPromos: 156, goodPromos: 98, badPromos: 32, avgLift: 38, avgDiscount: 22, incrementalRevenue: 4.2 },
-  "CC Zero": { category: "cola-zero", roi: 1.68, roiChange: 0.12, totalPromos: 124, goodPromos: 86, badPromos: 18, avgLift: 45, avgDiscount: 18, incrementalRevenue: 3.8 },
-  // STORYLINE: Diet Coke has significantly declining ROI - key problem area
-  "Diet Coke": { category: "cola-diet", roi: 0.92, roiChange: -0.28, totalPromos: 142, goodPromos: 48, badPromos: 72, avgLift: 18, avgDiscount: 15, incrementalRevenue: 1.4 },
-  "Fanta": { category: "citrus-fruity", roi: 1.35, roiChange: 0.04, totalPromos: 98, goodPromos: 62, badPromos: 22, avgLift: 34, avgDiscount: 20, incrementalRevenue: 2.1 },
-  "Fanta Zero": { category: "citrus-zero", roi: 1.48, roiChange: 0.10, totalPromos: 72, goodPromos: 52, badPromos: 12, avgLift: 42, avgDiscount: 16, incrementalRevenue: 1.6 },
-  "Sprite": { category: "citrus-fruity", roi: 1.28, roiChange: 0.02, totalPromos: 88, goodPromos: 54, badPromos: 24, avgLift: 32, avgDiscount: 21, incrementalRevenue: 1.9 },
-  "Sprite Zero": { category: "citrus-zero", roi: 1.52, roiChange: 0.08, totalPromos: 64, goodPromos: 46, badPromos: 10, avgLift: 40, avgDiscount: 15, incrementalRevenue: 1.4 },
-  "Cherry Coke": { category: "bold", roi: 1.22, roiChange: -0.02, totalPromos: 56, goodPromos: 32, badPromos: 16, avgLift: 30, avgDiscount: 24, incrementalRevenue: 0.9 },
-  "Vanilla Coke": { category: "bold", roi: 1.18, roiChange: 0.01, totalPromos: 48, goodPromos: 28, badPromos: 14, avgLift: 28, avgDiscount: 22, incrementalRevenue: 0.8 },
+  "Brand A Classic": { category: "cola-regular", roi: 1.42, roiChange: 0.08, totalPromos: 156, goodPromos: 98, badPromos: 32, avgLift: 38, avgDiscount: 22, incrementalRevenue: 4.2 },
+  "Brand A Zero": { category: "cola-zero", roi: 1.68, roiChange: 0.12, totalPromos: 124, goodPromos: 86, badPromos: 18, avgLift: 45, avgDiscount: 18, incrementalRevenue: 3.8 },
+  // STORYLINE: Brand B has significantly declining ROI - key problem area
+  "Brand B": { category: "cola-diet", roi: 0.92, roiChange: -0.28, totalPromos: 142, goodPromos: 48, badPromos: 72, avgLift: 18, avgDiscount: 15, incrementalRevenue: 1.4 },
+  "Brand C": { category: "citrus-fruity", roi: 1.35, roiChange: 0.04, totalPromos: 98, goodPromos: 62, badPromos: 22, avgLift: 34, avgDiscount: 20, incrementalRevenue: 2.1 },
+  "Brand C Zero": { category: "citrus-zero", roi: 1.48, roiChange: 0.10, totalPromos: 72, goodPromos: 52, badPromos: 12, avgLift: 42, avgDiscount: 16, incrementalRevenue: 1.6 },
+  "Brand D": { category: "citrus-fruity", roi: 1.28, roiChange: 0.02, totalPromos: 88, goodPromos: 54, badPromos: 24, avgLift: 32, avgDiscount: 21, incrementalRevenue: 1.9 },
+  "Brand D Zero": { category: "citrus-zero", roi: 1.52, roiChange: 0.08, totalPromos: 64, goodPromos: 46, badPromos: 10, avgLift: 40, avgDiscount: 15, incrementalRevenue: 1.4 },
+  "Brand A Cherry": { category: "bold", roi: 1.22, roiChange: -0.02, totalPromos: 56, goodPromos: 32, badPromos: 16, avgLift: 30, avgDiscount: 24, incrementalRevenue: 0.9 },
+  "Brand A Vanilla": { category: "bold", roi: 1.18, roiChange: 0.01, totalPromos: 48, goodPromos: 28, badPromos: 14, avgLift: 28, avgDiscount: 22, incrementalRevenue: 0.8 },
 }
 
 // Generate time series data for promo performance
@@ -212,31 +212,31 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
     }))
   }, [selectedBrand, selectedCategory, selectedPackSize, timeGranularity, dateRange, filteredTCCCBrands])
 
-  // AI Insights - STORYLINE: Highlight Diet Coke declining ROI
+  // AI Insights - STORYLINE: Highlight Brand B declining ROI
   const aiInsights = useMemo(() => {
     const insights: { type: "positive" | "warning" | "negative"; text: string; highlight?: boolean }[] = []
     
-    // STORYLINE KEY INSIGHT: Diet Coke ROI declining
+    // STORYLINE KEY INSIGHT: Brand B ROI declining
     insights.push({ 
       type: "negative", 
-      text: "Cola - Diet category showing severe ROI decline: Diet Coke ROI dropped from 1.20x to 0.92x (-0.28x) over the last 3 months. 72 of 142 promos underperforming.",
+      text: "Cola - Diet category showing severe ROI decline: Brand B ROI dropped from 1.20x to 0.92x (-0.28x) over the last 3 months. 72 of 142 promos underperforming.",
       highlight: true
     })
     
     insights.push({
       type: "warning",
-      text: "Diet Coke promos have low discount depth (avg 15%) and long durations. Pepsi's 'fewer, deeper' approach suggests increasing price cut to 30%+ may improve performance.",
+      text: "Brand B promos have low discount depth (avg 15%) and long durations. Competitor's 'fewer, deeper' approach suggests increasing price cut to 30%+ may improve performance.",
       highlight: true
     })
 
     const badRate = totalBad / totalPromos * 100
     if (badRate > 25) {
-      insights.push({ type: "negative", text: `${badRate.toFixed(0)}% of promotions underperforming (${totalBad} of ${totalPromos}) -- Diet Coke driving majority of underperformers.` })
+      insights.push({ type: "negative", text: `${badRate.toFixed(0)}% of promotions underperforming (${totalBad} of ${totalPromos}) -- Brand B driving majority of underperformers.` })
     } else if (badRate > 15) {
       insights.push({ type: "warning", text: `${badRate.toFixed(0)}% of promotions underperforming -- review mechanics of ${totalBad} low-ROI promos.` })
     }
 
-    insights.push({ type: "warning", text: "Recommendation: Navigate to Trade vs Client Matrix to identify which specific Diet Coke promo events are dragging performance." })
+    insights.push({ type: "warning", text: "Recommendation: Navigate to Trade vs Client Matrix to identify which specific Brand B promo events are dragging performance." })
 
     return insights.slice(0, 4)
   }, [totalBad, totalPromos])
@@ -403,7 +403,7 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
         <div className="ml-auto flex items-center gap-3 text-[10px] text-zinc-400">
           <span className="flex items-center gap-1.5">
             <span className="w-3 h-3 rounded-full bg-red-500" />
-            Coca-Cola
+Portfolio Brands
           </span>
         </div>
       </div>

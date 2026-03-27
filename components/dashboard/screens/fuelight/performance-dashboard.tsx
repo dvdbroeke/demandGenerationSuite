@@ -197,7 +197,7 @@ export function FuelightPerformanceDashboard({ onNavigateToWaterfall, onNavigate
             </SelectTrigger>
             <SelectContent className="bg-zinc-900 border-zinc-800">
               <SelectItem value="system" className="text-zinc-100 text-xs">System Funding</SelectItem>
-              <SelectItem value="tccc" className="text-zinc-100 text-xs">TCCC Funding</SelectItem>
+              <SelectItem value="brand-owner" className="text-zinc-100 text-xs">Brand Owner Funding</SelectItem>
             </SelectContent>
           </Select>
           <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/30 text-emerald-400 px-3 py-1">

@@ -22,11 +22,11 @@ interface SimulateForecastProps {
 // ---------- Config options ----------
 const brands = [
   { value: "all", label: "All Brands" },
-  { value: "cc-classic", label: "Coca-Cola Classic" },
-  { value: "cc-zero", label: "Coca-Cola Zero" },
-  { value: "diet-coke", label: "Diet Coke" },
-  { value: "fanta", label: "Fanta" },
-  { value: "sprite", label: "Sprite" },
+  { value: "brand-a-classic", label: "Brand A Classic" },
+  { value: "brand-a-zero", label: "Brand A Zero" },
+  { value: "brand-b", label: "Brand B" },
+  { value: "brand-c", label: "Brand C" },
+  { value: "brand-d", label: "Brand D" },
 ]
 const skuOptions = allSkuNames
 const retailerOptions = [...sharedRetailers] as string[]
@@ -66,19 +66,19 @@ interface PromoRecommendation {
 }
 
 const recommendations: PromoRecommendation[] = [
-  { sku: "CC Zero 330ml", retailer: "Esselunga", mechanic: "TPR -15%", depth: "15%", weeks: "W22-W25", currentROI: 1.12, forecastROI: 1.68, incrVolume: "+42K L", cannibPct: 8.2, confidence: "High" },
-  { sku: "CC Classic 500ml", retailer: "Conad", mechanic: "Multibuy 2 for \u20ac2", depth: "22%", weeks: "W24-W27", currentROI: 0.98, forecastROI: 1.45, incrVolume: "+38K L", cannibPct: 12.1, confidence: "High" },
-  { sku: "Fanta Orange 330ml", retailer: "Carrefour IT", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W24", currentROI: 1.24, forecastROI: 1.82, incrVolume: "+31K L", cannibPct: 5.4, confidence: "High" },
-  { sku: "CC Classic 1.5L", retailer: "Coop Italia", mechanic: "\u20ac1 PMP", depth: "18%", weeks: "W26-W29", currentROI: 0.88, forecastROI: 1.22, incrVolume: "+22K L", cannibPct: 18.7, confidence: "Medium" },
-  { sku: "Diet Coke 500ml", retailer: "PAM", mechanic: "Meal Deal", depth: "12%", weeks: "W23-W26", currentROI: 0.72, forecastROI: 1.08, incrVolume: "+15K L", cannibPct: 22.3, confidence: "Medium" },
-  { sku: "Sprite 330ml", retailer: "Despar", mechanic: "TPR -12%", depth: "12%", weeks: "W28-W30", currentROI: 0.91, forecastROI: 1.15, incrVolume: "+12K L", cannibPct: 14.5, confidence: "Medium" },
-  { sku: "CC Zero 1.5L", retailer: "Eurospin", mechanic: "BOGOF", depth: "50%", weeks: "W25-W26", currentROI: 0.65, forecastROI: 0.92, incrVolume: "+8K L", cannibPct: 28.1, confidence: "Low" },
-  { sku: "CC Classic 2L", retailer: "Carrefour IT", mechanic: "TPR -12%", depth: "12%", weeks: "W23-W26", currentROI: 0.82, forecastROI: 1.18, incrVolume: "+18K L", cannibPct: 14.2, confidence: "Medium" },
-  { sku: "CC Classic 6x330ml", retailer: "Esselunga", mechanic: "Multibuy 2 for \u20ac7", depth: "12.5%", weeks: "W24-W28", currentROI: 1.08, forecastROI: 1.52, incrVolume: "+28K L", cannibPct: 10.0, confidence: "High" },
-  { sku: "CC Zero 6x330ml", retailer: "Conad", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W25", currentROI: 0.95, forecastROI: 1.38, incrVolume: "+22K L", cannibPct: 15.2, confidence: "Medium" },
-  { sku: "Fanta Orange 2L", retailer: "Coop Italia", mechanic: "\u20ac1 PMP", depth: "20%", weeks: "W26-W29", currentROI: 0.78, forecastROI: 1.12, incrVolume: "+14K L", cannibPct: 12.0, confidence: "Medium" },
-  { sku: "Diet Coke 1.5L", retailer: "Lidl IT", mechanic: "TPR -10%", depth: "10%", weeks: "W24-W27", currentROI: 0.68, forecastROI: 0.98, incrVolume: "+10K L", cannibPct: 16.0, confidence: "Low" },
-  { sku: "Sprite 1.5L", retailer: "Carrefour IT", mechanic: "Multibuy 2 for \u20ac3", depth: "16%", weeks: "W25-W28", currentROI: 0.72, forecastROI: 1.05, incrVolume: "+8K L", cannibPct: 14.0, confidence: "Low" },
+  { sku: "Brand A Zero 330ml", retailer: "Retailer A", mechanic: "TPR -15%", depth: "15%", weeks: "W22-W25", currentROI: 1.12, forecastROI: 1.68, incrVolume: "+42K L", cannibPct: 8.2, confidence: "High" },
+  { sku: "Brand A Classic 500ml", retailer: "Retailer B", mechanic: "Multibuy 2 for \u20ac2", depth: "22%", weeks: "W24-W27", currentROI: 0.98, forecastROI: 1.45, incrVolume: "+38K L", cannibPct: 12.1, confidence: "High" },
+  { sku: "Brand C Orange 330ml", retailer: "Retailer D", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W24", currentROI: 1.24, forecastROI: 1.82, incrVolume: "+31K L", cannibPct: 5.4, confidence: "High" },
+  { sku: "Brand A Classic 1.5L", retailer: "Retailer C", mechanic: "\u20ac1 PMP", depth: "18%", weeks: "W26-W29", currentROI: 0.88, forecastROI: 1.22, incrVolume: "+22K L", cannibPct: 18.7, confidence: "Medium" },
+  { sku: "Brand B 500ml", retailer: "Retailer E", mechanic: "Meal Deal", depth: "12%", weeks: "W23-W26", currentROI: 0.72, forecastROI: 1.08, incrVolume: "+15K L", cannibPct: 22.3, confidence: "Medium" },
+  { sku: "Brand D 330ml", retailer: "Retailer F", mechanic: "TPR -12%", depth: "12%", weeks: "W28-W30", currentROI: 0.91, forecastROI: 1.15, incrVolume: "+12K L", cannibPct: 14.5, confidence: "Medium" },
+  { sku: "Brand A Zero 1.5L", retailer: "Retailer H", mechanic: "BOGOF", depth: "50%", weeks: "W25-W26", currentROI: 0.65, forecastROI: 0.92, incrVolume: "+8K L", cannibPct: 28.1, confidence: "Low" },
+  { sku: "Brand A Classic 2L", retailer: "Retailer D", mechanic: "TPR -12%", depth: "12%", weeks: "W23-W26", currentROI: 0.82, forecastROI: 1.18, incrVolume: "+18K L", cannibPct: 14.2, confidence: "Medium" },
+  { sku: "Brand A Classic 8x330ml", retailer: "Retailer A", mechanic: "Multibuy 2 for \u20ac7", depth: "12.5%", weeks: "W24-W28", currentROI: 1.08, forecastROI: 1.52, incrVolume: "+28K L", cannibPct: 10.0, confidence: "High" },
+  { sku: "Brand A Zero 8x330ml", retailer: "Retailer B", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W25", currentROI: 0.95, forecastROI: 1.38, incrVolume: "+22K L", cannibPct: 15.2, confidence: "Medium" },
+  { sku: "Brand C Orange 2L", retailer: "Retailer C", mechanic: "\u20ac1 PMP", depth: "20%", weeks: "W26-W29", currentROI: 0.78, forecastROI: 1.12, incrVolume: "+14K L", cannibPct: 12.0, confidence: "Medium" },
+  { sku: "Brand B 1.5L", retailer: "Retailer G", mechanic: "TPR -10%", depth: "10%", weeks: "W24-W27", currentROI: 0.68, forecastROI: 0.98, incrVolume: "+10K L", cannibPct: 16.0, confidence: "Low" },
+  { sku: "Brand D 1.5L", retailer: "Retailer D", mechanic: "Multibuy 2 for \u20ac3", depth: "16%", weeks: "W25-W28", currentROI: 0.72, forecastROI: 1.05, incrVolume: "+8K L", cannibPct: 14.0, confidence: "Low" },
 ]
 
 // Forecast ROI over weeks
@@ -89,15 +89,15 @@ const forecastOptimized = [1.02, 1.28, 1.52, 1.61, 1.55, 1.48, 1.42, 1.38, 1.22,
 // ---------- Component ----------
 export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToFuelight }: SimulateForecastProps) {
   const [hasRun, setHasRun] = useState(false)
-  const [selectedBrand, setSelectedBrand] = useState("diet-coke") // STORYLINE: Pre-select Diet Coke
-  // STORYLINE: Pre-select the bad performing Diet Coke SKUs from Trade v Client Matrix
+  const [selectedBrand, setSelectedBrand] = useState("brand-b") // STORYLINE: Pre-select Brand B
+  // STORYLINE: Pre-select the bad performing Brand B SKUs from Trade v Client Matrix
   const [selectedSkus, setSelectedSkus] = useState<string[]>([
-    "Diet Coke 330ml",
-    "Diet Coke 500ml", 
-    "Diet Coke 1.25L",
-    "Diet Coke 1.5L",
-    "Diet Coke 1.75L",
-    "Diet Coke 2L"
+    "Brand B 330ml",
+    "Brand B 500ml", 
+    "Brand B 1.25L",
+    "Brand B 1.5L",
+    "Brand B 1.75L",
+    "Brand B 2L"
   ])
   const [selectedRetailers, setSelectedRetailers] = useState<string[]>(["All Retailers"])
   const [selectedMechanic, setSelectedMechanic] = useState("Price Cut") // STORYLINE: Price Cut mechanic

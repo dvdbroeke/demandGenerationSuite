@@ -186,7 +186,7 @@ export function FuelightOptimizationScenario({
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">360</Badge>
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Dec 28, 2025 - Jul 4, 2026</Badge>
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Brand A</Badge>
-        <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">TCCC Funding</Badge>
+        <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Brand Owner Funding</Badge>
         <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/30 text-emerald-400 px-3 py-1">Maximize Sell-out Volume</Badge>
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Total Funding: EUR780,000,000</Badge>
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Optimize total funding ≤ EUR780,000,000</Badge>

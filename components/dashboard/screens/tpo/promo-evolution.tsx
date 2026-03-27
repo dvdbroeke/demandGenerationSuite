@@ -44,16 +44,16 @@ const categories = [
 
 // Brand to category mapping
 const brandCategoryMap: Record<string, string> = {
-  "CC Classic": "cola-regular",
-  "CC Zero": "cola-zero",
-  "Diet Coke": "cola-diet",
-  "Fanta": "citrus-fruity",
-  "Fanta Zero": "citrus-zero",
-  "Sprite": "citrus-fruity",
-  "Sprite Zero": "citrus-zero",
-  "Schweppes Tonic": "citrus-fruity",
-  "Cherry Coke": "bold",
-  "Vanilla Coke": "bold",
+  "Brand A Classic": "cola-regular",
+  "Brand A Zero": "cola-zero",
+  "Brand B": "cola-diet",
+  "Brand C": "citrus-fruity",
+  "Brand C Zero": "citrus-zero",
+  "Brand D": "citrus-fruity",
+  "Brand D Zero": "citrus-zero",
+  "Brand E Tonic": "citrus-fruity",
+  "Brand A Cherry": "bold",
+  "Brand A Vanilla": "bold",
 }
 
 // Seeded random
@@ -67,7 +67,7 @@ function hashStr(str: string): number {
   return Math.abs(h)
 }
 
-// TCCC Brand promo data [2022, 2023, 2024]
+// Brand Owner promo data [2022, 2023, 2024]
 interface BrandPromoData {
   category: string
   promoIntensity: number[]
@@ -76,15 +76,15 @@ interface BrandPromoData {
 }
 
 const tcccBrandData: Record<string, BrandPromoData> = {
-  "CC Classic": { category: "cola-regular", promoIntensity: [48, 55, 62], priceCut: [20, 28, 32], promoPressure: [10, 15, 18] },
-  "CC Zero": { category: "cola-zero", promoIntensity: [39, 51, 58], priceCut: [15, 26, 30], promoPressure: [6, 13, 16] },
-  "Diet Coke": { category: "cola-diet", promoIntensity: [68, 73, 78], priceCut: [30, 35, 38], promoPressure: [21, 25, 28] },
-  "Fanta": { category: "citrus-fruity", promoIntensity: [42, 48, 54], priceCut: [22, 26, 29], promoPressure: [13, 16, 19] },
-  "Fanta Zero": { category: "citrus-zero", promoIntensity: [35, 42, 48], priceCut: [18, 22, 26], promoPressure: [10, 14, 17] },
-  "Sprite": { category: "citrus-fruity", promoIntensity: [44, 50, 56], priceCut: [24, 28, 31], promoPressure: [15, 18, 21] },
-  "Sprite Zero": { category: "citrus-zero", promoIntensity: [32, 40, 46], priceCut: [16, 20, 24], promoPressure: [8, 12, 15] },
-  "Cherry Coke": { category: "bold", promoIntensity: [52, 58, 64], priceCut: [26, 30, 34], promoPressure: [16, 20, 24] },
-  "Vanilla Coke": { category: "bold", promoIntensity: [48, 54, 60], priceCut: [24, 28, 32], promoPressure: [14, 18, 22] },
+  "Brand A Classic": { category: "cola-regular", promoIntensity: [48, 55, 62], priceCut: [20, 28, 32], promoPressure: [10, 15, 18] },
+  "Brand A Zero": { category: "cola-zero", promoIntensity: [39, 51, 58], priceCut: [15, 26, 30], promoPressure: [6, 13, 16] },
+  "Brand B": { category: "cola-diet", promoIntensity: [68, 73, 78], priceCut: [30, 35, 38], promoPressure: [21, 25, 28] },
+  "Brand C": { category: "citrus-fruity", promoIntensity: [42, 48, 54], priceCut: [22, 26, 29], promoPressure: [13, 16, 19] },
+  "Brand C Zero": { category: "citrus-zero", promoIntensity: [35, 42, 48], priceCut: [18, 22, 26], promoPressure: [10, 14, 17] },
+  "Brand D": { category: "citrus-fruity", promoIntensity: [44, 50, 56], priceCut: [24, 28, 31], promoPressure: [15, 18, 21] },
+  "Brand D Zero": { category: "citrus-zero", promoIntensity: [32, 40, 46], priceCut: [16, 20, 24], promoPressure: [8, 12, 15] },
+  "Brand A Cherry": { category: "bold", promoIntensity: [52, 58, 64], priceCut: [26, 30, 34], promoPressure: [16, 20, 24] },
+  "Brand A Vanilla": { category: "bold", promoIntensity: [48, 54, 60], priceCut: [24, 28, 32], promoPressure: [14, 18, 22] },
 }
 
 // Competitor promo data with portfolio grouping
@@ -98,37 +98,37 @@ interface CompetitorPromoData {
   promoPressure: number[]
 }
 
-// STORYLINE: Pepsi is doing LESS promos (lower intensity) but HIGHER price cuts (promo depth)
+// STORYLINE: Competitor X is doing LESS promos (lower intensity) but HIGHER price cuts (promo depth)
 const competitorData: CompetitorPromoData[] = [
-  // Pepsi Portfolio - Lower intensity, higher price cuts
-  { name: "Pepsi Regular", portfolio: "Pepsi", category: "cola-regular", color: "#2563eb", promoIntensity: [52, 48, 42], priceCut: [24, 32, 38], promoPressure: [14, 16, 18] },
-  { name: "Pepsi Max", portfolio: "Pepsi", category: "cola-zero", color: "#1d4ed8", promoIntensity: [42, 38, 32], priceCut: [18, 28, 35], promoPressure: [10, 12, 14] },
-  { name: "Diet Pepsi", portfolio: "Pepsi", category: "cola-diet", color: "#3b82f6", promoIntensity: [62, 55, 48], priceCut: [28, 36, 42], promoPressure: [18, 20, 22] },
-  { name: "7UP", portfolio: "Pepsi", category: "citrus-fruity", color: "#16a34a", promoIntensity: [48, 44, 38], priceCut: [26, 32, 38], promoPressure: [16, 18, 20] },
-  { name: "7UP Free", portfolio: "Pepsi", category: "citrus-zero", color: "#22c55e", promoIntensity: [36, 32, 28], priceCut: [18, 26, 32], promoPressure: [10, 12, 14] },
-  { name: "Mirinda Orange", portfolio: "Pepsi", category: "citrus-fruity", color: "#ea580c", promoIntensity: [50, 45, 40], priceCut: [28, 34, 40], promoPressure: [18, 20, 22] },
-  { name: "Wild Cherry Pepsi", portfolio: "Pepsi", category: "bold", color: "#dc2626", promoIntensity: [48, 42, 36], priceCut: [24, 30, 36], promoPressure: [14, 16, 18] },
-  // Dr Pepper Portfolio
-  { name: "Dr Pepper Regular", portfolio: "Dr Pepper", category: "cola-regular", color: "#7c3aed", promoIntensity: [45, 52, 58], priceCut: [22, 28, 32], promoPressure: [12, 16, 20] },
-  { name: "Dr Pepper Zero", portfolio: "Dr Pepper", category: "cola-zero", color: "#6d28d9", promoIntensity: [38, 46, 52], priceCut: [16, 22, 26], promoPressure: [8, 12, 16] },
-  { name: "Dr Pepper Cherry", portfolio: "Dr Pepper", category: "bold", color: "#be185d", promoIntensity: [50, 56, 62], priceCut: [26, 30, 34], promoPressure: [16, 20, 24] },
-  { name: "Sunkist Orange", portfolio: "Dr Pepper", category: "citrus-fruity", color: "#f97316", promoIntensity: [46, 52, 58], priceCut: [24, 28, 32], promoPressure: [14, 18, 22] },
+  // Competitor X Portfolio - Lower intensity, higher price cuts
+  { name: "Competitor X Regular", portfolio: "Competitor X", category: "cola-regular", color: "#2563eb", promoIntensity: [52, 48, 42], priceCut: [24, 32, 38], promoPressure: [14, 16, 18] },
+  { name: "Competitor X Max", portfolio: "Competitor X", category: "cola-zero", color: "#1d4ed8", promoIntensity: [42, 38, 32], priceCut: [18, 28, 35], promoPressure: [10, 12, 14] },
+  { name: "Competitor X Diet", portfolio: "Competitor X", category: "cola-diet", color: "#3b82f6", promoIntensity: [62, 55, 48], priceCut: [28, 36, 42], promoPressure: [18, 20, 22] },
+  { name: "Competitor Y", portfolio: "Competitor X", category: "citrus-fruity", color: "#16a34a", promoIntensity: [48, 44, 38], priceCut: [26, 32, 38], promoPressure: [16, 18, 20] },
+  { name: "Competitor Y Free", portfolio: "Competitor X", category: "citrus-zero", color: "#22c55e", promoIntensity: [36, 32, 28], priceCut: [18, 26, 32], promoPressure: [10, 12, 14] },
+  { name: "Competitor Z Orange", portfolio: "Competitor X", category: "citrus-fruity", color: "#ea580c", promoIntensity: [50, 45, 40], priceCut: [28, 34, 40], promoPressure: [18, 20, 22] },
+  { name: "Competitor X Cherry", portfolio: "Competitor X", category: "bold", color: "#dc2626", promoIntensity: [48, 42, 36], priceCut: [24, 30, 36], promoPressure: [14, 16, 18] },
+  // Alternative Portfolio
+  { name: "Alternative Regular", portfolio: "Alternative", category: "cola-regular", color: "#7c3aed", promoIntensity: [45, 52, 58], priceCut: [22, 28, 32], promoPressure: [12, 16, 20] },
+  { name: "Alternative Zero", portfolio: "Alternative", category: "cola-zero", color: "#6d28d9", promoIntensity: [38, 46, 52], priceCut: [16, 22, 26], promoPressure: [8, 12, 16] },
+  { name: "Alternative Cherry", portfolio: "Alternative", category: "bold", color: "#be185d", promoIntensity: [50, 56, 62], priceCut: [26, 30, 34], promoPressure: [16, 20, 24] },
+  { name: "Alternative Orange", portfolio: "Alternative", category: "citrus-fruity", color: "#f97316", promoIntensity: [46, 52, 58], priceCut: [24, 28, 32], promoPressure: [14, 18, 22] },
   // Other
-  { name: "RC Cola", portfolio: "RC Cola", category: "cola-regular", color: "#4338ca", promoIntensity: [58, 64, 72], priceCut: [28, 34, 40], promoPressure: [18, 24, 30] },
+  { name: "Budget Cola", portfolio: "Budget Cola", category: "cola-regular", color: "#4338ca", promoIntensity: [58, 64, 72], priceCut: [28, 34, 40], promoPressure: [18, 24, 30] },
   // Private Label
   { name: "Private Label", portfolio: "Private Label", category: "all", color: "#6b7280", promoIntensity: [9, 15, 22], priceCut: [-6, 5, 12], promoPressure: [-1, 1, 4] },
 ]
 
 // Portfolio colors for the portfolio view
 const portfolioColors: Record<string, string> = {
-  "Pepsi": "#2563eb",
-  "Dr Pepper": "#7c3aed",
-  "RC Cola": "#4338ca",
+  "Competitor X": "#2563eb",
+  "Alternative": "#7c3aed",
+  "Budget Cola": "#4338ca",
   "Private Label": "#6b7280",
 }
 
 // Get unique portfolios
-const competitorPortfolios = ["Pepsi", "Dr Pepper", "RC Cola", "Private Label"]
+const competitorPortfolios = ["Competitor X", "Alternative", "Budget Cola", "Private Label"]
 
 interface BrandMetricData {
   brand: string
@@ -137,34 +137,34 @@ interface BrandMetricData {
   color?: string
 }
 
-// AI Insights generator - STORYLINE: Highlight Pepsi's strategy shift
+// AI Insights generator - STORYLINE: Highlight Competitor X's strategy shift
 function generateInsights(tcccAvg: number[], competitorAvg: number[], selectedCategory: string) {
   const insights: { type: "positive" | "warning" | "negative"; text: string; highlight?: boolean }[] = []
   
-  // STORYLINE KEY INSIGHT: Pepsi doing less promos but higher price cuts
+  // STORYLINE KEY INSIGHT: Competitor X doing less promos but higher price cuts
   insights.push({ 
     type: "warning", 
-    text: "Pepsi has reduced promo intensity from 52% to 42% (-10pp since 2022) but increased price cut depth from 24% to 38% (+14pp). Their 'fewer, deeper' strategy is showing better ROI performance.",
+    text: "Competitor X has reduced promo intensity from 52% to 42% (-10pp since 2022) but increased price cut depth from 24% to 38% (+14pp). Their 'fewer, deeper' strategy is showing better ROI performance.",
     highlight: true
   })
   
-  // Compare TCCC vs competitors
+  // Compare Portfolio vs competitors
   const tccc2024 = tcccAvg[2]
   const comp2024 = competitorAvg[2]
   const diff = tccc2024 - comp2024
   
   if (diff > 5) {
-    insights.push({ type: "negative", text: `Coca-Cola promo intensity (${tccc2024}%) exceeds competitors (${comp2024}%) by ${diff.toFixed(0)}pp -- risk of promotion dependency while competitors optimize.` })
+    insights.push({ type: "negative", text: `Portfolio promo intensity (${tccc2024}%) exceeds competitors (${comp2024}%) by ${diff.toFixed(0)}pp -- risk of promotion dependency while competitors optimize.` })
   } else if (diff < -5) {
-    insights.push({ type: "positive", text: `Coca-Cola maintains lower promo intensity (${tccc2024}%) vs competitors (${comp2024}%) -- healthier promotional posture.` })
+    insights.push({ type: "positive", text: `Portfolio maintains lower promo intensity (${tccc2024}%) vs competitors (${comp2024}%) -- healthier promotional posture.` })
   } else {
-    insights.push({ type: "warning", text: `Coca-Cola promo intensity (${tccc2024}%) is at parity with competitors (${comp2024}%) -- consider Pepsi's 'fewer, deeper' approach.` })
+    insights.push({ type: "warning", text: `Portfolio promo intensity (${tccc2024}%) is at parity with competitors (${comp2024}%) -- consider Competitor X's 'fewer, deeper' approach.` })
   }
   
   // YoY trend
   const tcccGrowth = tcccAvg[2] - tcccAvg[0]
   if (tcccGrowth > 10) {
-    insights.push({ type: "negative", text: `Promo intensity increased +${tcccGrowth.toFixed(0)}pp since 2022 while Pepsi reduced theirs -- evaluate if higher frequency is driving diminishing returns.` })
+    insights.push({ type: "negative", text: `Promo intensity increased +${tcccGrowth.toFixed(0)}pp since 2022 while Competitor X reduced theirs -- evaluate if higher frequency is driving diminishing returns.` })
   } else if (tcccGrowth < 5) {
     insights.push({ type: "positive", text: `Promo intensity well-controlled (+${tcccGrowth.toFixed(0)}pp since 2022) -- maintain promotional discipline.` })
   }
@@ -203,7 +203,7 @@ function MetricSection({ label, subtitle, iconColor, tcccData, competitorData, t
   if (isPortfolioView) {
     // Portfolio view - show TCCC, Market, and competitor portfolios
     allGroups.push({ 
-      label: "Coca-Cola Portfolio", 
+      label: "Brand Portfolio", 
       values: tcccAvg, 
       isTCCC: true, 
       isAvg: true,

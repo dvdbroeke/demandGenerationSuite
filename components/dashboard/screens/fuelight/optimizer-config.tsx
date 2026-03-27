@@ -27,9 +27,9 @@ interface OptimizerConfigProps {
 }
 
 const fundingSources = [
-  { value: "tccc", label: "TCCC Funding" },
+  { value: "brand-owner", label: "Brand Owner Funding" },
   { value: "system", label: "System Funding" },
-  { value: "bottler", label: "Bottler Funding" },
+  { value: "partner", label: "Partner Funding" },
 ]
 
 const outcomeMetrics = [
@@ -66,7 +66,7 @@ export function FuelightOptimizerConfig({
   const [scenarioName, setScenarioName] = useState("Demo Optimization")
   const [startDate, setStartDate] = useState("2025-01-01")
   const [endDate, setEndDate] = useState("2025-12-31")
-  const [fundingSource, setFundingSource] = useState("tccc")
+  const [fundingSource, setFundingSource] = useState("brand-owner")
   const [approach, setApproach] = useState<"flexible" | "fixed">("flexible")
   const [outcomeMetric, setOutcomeMetric] = useState("")
   const [fundingTarget, setFundingTarget] = useState<"total" | "additional">("total")
@@ -376,7 +376,7 @@ export function FuelightOptimizerConfig({
                 />
               </div>
               <p className="text-xs text-zinc-500">
-                Updated Total TCCC Funding: EUR {totalFunding.toLocaleString()}
+                Updated Total Brand Owner Funding: EUR {totalFunding.toLocaleString()}
               </p>
             </div>
           )}
