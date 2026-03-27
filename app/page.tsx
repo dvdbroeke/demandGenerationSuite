@@ -366,7 +366,7 @@ export default function StrategyControlTower() {
   }
 
   const handleFuelightDrillDown = (driver: string) => {
-    // "pricing" leads to cannibalization view (Diet Coke vs Coke Zero)
+    // "pricing" leads to cannibalization view (Brand A Diet vs Brand A Zero)
     // "media" leads to opportunity view (high ROI channels)
     if (driver === "media") {
       setNavigation(prev => ({

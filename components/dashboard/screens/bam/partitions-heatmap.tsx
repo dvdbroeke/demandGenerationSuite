@@ -38,7 +38,7 @@ const years = ["2025", "2024", "2023", "2022", "2021", "2020"]
 
 // Row/column labels for the heatmap (13 partitions)
 const partitions = [
-  "Diet", "Coca-Cola Zero", "Regular Calorie", 
+  "Diet", "Brand A Zero", "Regular Calorie", 
   "No Calorie/Diet", "Regular Calorie (Citrus)", "Cherry/Dark fruit", "Specialty flavours", 
   "Energy >=500ML", "Energy <500ML", "Adv. Hydration", "Juices & Smoothies", "Water, Tea & Coffee", "PL"
 ]
@@ -82,8 +82,8 @@ const getOverlapColor = (value: number): string => {
   return "bg-teal-900/50"
 }
 
-// Check if cell is the Coca-Cola Zero (All) diagonal cell (row 1, col 1)
-const isCokeZeroCellDiagonal = (rowIdx: number, colIdx: number): boolean => {
+// Check if cell is the Brand A Zero (All) diagonal cell (row 1, col 1)
+const isBrandAZeroCellDiagonal = (rowIdx: number, colIdx: number): boolean => {
   return rowIdx === 1 && colIdx === 1
 }
 
@@ -96,8 +96,8 @@ export function BAMPartitionsHeatmap({ onNavigate, onNavigateToSkuHeatmap }: BAM
   const [selectedYear, setSelectedYear] = useState("2025")
 
   const handleCellClick = (rowIdx: number, colIdx: number) => {
-    // Only Coca-Cola Zero (All) diagonal cell is clickable
-    if (isCokeZeroCellDiagonal(rowIdx, colIdx) && onNavigateToSkuHeatmap) {
+    // Only Brand A Zero (All) diagonal cell is clickable
+    if (isBrandAZeroCellDiagonal(rowIdx, colIdx) && onNavigateToSkuHeatmap) {
       onNavigateToSkuHeatmap()
     }
   }
@@ -206,7 +206,7 @@ export function BAMPartitionsHeatmap({ onNavigate, onNavigateToSkuHeatmap }: BAM
                       {rowPartition}
                     </td>
                     {overlapData[rowIdx].map((value, colIdx) => {
-                      const isHighlightedCell = isCokeZeroCellDiagonal(rowIdx, colIdx)
+                      const isHighlightedCell = isBrandAZeroCellDiagonal(rowIdx, colIdx)
                       
                       return (
                         <td key={colIdx} className="p-0.5">
@@ -218,7 +218,7 @@ export function BAMPartitionsHeatmap({ onNavigate, onNavigateToSkuHeatmap }: BAM
                               rowIdx === colIdx ? "text-zinc-100" : "text-zinc-200",
                               isHighlightedCell && "ring-2 ring-amber-400 cursor-pointer hover:brightness-110"
                             )}
-                            title={isHighlightedCell ? "Click to view Shopper Partitions for Coca-Cola Zero" : undefined}
+                            title={isHighlightedCell ? "Click to view Shopper Partitions for Brand A Zero" : undefined}
                           >
                             {value.toFixed(1)}
                           </div>

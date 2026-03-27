@@ -171,7 +171,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
                 <ArrowRight className="h-4 w-4 text-emerald-400" />
               </div>
               <div className="text-left">
-                <span className="text-sm font-medium text-emerald-300">View Coke Zero Performance in Fuelight</span>
+                <span className="text-sm font-medium text-emerald-300">View Brand A Zero Performance in Artemis</span>
                 <p className="text-xs text-emerald-400/70">Analyze investment efficiency and optimization opportunities</p>
               </div>
             </div>
@@ -201,7 +201,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
               </div>
               <div className="p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/50">
                 <p className="text-sm text-zinc-100 font-medium">
-                  <span className="text-amber-400 underline">Implication:</span> Today, each Coca-Cola sub-brand must be treated as a standalone asset with distinct positioning to capture Gen Z loyalty.
+                  <span className="text-amber-400 underline">Implication:</span> Today, each Brand A sub-brand must be treated as a standalone asset with distinct positioning to capture Gen Z loyalty.
                 </p>
               </div>
             </div>
@@ -371,7 +371,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
             {/* Implication Box */}
             <div className="mt-6 p-4 bg-amber-500/10 rounded-lg border border-amber-500/20">
               <p className="text-sm text-amber-300 font-medium leading-relaxed">
-                <span className="underline">Implication:</span> Today, each Coca-Cola sub-brand must be treated as a standalone asset with distinct positioning, media investment, and consumer targeting strategy.
+                <span className="underline">Implication:</span> Today, each Brand A sub-brand must be treated as a standalone asset with distinct positioning, media investment, and consumer targeting strategy.
               </p>
             </div>
 
@@ -381,11 +381,11 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
               <ul className="space-y-2 text-sm text-zinc-400">
                 <li className="flex items-start gap-2">
                   <ChevronRight className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <span>Review Coke Zero media investment efficiency in Fuelight</span>
+                  <span>Review Brand A Zero media investment efficiency in Artemis</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <span>Assess cannibalization risk from Diet Coke promotions</span>
+                  <span>Assess cannibalization risk from Brand A Diet promotions</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />

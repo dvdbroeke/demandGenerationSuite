@@ -95,7 +95,7 @@ const callouts = [
   {
     row: 0,
     cols: [2, 3],
-    text: "150mL adds incrementality, only 1% of Coke Zero sales today; 6x150ml multipack to be rolled out",
+    text: "150mL adds incrementality, only 1% of Brand A Zero sales today; 6x150ml multipack to be rolled out",
     highlight: "150mL adds incrementality",
   },
   {
@@ -254,7 +254,7 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
             <button onClick={onNavigateToFuelight} className="w-full p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/50 transition-all flex items-center justify-between group">
               <div className="flex items-center gap-3">
                 <div className="text-left">
-                  <span className="text-sm font-medium text-emerald-300">View Coca-Cola Zero Performance in Fuelight</span>
+                  <span className="text-sm font-medium text-emerald-300">View Brand A Zero Performance in Artemis</span>
                   <p className="text-xs text-emerald-400/70">Analyze sales drivers and media effectiveness</p>
                 </div>
               </div>
@@ -272,7 +272,7 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
             Back to Partitions Heatmap
           </button>
           <h2 className="text-lg font-semibold text-zinc-100">
-            Shopper partitions | Coca-Cola Zero
+            Shopper partitions | Brand A Zero
           </h2>
         </div>
       </div>
@@ -310,8 +310,8 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
                 {/* Size header */}
                 <tr className="h-10">
                   <th colSpan={2} className="p-2 text-left text-zinc-400 font-normal text-[9px] bg-zinc-800/30">
-                    <div>ROI | Coke Zero</div>
-                    <div className="text-zinc-500 mt-1">RSV (% of Coke Zero), '25</div>
+                    <div>ROI | Brand A Zero</div>
+                    <div className="text-zinc-500 mt-1">RSV (% of Brand A Zero), &apos;25</div>
                   </th>
                   <th className="p-1 text-center text-zinc-400 font-normal min-w-[48px] bg-zinc-800/30 text-[9px]"></th>
                   <th className="p-1 text-center text-zinc-400 font-normal min-w-[60px] bg-zinc-800/30 text-[9px]"></th>
