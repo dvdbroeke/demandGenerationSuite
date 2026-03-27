@@ -38,39 +38,39 @@ const years = ["2025", "2024", "2023", "2022", "2021", "2020"]
 
 // Row/column labels for the heatmap (13 partitions)
 const partitions = [
-  "Diet", "Brand A Zero", "Regular Calorie", 
-  "No Calorie/Diet", "Regular Calorie (Citrus)", "Cherry/Dark fruit", "Specialty flavours", 
-  "Energy >=500ML", "Energy <500ML", "Adv. Hydration", "Juices & Smoothies", "Water, Tea & Coffee", "PL"
+  "Segment A1", "Segment A2", "Segment A3", 
+  "Segment B1", "Segment B2", "Segment B3", "Segment B4", 
+  "Segment C1", "Segment C2", "Segment D1", "Segment D2", "Segment D3", "Private Label"
 ]
 
-// Overlap matrix data (13x13 matrix) - scrambled but preserving patterns
-// Diet and Zero still show meaningful overlap, Energy partitions correlate, etc.
+// Overlap matrix data (13x13 matrix) - consumer behavior patterns
+// Related segments show meaningful overlap, similar categories correlate, etc.
 const overlapData: number[][] = [
-  // Diet
+  // Segment A1
   [9.7, 5.2, 2.1, 3.8, 1.6, 4.1, 1.8, 1.6, 0.7, 1.4, 1.8, 1.6, 2.4],
-  // Coca-Cola Zero (merged)
+  // Segment A2
   [5.2, 7.9, 1.6, 2.9, 1.6, 3.8, 2.1, 1.2, 0.8, 1.5, 2.4, 2.3, 1.5],
-  // Regular Calorie
+  // Segment A3
   [2.1, 1.6, 5.3, 4.0, 2.3, 2.3, 3.7, 1.9, 2.8, 2.5, 2.3, 2.3, 1.5],
-  // No Calorie/Diet Citrus
+  // Segment B1
   [3.8, 5.1, 2.0, 7.6, 3.6, 2.1, 2.6, 3.3, 1.3, 1.8, 2.6, 3.2, 2.0],
-  // Regular Calorie Citrus
+  // Segment B2
   [1.6, 1.7, 4.0, 3.6, 4.3, 2.3, 3.5, 3.8, 1.6, 3.9, 2.9, 2.4, 1.9],
-  // Cherry/Dark fruit
+  // Segment B3
   [4.1, 4.0, 2.3, 2.1, 2.3, 6.8, 5.9, 5.9, 1.3, 2.8, 2.1, 1.9, 2.0],
-  // Specialty flavours
+  // Segment B4
   [1.8, 2.1, 2.3, 2.6, 3.5, 5.9, 11.8, 1.5, 0.7, 4.2, 2.1, 1.5, 1.7],
-  // Energy >=500ML
+  // Segment C1
   [1.6, 1.2, 3.7, 3.3, 3.8, 5.9, 1.5, 14.2, 4.8, 3.9, 3.2, 3.0, 1.2],
-  // Energy <500ML
+  // Segment C2
   [0.7, 0.6, 1.9, 1.3, 1.6, 1.3, 0.7, 4.8, 7.2, 4.3, 1.7, 2.6, 0.8],
-  // Advanced Hydration
+  // Segment D1
   [1.4, 1.5, 2.8, 1.8, 3.9, 2.8, 4.2, 3.9, 4.3, 7.1, 2.4, 3.0, 1.5],
-  // Juices and Smoothies
+  // Segment D2
   [1.8, 2.1, 2.5, 2.6, 2.9, 2.1, 2.1, 3.2, 1.7, 2.4, 4.0, 2.8, 2.4],
-  // Water, Tea and Coffee
+  // Segment D3
   [1.6, 2.3, 2.3, 3.2, 2.4, 1.9, 1.5, 3.0, 2.6, 3.0, 2.8, 4.9, 1.9],
-  // PL
+  // Private Label
   [2.4, 1.7, 1.5, 2.0, 1.9, 2.0, 1.7, 1.2, 0.8, 1.5, 2.4, 1.9, 3.9],
 ]
 
@@ -82,8 +82,8 @@ const getOverlapColor = (value: number): string => {
   return "bg-teal-900/50"
 }
 
-// Check if cell is the Brand A Zero (All) diagonal cell (row 1, col 1)
-const isBrandAZeroCellDiagonal = (rowIdx: number, colIdx: number): boolean => {
+// Check if cell is the Segment A2 diagonal cell (row 1, col 1) - highlighted for drill-down
+const isHighlightedCellDiagonal = (rowIdx: number, colIdx: number): boolean => {
   return rowIdx === 1 && colIdx === 1
 }
 
@@ -96,8 +96,8 @@ export function BAMPartitionsHeatmap({ onNavigate, onNavigateToSkuHeatmap }: BAM
   const [selectedYear, setSelectedYear] = useState("2025")
 
   const handleCellClick = (rowIdx: number, colIdx: number) => {
-    // Only Brand A Zero (All) diagonal cell is clickable
-    if (isBrandAZeroCellDiagonal(rowIdx, colIdx) && onNavigateToSkuHeatmap) {
+    // Only highlighted diagonal cell is clickable for drill-down
+    if (isHighlightedCellDiagonal(rowIdx, colIdx) && onNavigateToSkuHeatmap) {
       onNavigateToSkuHeatmap()
     }
   }
@@ -179,7 +179,7 @@ export function BAMPartitionsHeatmap({ onNavigate, onNavigateToSkuHeatmap }: BAM
       {/* Page Title */}
       <div>
         <h2 className="text-lg font-semibold text-zinc-100">Consumer Partitions - Relative Overlap Index</h2>
-        <p className="text-sm text-zinc-500">How consumers' behaviour shapes the NARTD market. Higher values indicate stronger consumer overlap between partitions.</p>
+        <p className="text-sm text-zinc-500">How consumer behavior shapes market dynamics. Higher values indicate stronger consumer overlap between partitions.</p>
       </div>
 
       {/* Main Heatmap */}
@@ -206,7 +206,7 @@ export function BAMPartitionsHeatmap({ onNavigate, onNavigateToSkuHeatmap }: BAM
                       {rowPartition}
                     </td>
                     {overlapData[rowIdx].map((value, colIdx) => {
-                      const isHighlightedCell = isBrandAZeroCellDiagonal(rowIdx, colIdx)
+                      const isHighlightedCell = isHighlightedCellDiagonal(rowIdx, colIdx)
                       
                       return (
                         <td key={colIdx} className="p-0.5">
@@ -218,7 +218,7 @@ export function BAMPartitionsHeatmap({ onNavigate, onNavigateToSkuHeatmap }: BAM
                               rowIdx === colIdx ? "text-zinc-100" : "text-zinc-200",
                               isHighlightedCell && "ring-2 ring-amber-400 cursor-pointer hover:brightness-110"
                             )}
-                            title={isHighlightedCell ? "Click to view Shopper Partitions for Brand A Zero" : undefined}
+                            title={isHighlightedCell ? "Click to view Shopper Partitions for Segment A2" : undefined}
                           >
                             {value.toFixed(1)}
                           </div>

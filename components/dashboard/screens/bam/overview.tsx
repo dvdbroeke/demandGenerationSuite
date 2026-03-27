@@ -51,22 +51,22 @@ export function BAMOverview({ onNavigate }: BAMOverviewProps) {
   const kpis = [
     { 
       label: "Market Value", 
-      value: "€9.8B", 
-      change: "+4.7% CAGR",
+      value: "$12.4B", 
+      change: "+5.2% CAGR",
       icon: DollarSign,
       iconColor: "text-emerald-400"
     },
     { 
       label: "Market Volume", 
-      value: "1187M UC", 
-      change: "+0.9% CAGR",
+      value: "847M Units", 
+      change: "+1.8% CAGR",
       icon: Package,
       iconColor: "text-teal-400"
     },
     { 
-      label: "TCCC Share", 
+      label: "Enterprise Share", 
       value: "47%", 
-      subtitle: "AFH market leadership",
+      subtitle: "Market leadership position",
       icon: Percent,
       iconColor: "text-red-400"
     },
@@ -80,12 +80,12 @@ export function BAMOverview({ onNavigate }: BAMOverviewProps) {
   ]
 
   const growthHotspots = [
-    { name: "Cola Zero <500ml", growth: "+16%" },
-    { name: "Cola Zero 500ml", growth: "+19%" },
-    { name: "Citrus/Fruity Regular", growth: "+11%" },
-    { name: "Cherry/Dark Fruit", growth: "+13%" },
-    { name: "Energy >=500ml", growth: "+21%" },
-    { name: "Advanced Hydration", growth: "+14%" },
+    { name: "Segment A Premium", growth: "+16%" },
+    { name: "Segment A Value", growth: "+19%" },
+    { name: "Segment B Core", growth: "+11%" },
+    { name: "Segment C Specialty", growth: "+13%" },
+    { name: "Segment D Large Format", growth: "+21%" },
+    { name: "Segment E Innovation", growth: "+14%" },
   ]
 
   const priorityInsights = [
@@ -93,25 +93,25 @@ export function BAMOverview({ onNavigate }: BAMOverviewProps) {
       type: "market",
       impact: "High Impact",
       title: "Market Growing in Value, Flat in Volume",
-      description: "€9.8B GB NARTD market growing ~4.7% CAGR in value but flat in volume. Growth driven by premiumization and price increases."
+      description: "$12.4B market growing ~5.2% CAGR in value but slower in volume. Growth driven by premiumization and strategic pricing."
     },
     {
       type: "partition",
       impact: "High Impact",
-      title: "Zero Cola Driving Growth",
-      description: "Zero Cola, Bold (incl. Cherry), and Energy driving 115% of volume growth. Brand A behind Competitor B Max in Zero segment."
+      title: "Premium Segments Driving Growth",
+      description: "Segment A and Segment C driving 115% of volume growth. Brand A trailing Competitor B in high-growth premium partition."
     },
     {
       type: "brand",
       impact: "High Impact",
-      title: "Brand A Zero Fan Base Gap",
-      description: "Brand A Zero has inferior fan-base vs. Competitor B Max (4.8 vs 14.2 index). Brand A Diet drinkers switching to Competitor B rather than Brand A Zero."
+      title: "Brand A Loyalty Gap",
+      description: "Brand A has inferior loyalty metrics vs. Competitor B (4.8 vs 14.2 index). Brand A Classic consumers switching to Competitor B rather than Brand A Premium."
     },
     {
       type: "action",
       impact: "High Impact",
-      title: "Energy: Route to Play Needed",
-      description: "Secular growth in Energy driven by Red Bull & Monster. TCCC has limited owned portfolio, needs clear route to play."
+      title: "Emerging Segment: Route to Play Needed",
+      description: "Secular growth in Segment D driven by Competitor X & Competitor Y. Enterprise has limited owned portfolio, needs clear route to play."
     },
   ]
 
@@ -240,15 +240,15 @@ export function BAMOverview({ onNavigate }: BAMOverviewProps) {
               <ul className="space-y-2 text-sm text-zinc-400">
                 <li className="flex items-start gap-2">
                   <span className="text-zinc-600 mt-1">•</span>
-                  <span>€9.8B NARTD market facing headwinds, growing ~4.7% CAGR in value but flat in volume</span>
+                  <span>$12.4B market facing headwinds, growing ~5.2% CAGR in value but slower in volume</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-zinc-600 mt-1">•</span>
-                  <span>TCCC leads with ~47% share in AFH albeit under pressure</span>
+                  <span>Enterprise leads with ~47% share albeit under competitive pressure</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-zinc-600 mt-1">•</span>
-                  <span>SSD volume growth driven mostly by multipack/multi-serve push</span>
+                  <span>Volume growth driven mostly by value pack and multi-unit configurations</span>
                 </li>
               </ul>
             </div>

@@ -95,19 +95,19 @@ const callouts = [
   {
     row: 0,
     cols: [2, 3],
-    text: "150mL adds incrementality, only 1% of Brand A Zero sales today; 6x150ml multipack to be rolled out",
-    highlight: "150mL adds incrementality",
+    text: "Small format adds incrementality, only 1% of Segment A2 sales today; small multipack to be rolled out",
+    highlight: "Small format adds incrementality",
   },
   {
     row: 5,
     cols: [4, 5, 6],
-    text: "Multi-serve priorities can be driven by 2 priority formats: 1) Large: 2L, Small :1.25L, and opportunistically 1.5L where relevant for specific retailers to drive commercial excellence",
+    text: "Multi-serve priorities can be driven by 2 priority formats: 1) Large format, 2) Small format, and opportunistically mid-size where relevant for specific retailers",
     highlight: "Multi-serve priorities",
   },
   {
     row: 8,
     cols: [8, 9, 10],
-    text: "Multipack priorities can be driven by one small (e.g. 8x) and one large multi-pack (e.g. 24x); potential to retain others only when relevant for specific retailers to drive commercial excellence",
+    text: "Multipack priorities can be driven by one small and one large multi-pack; potential to retain others only when relevant for specific retailers",
     highlight: "Multipack priorities",
   },
 ]
@@ -136,9 +136,9 @@ const ageGroups = [
   { id: "boomers", name: "Boomers+ (60+)" },
 ]
 
-const colaBrandDataByAge: Record<string, { categories: string[], data: number[][] }> = {
+const variantDataByAge: Record<string, { categories: string[], data: number[][] }> = {
   all: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [5.2, 2.1, 1.6],
       [2.1, 9.7, 4.4],
@@ -146,7 +146,7 @@ const colaBrandDataByAge: Record<string, { categories: string[], data: number[][
     ]
   },
   genz: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [5.1, 3.6, 2.0],
       [3.6, 9.2, 6.1],
@@ -154,7 +154,7 @@ const colaBrandDataByAge: Record<string, { categories: string[], data: number[][
     ]
   },
   millennials: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [5.5, 2.3, 1.8],
       [2.3, 10.2, 4.8],
@@ -162,7 +162,7 @@ const colaBrandDataByAge: Record<string, { categories: string[], data: number[][
     ]
   },
   genx: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [4.9, 1.7, 1.4],
       [1.7, 10.6, 3.9],
@@ -170,7 +170,7 @@ const colaBrandDataByAge: Record<string, { categories: string[], data: number[][
     ]
   },
   boomers: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [4.6, 1.4, 1.1],
       [1.4, 11.5, 3.1],
@@ -191,7 +191,7 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
   const [selectedYear, setSelectedYear] = useState("2025")
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("all")
 
-  const currentColaBrandData = colaBrandDataByAge[selectedAgeGroup] || colaBrandDataByAge.all
+  const currentVariantData = variantDataByAge[selectedAgeGroup] || variantDataByAge.all
   const isGenZ = selectedAgeGroup === "genz"
 
   return (
@@ -254,7 +254,7 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
             <button onClick={onNavigateToFuelight} className="w-full p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/50 transition-all flex items-center justify-between group">
               <div className="flex items-center gap-3">
                 <div className="text-left">
-                  <span className="text-sm font-medium text-emerald-300">View Brand A Zero Performance in Artemis</span>
+                  <span className="text-sm font-medium text-emerald-300">View Segment A2 Performance in Artemis</span>
                   <p className="text-xs text-emerald-400/70">Analyze sales drivers and media effectiveness</p>
                 </div>
               </div>
@@ -272,7 +272,7 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
             Back to Partitions Heatmap
           </button>
           <h2 className="text-lg font-semibold text-zinc-100">
-            Shopper partitions | Brand A Zero
+            Shopper Partitions | Segment A2
           </h2>
         </div>
       </div>
@@ -310,8 +310,8 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
                 {/* Size header */}
                 <tr className="h-10">
                   <th colSpan={2} className="p-2 text-left text-zinc-400 font-normal text-[9px] bg-zinc-800/30">
-                    <div>ROI | Brand A Zero</div>
-                    <div className="text-zinc-500 mt-1">RSV (% of Brand A Zero), &apos;25</div>
+                    <div>ROI | Segment A2</div>
+                    <div className="text-zinc-500 mt-1">RSV (% of Segment A2), &apos;25</div>
                   </th>
                   <th className="p-1 text-center text-zinc-400 font-normal min-w-[48px] bg-zinc-800/30 text-[9px]"></th>
                   <th className="p-1 text-center text-zinc-400 font-normal min-w-[60px] bg-zinc-800/30 text-[9px]"></th>
@@ -473,17 +473,17 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
       <div className="space-y-3">
         <div className="p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/50">
           <p className="text-xs text-zinc-300">
-            <span className="text-amber-400 font-semibold">150mL adds incrementality</span>, only 1% of Coke Zero sales today; 6x150ml multipack to be rolled out
+            <span className="text-amber-400 font-semibold">Small format adds incrementality</span>, only 1% of Segment A2 sales today; small multipack to be rolled out
           </p>
         </div>
         <div className="p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/50">
           <p className="text-xs text-zinc-300">
-            <span className="text-amber-400 font-semibold">Multi-serve priorities</span> can be driven by 2 priority formats: 1) Large: 2L, Small: 1.25L, and opportunistically 1.5L where relevant for specific retailers to drive commercial excellence
+            <span className="text-amber-400 font-semibold">Multi-serve priorities</span> can be driven by 2 priority formats: 1) Large format, 2) Small format, and opportunistically mid-size where relevant for specific retailers
           </p>
         </div>
         <div className="p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/50">
           <p className="text-xs text-zinc-300">
-            <span className="text-amber-400 font-semibold">Multipack priorities</span> can be driven by one small (e.g. 8x) and one large multi-pack (e.g. 24x); potential to retain others only when relevant for specific retailers to drive commercial excellence
+            <span className="text-amber-400 font-semibold">Multipack priorities</span> can be driven by one small and one large multi-pack; potential to retain others only when relevant for specific retailers
           </p>
         </div>
       </div>
@@ -494,7 +494,7 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
       {/* Age Deep-Dive Section (Previously beach-heatmap) */}
       <div>
         <h3 className="text-lg font-semibold text-zinc-100 mb-2">Age Lens (BEACH Data)</h3>
-        <p className="text-sm text-zinc-500 mb-6">Consumer crossover between Regular, Diet, and Zero cola variants by age cohort</p>
+        <p className="text-sm text-zinc-500 mb-6">Consumer crossover between Tier 1, Tier 2, and Tier 3 product variants by age cohort</p>
       </div>
 
       {/* Age Group Selector */}
@@ -535,7 +535,7 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
                       <span className="text-zinc-600">{ageGroups.find(g => g.id === selectedAgeGroup)?.name || "All ages"}</span>
                     </div>
                   </th>
-                  {currentColaBrandData.categories.map((cat, idx) => (
+                  {currentVariantData.categories.map((cat, idx) => (
                     <th key={idx} className="p-3 text-center text-sm font-semibold text-zinc-300 bg-zinc-800/50 border border-zinc-700/50 min-w-[100px]">
                       {cat}
                     </th>
@@ -543,17 +543,17 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
                 </tr>
               </thead>
               <tbody>
-                {currentColaBrandData.categories.map((rowCat, rowIdx) => (
+                {currentVariantData.categories.map((rowCat, rowIdx) => (
                   <tr key={rowIdx}>
                     <td className={cn(
                       "p-3 text-sm font-medium border border-zinc-700/50",
-                      rowCat === "Regular" && "bg-red-500/20 text-red-300",
-                      rowCat === "Diet" && "bg-zinc-700/50 text-zinc-300",
-                      rowCat === "Zero" && "bg-emerald-500/20 text-emerald-300"
+                      rowCat === "Tier 1" && "bg-red-500/20 text-red-300",
+                      rowCat === "Tier 2" && "bg-zinc-700/50 text-zinc-300",
+                      rowCat === "Tier 3" && "bg-emerald-500/20 text-emerald-300"
                     )}>
                       {rowCat}
                     </td>
-                    {currentColaBrandData.data[rowIdx].map((value, colIdx) => (
+                    {currentVariantData.data[rowIdx].map((value, colIdx) => (
                       <td key={colIdx} className="p-1 border border-zinc-700/50">
                         <div className={cn(
                           "py-4 px-4 text-center text-lg font-bold text-zinc-900 rounded-sm",
@@ -585,7 +585,7 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
               {isGenZ && (
                 <div className="flex items-start gap-2 text-xs text-amber-400">
                   <Zap className="h-3 w-3 mt-0.5 flex-shrink-0" />
-                  <span>Gen Z shows higher cross-brand consumption: Diet-Zero overlap increases from 4.1 to 5.8</span>
+                  <span>Gen Z shows higher cross-brand consumption: Tier 2-Tier 3 overlap increases from 4.1 to 5.8</span>
                 </div>
               )}
             </div>
@@ -623,9 +623,9 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-sm font-bold text-zinc-300">1</div>
                 <div>
                   <p className="text-sm text-zinc-300 leading-relaxed">
-                    Across brands, <span className="text-amber-400 font-semibold">Cola Regular, Diet and Zero attract distinct consumers</span>
+                    Across brands, <span className="text-amber-400 font-semibold">Tier 1, Tier 2, and Tier 3 attract distinct consumers</span>
                   </p>
-                  <p className="text-xs text-zinc-500 mt-1">Diagonal values (4.9, 10.3, 4.7) indicate strong brand-specific loyalty</p>
+                  <p className="text-xs text-zinc-500 mt-1">Diagonal values (4.9, 10.3, 4.7) indicate strong variant-specific loyalty</p>
                 </div>
               </div>
               
@@ -633,9 +633,9 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-sm font-bold text-zinc-300">2</div>
                 <div>
                   <p className="text-sm text-zinc-300 leading-relaxed">
-                    <span className="text-red-400 font-semibold">Younger generations are more indifferent</span> between Diet and Zero, and consume more across categories
+                    <span className="text-red-400 font-semibold">Younger generations are more indifferent</span> between Tier 2 and Tier 3, and consume more across categories
                   </p>
-                  <p className="text-xs text-zinc-500 mt-1">Gen Z Diet-Zero overlap: 5.8 vs All Ages: 4.1 (+41%)</p>
+                  <p className="text-xs text-zinc-500 mt-1">Gen Z Tier 2-Tier 3 overlap: 5.8 vs All Ages: 4.1 (+41%)</p>
                 </div>
               </div>
 
@@ -643,9 +643,9 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-sm font-bold text-zinc-300">3</div>
                 <div>
                   <p className="text-sm text-zinc-300 leading-relaxed">
-                    <span className="text-emerald-400 font-semibold">Zero has weaker brand loyalty</span> compared to Diet across all age groups
+                    <span className="text-emerald-400 font-semibold">Tier 3 has weaker brand loyalty</span> compared to Tier 2 across all age groups
                   </p>
-                  <p className="text-xs text-zinc-500 mt-1">Zero diagonal (4.7) vs Diet diagonal (10.3) shows 2x weaker retention</p>
+                  <p className="text-xs text-zinc-500 mt-1">Tier 3 diagonal (4.7) vs Tier 2 diagonal (10.3) shows 2x weaker retention</p>
                 </div>
               </div>
             </div>
@@ -661,9 +661,9 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
               <AlertTriangle className="h-5 w-5 text-amber-400" />
             </div>
             <div className="flex-1">
-              <h4 className="text-base font-semibold text-zinc-100 mb-2">Strategic Insight: Cola Sub-Brand Positioning</h4>
+              <h4 className="text-base font-semibold text-zinc-100 mb-2">Strategic Insight: Product Variant Positioning</h4>
               <p className="text-sm text-zinc-400 leading-relaxed mb-4">
-                Younger generations (Gen Z) show significantly higher cross-consumption between Diet and Zero variants. The Diet-Zero overlap increases from 4.1 (all ages) to 5.8 (Gen Z), indicating these sub-brands are increasingly perceived as interchangeable by younger consumers.
+                Younger generations (Gen Z) show significantly higher cross-consumption between Tier 2 and Tier 3 variants. The Tier 2-Tier 3 overlap increases from 4.1 (all ages) to 5.8 (Gen Z), indicating these variants are increasingly perceived as interchangeable by younger consumers.
               </p>
               <div className="flex items-center gap-2 mb-4">
                 <span className="px-3 py-1 bg-zinc-800 rounded-full text-xs font-medium text-zinc-300 border border-zinc-700">
@@ -675,7 +675,7 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
               </div>
               <div className="p-4 bg-cyan-500/5 rounded-lg border border-cyan-500/20">
                 <p className="text-sm text-cyan-300 leading-relaxed">
-                  <span className="underline text-cyan-200">Implication:</span> Today, each Coca-Cola sub-brand must be treated as a standalone asset with distinct positioning to capture Gen Z loyalty.
+                  <span className="underline text-cyan-200">Implication:</span> Today, each Brand A variant must be treated as a standalone asset with distinct positioning to capture Gen Z loyalty.
                 </p>
               </div>
             </div>
