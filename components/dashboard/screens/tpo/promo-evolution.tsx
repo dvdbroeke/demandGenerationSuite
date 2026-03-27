@@ -34,12 +34,12 @@ const geographies = [
 // Categories matching pricing-performance
 const categories = [
   { id: "all", label: "All Categories" },
-  { id: "cola-regular", label: "Cola - Regular Calorie" },
-  { id: "cola-diet", label: "Cola - Diet" },
-  { id: "cola-zero", label: "Cola - Zero" },
-  { id: "citrus-fruity", label: "Citrus/Fruity" },
-  { id: "citrus-zero", label: "Citrus/Fruity - No Calorie" },
-  { id: "bold", label: "Bold" },
+  { id: "cola-regular", label: "Category A" },
+  { id: "cola-diet", label: "Category B" },
+  { id: "cola-zero", label: "Category C" },
+  { id: "citrus-fruity", label: "Category D" },
+  { id: "citrus-zero", label: "Category E" },
+  { id: "bold", label: "Category F" },
 ]
 
 // Brand to category mapping

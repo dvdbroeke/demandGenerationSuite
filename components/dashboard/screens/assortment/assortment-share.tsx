@@ -318,12 +318,12 @@ const portfolioColors: Record<string, string> = {
 // Slicer options
 const categoryOptions = [
   { value: "all", label: "All Categories" },
-  { value: "cola-regular", label: "Cola Regular" },
-  { value: "cola-zero", label: "Cola Zero" },
-  { value: "cola-diet", label: "Cola Diet" },
-  { value: "citrus-fruity", label: "Citrus/Fruity" },
-  { value: "citrus-zero", label: "Citrus Zero" },
-  { value: "bold", label: "Bold Flavors" },
+  { value: "cola-regular", label: "Category A" },
+  { value: "cola-zero", label: "Category B" },
+  { value: "cola-diet", label: "Category C" },
+  { value: "citrus-fruity", label: "Category D" },
+  { value: "citrus-zero", label: "Category E" },
+  { value: "bold", label: "Category F" },
 ]
 
 const brandOptions = [

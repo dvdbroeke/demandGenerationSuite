@@ -19,11 +19,11 @@ const tabs: { id: MixScreen; label: string }[] = [
 
 // Categories
 const categories = [
-  { id: "cola-regular", label: "Cola Regular" },
-  { id: "cola-zero", label: "Cola Zero/Diet" },
-  { id: "citrus-fruity", label: "Citrus/Fruity" },
-  { id: "energy", label: "Energy" },
-  { id: "water", label: "Water" },
+  { id: "cola-regular", label: "Category A" },
+  { id: "cola-zero", label: "Category B" },
+  { id: "citrus-fruity", label: "Category C" },
+  { id: "energy", label: "Category D" },
+  { id: "water", label: "Category E" },
 ]
 
 // Brands per category

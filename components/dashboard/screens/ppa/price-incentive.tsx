@@ -314,8 +314,8 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
 
   // Category definitions for price curve analysis
   const categoryDefs = [
-    { id: "cola", label: "Cola", brands: ["Brand A Classic", "Brand A Zero", "Brand B"], color: "#ef4444", compBrands: ["Competitor X", "Competitor X Max"] },
-    { id: "citrus", label: "Citrus/Fruity", brands: ["Brand D", "Brand C"], color: "#22c55e", compBrands: ["Competitor W", "Competitor Y"] },
+{ id: "cola", label: "Category A", brands: ["Brand A Classic", "Brand A Zero", "Brand B"], color: "#ef4444", compBrands: ["Competitor X", "Competitor X Max"] },
+  { id: "citrus", label: "Category D", brands: ["Brand D", "Brand C"], color: "#22c55e", compBrands: ["Competitor W", "Competitor Y"] },
   ]
 
   // Calculate category-level curves for Portfolio
@@ -471,7 +471,7 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
           alerts.push({
             id: "citrus-underpriced",
             type: "opportunity",
-            title: "Citrus/Fruity category underpriced vs. competitors",
+            title: "Category D underpriced vs. competitors",
             detail: `Brand D & Brand C avg \u20ac${citrusAvg.toFixed(2)}/L vs. competitor avg \u20ac${citrusCompAvg.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% margin opportunity.`,
             gap: `${gap.toFixed(0)}%`,
             actionable: true

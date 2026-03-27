@@ -34,7 +34,7 @@ const scenarioTypes = [
   { value: "ladder", label: "Price Ladder Redesign" },
 ]
 
-// All SKUs available for simulation - includes Citrus/Fruity
+// All SKUs available for simulation - includes Category D
 const skuOptions = allSkuNames
 const channelOptions = ["All Channels", "Convenience", "Modern Trade", "Ecommerce", "On-Premise"]
 const periodOptions = [{ value: "q2-2026", label: "Q2 2026" }, { value: "q3-2026", label: "Q3 2026" }, { value: "q4-2026", label: "Q4 2026" }]
@@ -51,7 +51,7 @@ interface PriceActionItem {
   confidence: "High" | "Medium" | "Low"
 }
 
-// Citrus/Fruity focused price actions for storyline
+// Category D focused price actions for storyline
 const citrusFruityPriceActions: PriceActionItem[] = [
   { id: "brand-d-330", sku: "Brand D 330ml", currentPrice: 1.10, suggestedPrice: 1.25, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.25, confidence: "High" },
   { id: "brand-d-500", sku: "Brand D 500ml", currentPrice: 1.48, suggestedPrice: 1.59, minPrice: 1.40, maxPrice: 1.70, elasticity: -0.35, confidence: "High" },

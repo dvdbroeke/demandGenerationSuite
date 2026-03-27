@@ -35,12 +35,12 @@ const packSizeOptions = [
 
 // Categories
 const categories = [
-  { id: "cola-regular", label: "Cola Regular" },
-  { id: "cola-diet", label: "Cola Diet" },
-  { id: "cola-zero", label: "Cola Zero" },
-  { id: "citrus-fruity", label: "Citrus/Fruity" },
-  { id: "citrus-zero", label: "Citrus Zero" },
-  { id: "bold", label: "Bold Flavors" },
+  { id: "cola-regular", label: "Category A" },
+  { id: "cola-diet", label: "Category B" },
+  { id: "cola-zero", label: "Category C" },
+  { id: "citrus-fruity", label: "Category D" },
+  { id: "citrus-zero", label: "Category E" },
+  { id: "bold", label: "Category F" },
 ]
 
 // Portfolio Brand data with yearly pricing
@@ -415,7 +415,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
                   <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30 text-[9px]">High Confidence</Badge>
                 </div>
                 <p className="text-xs text-amber-400/90 mb-2">
-                  Citrus/Fruity category (Brand D, Brand C) is underpriced vs. competitors by 8-12%. 
+                  Category D (Brand D, Brand C) is underpriced vs. competitors by 8-12%. 
                   Price index at 94-96 vs. competitor average of 105-110. Opportunity to increase margin without volume loss.
                 </p>
                 <button 

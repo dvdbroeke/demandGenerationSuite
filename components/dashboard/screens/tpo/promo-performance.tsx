@@ -18,12 +18,12 @@ interface PromoPerformanceProps {
 // Categories matching pricing-performance
 const categories = [
   { id: "all", label: "All Categories" },
-  { id: "cola-regular", label: "Cola - Regular Calorie" },
-  { id: "cola-diet", label: "Cola - Diet" },
-  { id: "cola-zero", label: "Cola - Zero" },
-  { id: "citrus-fruity", label: "Citrus/Fruity" },
-  { id: "citrus-zero", label: "Citrus/Fruity - No Calorie" },
-  { id: "bold", label: "Bold" },
+  { id: "cola-regular", label: "Category A" },
+  { id: "cola-diet", label: "Category B" },
+  { id: "cola-zero", label: "Category C" },
+  { id: "citrus-fruity", label: "Category D" },
+  { id: "citrus-zero", label: "Category E" },
+  { id: "bold", label: "Category F" },
 ]
 
 // Pack sizes
@@ -219,7 +219,7 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
     // STORYLINE KEY INSIGHT: Brand B ROI declining
     insights.push({ 
       type: "negative", 
-      text: "Cola - Diet category showing severe ROI decline: Brand B ROI dropped from 1.20x to 0.92x (-0.28x) over the last 3 months. 72 of 142 promos underperforming.",
+      text: "Category B showing severe ROI decline: Brand B ROI dropped from 1.20x to 0.92x (-0.28x) over the last 3 months. 72 of 142 promos underperforming.",
       highlight: true
     })
     
