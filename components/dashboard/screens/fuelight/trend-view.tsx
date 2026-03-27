@@ -244,7 +244,7 @@ const driverTrends: DriverTrend[] = [
 
 const allDriverIds = driverTrends.map(d => d.id)
 
-export function FuelightTrendView({
+export function ArtemisTrendView({
   brand,
   initialDriver = "meta",
   onBack,

@@ -32,7 +32,7 @@ interface OptimizationScenarioProps {
 type ResultTab = "summary" | "waterfall" | "comparison" | "trend" | "details"
 type InvestmentArea = "consumer-paid" | "all-areas"
 
-export function FuelightOptimizationScenario({ 
+export function ArtemisOptimizationScenario({ 
   brand, 
   dateRange, 
   fundingAmount,
@@ -93,7 +93,7 @@ export function FuelightOptimizationScenario({
   ]
 
   // Waterfall data - different for each investment area
-  // Labels change based on whether this is an RGM import or native Fuelight optimization
+  // Labels change based on whether this is an RGM import or native Artemis optimization
   const waterfallDataConsumerPaid = [
     { label: isRGMImport ? "Previous\nOptimization" : "Pre-\nOptimization", value: 78.7, type: "start" },
     { label: "Digital Media", value: 3.2, type: "increase" },

@@ -18,7 +18,7 @@ import { ArrowLeft, ChevronRight, AlertCircle } from "lucide-react"
 interface SkuHeatmapProps {
   onBack: () => void
   onNavigate?: (screen: string) => void
-  onNavigateToFuelight?: () => void
+  onNavigateToArtemis?: () => void
   onNavigateToInitiative?: () => void
 }
 
@@ -99,7 +99,7 @@ const getOverlapColor = (value: number | null): string => {
   return "bg-teal-900/50"
 }
 
-export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToFuelight, onNavigateToInitiative }: SkuHeatmapProps) {
+export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToArtemis, onNavigateToInitiative }: SkuHeatmapProps) {
   const [selectedMarket, setSelectedMarket] = useState("gb")
   const [selectedYear, setSelectedYear] = useState("2025")
   const [showBrandA, setShowBrandA] = useState(true)
@@ -365,11 +365,11 @@ export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToFuelight, onNavi
         </Card>
       )}
 
-      {/* Navigation to Fuelight */}
-      {onNavigateToFuelight && showBrandA && (
+      {/* Navigation to Artemis */}
+      {onNavigateToArtemis && showBrandA && (
         <Card className="bg-emerald-500/5 border-emerald-500/20">
           <CardContent className="p-4">
-            <button onClick={onNavigateToFuelight} className="w-full p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/50 transition-all flex items-center justify-between group">
+            <button onClick={onNavigateToArtemis} className="w-full p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/50 transition-all flex items-center justify-between group">
               <div className="flex items-center gap-3">
                 <div className="text-left">
                   <span className="text-sm font-medium text-emerald-300">View Brand A Performance in Artemis</span>

@@ -63,7 +63,7 @@ const categoryColors = {
   activation: "bg-emerald-500",
 }
 
-export function FuelightWaterfallAnalysis({ brand, onBack, onDrillDown, onNavigateToSummary, onNavigateToOptimizer, onNavigateToEdit, onNavigateToComparison, onNavigateToTrend, onNavigateToRGMPricing, onNavigateToRGMPromotion }: WaterfallAnalysisProps) {
+export function ArtemisWaterfallAnalysis({ brand, onBack, onDrillDown, onNavigateToSummary, onNavigateToOptimizer, onNavigateToEdit, onNavigateToComparison, onNavigateToTrend, onNavigateToRGMPricing, onNavigateToRGMPromotion }: WaterfallAnalysisProps) {
   const [hoveredBar, setHoveredBar] = useState<string | null>(null)
 
   // Calculate cumulative positions for waterfall

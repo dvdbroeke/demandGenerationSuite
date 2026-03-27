@@ -32,7 +32,7 @@ const strategicPlays: StrategicPlay[] = [
     name: "Zero Sugar Leadership",
     lever: "portfolio",
     description: "Accelerate portfolio shift to zero-sugar variants across all sparkling brands, with reformulation roadmap and marketing investment reallocation",
-    applicablePartitions: ["Cola Zero", "Fanta Zero", "Sprite Zero"],
+    applicablePartitions: ["Brand B Zero", "Brand C Zero", "Brand D Zero"],
     businessModel: "Premium pricing with category expansion focus",
     capabilityImplications: [
       "Sweetener R&D capability expansion",
@@ -47,7 +47,7 @@ const strategicPlays: StrategicPlay[] = [
     name: "Energy Convenience Domination",
     lever: "execution",
     description: "Win the impulse occasion through superior in-store visibility, cold availability, and checkout placement in convenience and petrol channels",
-    applicablePartitions: ["Fuel & Uplift", "Monster Energy"],
+    applicablePartitions: ["Fuel & Uplift", "Energy Drinks"],
     businessModel: "High-margin impulse with trade investment ROI focus",
     capabilityImplications: [
       "Cooler fleet expansion and maintenance",
@@ -91,8 +91,8 @@ const strategicPlays: StrategicPlay[] = [
     id: "5",
     name: "Coffee Ecosystem Build",
     lever: "capability",
-    description: "Integrate Costa assets into Coca-Cola System with RTD focus, leveraging retail presence for brand building and supply chain for RTD distribution",
-    applicablePartitions: ["Coffee RTD", "Costa"],
+    description: "Integrate coffee assets into System with RTD focus, leveraging retail presence for brand building and supply chain for RTD distribution",
+    applicablePartitions: ["Coffee RTD", "Coffee Retail"],
     businessModel: "Cross-subsidized ecosystem; retail funds RTD expansion",
     capabilityImplications: [
       "Cold chain for coffee RTD",

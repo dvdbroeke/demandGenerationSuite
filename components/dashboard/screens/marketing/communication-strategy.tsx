@@ -72,12 +72,12 @@ const messagingHierarchy = [
   {
     level: "Master Brand",
     message: "Real Magic",
-    description: "Umbrella message connecting all Coca-Cola brands",
+    description: "Umbrella message connecting all portfolio brands",
   },
   {
     level: "Product Truth",
     message: "Great Taste, Zero Sugar",
-    description: "Functional benefit for Coca-Cola Zero Sugar",
+    description: "Functional benefit for Brand B",
   },
   {
     level: "Emotional Benefit",

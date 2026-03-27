@@ -58,7 +58,7 @@ interface Constraint {
   value: string
 }
 
-export function FuelightOptimizerConfig({ 
+export function ArtemisOptimizerConfig({ 
   onNavigateToView,
   onNavigateToEdit,
   onRunOptimization,

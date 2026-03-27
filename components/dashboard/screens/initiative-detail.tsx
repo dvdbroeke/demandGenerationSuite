@@ -78,9 +78,9 @@ export function InitiativeDetailScreen({ onBack }: InitiativeDetailProps) {
               </div>
               <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">In Execution</Badge>
             </div>
-            <h1 className="text-2xl font-bold text-zinc-100">Improve Perceived Affordability of Coca-Cola Zero Pet 2L</h1>
+            <h1 className="text-2xl font-bold text-zinc-100">Improve Perceived Affordability of Brand B 2L</h1>
             <p className="text-sm text-zinc-500 mt-2">
-              Strategic initiative to close the affordability perception gap versus Pepsi Max in the 2L format
+              Strategic initiative to close the affordability perception gap versus Competitor B in the 2L format
             </p>
           </div>
           <Button variant="outline" className="bg-transparent border-zinc-700 text-zinc-300 hover:bg-zinc-800">

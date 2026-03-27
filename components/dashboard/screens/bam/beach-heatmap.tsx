@@ -17,7 +17,7 @@ import { AlertTriangle, ArrowLeft, ArrowRight, ChevronRight, Zap } from "lucide-
 
 interface BeachHeatmapProps {
   onBack: () => void
-  onNavigateToFuelight: () => void
+  onNavigateToArtemis: () => void
 }
 
 const markets = [
@@ -97,7 +97,7 @@ const getColaBrandColor = (value: number): string => {
   return "bg-teal-800"
 }
 
-export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapProps) {
+export function BAMBeachHeatmap({ onBack, onNavigateToArtemis }: BeachHeatmapProps) {
   const [selectedMarket, setSelectedMarket] = useState("gb")
   const [selectedYear, setSelectedYear] = useState("2025")
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("all")
@@ -163,7 +163,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
         <CardContent className="p-6">
           {/* Action CTA at top */}
           <button
-            onClick={onNavigateToFuelight}
+            onClick={onNavigateToArtemis}
             className="w-full mb-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/50 transition-all flex items-center justify-between group"
           >
             <div className="flex items-center gap-3">

@@ -16,7 +16,7 @@ import { allSkuNames } from "../shared-sku-data"
 interface SimulateForecastProps {
   onNavigate?: (screen: PPAScreen) => void
   onLaunchInitiative?: () => void
-  onNavigateToFuelight?: () => void
+  onNavigateToArtemis?: () => void
   onNavigateToAssortmentMix?: () => void
   onNavigateToPromotion?: () => void
 }
@@ -133,7 +133,7 @@ const dcrEntities = [
   { id: "region-4", name: "Regional Partner Africa", region: "Africa" },
 ]
 
-export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToFuelight, onNavigateToAssortmentMix, onNavigateToPromotion }: SimulateForecastProps) {
+export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToArtemis, onNavigateToAssortmentMix, onNavigateToPromotion }: SimulateForecastProps) {
   const [scenario, setScenario] = useState("price-increase")
   const [selectedSkus, setSelectedSkus] = useState<string[]>(["Brand D 330ml", "Brand D 500ml", "Brand C 330ml", "Brand C 500ml"])
   const [channel, setChannel] = useState("All Channels")
@@ -147,9 +147,9 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
   const [dcrAuthStep, setDcrAuthStep] = useState<"select" | "auth" | "loading" | "success">("select")
   const [dcrPassword, setDcrPassword] = useState("")
   
-  // Fuelight Import Modal state
-  const [showFuelightImportModal, setShowFuelightImportModal] = useState(false)
-  const [fuelightImportStep, setFuelightImportStep] = useState<"review" | "add-another">("review")
+  // Artemis Import Modal state
+  const [showArtemisImportModal, setShowArtemisImportModal] = useState(false)
+  const [fuelightImportStep, setArtemisImportStep] = useState<"review" | "add-another">("review")
   
   // Use Citrus/Fruity actions for the storyline
   const activeActions = citrusFruityPriceActions
@@ -201,9 +201,9 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
     return diff > 0 ? `+\u20ac${diff.toFixed(2)}` : `-\u20ac${Math.abs(diff).toFixed(2)}`
   }
 
-  const handleImportToFuelight = () => {
-    setShowFuelightImportModal(true)
-    setFuelightImportStep("review")
+  const handleImportToArtemis = () => {
+    setShowArtemisImportModal(true)
+    setArtemisImportStep("review")
   }
 
   return (
@@ -423,13 +423,13 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   </div>
                 </div>
                 
-                {/* Import to Fuelight button */}
+                {/* Import to Artemis button */}
                 <Button 
-                  onClick={handleImportToFuelight}
+                  onClick={handleImportToArtemis}
                   className="w-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 hover:border-amber-500/50"
                 >
                   <Upload className="h-4 w-4 mr-2" />
-                  Import Simulation into Fuelight
+                  Import Simulation into Artemis
                   <Sparkles className="h-3 w-3 ml-2 text-amber-400" />
                 </Button>
                 
@@ -636,16 +636,16 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
         </div>
       )}
 
-      {/* Fuelight Import Modal */}
-      {showFuelightImportModal && (
+      {/* Artemis Import Modal */}
+      {showArtemisImportModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
           <div className="w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl">
             <div className="flex items-center justify-between p-4 border-b border-zinc-800">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-amber-400" />
-                <h3 className="text-sm font-semibold text-zinc-100">Import to Fuelight</h3>
+                <h3 className="text-sm font-semibold text-zinc-100">Import to Artemis</h3>
               </div>
-              <button onClick={() => setShowFuelightImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
+              <button onClick={() => setShowArtemisImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -653,7 +653,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
             <div className="p-5">
               {fuelightImportStep === "review" && (
                 <div className="space-y-4">
-                  <p className="text-xs text-zinc-400">Import your pricing simulation into Fuelight for comprehensive optimization across all investment areas.</p>
+                  <p className="text-xs text-zinc-400">Import your pricing simulation into Artemis for comprehensive optimization across all investment areas.</p>
                   
                   {/* Simulation Summary */}
                   <div className="space-y-3">
@@ -670,7 +670,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToAssortmentMix?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 border-dashed hover:border-zinc-600 transition-colors text-left"
@@ -686,7 +686,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToPromotion?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 border-dashed hover:border-zinc-600 transition-colors text-left"
@@ -704,7 +704,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   <div className="flex gap-3 pt-2">
                     <Button 
                       variant="outline" 
-                      onClick={() => setFuelightImportStep("add-another")}
+                      onClick={() => setArtemisImportStep("add-another")}
                       className="flex-1 border-zinc-700 text-zinc-300"
                     >
                       <Plus className="h-4 w-4 mr-2" />
@@ -712,12 +712,12 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     </Button>
                     <Button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
-                        onNavigateToFuelight?.()
+                        setShowArtemisImportModal(false)
+                        onNavigateToArtemis?.()
                       }}
                       className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
                     >
-                      Continue to Fuelight
+                      Continue to Artemis
                       <ChevronRight className="h-4 w-4 ml-2" />
                     </Button>
                   </div>
@@ -726,12 +726,12 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
               
               {fuelightImportStep === "add-another" && (
                 <div className="space-y-4">
-                  <p className="text-xs text-zinc-400">Select another investment area to add to your Fuelight scenario:</p>
+                  <p className="text-xs text-zinc-400">Select another investment area to add to your Artemis scenario:</p>
                   
                   <div className="space-y-2">
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToAssortmentMix?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left"
@@ -747,7 +747,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToPromotion?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left"
@@ -775,19 +775,19 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   <div className="flex gap-3 pt-2">
                     <Button 
                       variant="outline" 
-                      onClick={() => setFuelightImportStep("review")}
+                      onClick={() => setArtemisImportStep("review")}
                       className="flex-1 border-zinc-700 text-zinc-300"
                     >
                       Back
                     </Button>
                     <Button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
-                        onNavigateToFuelight?.()
+                        setShowArtemisImportModal(false)
+                        onNavigateToArtemis?.()
                       }}
                       className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
                     >
-                      Continue to Fuelight
+                      Continue to Artemis
                       <ChevronRight className="h-4 w-4 ml-2" />
                     </Button>
                   </div>

@@ -15,7 +15,7 @@ import { allSkuNames, retailerOptions as sharedRetailers } from "../shared-sku-d
 interface SimulateForecastProps {
   onNavigate?: (screen: MixScreen) => void
   onLaunchInitiative?: () => void
-  onNavigateToFuelight?: () => void
+  onNavigateToArtemis?: () => void
   onNavigateToPromotion?: () => void
 }
 
@@ -142,7 +142,7 @@ const otherImpacts: ImpactItem[] = [
 
 const existingInitiatives = ["Mix Upgrade Programme Q3 2026", "Promo Discipline Wave 2"]
 
-export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToFuelight, onNavigateToPromotion }: SimulateForecastProps) {
+export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToArtemis, onNavigateToPromotion }: SimulateForecastProps) {
   const [scenario, setScenario] = useState("mix-shift")
   const [selectedSkus, setSelectedSkus] = useState<string[]>(storylinePreselectedSkus)
   const [channel, setChannel] = useState("Convenience")
@@ -151,9 +151,9 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
   const [hasRun, setHasRun] = useState(false) // Results only appear after clicking "Run Simulation"
   const [showInitPanel, setShowInitPanel] = useState(false)
   
-  // Fuelight Import Modal state
-  const [showFuelightImportModal, setShowFuelightImportModal] = useState(false)
-  const [fuelightImportStep, setFuelightImportStep] = useState<"review" | "add-another">("review")
+  // Artemis Import Modal state
+  const [showArtemisImportModal, setShowArtemisImportModal] = useState(false)
+  const [fuelightImportStep, setArtemisImportStep] = useState<"review" | "add-another">("review")
   
   // Adjustable action values
   const [actionValues, setActionValues] = useState<Record<string, number>>(() => {
@@ -364,13 +364,13 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   </div>
                 </div>
                 
-                {/* Import to Fuelight button */}
+                {/* Import to Artemis button */}
                 <Button 
-                  onClick={() => setShowFuelightImportModal(true)}
+                  onClick={() => setShowArtemisImportModal(true)}
                   className="w-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 hover:border-amber-500/50"
                 >
                   <Upload className="h-4 w-4 mr-2" />
-                  Import Simulation into Fuelight
+                  Import Simulation into Artemis
                   <Sparkles className="h-3 w-3 ml-2 text-amber-400" />
                 </Button>
                 
@@ -389,16 +389,16 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
         </div>
       )}
 
-      {/* Fuelight Import Modal */}
-      {showFuelightImportModal && (
+      {/* Artemis Import Modal */}
+      {showArtemisImportModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
           <div className="w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl">
             <div className="flex items-center justify-between p-4 border-b border-zinc-800">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-amber-400" />
-                <h3 className="text-sm font-semibold text-zinc-100">Import to Fuelight</h3>
+                <h3 className="text-sm font-semibold text-zinc-100">Import to Artemis</h3>
               </div>
-              <button onClick={() => setShowFuelightImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
+              <button onClick={() => setShowArtemisImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -406,7 +406,7 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
             <div className="p-5">
               {fuelightImportStep === "review" && (
                 <div className="space-y-4">
-                  <p className="text-xs text-zinc-400">Import your simulations into Fuelight for comprehensive optimization across all investment areas.</p>
+                  <p className="text-xs text-zinc-400">Import your simulations into Artemis for comprehensive optimization across all investment areas.</p>
                   
                   {/* Simulation Summary - Shows both Pricing AND Assortment */}
                   <div className="space-y-3">
@@ -436,7 +436,7 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     
                     {/* Promotion - not configured yet */}
                     <button 
-                      onClick={() => setFuelightImportStep("add-another")}
+                      onClick={() => setArtemisImportStep("add-another")}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 border-dashed hover:border-zinc-600 transition-colors text-left"
                     >
                       <div className="flex items-center justify-between">
@@ -452,7 +452,7 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   <div className="flex gap-3 pt-2">
                     <Button 
                       variant="outline" 
-                      onClick={() => setFuelightImportStep("add-another")}
+                      onClick={() => setArtemisImportStep("add-another")}
                       className="flex-1 border-zinc-700 text-zinc-300"
                     >
                       <Plus className="h-4 w-4 mr-2" />
@@ -460,12 +460,12 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     </Button>
                     <Button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
-                        onNavigateToFuelight?.()
+                        setShowArtemisImportModal(false)
+                        onNavigateToArtemis?.()
                       }}
                       className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
                     >
-                      Continue to Fuelight
+                      Continue to Artemis
                       <ChevronRight className="h-4 w-4 ml-2" />
                     </Button>
                   </div>
@@ -474,12 +474,12 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
               
               {fuelightImportStep === "add-another" && (
                 <div className="space-y-4">
-                  <p className="text-xs text-zinc-400">Select another investment area to add to your Fuelight scenario:</p>
+                  <p className="text-xs text-zinc-400">Select another investment area to add to your Artemis scenario:</p>
                   
                   <div className="space-y-2">
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToPromotion?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left"
@@ -513,19 +513,19 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   <div className="flex gap-3 pt-2">
                     <Button 
                       variant="outline" 
-                      onClick={() => setFuelightImportStep("review")}
+                      onClick={() => setArtemisImportStep("review")}
                       className="flex-1 border-zinc-700 text-zinc-300"
                     >
                       Back
                     </Button>
                     <Button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
-                        onNavigateToFuelight?.()
+                        setShowArtemisImportModal(false)
+                        onNavigateToArtemis?.()
                       }}
                       className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
                     >
-                      Continue to Fuelight
+                      Continue to Artemis
                       <ChevronRight className="h-4 w-4 ml-2" />
                     </Button>
                   </div>

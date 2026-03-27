@@ -19,7 +19,7 @@ interface BrandStrategyProps {
 
 const brands = [
   {
-    name: "Coca-Cola Classic",
+    name: "Brand A",
     positioning: "The original taste that brings people together",
     targetAudience: "Mass market, 25-54, shared moments seekers",
     values: ["Authenticity", "Happiness", "Togetherness", "Refreshment"],
@@ -27,24 +27,24 @@ const brands = [
     color: "red",
   },
   {
-    name: "Coca-Cola Zero Sugar",
-    positioning: "Great Coca-Cola taste, zero sugar, zero compromise",
+    name: "Brand B",
+    positioning: "Great taste, zero sugar, zero compromise",
     targetAudience: "Health-conscious adults 18-34, Gen Z & Millennials",
     values: ["Bold", "Confident", "Modern", "Guilt-free enjoyment"],
-    keyMessage: "Best Coke Ever?",
+    keyMessage: "Best Choice Ever?",
     color: "red",
   },
   {
-    name: "Fanta",
+    name: "Brand C",
     positioning: "Playful, fruity fun for the young at heart",
     targetAudience: "Teens and young adults 13-24, fun seekers",
     values: ["Playfulness", "Color", "Energy", "Self-expression"],
-    keyMessage: "More Fanta, Less Serious",
+    keyMessage: "More Fun, Less Serious",
     color: "amber",
   },
   {
-    name: "Sprite",
-    positioning: "Cut through the BS with crisp, clean refreshment",
+    name: "Brand D",
+    positioning: "Cut through the noise with crisp, clean refreshment",
     targetAudience: "Urban youth 16-30, culture creators",
     values: ["Authenticity", "Freshness", "Street culture", "Boldness"],
     keyMessage: "Obey Your Thirst",
@@ -57,7 +57,7 @@ const strategicPriorities = [
     title: "Shift to Digital-First",
     description: "Reallocate 40% of media spend to social and digital channels by 2027",
     status: "in-progress",
-    initiatives: ["TikTok Campaign for Coke Zero", "Meta Brand Lift Study"],
+    initiatives: ["TikTok Campaign for Brand B", "Meta Brand Lift Study"],
   },
   {
     title: "Affordability Perception",

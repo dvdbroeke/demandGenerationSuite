@@ -144,7 +144,7 @@ function getAncestors(node: DriverNode, targetId: string, path: DriverNode[] = [
   return null
 }
 
-export function FuelightComparisonView({
+export function ArtemisComparisonView({
   brand,
   onBack,
   onNavigateToSummary,

@@ -111,7 +111,7 @@ const treeData: TreeNode = {
               children: [
                 {
                   name: "Traditional Energy",
-                  description: "Red Bull, Monster style",
+                  description: "Traditional energy drinks style",
                   value: "€1.2B",
                   growth: "+14.8%",
                   color: "bg-emerald-400",

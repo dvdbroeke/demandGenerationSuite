@@ -63,7 +63,7 @@ const getOverlapColor = (value: number, overlap: string, highlighted?: boolean) 
   return "bg-zinc-700"
 }
 
-export function FuelightPartitionsMatrix({ onBack, onSelectBrand }: PartitionsMatrixProps) {
+export function ArtemisPartitionsMatrix({ onBack, onSelectBrand }: PartitionsMatrixProps) {
   const [hoveredCell, setHoveredCell] = useState<string | null>(null)
 
   return (

@@ -106,7 +106,7 @@ function formatCurrency(value: number, currency: string): string {
   return `${symbol}${converted.toFixed(0)}M`
 }
 
-export function FuelightPerformanceDashboard({ onNavigateToWaterfall, onNavigateToPartitions, onNavigateToOptimizer, onNavigateToComparison, onNavigateToTrend, onNavigateToEdit }: PerformanceDashboardProps) {
+export function ArtemisPerformanceDashboard({ onNavigateToWaterfall, onNavigateToPartitions, onNavigateToOptimizer, onNavigateToComparison, onNavigateToTrend, onNavigateToEdit }: PerformanceDashboardProps) {
   const [selectedPeriod, setSelectedPeriod] = useState("dec-2024")
   const [selectedFunding, setSelectedFunding] = useState("system")
   const [selectedCurrency, setSelectedCurrency] = useState("EUR")

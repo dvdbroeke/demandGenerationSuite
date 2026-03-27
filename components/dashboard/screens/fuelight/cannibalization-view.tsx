@@ -91,7 +91,7 @@ const fanBaseMatrix = fanBaseData.rows.map((row) => ({
   }))
 }));
 
-export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, onLaunchInitiative, onNavigateToRGMPromotion }: CannibalizationViewProps) {
+export function ArtemisCannibalizationView({ onBack, onNavigateToOpportunity, onLaunchInitiative, onNavigateToRGMPromotion }: CannibalizationViewProps) {
   return (
     <div className="p-8 space-y-6">
       {/* Header */}

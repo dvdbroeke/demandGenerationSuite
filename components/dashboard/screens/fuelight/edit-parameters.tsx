@@ -44,7 +44,7 @@ const initialPlatformData = [
   { name: "X (Twitter)", values: [null, null, null, null, null, null, null, null] },
 ]
 
-export function FuelightEditParameters({ onNavigateToView, onNavigateToOptimize }: EditParametersProps) {
+export function ArtemisEditParameters({ onNavigateToView, onNavigateToOptimize }: EditParametersProps) {
   const [platformData, setPlatformData] = useState(initialPlatformData)
   const [editingCell, setEditingCell] = useState<{ row: number; col: number } | null>(null)
   const [hasChanges, setHasChanges] = useState(false)

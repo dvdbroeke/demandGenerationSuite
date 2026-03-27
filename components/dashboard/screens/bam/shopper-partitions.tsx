@@ -16,7 +16,7 @@ import { ArrowLeft, ChevronRight, AlertCircle, AlertTriangle, Zap } from "lucide
 interface ShopperPartitionsProps {
   onBack: () => void
   onNavigate?: (screen: string) => void
-  onNavigateToFuelight?: () => void
+  onNavigateToArtemis?: () => void
   onNavigateToInitiative?: () => void
 }
 
@@ -186,7 +186,7 @@ const getColaBrandColor = (value: number): string => {
   return "bg-teal-800"
 }
 
-export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight, onNavigateToInitiative }: ShopperPartitionsProps) {
+export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToArtemis, onNavigateToInitiative }: ShopperPartitionsProps) {
   const [selectedMarket, setSelectedMarket] = useState("gb")
   const [selectedYear, setSelectedYear] = useState("2025")
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("all")
@@ -247,11 +247,11 @@ export function BAMShopperPartitions({ onBack, onNavigate, onNavigateToFuelight,
         <button onClick={() => onNavigate?.("key-insights")} className="px-6 py-3 text-sm font-medium text-zinc-500 hover:text-zinc-300">AI-Driven Insights</button>
       </div>
 
-      {/* Fuelight Call-out - At the top */}
-      {onNavigateToFuelight && (
+      {/* Artemis Call-out - At the top */}
+      {onNavigateToArtemis && (
         <Card className="bg-emerald-500/5 border-emerald-500/20">
           <CardContent className="p-4">
-            <button onClick={onNavigateToFuelight} className="w-full p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/50 transition-all flex items-center justify-between group">
+            <button onClick={onNavigateToArtemis} className="w-full p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/50 transition-all flex items-center justify-between group">
               <div className="flex items-center gap-3">
                 <div className="text-left">
                   <span className="text-sm font-medium text-emerald-300">View Segment A2 Performance in Artemis</span>

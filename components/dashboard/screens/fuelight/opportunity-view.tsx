@@ -55,7 +55,7 @@ const getBarColor = (value: number | null, highlight?: boolean) => {
   return "bg-red-200"
 }
 
-export function FuelightOpportunityView({ onBack, onLaunchInitiative, onRunOptimizer }: OpportunityViewProps) {
+export function ArtemisOpportunityView({ onBack, onLaunchInitiative, onRunOptimizer }: OpportunityViewProps) {
   return (
     <div className="p-8 space-y-6">
       {/* Header */}
