@@ -1,8 +1,7 @@
 "use client"
 
-import Image from "next/image"
 import { cn } from "@/lib/utils"
-import { Hexagon } from "lucide-react"
+import { Hexagon, Target, Layers, DollarSign, PieChart, Network, Gauge } from "lucide-react"
 
 // Size utility for logo components
 type SizeKey = "sm" | "md" | "lg"
@@ -21,7 +20,7 @@ function resolveSize(size: SizeValue): number {
   return sizeMap[size] ?? 40
 }
 
-// Artemis logo (formerly Fuelight) - colorful connected nodes in a circle
+// Artemis logo (Resource Allocation) - network/connected nodes icon
 export function ArtemisLogo({
   size = 40,
   className,
@@ -31,26 +30,23 @@ export function ArtemisLogo({
 }) {
   const resolvedSize = resolveSize(size)
   return (
-    <Image
-      src="/fuelight_transparant.png"
-      alt="Artemis"
-      width={resolvedSize}
-      height={resolvedSize}
-      style={{ width: resolvedSize, height: 'auto' }}
-      className={cn(
-        "object-contain scale-[0.9]",
-        className
-      )}
-      priority
-    />
+    <div 
+      className={cn("flex items-center justify-center rounded-lg bg-emerald-500/20", className)}
+      style={{ width: resolvedSize, height: resolvedSize }}
+    >
+      <Network 
+        className="text-emerald-400" 
+        style={{ width: resolvedSize * 0.6, height: resolvedSize * 0.6 }}
+        strokeWidth={2}
+      />
+    </div>
   )
 }
 
 // Legacy alias for backward compatibility
 export const FuelightLogo = ArtemisLogo
 
-// BAM logo - waterfall bars style (amber/orange tones)
-
+// BAM logo (Rules of Category & Partitions) - pie chart/segmentation icon
 export function BAMLogo({
   size = 40,
   className,
@@ -60,19 +56,20 @@ export function BAMLogo({
 }) {
   const resolvedSize = resolveSize(size)
   return (
-    <Image
-      src="/BAMLogo.png"
-      alt="BAM"
-      width={resolvedSize}
-      height={resolvedSize}
-      style={{ width: resolvedSize, height: 'auto' }}
-      className={cn("object-contain", className)}
-      priority
-    />
+    <div 
+      className={cn("flex items-center justify-center rounded-lg bg-amber-500/20", className)}
+      style={{ width: resolvedSize, height: resolvedSize }}
+    >
+      <PieChart 
+        className="text-amber-400" 
+        style={{ width: resolvedSize * 0.6, height: resolvedSize * 0.6 }}
+        strokeWidth={2}
+      />
+    </div>
   )
 }
 
-// Marketing Execution logo
+// RGM logo (Performance Management) - gauge/performance icon
 export function RGMLogo({
   size = 40,
   className,
@@ -82,21 +79,21 @@ export function RGMLogo({
 }) {
   const resolvedSize = resolveSize(size)
   return (
-    <Image
-      src="/RGMLogo.png"
-      alt="RGM"
-      width={resolvedSize}
-      height={resolvedSize}
-      style={{ width: resolvedSize, height: 'auto' }}
-      className={cn("object-contain", className)}
-      priority
-    />
+    <div 
+      className={cn("flex items-center justify-center rounded-lg bg-blue-500/20", className)}
+      style={{ width: resolvedSize, height: resolvedSize }}
+    >
+      <Gauge 
+        className="text-blue-400" 
+        style={{ width: resolvedSize * 0.6, height: resolvedSize * 0.6 }}
+        strokeWidth={2}
+      />
+    </div>
   )
 }
 
-// Commercial Execution logo
-
-export function CommercialLogo({
+// Price logo - dollar sign icon
+export function PriceLogo({
   size = 40,
   className,
 }: {
@@ -105,20 +102,69 @@ export function CommercialLogo({
 }) {
   const resolvedSize = resolveSize(size)
   return (
-    <Image
-      src="/executionLogo.png"
-      alt="Execution"
-      width={resolvedSize}
-      height={resolvedSize}
-      style={{ width: resolvedSize, height: 'auto' }}
-      className={cn("object-contain", className)}
-      priority
-    />
+    <div 
+      className={cn("flex items-center justify-center rounded-lg bg-emerald-500/20", className)}
+      style={{ width: resolvedSize, height: resolvedSize }}
+    >
+      <DollarSign 
+        className="text-emerald-400" 
+        style={{ width: resolvedSize * 0.6, height: resolvedSize * 0.6 }}
+        strokeWidth={2}
+      />
+    </div>
   )
 }
 
-// Company logo - Generic placeholder for client branding
+// Mix/Assortment logo - layers icon
+export function MixLogo({
+  size = 40,
+  className,
+}: {
+  size?: SizeValue
+  className?: string
+}) {
+  const resolvedSize = resolveSize(size)
+  return (
+    <div 
+      className={cn("flex items-center justify-center rounded-lg bg-emerald-500/20", className)}
+      style={{ width: resolvedSize, height: resolvedSize }}
+    >
+      <Layers 
+        className="text-emerald-400" 
+        style={{ width: resolvedSize * 0.6, height: resolvedSize * 0.6 }}
+        strokeWidth={2}
+      />
+    </div>
+  )
+}
 
+// Promotion/TPO logo - target icon
+export function PromoLogo({
+  size = 40,
+  className,
+}: {
+  size?: SizeValue
+  className?: string
+}) {
+  const resolvedSize = resolveSize(size)
+  return (
+    <div 
+      className={cn("flex items-center justify-center rounded-lg bg-amber-500/20", className)}
+      style={{ width: resolvedSize, height: resolvedSize }}
+    >
+      <Target 
+        className="text-amber-400" 
+        style={{ width: resolvedSize * 0.6, height: resolvedSize * 0.6 }}
+        strokeWidth={2}
+      />
+    </div>
+  )
+}
+
+// Commercial Execution logo - alias to PromoLogo for backward compatibility
+export const CommercialLogo = PromoLogo
+
+// Company logo - Generic placeholder for client branding
 export function CompanyLogo({
   size = 120,
   className,

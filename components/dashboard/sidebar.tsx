@@ -8,7 +8,7 @@ import {
   Home,
   Lock,
 } from "lucide-react"
-import { ArtemisLogo, BAMLogo, RGMLogo, CommercialLogo, CompanyLogo } from "@/components/ui/platform-logos"
+import { ArtemisLogo, BAMLogo, RGMLogo, PriceLogo, MixLogo, PromoLogo, CompanyLogo } from "@/components/ui/platform-logos"
 
 export type Platform = "bam" | "fuelight" | "prescriptive" | "commercial" | "initiatives" | "tpo" | "ppa" | "mix"
 
@@ -50,22 +50,22 @@ const rgmPlatforms = [
   {
     id: "ppa" as Platform,
     name: "Price",
-    Logo: RGMLogo,
+    Logo: PriceLogo,
     color: "green",
     available: true,
   },
   {
     id: "mix" as Platform,
     name: "Assortment & Mix",
-    Logo: RGMLogo,
+    Logo: MixLogo,
     color: "green",
     available: true,
   },
   {
     id: "tpo" as Platform,
     name: "Promotion",
-    Logo: CommercialLogo,
-    color: "green",
+    Logo: PromoLogo,
+    color: "amber",
     available: true,
   },
 ]
