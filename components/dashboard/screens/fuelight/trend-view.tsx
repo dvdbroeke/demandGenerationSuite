@@ -19,7 +19,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, ChevronDown, Settings, Zap, ChevronRight, Eye, Pencil } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { FuelightLogo } from "@/components/ui/platform-logos"
+import { ArtemisLogo } from "@/components/ui/platform-logos"
 
 interface TrendViewProps {
   brand: string
@@ -307,7 +307,7 @@ export function FuelightTrendView({
           <div className="h-6 w-px bg-zinc-800" />
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-zinc-800/50 flex items-center justify-center">
-              <FuelightLogo size="md" />
+              <ArtemisLogo size="md" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-zinc-100">{brand}</h1>
@@ -346,7 +346,7 @@ export function FuelightTrendView({
               <SelectItem value="tccc" className="text-zinc-100 text-xs">TCCC Funding</SelectItem>
             </SelectContent>
           </Select>
-          <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/30 text-emerald-400 px-3 py-1">Coca-Cola Zero</Badge>
+          <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/30 text-emerald-400 px-3 py-1">Product A Zero</Badge>
           <div className="flex items-center gap-1 ml-2">
             <button onClick={() => onNavigateToSummary?.()} className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors">
               <Eye className="h-4 w-4" /> View

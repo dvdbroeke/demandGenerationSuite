@@ -13,7 +13,7 @@ import {
   ChevronDown,
   X
 } from "lucide-react"
-import { FuelightLogo } from "@/components/ui/platform-logos"
+import { ArtemisLogo } from "@/components/ui/platform-logos"
 import { cn } from "@/lib/utils"
 
 interface OptimizationScenarioProps {
@@ -79,7 +79,7 @@ export function FuelightOptimizationScenario({
     inPeriodROI: { value: 1.6, change: 0 },
     longTermROI: { value: 2.6, change: 0 },
     brandPerformance: [
-      { brand: "Coca-Cola", sellOutVolume: 85, change: 8 }
+      { brand: "Brand A", sellOutVolume: 85, change: 8 }
     ]
   }
 
@@ -127,7 +127,7 @@ export function FuelightOptimizationScenario({
             <ChevronLeft className="h-5 w-5" />
           </button>
           <div className="w-10 h-10 rounded-lg bg-zinc-800/50 flex items-center justify-center">
-            <FuelightLogo size="md" />
+            <ArtemisLogo size="md" />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -185,7 +185,7 @@ export function FuelightOptimizationScenario({
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">EUR</Badge>
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">360</Badge>
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Dec 28, 2025 - Jul 4, 2026</Badge>
-        <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Coca-Cola</Badge>
+        <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Brand A</Badge>
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">TCCC Funding</Badge>
         <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/30 text-emerald-400 px-3 py-1">Maximize Sell-out Volume</Badge>
         <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Total Funding: EUR780,000,000</Badge>
@@ -312,7 +312,7 @@ export function FuelightOptimizationScenario({
               <CardContent className="p-4">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-zinc-100">Coca-Cola</span>
+                    <span className="font-medium text-zinc-100">Brand A</span>
                     <span className="text-sm text-zinc-500">Total (vs same period last year)</span>
                   </div>
                   <div className="flex items-center justify-between">

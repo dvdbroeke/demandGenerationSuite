@@ -40,27 +40,27 @@ const markets = [
 
 const years = ["2025", "2024", "2023", "2022", "2021", "2020"]
 
-// Coca-Cola Zero SKU data
+// Brand A Zero SKU data
 const cokeSkuLabels = [
-  "Coca Cola Zero Pet 1.5Lt",
-  "Coca Cola Zero Pet 1.25Lt",
-  "Coca Cola Zero+Cherry Pb 1.25L",
-  "Coca Cola Zero Pet 1.75Lt",
-  "Coca Cola Zero Pet 2Lt",
-  "Coca Cola Zero+Cherry Pet 2Lt",
+  "Brand A Zero Pet 1.5Lt",
+  "Brand A Zero Pet 1.25Lt",
+  "Brand A Zero+Cherry Pb 1.25L",
+  "Brand A Zero Pet 1.75Lt",
+  "Brand A Zero Pet 2Lt",
+  "Brand A Zero+Cherry Pet 2Lt",
 ]
 
-// Pepsi Max SKU data
+// Competitor B Max SKU data
 const pepsiSkuLabels = [
-  "Pepsi Max S/F Cherry Pt 1.5Lt",
-  "Pepsi Max S/F Pet 1.5Lt",
-  "Pepsi Max S/F Pet 1.25Lt",
-  "Pepsi Max S/F Cherry Pt 1.25Lt",
-  "Pepsi Max S/F Pet 2Lt",
-  "Pepsi Max S/F Cherry Pt 2Lt",
+  "Comp B Max S/F Cherry Pt 1.5Lt",
+  "Comp B Max S/F Pet 1.5Lt",
+  "Comp B Max S/F Pet 1.25Lt",
+  "Comp B Max S/F Cherry Pt 1.25Lt",
+  "Comp B Max S/F Pet 2Lt",
+  "Comp B Max S/F Cherry Pt 2Lt",
 ]
 
-// Coca-Cola overlap data
+// Brand A overlap data
 const cokeOverlapData: (number | null)[][] = [
   [null, 13.9, 7.9, 16.2, 5.7, 6.5],
   [13.9, null, 9.2, 2.0, 6.7, 3.5],
@@ -70,7 +70,7 @@ const cokeOverlapData: (number | null)[][] = [
   [6.5, 3.5, 9.9, 4.3, 5.7, null],
 ]
 
-// Pepsi overlap data
+// Competitor B overlap data
 const pepsiOverlapData: (number | null)[][] = [
   [null, 8.1, 2.3, 4.8, 2.4, 2.9],
   [8.1, null, 36.0, 12.3, 2.7, 6.1],
@@ -80,7 +80,7 @@ const pepsiOverlapData: (number | null)[][] = [
   [2.9, 6.1, 2.0, 3.5, 7.9, null],
 ]
 
-// Cross-brand overlap data (Coke rows x Pepsi cols)
+// Cross-brand overlap data (Brand A rows x Comp B cols)
 const crossOverlapData: (number | null)[][] = [
   [2.5, 8.1, 2.3, 4.5, 2.7, 6.1],
   [2.3, 4.8, 5.5, 2.3, 2.2, 1.9],
@@ -102,23 +102,23 @@ const getOverlapColor = (value: number | null): string => {
 export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToFuelight, onNavigateToInitiative }: SkuHeatmapProps) {
   const [selectedMarket, setSelectedMarket] = useState("gb")
   const [selectedYear, setSelectedYear] = useState("2025")
-  const [showCoke, setShowCoke] = useState(true)
-  const [showPepsi, setShowPepsi] = useState(false)
+  const [showBrandA, setShowBrandA] = useState(true)
+  const [showCompB, setShowCompB] = useState(false)
 
   // Build combined matrix based on selection
   const buildMatrix = () => {
-    if (showCoke && showPepsi) {
-      // Combined matrix: Coke rows + Pepsi rows, Coke cols + Pepsi cols
+    if (showBrandA && showCompB) {
+      // Combined matrix: Brand A rows + Comp B rows, Brand A cols + Comp B cols
       const combinedRows = [...cokeSkuLabels, ...pepsiSkuLabels]
-      const combinedCols = [...cokeSkuLabels.map(l => l.replace("Coca Cola Zero", "CCZ").replace("+Cherry", "+Ch")), ...pepsiSkuLabels.map(l => l.replace("Pepsi Max S/F", "PM").replace("Cherry Pt", "Ch"))]
+      const combinedCols = [...cokeSkuLabels.map(l => l.replace("Brand A Zero", "BAZ").replace("+Cherry", "+Ch")), ...pepsiSkuLabels.map(l => l.replace("Comp B Max S/F", "CBM").replace("Cherry Pt", "Ch"))]
       
       const combinedData: (number | null)[][] = []
-      // Coke-Coke quadrant
+      // Brand A-Brand A quadrant
       for (let i = 0; i < 6; i++) {
         const row: (number | null)[] = [...cokeOverlapData[i], ...crossOverlapData[i]]
         combinedData.push(row)
       }
-      // Pepsi-Coke (transpose of cross) and Pepsi-Pepsi quadrant
+      // Comp B-Brand A (transpose of cross) and Comp B-Comp B quadrant
       for (let i = 0; i < 6; i++) {
         const row: (number | null)[] = []
         for (let j = 0; j < 6; j++) {
@@ -128,16 +128,16 @@ export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToFuelight, onNavi
         combinedData.push(row)
       }
       return { rows: combinedRows, cols: combinedCols, data: combinedData }
-    } else if (showCoke) {
+    } else if (showBrandA) {
       return { 
         rows: cokeSkuLabels, 
-        cols: cokeSkuLabels.map(l => l.replace("Coca Cola Zero", "CCZ").replace("+Cherry", "+Ch")),
+        cols: cokeSkuLabels.map(l => l.replace("Brand A Zero", "BAZ").replace("+Cherry", "+Ch")),
         data: cokeOverlapData 
       }
-    } else if (showPepsi) {
+    } else if (showCompB) {
       return { 
         rows: pepsiSkuLabels, 
-        cols: pepsiSkuLabels.map(l => l.replace("Pepsi Max S/F", "PM").replace("Cherry Pt", "Ch")),
+        cols: pepsiSkuLabels.map(l => l.replace("Comp B Max S/F", "CBM").replace("Cherry Pt", "Ch")),
         data: pepsiOverlapData 
       }
     }
@@ -146,13 +146,13 @@ export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToFuelight, onNavi
 
   const { rows, cols, data } = buildMatrix()
   
-  // Find the index of "Coca Cola Zero Pet 2Lt" for highlighting
-  const pet2LtIndex = rows.findIndex(r => r === "Coca Cola Zero Pet 2Lt")
+  // Find the index of "Brand A Zero Pet 2Lt" for highlighting
+  const pet2LtIndex = rows.findIndex(r => r === "Brand A Zero Pet 2Lt")
 
   const getTitle = () => {
-    if (showCoke && showPepsi) return "Coca-Cola Zero & Pepsi Max >1L"
-    if (showCoke) return "Coca-Cola Zero >1L"
-    if (showPepsi) return "Pepsi Max >1L"
+    if (showBrandA && showCompB) return "Brand A Zero & Competitor B Max >1L"
+    if (showBrandA) return "Brand A Zero >1L"
+    if (showCompB) return "Competitor B Max >1L"
     return "Select a brand"
   }
 
@@ -227,21 +227,21 @@ export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToFuelight, onNavi
           <span className="text-xs text-zinc-500">Show brands:</span>
           <div className="flex items-center gap-2">
             <Checkbox 
-              id="coke" 
-              checked={showCoke} 
-              onCheckedChange={(checked) => setShowCoke(checked === true)}
+              id="brandA" 
+              checked={showBrandA} 
+              onCheckedChange={(checked) => setShowBrandA(checked === true)}
               className="border-red-500 data-[state=checked]:bg-red-500"
             />
-            <label htmlFor="coke" className="text-sm text-zinc-300 cursor-pointer">Coca-Cola Zero</label>
+            <label htmlFor="brandA" className="text-sm text-zinc-300 cursor-pointer">Brand A Zero</label>
           </div>
           <div className="flex items-center gap-2">
             <Checkbox 
-              id="pepsi" 
-              checked={showPepsi} 
-              onCheckedChange={(checked) => setShowPepsi(checked === true)}
+              id="compB" 
+              checked={showCompB} 
+              onCheckedChange={(checked) => setShowCompB(checked === true)}
               className="border-blue-500 data-[state=checked]:bg-blue-500"
             />
-            <label htmlFor="pepsi" className="text-sm text-zinc-300 cursor-pointer">Pepsi Max</label>
+            <label htmlFor="compB" className="text-sm text-zinc-300 cursor-pointer">Competitor B Max</label>
           </div>
         </div>
       </div>
@@ -266,7 +266,7 @@ export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToFuelight, onNavi
                 </thead>
                 <tbody>
                   {rows.map((rowCat, rowIdx) => {
-                    const isPet2Lt = rowCat === "Coca Cola Zero Pet 2Lt"
+                    const isPet2Lt = rowCat === "Brand A Zero Pet 2Lt"
                     return (
                       <tr key={rowIdx}>
                         <td className={cn(
@@ -327,7 +327,7 @@ export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToFuelight, onNavi
       )}
 
       {/* Key Insights */}
-      {showCoke && (
+      {showBrandA && (
         <Card className="bg-amber-500/5 border-amber-500/20">
           <CardContent className="p-6">
             <h4 className="text-base font-semibold text-zinc-100 mb-4">Key Observations</h4>
@@ -366,13 +366,13 @@ export function BAMSkuHeatmap({ onBack, onNavigate, onNavigateToFuelight, onNavi
       )}
 
       {/* Navigation to Fuelight */}
-      {onNavigateToFuelight && showCoke && (
+      {onNavigateToFuelight && showBrandA && (
         <Card className="bg-emerald-500/5 border-emerald-500/20">
           <CardContent className="p-4">
             <button onClick={onNavigateToFuelight} className="w-full p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/50 transition-all flex items-center justify-between group">
               <div className="flex items-center gap-3">
                 <div className="text-left">
-                  <span className="text-sm font-medium text-emerald-300">View Coca-Cola Zero Performance in Fuelight</span>
+                  <span className="text-sm font-medium text-emerald-300">View Brand A Zero Performance in Artemis</span>
                   <p className="text-xs text-emerald-400/70">Analyze sales drivers and media effectiveness</p>
                 </div>
               </div>

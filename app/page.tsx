@@ -130,7 +130,7 @@ export default function StrategyControlTower() {
     ppaScreen: "pricing-performance",
     mixScreen: "market-opportunities",
     perfmgmtScreen: "system-scorecard",
-    selectedBrand: "Coca-Cola",
+    selectedBrand: "Brand A",
     initiativeCreated: false,
     isRGMImport: false,
   })
@@ -142,7 +142,7 @@ export default function StrategyControlTower() {
       ...prev,
       platform: "fuelight",
       fuelightScreen: "performance",
-      selectedBrand: "Coca-Cola Zero",
+      selectedBrand: "Brand A Zero",
     }))
   }
 

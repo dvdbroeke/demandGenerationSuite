@@ -13,7 +13,7 @@ import {
   Pencil
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { FuelightLogo } from "@/components/ui/platform-logos"
+import { ArtemisLogo } from "@/components/ui/platform-logos"
 
 interface WaterfallAnalysisProps {
   brand: string
@@ -110,7 +110,7 @@ export function FuelightWaterfallAnalysis({ brand, onBack, onDrillDown, onNaviga
           <div className="h-6 w-px bg-zinc-800" />
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-zinc-800/50 flex items-center justify-center">
-              <FuelightLogo size="md" />
+              <ArtemisLogo size="md" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-zinc-100">{brand}</h1>
@@ -339,7 +339,7 @@ export function FuelightWaterfallAnalysis({ brand, onBack, onDrillDown, onNaviga
                 <ChevronRight className="h-4 w-4 text-amber-400" />
               </div>
               <p className="text-xs text-amber-400/80">
-                Explore high-ROI channels to shift investment for Coke Zero
+                Explore high-ROI channels to shift investment for Product A Zero
               </p>
             </button>
           </div>

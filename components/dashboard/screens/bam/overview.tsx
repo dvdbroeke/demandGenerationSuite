@@ -99,13 +99,13 @@ export function BAMOverview({ onNavigate }: BAMOverviewProps) {
       type: "partition",
       impact: "High Impact",
       title: "Zero Cola Driving Growth",
-      description: "Zero Cola, Bold (incl. Cherry), and Energy driving 115% of volume growth. TCCC behind Pepsi Max in Zero segment."
+      description: "Zero Cola, Bold (incl. Cherry), and Energy driving 115% of volume growth. Brand A behind Competitor B Max in Zero segment."
     },
     {
       type: "brand",
       impact: "High Impact",
-      title: "Coke Zero Fan Base Gap",
-      description: "Coke Zero has inferior fan-base vs. Pepsi Max (4.8 vs 14.2 index). Diet Coke drinkers switching to Pmax rather than CZ."
+      title: "Brand A Zero Fan Base Gap",
+      description: "Brand A Zero has inferior fan-base vs. Competitor B Max (4.8 vs 14.2 index). Brand A Diet drinkers switching to Competitor B rather than Brand A Zero."
     },
     {
       type: "action",

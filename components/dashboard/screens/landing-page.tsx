@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Search, DollarSign, Target, Layers, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { CocaColaLogo } from "@/components/ui/platform-logos"
+import { CompanyLogo } from "@/components/ui/platform-logos"
 import Image from "next/image"
 
 export type Platform = "bam" | "fuelight" | "prescriptive" | "commercial" | "tpo" | "ppa" | "mix"
@@ -23,13 +23,13 @@ const intelligentEnterprise = [
   },
   {
     id: "prescriptive" as Platform,
-    name: "Prescriptive Operational Insights",
+    name: "Performance Management",
     question: "What must change this week to hit NSR/OI targets?",
     logo: "/executionLogo.png",
   },
   {
     id: "fuelight" as Platform,
-    name: "Resource Allocation (Fuelight)",
+    name: "Resource Allocation (Artemis)",
     question: "Where should we focus our next dollar invested?",
     logo: "/fuelight_transparant.png",
   },
@@ -79,8 +79,8 @@ export function LandingPage({
     <div className="flex flex-col h-full overflow-auto bg-zinc-950">
       {/* Header Section */}
       <div className="flex flex-col items-center text-center pt-12 pb-6 px-6">
-        {/* Coca-Cola Logo */}
-        <CocaColaLogo size={200} />
+        {/* Company Logo */}
+        <CompanyLogo size={200} />
         
         {/* Headline */}
         <h1 className="text-4xl font-bold text-zinc-100 mt-8 mb-8">
@@ -97,7 +97,7 @@ export function LandingPage({
               type="text"
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
-              placeholder="Ask anything... E.g. How can I optimize promotion spend for Coca Cola"
+              placeholder="Ask anything... E.g. How can I optimize promotion spend for Brand A"
               className="flex-1 py-5 pr-4 bg-transparent text-lg text-zinc-100 placeholder:text-zinc-500 focus:outline-none"
             />
             <button 

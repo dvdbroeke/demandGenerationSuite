@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { Hexagon } from "lucide-react"
 
 // Size utility for logo components
 type SizeKey = "sm" | "md" | "lg"
@@ -20,8 +21,8 @@ function resolveSize(size: SizeValue): number {
   return sizeMap[size] ?? 40
 }
 
-// Fuelight logo - colorful connected nodes in a circle
-export function FuelightLogo({
+// Artemis logo (formerly Fuelight) - colorful connected nodes in a circle
+export function ArtemisLogo({
   size = 40,
   className,
 }: {
@@ -32,7 +33,7 @@ export function FuelightLogo({
   return (
     <Image
       src="/fuelight_transparant.png"
-      alt="Fuelight"
+      alt="Artemis"
       width={resolvedSize}
       height={resolvedSize}
       style={{ width: resolvedSize, height: 'auto' }}
@@ -44,6 +45,9 @@ export function FuelightLogo({
     />
   )
 }
+
+// Legacy alias for backward compatibility
+export const FuelightLogo = ArtemisLogo
 
 // BAM logo - waterfall bars style (amber/orange tones)
 
@@ -113,9 +117,9 @@ export function CommercialLogo({
   )
 }
 
-// Coca-Cola logo 
+// Company logo - Generic placeholder for client branding
 
-export function CocaColaLogo({
+export function CompanyLogo({
   size = 120,
   className,
 }: {
@@ -124,14 +128,15 @@ export function CocaColaLogo({
 }) {
   const resolvedSize = resolveSize(size)
   return (
-    <Image
-      src="/CocaColaLogo.png"
-      alt="Coca-Cola"
-      width={resolvedSize}
-      height={Math.round(resolvedSize * 0.33)}
-      style={{ width: resolvedSize, height: 'auto' }}
-      className={cn("object-contain", className)}
-      priority
-    />
+    <div 
+      className={cn("flex items-center justify-center", className)}
+      style={{ width: resolvedSize, height: resolvedSize * 0.5 }}
+    >
+      <Hexagon className="h-8 w-8 text-emerald-500" strokeWidth={1.5} />
+      <span className="ml-2 text-xl font-bold text-zinc-100">Enterprise</span>
+    </div>
   )
 }
+
+// Legacy alias for backward compatibility
+export const CocaColaLogo = CompanyLogo

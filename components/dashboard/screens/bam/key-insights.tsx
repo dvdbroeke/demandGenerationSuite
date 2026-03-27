@@ -73,7 +73,7 @@ const insightSections: InsightSection[] = [
       {
         impact: "High Impact",
         title: "Zero Cola Driving Growth",
-        description: "Zero Cola, Bold (incl. Cherry), and Energy driving 115% of volume growth. TCCC behind Pepsi Max in Zero segment."
+        description: "Zero Cola, Bold (incl. Cherry), and Energy driving 115% of volume growth. Brand A behind Competitor B Max in Zero segment."
       },
       {
         impact: "Medium Impact",
@@ -88,13 +88,13 @@ const insightSections: InsightSection[] = [
     insights: [
       {
         impact: "High Impact",
-        title: "Coke Zero Fan Base Gap",
-        description: "Coke Zero has inferior fan-base vs. Pepsi Max (4.8 vs 14.2 index). Diet Coke drinkers switching to Pmax rather than CZ."
+        title: "Brand A Zero Fan Base Gap",
+        description: "Brand A Zero has inferior fan-base vs. Competitor B Max (4.8 vs 14.2 index). Brand A Diet drinkers switching to Competitor B rather than Brand A Zero."
       },
       {
         impact: "Medium Impact",
         title: "Diet Skews Older",
-        description: "Diet Coke drinkers tend to be >50 years old. Need to defend partition with older generations while absorbing leakage with CZ."
+        description: "Brand A Diet drinkers tend to be >50 years old. Need to defend partition with older generations while absorbing leakage with Brand A Zero."
       }
     ]
   },
