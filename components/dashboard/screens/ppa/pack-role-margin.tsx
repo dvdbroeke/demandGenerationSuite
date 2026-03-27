@@ -32,23 +32,23 @@ interface CompetitorSku {
 }
 
 const competitorPricing: CompetitorSku[] = [
-  // vs CC Classic
-  { sku: "Pepsi 330ml", brand: "Pepsi", competitor: "PepsiCo", packMl: 330, rsp: 1.20, ppl: 3.64, marketShare: 18 },
-  { sku: "Pepsi 500ml", brand: "Pepsi", competitor: "PepsiCo", packMl: 500, rsp: 1.69, ppl: 3.38, marketShare: 14 },
-  { sku: "Pepsi 1.5L", brand: "Pepsi", competitor: "PepsiCo", packMl: 1500, rsp: 1.89, ppl: 1.26, marketShare: 12 },
-  { sku: "Pepsi 2L", brand: "Pepsi", competitor: "PepsiCo", packMl: 2000, rsp: 2.00, ppl: 1.00, marketShare: 10 },
-  // vs CC Zero / Diet
-  { sku: "Pepsi Max 330ml", brand: "Pepsi Max", competitor: "PepsiCo", packMl: 330, rsp: 1.25, ppl: 3.79, marketShare: 12 },
-  { sku: "Pepsi Max 500ml", brand: "Pepsi Max", competitor: "PepsiCo", packMl: 500, rsp: 1.79, ppl: 3.58, marketShare: 9 },
-  { sku: "Pepsi Max 1.5L", brand: "Pepsi Max", competitor: "PepsiCo", packMl: 1500, rsp: 1.99, ppl: 1.33, marketShare: 7 },
-  // vs Fanta
-  { sku: "Aranciata SanP. 330ml", brand: "SanPellegrino", competitor: "Nestl\u00e9", packMl: 330, rsp: 1.60, ppl: 4.85, marketShare: 8 },
-  { sku: "Aranciata SanP. 500ml", brand: "SanPellegrino", competitor: "Nestl\u00e9", packMl: 500, rsp: 1.90, ppl: 3.80, marketShare: 5 },
-  { sku: "Estath\u00e9 Limone 330ml", brand: "Estath\u00e9", competitor: "Ferrero", packMl: 330, rsp: 1.40, ppl: 4.24, marketShare: 6 },
-  // vs Sprite
-  { sku: "7Up 330ml", brand: "7Up", competitor: "PepsiCo", packMl: 330, rsp: 1.10, ppl: 3.33, marketShare: 5 },
-  { sku: "7Up 500ml", brand: "7Up", competitor: "PepsiCo", packMl: 500, rsp: 1.49, ppl: 2.98, marketShare: 4 },
-  { sku: "Schweppes Lemon 330ml", brand: "Schweppes", competitor: "Suntory", packMl: 330, rsp: 1.35, ppl: 4.09, marketShare: 3 },
+  // vs Brand A
+  { sku: "Competitor X 330ml", brand: "Competitor X", competitor: "Competitor Corp", packMl: 330, rsp: 1.20, ppl: 3.64, marketShare: 18 },
+  { sku: "Competitor X 500ml", brand: "Competitor X", competitor: "Competitor Corp", packMl: 500, rsp: 1.69, ppl: 3.38, marketShare: 14 },
+  { sku: "Competitor X 1.5L", brand: "Competitor X", competitor: "Competitor Corp", packMl: 1500, rsp: 1.89, ppl: 1.26, marketShare: 12 },
+  { sku: "Competitor X 2L", brand: "Competitor X", competitor: "Competitor Corp", packMl: 2000, rsp: 2.00, ppl: 1.00, marketShare: 10 },
+  // vs Brand B / Brand B
+  { sku: "Competitor X Max 330ml", brand: "Competitor X Max", competitor: "Competitor Corp", packMl: 330, rsp: 1.25, ppl: 3.79, marketShare: 12 },
+  { sku: "Competitor X Max 500ml", brand: "Competitor X Max", competitor: "Competitor Corp", packMl: 500, rsp: 1.79, ppl: 3.58, marketShare: 9 },
+  { sku: "Competitor X Max 1.5L", brand: "Competitor X Max", competitor: "Competitor Corp", packMl: 1500, rsp: 1.99, ppl: 1.33, marketShare: 7 },
+  // vs Brand C
+  { sku: "Competitor Y Orange 330ml", brand: "Competitor Y", competitor: "Competitor Corp B", packMl: 330, rsp: 1.60, ppl: 4.85, marketShare: 8 },
+  { sku: "Competitor Y Orange 500ml", brand: "Competitor Y", competitor: "Competitor Corp B", packMl: 500, rsp: 1.90, ppl: 3.80, marketShare: 5 },
+  { sku: "Competitor Z Lemon 330ml", brand: "Competitor Z", competitor: "Competitor Corp C", packMl: 330, rsp: 1.40, ppl: 4.24, marketShare: 6 },
+  // vs Brand D
+  { sku: "Competitor W 330ml", brand: "Competitor W", competitor: "Competitor Corp", packMl: 330, rsp: 1.10, ppl: 3.33, marketShare: 5 },
+  { sku: "Competitor W 500ml", brand: "Competitor W", competitor: "Competitor Corp", packMl: 500, rsp: 1.49, ppl: 2.98, marketShare: 4 },
+  { sku: "Competitor V Lemon 330ml", brand: "Competitor V", competitor: "Competitor Corp D", packMl: 330, rsp: 1.35, ppl: 4.09, marketShare: 3 },
   // PL
   { sku: "PL Cola 330ml", brand: "Private Label", competitor: "Retailer PL", packMl: 330, rsp: 0.79, ppl: 2.39, marketShare: 22 },
   { sku: "PL Cola 1.5L", brand: "Private Label", competitor: "Retailer PL", packMl: 1500, rsp: 0.99, ppl: 0.66, marketShare: 18 },
@@ -56,8 +56,8 @@ const competitorPricing: CompetitorSku[] = [
 ]
 
 const compBrandColors: Record<string, string> = {
-  "Pepsi": "#2563eb", "Pepsi Max": "#1e40af", "SanPellegrino": "#dc2626",
-  "Estath\u00e9": "#d97706", "7Up": "#16a34a", "Schweppes": "#ca8a04",
+  "Competitor X": "#2563eb", "Competitor X Max": "#1e40af", "Competitor Y": "#dc2626",
+  "Competitor Z": "#d97706", "Competitor W": "#16a34a", "Competitor V": "#ca8a04",
   "Private Label": "#71717a",
 }
 
@@ -77,27 +77,27 @@ const geographies = ["Italy", "Spain", "Germany", "France", "UK"]
 // <1 = inelastic (low sensitivity, safe to raise prices)
 // >1 = elastic (high sensitivity, caution on price increases)
 const skuElasticity: Record<string, number> = {
-  "CC Classic 150ml": 0.4,
-  "CC Classic 330ml": 0.7,
-  "CC Classic 500ml": 1.2,
-  "CC Classic 1.5L": 1.5,
-  "CC Classic 2L": 1.8,
-  "CC Zero 330ml": 0.5,
-  "CC Zero 500ml": 0.8,
-  "CC Zero 1.5L": 1.1,
-  "CC Zero 2L": 1.4,
-  "Diet Coke 330ml": 0.6,
-  "Diet Coke 500ml": 0.9,
-  "Diet Coke 1.5L": 1.3,
-  "Fanta Orange 330ml": 0.8,
-  "Fanta Orange 500ml": 1.1,
-  "Fanta Orange 2L": 0.9,
-  "Sprite 330ml": 0.9,
-  "Sprite 500ml": 1.3,
-  "Sprite 1.5L": 1.6,
-  "CC Classic 6x330ml": 0.3,
-  "CC Zero 6x330ml": 0.3,
-  "Fanta Orange 6x330ml": 0.5,
+  "Brand A 150ml": 0.4,
+  "Brand A 330ml": 0.7,
+  "Brand A 500ml": 1.2,
+  "Brand A 1.5L": 1.5,
+  "Brand A 2L": 1.8,
+  "Brand B 330ml": 0.5,
+  "Brand B 500ml": 0.8,
+  "Brand B 1.5L": 1.1,
+  "Brand B 2L": 1.4,
+  "Brand C 330ml": 0.6,
+  "Brand C 500ml": 0.9,
+  "Brand C 1.5L": 1.3,
+  "Brand D 330ml": 0.8,
+  "Brand D 500ml": 1.1,
+  "Brand D 2L": 0.9,
+  "Brand E 330ml": 0.9,
+  "Brand E 500ml": 1.3,
+  "Brand E 1.5L": 1.6,
+  "Brand A 8x330ml": 0.3,
+  "Brand B 8x330ml": 0.3,
+  "Brand D 8x330ml": 0.5,
 }
 
 // Elasticity interpretation helper
@@ -111,11 +111,11 @@ const getElasticityLabel = (e: number) => {
 }
 
 const aiInsights = [
-  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "CC Zero 6x330ml and CC Classic 6x330ml show very low elasticity (0.3). A +3% price increase would yield ~\u20ac0.4M incremental GP with less than 1% volume loss. Multipacks are the safest pricing lever." },
-  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "CC Classic 150ml has elasticity of 0.4 (very inelastic). Impulse singles are price-protected by occasion urgency -- recommend +5% increase in convenience and petrol channels." },
-  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "CC Classic 500ml shows elasticity of 1.2 and is priced +11.8% vs Pepsi 500ml. Price increases here risk volume loss -- hold current price and focus margin growth on less elastic SKUs." },
-  { icon: TrendingDown, color: "text-red-400", bg: "bg-red-500/10", text: "CC Classic 2L (1.8) and Sprite 1.5L (1.6) are highly elastic take-home packs. Price increases will trigger significant switching to Private Label. Recommend holding or tactical promo support." },
-  { icon: Sparkles, color: "text-blue-400", bg: "bg-blue-500/10", text: "Fanta 2L shows unusually low elasticity (0.9) for its tier due to no direct competitor. A +5% increase could yield \u20ac0.3M GP with minimal volume risk -- favourable trade-off." },
+  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Brand B 8x330ml and Brand A 8x330ml show very low elasticity (0.3). A +3% price increase would yield ~\u20ac0.4M incremental GP with less than 1% volume loss. Multipacks are the safest pricing lever." },
+  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Brand A 150ml has elasticity of 0.4 (very inelastic). Impulse singles are price-protected by occasion urgency -- recommend +5% increase in convenience and petrol channels." },
+  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Brand A 500ml shows elasticity of 1.2 and is priced +11.8% vs Competitor X 500ml. Price increases here risk volume loss -- hold current price and focus margin growth on less elastic SKUs." },
+  { icon: TrendingDown, color: "text-red-400", bg: "bg-red-500/10", text: "Brand A 2L (1.8) and Brand D 1.5L (1.6) are highly elastic take-home packs. Price increases will trigger significant switching to Private Label. Recommend holding or tactical promo support." },
+  { icon: Sparkles, color: "text-blue-400", bg: "bg-blue-500/10", text: "Brand C 2L shows unusually low elasticity (0.9) for its tier due to no direct competitor. A +5% increase could yield \u20ac0.3M GP with minimal volume risk -- favourable trade-off." },
 ]
 
 // ---------- Component ----------
@@ -315,10 +315,10 @@ export function PPAPackRoleMargin({ onNavigate }: PricingDiagnosticsProps) {
           <CardContent className="p-5">
             <div className="mb-3">
               <h3 className="text-sm font-semibold text-zinc-100">Price Position by Pack Tier vs Competitors</h3>
-              <p className="text-[10px] text-zinc-500">Average price per litre: CCH portfolio vs branded competitors (excl. Private Label)</p>
+              <p className="text-[10px] text-zinc-500">Average price per litre: Portfolio vs branded competitors (excl. Private Label)</p>
             </div>
             <div className="flex items-center gap-4 mb-3 text-[10px] text-zinc-500">
-              <span className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm bg-red-500" />CCH Portfolio</span>
+              <span className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm bg-red-500" />Portfolio</span>
               <span className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm bg-zinc-500" />Branded Competitors</span>
               <span className="flex items-center gap-1.5"><span className="w-3 h-2 rounded-sm bg-zinc-700" />Private Label</span>
             </div>
@@ -342,7 +342,7 @@ export function PPAPackRoleMargin({ onNavigate }: PricingDiagnosticsProps) {
                 return (
                   <g key={tier.tier}>
                     <text x={pad.left - 8} y={tierY + 10} textAnchor="end" className="fill-zinc-300 text-[10px] font-medium">{tier.tier}</text>
-                    {/* CCH bar */}
+                    {/* Portfolio bar */}
                     <rect x={pad.left} y={tierY + 16} width={Math.max(ownW, 2)} height={barH * 0.7} fill="#ef4444" rx={3} opacity={0.8} />
                     <text x={pad.left + ownW + 6} y={tierY + 16 + barH * 0.35 + 3} className="fill-zinc-200 text-[10px] font-mono font-semibold">{"\u20ac"}{tier.avgOwnPpl.toFixed(2)}/L</text>
                     {/* Competitor bar */}

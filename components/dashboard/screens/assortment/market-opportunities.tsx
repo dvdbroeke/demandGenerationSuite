@@ -19,47 +19,47 @@ const tabs: { id: MixScreen; label: string }[] = [
 
 // Categories
 const categories = [
-  { id: "cola-regular", label: "Cola Regular" },
-  { id: "cola-zero", label: "Cola Zero/Diet" },
-  { id: "citrus-fruity", label: "Citrus/Fruity" },
-  { id: "energy", label: "Energy" },
-  { id: "water", label: "Water" },
+  { id: "cola-regular", label: "Category A" },
+  { id: "cola-zero", label: "Category B" },
+  { id: "citrus-fruity", label: "Category C" },
+  { id: "energy", label: "Category D" },
+  { id: "water", label: "Category E" },
 ]
 
 // Brands per category
 const brandsByCategory: Record<string, { name: string; shortName: string; color: string; isTccc: boolean }[]> = {
   "cola-regular": [
-    { name: "Coca-Cola Classic", shortName: "CC Classic", color: "#ef4444", isTccc: true },
-    { name: "Pepsi Regular", shortName: "Pepsi", color: "#2563eb", isTccc: false },
-    { name: "Dr Pepper", shortName: "Dr Pepper", color: "#7c3aed", isTccc: false },
-    { name: "RC Cola", shortName: "RC Cola", color: "#4338ca", isTccc: false },
+    { name: "Brand A", shortName: "Brand A", color: "#ef4444", isTccc: true },
+    { name: "Competitor X Regular", shortName: "Comp X", color: "#2563eb", isTccc: false },
+    { name: "Competitor Y", shortName: "Comp Y", color: "#7c3aed", isTccc: false },
+    { name: "Competitor Z", shortName: "Comp Z", color: "#4338ca", isTccc: false },
     { name: "Private Label Cola", shortName: "PL Cola", color: "#6b7280", isTccc: false },
   ],
   "cola-zero": [
-    { name: "Coca-Cola Zero", shortName: "CC Zero", color: "#ef4444", isTccc: true },
-    { name: "Diet Coke", shortName: "Diet Coke", color: "#dc2626", isTccc: true },
-    { name: "Pepsi Max", shortName: "Pepsi Max", color: "#2563eb", isTccc: false },
-    { name: "Pepsi Zero Sugar", shortName: "Pepsi Zero", color: "#1d4ed8", isTccc: false },
-    { name: "Dr Pepper Zero", shortName: "Dr P Zero", color: "#7c3aed", isTccc: false },
+    { name: "Brand B", shortName: "Brand B", color: "#ef4444", isTccc: true },
+    { name: "Brand B", shortName: "Brand B", color: "#dc2626", isTccc: true },
+    { name: "Competitor X Max", shortName: "Comp X Max", color: "#2563eb", isTccc: false },
+    { name: "Competitor X Zero", shortName: "Comp X Zero", color: "#1d4ed8", isTccc: false },
+    { name: "Competitor Y Zero", shortName: "Comp Y Zero", color: "#7c3aed", isTccc: false },
   ],
   "citrus-fruity": [
-    { name: "Fanta Orange", shortName: "Fanta", color: "#f97316", isTccc: true },
-    { name: "Sprite", shortName: "Sprite", color: "#22c55e", isTccc: true },
-    { name: "7UP", shortName: "7UP", color: "#10b981", isTccc: false },
-    { name: "Mirinda", shortName: "Mirinda", color: "#f59e0b", isTccc: false },
-    { name: "Mountain Dew", shortName: "Mtn Dew", color: "#84cc16", isTccc: false },
+    { name: "Brand C", shortName: "Brand C", color: "#f97316", isTccc: true },
+    { name: "Brand D", shortName: "Brand D", color: "#22c55e", isTccc: true },
+    { name: "Competitor W", shortName: "Comp W", color: "#10b981", isTccc: false },
+    { name: "Competitor V", shortName: "Comp V", color: "#f59e0b", isTccc: false },
+    { name: "Competitor U", shortName: "Comp U", color: "#84cc16", isTccc: false },
   ],
   "energy": [
-    { name: "Monster Energy", shortName: "Monster", color: "#22c55e", isTccc: true },
-    { name: "Red Bull", shortName: "Red Bull", color: "#3b82f6", isTccc: false },
-    { name: "Rockstar", shortName: "Rockstar", color: "#eab308", isTccc: false },
-    { name: "Burn", shortName: "Burn", color: "#ef4444", isTccc: false },
+    { name: "Brand E", shortName: "Brand E", color: "#22c55e", isTccc: true },
+    { name: "Competitor T", shortName: "Comp T", color: "#3b82f6", isTccc: false },
+    { name: "Competitor S", shortName: "Comp S", color: "#eab308", isTccc: false },
+    { name: "Competitor R", shortName: "Comp R", color: "#ef4444", isTccc: false },
   ],
   "water": [
-    { name: "Smartwater", shortName: "Smartwater", color: "#06b6d4", isTccc: true },
-    { name: "Dasani", shortName: "Dasani", color: "#0ea5e9", isTccc: true },
-    { name: "Evian", shortName: "Evian", color: "#ec4899", isTccc: false },
-    { name: "Aquafina", shortName: "Aquafina", color: "#2563eb", isTccc: false },
+    { name: "Brand F", shortName: "Brand F", color: "#06b6d4", isTccc: true },
+    { name: "Brand G", shortName: "Brand G", color: "#0ea5e9", isTccc: true },
+    { name: "Competitor Q", shortName: "Comp Q", color: "#ec4899", isTccc: false },
+    { name: "Competitor P", shortName: "Comp P", color: "#2563eb", isTccc: false },
     { name: "Private Label Water", shortName: "PL Water", color: "#6b7280", isTccc: false },
   ],
 }
@@ -110,13 +110,13 @@ function generateBrandData(brandName: string, categoryId: string) {
   const rng = seededRandom(seed)
   
   const isTccc = brandsByCategory[categoryId]?.find(b => b.name === brandName)?.isTccc || false
-  const isCokeClassic = brandName === "Coca-Cola Classic"
+  const isBrandAClassic = brandName === "Brand A"
   
-  // Channel split - STORYLINE: CC Classic skewed toward HoReCa
+  // Channel split - STORYLINE: Brand A skewed toward HoReCa
   const channelRaw: Record<string, number> = {}
   channelSegments.forEach(ch => {
     let base = 8 + rng() * 15
-    if (isCokeClassic) {
+    if (isBrandAClassic) {
       if (ch === "HoReCa") base = 28
       if (ch === "Gas Station") base = 18
       if (ch === "Convenience") base = 16
@@ -137,11 +137,11 @@ function generateBrandData(brandName: string, categoryId: string) {
   const channels: Record<string, number> = {}
   Object.keys(channelRaw).forEach(k => { channels[k] = Math.round(channelRaw[k] / chTotal * 100) })
   
-  // Pack type split - STORYLINE: CC Classic over-indexed on Cans
+  // Pack type split - STORYLINE: Brand A over-indexed on Cans
   const packTypeRaw: Record<string, number> = {}
   packTypeSegments.forEach(pt => {
     let base = 10 + rng() * 20
-    if (isCokeClassic) {
+    if (isBrandAClassic) {
       if (pt === "Can") base = 42
       if (pt === "PET") base = 35
       if (pt === "Glass") base = 15
@@ -158,11 +158,11 @@ function generateBrandData(brandName: string, categoryId: string) {
   const packTypes: Record<string, number> = {}
   Object.keys(packTypeRaw).forEach(k => { packTypes[k] = Math.round(packTypeRaw[k] / ptTotal * 100) })
   
-  // Pack size split - STORYLINE: CC Classic concentrated in 500ml
+  // Pack size split - STORYLINE: Brand A concentrated in 500ml
   const packSizeRaw: Record<string, number> = {}
   packSizeSegments.forEach(ps => {
     let base = 8 + rng() * 18
-    if (isCokeClassic) {
+    if (isBrandAClassic) {
       if (ps === "500ml") base = 32
       if (ps === "1.5L") base = 22
       if (ps === "2L") base = 16
@@ -255,9 +255,9 @@ export function MarketOpportunities({ onNavigate }: Props) {
     return map
   }, [brands, selectedCategory])
 
-  // Storyline highlights for Coca-Cola Classic
+// Storyline highlights for Brand A
   const getHighlights = (brandName: string, dimension: "channel" | "packType" | "packSize"): string[] | undefined => {
-    if (brandName !== "Coca-Cola Classic") return undefined
+  if (brandName !== "Brand A") return undefined
     if (dimension === "channel") return ["HoReCa", "E-commerce", "Supermarket"]
     if (dimension === "packType") return ["Can"]
     if (dimension === "packSize") return ["500ml", "330ml"]
@@ -332,8 +332,8 @@ export function MarketOpportunities({ onNavigate }: Props) {
                 <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 text-[9px]">Pack Size Gap</Badge>
               </div>
               <p className="text-xs text-zinc-300">
-                Coca-Cola Classic is <span className="text-amber-300 font-medium">skewed toward HoReCa (28%) & Cans (42%)</span> while competitors lead in Supermarket and E-commerce. 
-                Pack size mix is <span className="text-amber-300 font-medium">concentrated in 500ml (32%)</span> while competitors show stronger 330ml representation (22-25%).
+Brand A is <span className="text-amber-300 font-medium">skewed toward HoReCa (28%) & Cans (42%)</span> while competitors lead in Supermarket and E-commerce.
+  Pack size mix is <span className="text-amber-300 font-medium">concentrated in 500ml (32%)</span> while competitors show stronger 330ml representation (22-25%).
               </p>
             </div>
             <button 
@@ -354,7 +354,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
             <h3 className="text-sm font-semibold text-zinc-100">Channel Distribution</h3>
             <div className="flex items-center gap-1">
               <AlertTriangle className="h-3 w-3 text-amber-400" />
-              <span className="text-[10px] text-amber-400">CC Classic over-indexed on HoReCa (28%)</span>
+              <span className="text-[10px] text-amber-400">Brand A over-indexed on HoReCa (28%)</span>
             </div>
           </div>
           
@@ -362,7 +362,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
           <div className="flex justify-around items-end gap-4">
             {brands.map(brand => {
               const data = brandDataMap[brand.name]
-              const isCokeClassic = brand.name === "Coca-Cola Classic"
+              const isBrandAClassic = brand.name === "Brand A"
               return (
                 <div key={brand.name} className="flex flex-col items-center">
                   <VerticalStackedBar
@@ -374,7 +374,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
                   />
                   <div className={cn(
                     "mt-2 text-[10px] font-medium text-center px-2 py-1 rounded",
-                    isCokeClassic ? "text-amber-300 bg-amber-500/10" : "text-zinc-400"
+                    isBrandAClassic ? "text-amber-300 bg-amber-500/10" : "text-zinc-400"
                   )}>
                     {brand.shortName}
                     {brand.isTccc && <span className="ml-1 text-[8px] text-red-400">*</span>}
@@ -396,7 +396,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
             <h3 className="text-sm font-semibold text-zinc-100">Pack Type Distribution</h3>
             <div className="flex items-center gap-1">
               <AlertTriangle className="h-3 w-3 text-amber-400" />
-              <span className="text-[10px] text-amber-400">CC Classic over-indexed on Cans (42%)</span>
+              <span className="text-[10px] text-amber-400">Brand A over-indexed on Cans (42%)</span>
             </div>
           </div>
           
@@ -404,7 +404,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
           <div className="flex justify-around items-end gap-4">
             {brands.map(brand => {
               const data = brandDataMap[brand.name]
-              const isCokeClassic = brand.name === "Coca-Cola Classic"
+              const isBrandAClassic = brand.name === "Brand A"
               return (
                 <div key={brand.name} className="flex flex-col items-center">
                   <VerticalStackedBar
@@ -416,7 +416,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
                   />
                   <div className={cn(
                     "mt-2 text-[10px] font-medium text-center px-2 py-1 rounded",
-                    isCokeClassic ? "text-amber-300 bg-amber-500/10" : "text-zinc-400"
+                    isBrandAClassic ? "text-amber-300 bg-amber-500/10" : "text-zinc-400"
                   )}>
                     {brand.shortName}
                     {brand.isTccc && <span className="ml-1 text-[8px] text-red-400">*</span>}
@@ -438,7 +438,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
             <h3 className="text-sm font-semibold text-zinc-100">Pack Size Distribution</h3>
             <div className="flex items-center gap-1">
               <AlertTriangle className="h-3 w-3 text-amber-400" />
-              <span className="text-[10px] text-amber-400">CC Classic concentrated in 500ml (32%), weak in 330ml (14%)</span>
+              <span className="text-[10px] text-amber-400">Brand A concentrated in 500ml (32%), weak in 330ml (14%)</span>
             </div>
           </div>
           
@@ -446,7 +446,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
           <div className="flex justify-around items-end gap-4">
             {brands.map(brand => {
               const data = brandDataMap[brand.name]
-              const isCokeClassic = brand.name === "Coca-Cola Classic"
+              const isBrandAClassic = brand.name === "Brand A"
               return (
                 <div key={brand.name} className="flex flex-col items-center">
                   <VerticalStackedBar
@@ -458,7 +458,7 @@ export function MarketOpportunities({ onNavigate }: Props) {
                   />
                   <div className={cn(
                     "mt-2 text-[10px] font-medium text-center px-2 py-1 rounded",
-                    isCokeClassic ? "text-amber-300 bg-amber-500/10" : "text-zinc-400"
+                    isBrandAClassic ? "text-amber-300 bg-amber-500/10" : "text-zinc-400"
                   )}>
                     {brand.shortName}
                     {brand.isTccc && <span className="ml-1 text-[8px] text-red-400">*</span>}

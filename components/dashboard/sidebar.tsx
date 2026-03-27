@@ -8,7 +8,7 @@ import {
   Home,
   Lock,
 } from "lucide-react"
-import { FuelightLogo, BAMLogo, RGMLogo, CommercialLogo, CocaColaLogo } from "@/components/ui/platform-logos"
+import { ArtemisLogo, BAMLogo, RGMLogo, PriceLogo, MixLogo, PromoLogo, CompanyLogo } from "@/components/ui/platform-logos"
 
 export type Platform = "bam" | "fuelight" | "prescriptive" | "commercial" | "initiatives" | "tpo" | "ppa" | "mix"
 
@@ -32,15 +32,15 @@ const intelligentEnterprisePlatforms = [
   },
   {
     id: "prescriptive" as Platform,
-    name: "Prescriptive Operational Insights",
+    name: "Performance Management",
     Logo: RGMLogo,
     color: "blue",
     available: true,
   },
   {
     id: "fuelight" as Platform,
-    name: "Resource Allocation (Fuelight)",
-    Logo: FuelightLogo,
+    name: "Resource Allocation (Artemis)",
+    Logo: ArtemisLogo,
     color: "emerald",
     available: true,
   },
@@ -50,22 +50,22 @@ const rgmPlatforms = [
   {
     id: "ppa" as Platform,
     name: "Price",
-    Logo: RGMLogo,
+    Logo: PriceLogo,
     color: "green",
     available: true,
   },
   {
     id: "mix" as Platform,
     name: "Assortment & Mix",
-    Logo: RGMLogo,
+    Logo: MixLogo,
     color: "green",
     available: true,
   },
   {
     id: "tpo" as Platform,
     name: "Promotion",
-    Logo: CommercialLogo,
-    color: "green",
+    Logo: PromoLogo,
+    color: "amber",
     available: true,
   },
 ]
@@ -163,10 +163,10 @@ export function Sidebar({
           onClick={onGoHome}
           className="flex items-center gap-3 w-full hover:opacity-80 transition-opacity"
         >
-          <CocaColaLogo size={36} className="flex-shrink-0" />
+          <CompanyLogo size={36} className="flex-shrink-0" />
           <div className="text-left">
             <h1 className="text-xs font-semibold text-zinc-100">
-              Coca-Cola System
+              Enterprise System
             </h1>
             <p className="text-[10px] text-zinc-500">
               Decision Intelligence

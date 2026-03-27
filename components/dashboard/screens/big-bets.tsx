@@ -36,7 +36,7 @@ const bigBets: BigBet[] = [
     tagline: "Win the zero-sugar cola battle across Europe",
     whyAttractive: [
       "Structural shift away from full-sugar accelerating",
-      "Pepsi Max gaining share in key AFH occasions",
+      "Competitor B Max gaining share in key AFH occasions",
       "Consumer perception of taste parity now achieved",
     ],
     whereToPlay: {
@@ -60,7 +60,7 @@ const bigBets: BigBet[] = [
     whyAttractive: [
       "Energy category growing +8% annually",
       "Occasion expansion beyond traditional energy users",
-      "Portfolio strength with Coca-Cola Energy + Monster",
+      "Portfolio strength with Brand A Energy + Brand X",
     ],
     whereToPlay: {
       partitions: ["Energy", "Functional Cola"],
@@ -68,7 +68,7 @@ const bigBets: BigBet[] = [
       channels: ["Convenience", "AFH"],
     },
     howToWin: [
-      "Clear brand roles: Monster for intensity, Coke Energy for mainstream",
+      "Clear brand roles: Brand X for intensity, Brand A Energy for mainstream",
       "Expand distribution in underserved convenience",
       "Drive affordability with multi-packs",
     ],
@@ -92,7 +92,7 @@ const bigBets: BigBet[] = [
     },
     howToWin: [
       "Partnership or acquisition for capability",
-      "Leverage Fairlife brand equity",
+      "Leverage Brand Y equity",
       "Distribution through non-traditional channels",
     ],
     timeHorizon: "2027-2035",
@@ -105,7 +105,7 @@ const bigBets: BigBet[] = [
     tagline: "Participate in alcohol moderation trend",
     whyAttractive: [
       "RTD alcohol fastest-growing alcohol segment",
-      "TCCC brand assets transferable (Jack & Coke)",
+      "Enterprise brand assets transferable (Partner A)",
       "Moderation trend driving category growth",
     ],
     whereToPlay: {
@@ -125,10 +125,10 @@ const bigBets: BigBet[] = [
   {
     id: "coffee",
     name: "Coffee",
-    tagline: "Scale Costa RTD across Europe",
+    tagline: "Scale Brand E RTD across Europe",
     whyAttractive: [
       "RTD coffee growing +12% annually",
-      "Costa brand acquisition underutilized",
+      "Brand E acquisition underutilized",
       "Occasion synergies with core portfolio",
     ],
     whereToPlay: {
@@ -137,7 +137,7 @@ const bigBets: BigBet[] = [
       channels: ["Modern Trade", "Convenience"],
     },
     howToWin: [
-      "Leverage Costa brand and formulation expertise",
+      "Leverage Brand E and formulation expertise",
       "Premium positioning vs competitors",
       "Multi-format strategy (cans, bottles, chilled)",
     ],

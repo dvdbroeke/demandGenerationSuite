@@ -123,7 +123,7 @@ const partitionActions: Record<string, Action[]> = {
     {
       id: "distribution-expansion",
       title: "Expand energy distribution in Convenience",
-      description: "Close distribution gaps vs Monster and Red Bull in high-frequency channels.",
+      description: "Close distribution gaps vs Competitor X and Competitor Y in high-frequency channels.",
       lever: "Execution",
       confidence: "High",
       timeHorizon: "Near-term",

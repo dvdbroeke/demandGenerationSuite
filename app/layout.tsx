@@ -8,7 +8,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'Brand Accelerator Model — Strategy & Execution Control Tower',
-  description: 'Decision-to-execution operating model for TCCS senior leadership',
+  description: 'Decision-to-execution operating model for enterprise leadership',
   generator: 'v0.app',
   icons: {
     icon: [

@@ -61,8 +61,8 @@ const insightSections: InsightSection[] = [
     insights: [
       {
         impact: "High Impact",
-        title: "Market Growing in Value, Flat in Volume",
-        description: "€9.8B GB NARTD market growing ~4.7% CAGR in value but flat in volume. Growth driven by premiumization and price increases."
+        title: "Market Growing in Value, Slower in Volume",
+        description: "$12.4B market growing ~5.2% CAGR in value but slower in volume. Growth driven by premiumization and strategic pricing."
       }
     ]
   },
@@ -72,13 +72,13 @@ const insightSections: InsightSection[] = [
     insights: [
       {
         impact: "High Impact",
-        title: "Zero Cola Driving Growth",
-        description: "Zero Cola, Bold (incl. Cherry), and Energy driving 115% of volume growth. TCCC behind Pepsi Max in Zero segment."
+        title: "Premium Segments Driving Growth",
+        description: "Segment A2 and Segment C driving 115% of volume growth. Brand A trailing Competitor B in premium partition."
       },
       {
         impact: "Medium Impact",
-        title: "Cherry Fast Growing",
-        description: "Cherry/Bold flavors emerging as fast-growing partition (~$680M in AH) with Pmax winning in Cherry; Dr. Pepper close second."
+        title: "Specialty Segment Fast Growing",
+        description: "Specialty segments emerging as fast-growing partition (~$680M) with Competitor B winning; Competitor C close second."
       }
     ]
   },
@@ -88,13 +88,13 @@ const insightSections: InsightSection[] = [
     insights: [
       {
         impact: "High Impact",
-        title: "Coke Zero Fan Base Gap",
-        description: "Coke Zero has inferior fan-base vs. Pepsi Max (4.8 vs 14.2 index). Diet Coke drinkers switching to Pmax rather than CZ."
+        title: "Brand A Loyalty Gap",
+        description: "Brand A has inferior loyalty metrics vs. Competitor B (4.8 vs 14.2 index). Brand A consumers switching to Competitor B rather than Brand A Premium."
       },
       {
         impact: "Medium Impact",
-        title: "Diet Skews Older",
-        description: "Diet Coke drinkers tend to be >50 years old. Need to defend partition with older generations while absorbing leakage with CZ."
+        title: "Classic Segment Skews Older",
+        description: "Brand A consumers tend to be >50 years old. Need to defend partition with older generations while capturing migration to premium."
       }
     ]
   },
@@ -104,8 +104,8 @@ const insightSections: InsightSection[] = [
     insights: [
       {
         impact: "High Impact",
-        title: "Energy: Route to Play Needed",
-        description: "Secular growth in Energy driven by Red Bull & Monster. TCCC has limited owned portfolio, needs clear route to play."
+        title: "Emerging Segment: Route to Play Needed",
+        description: "Secular growth in Segment D driven by Competitor X & Competitor Y. Enterprise has limited owned portfolio, needs clear route to play."
       }
     ]
   }

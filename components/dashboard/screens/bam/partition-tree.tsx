@@ -45,63 +45,63 @@ interface TreeNode {
 }
 
 const treeData: TreeNode = {
-  id: "nartd",
-  name: "NARTD",
+  id: "total-market",
+  name: "Total Market",
   color: "bg-teal-500",
   children: [
     {
       id: "branded",
       name: "Branded",
       color: "bg-emerald-500",
-      annotation: { letter: "A", text: "Private Label less of a threat to TCCC relative to Branded" },
+      annotation: { letter: "A", text: "Private Label less of a threat to Enterprise relative to Branded products" },
       children: [
         {
-          id: "ssd",
-          name: "SSD",
+          id: "category-a",
+          name: "Category A",
           color: "bg-amber-500",
-          annotation: { letter: "B", text: "Colas actively compete only within SSD, with restricted stretch to Performance" },
+          annotation: { letter: "B", text: "Brand A competes actively within Category A, with restricted stretch to Category C" },
           children: [
             {
-              id: "cola",
-              name: "Cola",
+              id: "segment-a",
+              name: "Segment A",
               color: "bg-red-500",
               children: [
                 {
-                  id: "diet",
-                  name: "Diet",
+                  id: "segment-a1",
+                  name: "Segment A1",
                   color: "bg-orange-400",
-                  annotation: { letter: "C", text: "Regular, Diet and Zero represent distinct propositions" },
+                  annotation: { letter: "C", text: "Segment A1, A2, and A3 represent distinct consumer propositions" },
                 },
                 {
-                  id: "zero",
-                  name: "Zero",
+                  id: "segment-a2",
+                  name: "Segment A2",
                   color: "bg-red-400",
                   children: [
-                    { id: "zero-500ml-can", name: "<500ml (Can)", color: "bg-zinc-600" },
-                    { id: "zero-500ml-pet", name: "500ml (PET)", color: "bg-zinc-600" },
-                    { id: "zero-1l-pet", name: ">1L (PET)", color: "bg-zinc-600" },
+                    { id: "a2-small", name: "Small Format", color: "bg-zinc-600" },
+                    { id: "a2-medium", name: "Medium Format", color: "bg-zinc-600" },
+                    { id: "a2-large", name: "Large Format", color: "bg-zinc-600" },
                   ]
                 },
-                { id: "regular-calorie", name: "Regular Calorie", color: "bg-amber-600" },
+                { id: "segment-a3", name: "Segment A3", color: "bg-amber-600" },
               ]
             },
             {
-              id: "citrus-fruity",
-              name: "Citrus/Fruity",
+              id: "segment-b",
+              name: "Segment B",
               color: "bg-yellow-500",
               children: [
-                { id: "no-calorie-diet", name: "No Calorie/Diet", color: "bg-lime-500" },
-                { id: "regular-calorie-citrus", name: "Regular Calorie", color: "bg-amber-600" },
+                { id: "segment-b1", name: "Segment B1", color: "bg-lime-500" },
+                { id: "segment-b2", name: "Segment B2", color: "bg-amber-600" },
               ]
             },
             {
-              id: "bold",
-              name: "Bold",
+              id: "segment-c",
+              name: "Segment C",
               color: "bg-red-600",
-              annotation: { letter: "D", text: "Bold flavors play a unique role, emerging as a fast-growing partition" },
+              annotation: { letter: "D", text: "Specialty segments play a unique role, emerging as fast-growing partitions" },
               children: [
-                { id: "cherry-dark", name: "Cherry/Dark fruit", color: "bg-pink-500" },
-                { id: "specialty", name: "Specialty", color: "bg-purple-500" },
+                { id: "segment-c1", name: "Segment C1", color: "bg-pink-500" },
+                { id: "segment-c2", name: "Segment C2", color: "bg-purple-500" },
               ]
             },
           ]
@@ -265,7 +265,7 @@ export function BAMPartitionTree({ onNavigate }: BAMPartitionTreeProps) {
       {/* Page Title */}
       <div>
         <h2 className="text-lg font-semibold text-zinc-100">Consumer Partitions - Partition Tree</h2>
-        <p className="text-sm text-zinc-500">How consumers' behaviour shapes the NARTD market - hierarchical view of market segmentation</p>
+        <p className="text-sm text-zinc-500">How consumer behavior shapes market dynamics - hierarchical view of market segmentation</p>
       </div>
 
       {/* Tree */}

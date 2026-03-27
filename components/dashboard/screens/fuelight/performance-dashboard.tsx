@@ -26,7 +26,7 @@ import {
   Settings
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { FuelightLogo } from "@/components/ui/platform-logos"
+import { ArtemisLogo } from "@/components/ui/platform-logos"
 
 interface PerformanceDashboardProps {
   onNavigateToWaterfall: (brand: string) => void
@@ -63,7 +63,7 @@ const baseInvestmentData = {
 
 const baseBrandPerformance = [
   { 
-    name: "Coca-Cola", 
+    name: "Brand A", 
     volume: "62 MUC", 
     volumeChange: "+9%", 
     nsr: 19180, 
@@ -71,7 +71,7 @@ const baseBrandPerformance = [
     hasIssue: false
   },
   { 
-    name: "Fanta", 
+    name: "Brand C", 
     volume: "18 MUC", 
     volumeChange: "+6%", 
     nsr: 4430, 
@@ -79,7 +79,7 @@ const baseBrandPerformance = [
     hasIssue: false
   },
   { 
-    name: "Cappy", 
+    name: "Brand E", 
     volume: "9 MUC", 
     volumeChange: "+4%", 
     nsr: 2745, 
@@ -87,7 +87,7 @@ const baseBrandPerformance = [
     hasIssue: false
   },
   { 
-    name: "Coca-Cola Zero", 
+    name: "Brand B", 
     volume: "14 MUC", 
     volumeChange: "-4%", 
     nsr: 4650, 
@@ -106,7 +106,7 @@ function formatCurrency(value: number, currency: string): string {
   return `${symbol}${converted.toFixed(0)}M`
 }
 
-export function FuelightPerformanceDashboard({ onNavigateToWaterfall, onNavigateToPartitions, onNavigateToOptimizer, onNavigateToComparison, onNavigateToTrend, onNavigateToEdit }: PerformanceDashboardProps) {
+export function ArtemisPerformanceDashboard({ onNavigateToWaterfall, onNavigateToPartitions, onNavigateToOptimizer, onNavigateToComparison, onNavigateToTrend, onNavigateToEdit }: PerformanceDashboardProps) {
   const [selectedPeriod, setSelectedPeriod] = useState("dec-2024")
   const [selectedFunding, setSelectedFunding] = useState("system")
   const [selectedCurrency, setSelectedCurrency] = useState("EUR")
@@ -120,10 +120,10 @@ export function FuelightPerformanceDashboard({ onNavigateToWaterfall, onNavigate
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-lg bg-zinc-800/50 flex items-center justify-center">
-            <FuelightLogo size="md" />
+            <ArtemisLogo size="md" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-zinc-100">Fuelight</h1>
+            <h1 className="text-xl font-bold text-zinc-100">Artemis</h1>
             <p className="text-xs text-zinc-500">Optimization View</p>
           </div>
         </div>
@@ -196,12 +196,12 @@ export function FuelightPerformanceDashboard({ onNavigateToWaterfall, onNavigate
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="bg-zinc-900 border-zinc-800">
-              <SelectItem value="system" className="text-zinc-100 text-xs">System Funding</SelectItem>
-              <SelectItem value="tccc" className="text-zinc-100 text-xs">TCCC Funding</SelectItem>
+              <SelectItem value="total" className="text-zinc-100 text-xs">Total Investment</SelectItem>
+              <SelectItem value="marketing" className="text-zinc-100 text-xs">Marketing Investment</SelectItem>
             </SelectContent>
           </Select>
           <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/30 text-emerald-400 px-3 py-1">
-            Coca-Cola Zero
+            Brand B
           </Badge>
         </div>
       </div>
@@ -215,7 +215,7 @@ export function FuelightPerformanceDashboard({ onNavigateToWaterfall, onNavigate
           Summary
         </button>
         <button 
-          onClick={() => onNavigateToWaterfall("Coca-Cola")}
+          onClick={() => onNavigateToWaterfall("Brand A")}
           className="px-6 py-3 text-sm font-medium text-zinc-500 hover:text-zinc-300"
         >
           Waterfall

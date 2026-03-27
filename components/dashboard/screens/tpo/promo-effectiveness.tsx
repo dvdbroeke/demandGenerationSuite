@@ -46,29 +46,29 @@ function generateSkuData(sku: string, metric: string, granularity: string, retai
   const rng = seededRandom(seed)
 
   const skuBase: Record<string, Record<string, number>> = {
-    "CC Classic 330ml":   { roi: 1.42, incremental: 38, volume: 52 },
-    "CC Classic 500ml":   { roi: 1.28, incremental: 32, volume: 44 },
-    "CC Classic 1.5L":    { roi: 0.98, incremental: 22, volume: 36 },
-    "CC Classic 2L":      { roi: 0.85, incremental: 18, volume: 30 },
-    "CC Classic 6x330ml": { roi: 1.32, incremental: 34, volume: 46 },
-    "CC Zero 330ml":      { roi: 1.72, incremental: 48, volume: 62 },
-    "CC Zero 500ml":      { roi: 1.35, incremental: 35, volume: 42 },
-    "CC Zero 1.5L":       { roi: 1.05, incremental: 24, volume: 28 },
-    "CC Zero 2L":         { roi: 0.78, incremental: 16, volume: 24 },
-    "CC Zero 6x330ml":    { roi: 1.28, incremental: 32, volume: 40 },
-    "Diet Coke 330ml":    { roi: 1.18, incremental: 28, volume: 34 },
-    "Diet Coke 500ml":    { roi: 0.92, incremental: 18, volume: 26 },
-    "Diet Coke 1.5L":     { roi: 0.72, incremental: 14, volume: 20 },
-    "Fanta Orange 330ml": { roi: 1.55, incremental: 42, volume: 48 },
-    "Fanta Orange 500ml": { roi: 1.22, incremental: 30, volume: 38 },
-    "Fanta Orange 2L":    { roi: 0.82, incremental: 16, volume: 22 },
-    "Sprite 330ml":       { roi: 1.08, incremental: 25, volume: 30 },
-    "Sprite 500ml":       { roi: 0.88, incremental: 15, volume: 22 },
-    "Sprite 1.5L":        { roi: 0.68, incremental: 12, volume: 18 },
+    "Brand A 330ml":   { roi: 1.42, incremental: 38, volume: 52 },
+    "Brand A 500ml":   { roi: 1.28, incremental: 32, volume: 44 },
+    "Brand A 1.5L":    { roi: 0.98, incremental: 22, volume: 36 },
+    "Brand A 2L":      { roi: 0.85, incremental: 18, volume: 30 },
+    "Brand A 8x330ml": { roi: 1.32, incremental: 34, volume: 46 },
+    "Brand B 330ml":   { roi: 1.72, incremental: 48, volume: 62 },
+    "Brand B 500ml":   { roi: 1.35, incremental: 35, volume: 42 },
+    "Brand B 1.5L":    { roi: 1.05, incremental: 24, volume: 28 },
+    "Brand B 2L":      { roi: 0.78, incremental: 16, volume: 24 },
+    "Brand B 8x330ml": { roi: 1.28, incremental: 32, volume: 40 },
+    "Brand C 330ml":   { roi: 1.18, incremental: 28, volume: 34 },
+    "Brand C 500ml":   { roi: 0.92, incremental: 18, volume: 26 },
+    "Brand C 1.5L":    { roi: 0.72, incremental: 14, volume: 20 },
+    "Brand D 330ml":   { roi: 1.55, incremental: 42, volume: 48 },
+    "Brand D 500ml":   { roi: 1.22, incremental: 30, volume: 38 },
+    "Brand D 2L":      { roi: 0.82, incremental: 16, volume: 22 },
+    "Brand E 330ml":   { roi: 1.08, incremental: 25, volume: 30 },
+    "Brand E 500ml":   { roi: 0.88, incremental: 15, volume: 22 },
+    "Brand E 1.5L":    { roi: 0.68, incremental: 12, volume: 18 },
   }
   const base = skuBase[sku]?.[metric] ?? (metric === "roi" ? 1.2 : metric === "incremental" ? 30 : 40)
 
-  const retailerMult: Record<string, number> = { "Esselunga": 1.1, "Conad": 1.05, "Coop Italia": 0.96, "Carrefour IT": 0.98, "Eurospin": 0.88, "Lidl IT": 0.90, "PAM": 1.04, "Despar": 0.95 }
+  const retailerMult: Record<string, number> = { "Retailer A": 1.1, "Retailer B": 1.05, "Retailer C": 0.96, "Retailer D": 0.98, "Retailer E": 0.88, "Retailer F": 0.90, "Retailer G": 1.04, "Retailer H": 0.95 }
   const rMult = retailer !== "All Retailers" ? (retailerMult[retailer] ?? 1) : 1
 
   const mechMult: Record<string, number> = { "TPR": 1.0, "Multibuy": 1.12, "BOGOF": 0.85, "Meal Deal": 0.95, "\u20ac1 PMP": 0.78, "Display Only": 1.08 }
@@ -85,8 +85,8 @@ function generateSkuData(sku: string, metric: string, granularity: string, retai
 const localSkuColors = sharedSkuColors
 
 const retailerColors: Record<string, string> = {
-  "Esselunga": "#3b82f6", "Conad": "#f97316", "Coop Italia": "#22c55e",
-  "Carrefour IT": "#eab308", "Eurospin": "#06b6d4", "Lidl IT": "#8b5cf6", "PAM": "#ec4899", "Despar": "#14b8a6",
+  "Retailer A": "#3b82f6", "Retailer B": "#f97316", "Retailer C": "#22c55e",
+  "Retailer D": "#eab308", "Retailer E": "#06b6d4", "Retailer F": "#8b5cf6", "Retailer G": "#ec4899", "Retailer H": "#14b8a6",
 }
 
 const mechanicColors: Record<string, string> = {
@@ -95,16 +95,16 @@ const mechanicColors: Record<string, string> = {
 }
 
 const aiInsights = [
-  { type: "positive" as const, text: "CC Zero 330ml TPR at Esselunga delivers 1.72x ROI -- 28% above portfolio average. Consider scaling to Conad." },
+  { type: "positive" as const, text: "Brand B 330ml TPR at Retailer A delivers 1.72x ROI -- 28% above portfolio average. Consider scaling to Retailer B." },
   { type: "warning" as const, text: "BOGOF mechanics on 1.5L packs show declining incrementality (was 42%, now 31%). Multibuy outperforms by 18pp." },
   { type: "positive" as const, text: "Summer weeks (W22-W30) show 35% higher promo ROI vs. average. Align major promotions with this window." },
-  { type: "negative" as const, text: "PAM Meal Deal promos on Diet Coke 500ml have negative incremental margin. Review pricing or exit mechanic." },
+  { type: "negative" as const, text: "PAM Meal Deal promos on Brand B 500ml have negative incremental margin. Review pricing or exit mechanic." },
 ]
 
 // ---------- Component ----------
 
 export function TPOPromoEffectiveness({ onNavigate }: PromoEffectivenessProps) {
-  const [selectedSku, setSelectedSku] = useState("CC Classic 330ml")
+  const [selectedSku, setSelectedSku] = useState("Brand A 330ml")
   const [selectedPack, setSelectedPack] = useState("All Packs")
   const [selectedMechanic, setSelectedMechanic] = useState("All Mechanics")
   const [selectedRetailer, setSelectedRetailer] = useState("All Retailers")

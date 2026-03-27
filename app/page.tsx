@@ -16,16 +16,16 @@ import { SystemWiringScreen } from "@/components/dashboard/screens/system-wiring
 import { PartitionActionsScreen } from "@/components/dashboard/screens/partition-actions"
 import { ScenarioBuilderScreen } from "@/components/dashboard/screens/scenario-builder"
 import { CountryPartitionDeepDive } from "@/components/dashboard/screens/country-partition-deep-dive"
-import { FuelightPerformanceDashboard } from "@/components/dashboard/screens/fuelight/performance-dashboard"
-import { FuelightWaterfallAnalysis } from "@/components/dashboard/screens/fuelight/waterfall-analysis"
-import { FuelightCannibalizationView } from "@/components/dashboard/screens/fuelight/cannibalization-view"
-import { FuelightOpportunityView } from "@/components/dashboard/screens/fuelight/opportunity-view"
-import { FuelightPartitionsMatrix } from "@/components/dashboard/screens/fuelight/partitions-matrix"
-import { FuelightOptimizationScenario } from "@/components/dashboard/screens/fuelight/optimization-scenario"
-import { FuelightOptimizerConfig } from "@/components/dashboard/screens/fuelight/optimizer-config"
-import { FuelightComparisonView } from "@/components/dashboard/screens/fuelight/comparison-view"
-import { FuelightTrendView } from "@/components/dashboard/screens/fuelight/trend-view"
-import { FuelightEditParameters } from "@/components/dashboard/screens/fuelight/edit-parameters"
+import { ArtemisPerformanceDashboard } from "@/components/dashboard/screens/fuelight/performance-dashboard"
+import { ArtemisWaterfallAnalysis } from "@/components/dashboard/screens/fuelight/waterfall-analysis"
+import { ArtemisCannibalizationView } from "@/components/dashboard/screens/fuelight/cannibalization-view"
+import { ArtemisOpportunityView } from "@/components/dashboard/screens/fuelight/opportunity-view"
+import { ArtemisPartitionsMatrix } from "@/components/dashboard/screens/fuelight/partitions-matrix"
+import { ArtemisOptimizationScenario } from "@/components/dashboard/screens/fuelight/optimization-scenario"
+import { ArtemisOptimizerConfig } from "@/components/dashboard/screens/fuelight/optimizer-config"
+import { ArtemisComparisonView } from "@/components/dashboard/screens/fuelight/comparison-view"
+import { ArtemisTrendView } from "@/components/dashboard/screens/fuelight/trend-view"
+import { ArtemisEditParameters } from "@/components/dashboard/screens/fuelight/edit-parameters"
 // BAM screens
 import { BAMOverview } from "@/components/dashboard/screens/bam/overview"
 import { BAMPartitionsHeatmap } from "@/components/dashboard/screens/bam/partitions-heatmap"
@@ -130,7 +130,7 @@ export default function StrategyControlTower() {
     ppaScreen: "pricing-performance",
     mixScreen: "market-opportunities",
     perfmgmtScreen: "system-scorecard",
-    selectedBrand: "Coca-Cola",
+    selectedBrand: "Brand A",
     initiativeCreated: false,
     isRGMImport: false,
   })
@@ -142,7 +142,7 @@ export default function StrategyControlTower() {
       ...prev,
       platform: "fuelight",
       fuelightScreen: "performance",
-      selectedBrand: "Coca-Cola Zero",
+      selectedBrand: "Brand A Zero",
     }))
   }
 
@@ -366,7 +366,7 @@ export default function StrategyControlTower() {
   }
 
   const handleFuelightDrillDown = (driver: string) => {
-    // "pricing" leads to cannibalization view (Diet Coke vs Coke Zero)
+    // "pricing" leads to cannibalization view (Brand A Diet vs Brand A Zero)
     // "media" leads to opportunity view (high ROI channels)
     if (driver === "media") {
       setNavigation(prev => ({
@@ -559,7 +559,7 @@ export default function StrategyControlTower() {
     switch (navigation.fuelightScreen) {
       case "performance":
         return (
-          <FuelightPerformanceDashboard 
+          <ArtemisPerformanceDashboard 
             onNavigateToWaterfall={handleFuelightNavigateToWaterfall}
             onNavigateToPartitions={handleFuelightNavigateToPartitions}
             onNavigateToOptimizer={handleNavigateToOptimizerConfig}
@@ -570,14 +570,14 @@ export default function StrategyControlTower() {
         )
       case "edit-parameters":
         return (
-          <FuelightEditParameters 
+          <ArtemisEditParameters 
             onNavigateToView={() => setNavigation(prev => ({ ...prev, fuelightScreen: "performance" }))}
             onNavigateToOptimize={handleNavigateToOptimizerConfig}
           />
         )
       case "waterfall":
         return (
-          <FuelightWaterfallAnalysis 
+          <ArtemisWaterfallAnalysis 
             brand={navigation.selectedBrand}
             onBack={handleFuelightBackToSummary}
             onDrillDown={handleFuelightDrillDown}
@@ -592,7 +592,7 @@ export default function StrategyControlTower() {
         )
       case "comparison":
         return (
-          <FuelightComparisonView
+          <ArtemisComparisonView
             brand={navigation.selectedBrand}
             onBack={handleFuelightBackToSummary}
             onNavigateToSummary={handleFuelightBackToSummary}
@@ -604,7 +604,7 @@ export default function StrategyControlTower() {
         )
       case "trend":
         return (
-          <FuelightTrendView
+          <ArtemisTrendView
             brand={navigation.selectedBrand}
             initialDriver={navigation.trendDriver || "meta"}
             onBack={handleFuelightBackToSummary}
@@ -617,14 +617,14 @@ export default function StrategyControlTower() {
         )
       case "partitions":
         return (
-          <FuelightPartitionsMatrix 
+          <ArtemisPartitionsMatrix 
             onBack={handleFuelightBackToSummary}
             onSelectBrand={handleFuelightSelectBrand}
           />
         )
       case "cannibalization":
         return (
-          <FuelightCannibalizationView 
+          <ArtemisCannibalizationView 
             onBack={handleFuelightBackToWaterfall}
             onNavigateToOpportunity={handleFuelightNavigateToOpportunity}
             onLaunchInitiative={handleFuelightLaunchInitiative}
@@ -633,7 +633,7 @@ export default function StrategyControlTower() {
         )
       case "opportunity":
         return (
-          <FuelightOpportunityView 
+          <ArtemisOpportunityView 
             onBack={handleFuelightBackToCannibalization}
             onLaunchInitiative={handleFuelightLaunchInitiative}
             onRunOptimizer={handleNavigateToOptimizerConfig}
@@ -641,7 +641,7 @@ export default function StrategyControlTower() {
         )
       case "optimizer-config":
         return (
-          <FuelightOptimizerConfig 
+          <ArtemisOptimizerConfig 
             onNavigateToView={() => setNavigation(prev => ({ ...prev, fuelightScreen: "performance" }))}
             onNavigateToEdit={() => setNavigation(prev => ({ ...prev, fuelightScreen: "edit-parameters" }))}
             onRunOptimization={handleRunOptimization}
@@ -649,7 +649,7 @@ export default function StrategyControlTower() {
         )
       case "optimization-scenario":
         return (
-  <FuelightOptimizationScenario 
+  <ArtemisOptimizationScenario 
   brand={navigation.optimizationConfig?.brand || "coca-cola-zero"}
   dateRange={navigation.optimizationConfig?.dateRange || "cy-2026"}
   fundingAmount={navigation.optimizationConfig?.fundingAmount || "39.4"}
@@ -663,7 +663,7 @@ export default function StrategyControlTower() {
   />
         )
       default:
-        return <FuelightPerformanceDashboard onNavigateToWaterfall={handleFuelightNavigateToWaterfall} onNavigateToPartitions={handleFuelightNavigateToPartitions} onNavigateToComparison={handleFuelightNavigateToComparison} onNavigateToTrend={handleFuelightNavigateToTrend} />
+        return <ArtemisPerformanceDashboard onNavigateToWaterfall={handleFuelightNavigateToWaterfall} onNavigateToPartitions={handleFuelightNavigateToPartitions} onNavigateToComparison={handleFuelightNavigateToComparison} onNavigateToTrend={handleFuelightNavigateToTrend} />
     }
   }
 
@@ -839,7 +839,7 @@ export default function StrategyControlTower() {
           onNavigateToPartitions={handleBackToPartitions}
           platformName={
             navigation.platform === "bam" ? "Brand Accelerator Model" :
-            navigation.platform === "fuelight" ? "Fuelight" :
+            navigation.platform === "fuelight" ? "Artemis" :
             navigation.platform === "prescriptive" ? "Prescriptive Operational Insights" :
             navigation.platform === "commercial" ? "Revenue Growth Management (OBPPC)" :
             navigation.platform === "tpo" ? "Promotion" :

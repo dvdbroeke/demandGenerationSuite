@@ -1,10 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { Search, DollarSign, Target, Layers, Sparkles } from "lucide-react"
+import { Search, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { CocaColaLogo } from "@/components/ui/platform-logos"
-import Image from "next/image"
+import { CompanyLogo, BAMLogo, RGMLogo, ArtemisLogo, PriceLogo, MixLogo, PromoLogo } from "@/components/ui/platform-logos"
 
 export type Platform = "bam" | "fuelight" | "prescriptive" | "commercial" | "tpo" | "ppa" | "mix"
 
@@ -13,53 +12,47 @@ interface LandingPageProps {
   onNavigateToInitiatives: () => void
 }
 
-// Intelligent Enterprise Platforms - with image logos
+// Intelligent Enterprise Platforms - with generic icon logos
 const intelligentEnterprise = [
   {
     id: "bam" as Platform,
     name: "Rules of the Category & Consumer Partitions",
     question: "Where should we play next to win?",
-    logo: "/BAMLogo.png",
+    Logo: BAMLogo,
   },
   {
     id: "prescriptive" as Platform,
-    name: "Prescriptive Operational Insights",
+    name: "Performance Management",
     question: "What must change this week to hit NSR/OI targets?",
-    logo: "/executionLogo.png",
+    Logo: RGMLogo,
   },
   {
     id: "fuelight" as Platform,
-    name: "Resource Allocation (Fuelight)",
+    name: "Resource Allocation (Artemis)",
     question: "Where should we focus our next dollar invested?",
-    logo: "/fuelight_transparant.png",
+    Logo: ArtemisLogo,
   },
 ]
 
-// RGM Pillars - keep icons
+// RGM Pillars - with generic icon logos
 const rgmPillars = [
   { 
     id: "ppa" as Platform, 
     name: "Price", 
     question: "What is the optimal price structure?",
-    icon: DollarSign,
-    iconColor: "text-emerald-400",
-    iconBg: "bg-emerald-500/20",
+    Logo: PriceLogo,
   },
   { 
     id: "mix" as Platform, 
     name: "Assortment & Mix", 
     question: "What mix optimizes customer and revenue coverage?",
-    icon: Layers,
-    iconColor: "text-emerald-400",
-    iconBg: "bg-emerald-500/20",
+    Logo: MixLogo,
   },
   { 
     id: "tpo" as Platform, 
     name: "Promotion", 
     question: "Which promotions will drive growth?",
-    icon: Target,
-    iconColor: "text-amber-400",
-    iconBg: "bg-amber-500/20",
+    Logo: PromoLogo,
   },
 ]
 
@@ -79,8 +72,8 @@ export function LandingPage({
     <div className="flex flex-col h-full overflow-auto bg-zinc-950">
       {/* Header Section */}
       <div className="flex flex-col items-center text-center pt-12 pb-6 px-6">
-        {/* Coca-Cola Logo */}
-        <CocaColaLogo size={200} />
+        {/* Company Logo */}
+        <CompanyLogo size={200} />
         
         {/* Headline */}
         <h1 className="text-4xl font-bold text-zinc-100 mt-8 mb-8">
@@ -97,7 +90,7 @@ export function LandingPage({
               type="text"
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
-              placeholder="Ask anything... E.g. How can I optimize promotion spend for Coca Cola"
+              placeholder="Ask anything... E.g. How can I optimize promotion spend for Brand A"
               className="flex-1 py-5 pr-4 bg-transparent text-lg text-zinc-100 placeholder:text-zinc-500 focus:outline-none"
             />
             <button 
@@ -128,44 +121,41 @@ export function LandingPage({
             
             {/* 3 Cards in a row */}
             <div className="grid grid-cols-3 gap-5">
-              {intelligentEnterprise.map((platform) => (
-                <button
-                  key={platform.id}
-                  onClick={() => onSelectPlatform(platform.id)}
-                  className={cn(
-                    "bg-zinc-900 rounded-xl p-5 flex flex-col items-center text-center transition-all border border-zinc-800",
-                    "hover:bg-zinc-800/80 hover:border-red-600/50 hover:shadow-lg cursor-pointer active:scale-[0.98]"
-                  )}
-                >
-                  {/* Logo Image */}
-                  <div className="w-16 h-16 flex items-center justify-center mb-4">
-                    <Image 
-                      src={platform.logo} 
-                      alt={platform.name} 
-                      width={64} 
-                      height={64}
-                      className="object-contain"
-                    />
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="text-base font-semibold text-zinc-100 leading-tight mb-3 min-h-[3rem]">
-                    {platform.name}
-                  </h3>
-                  
-                  {/* Question */}
-                  <p className="text-sm text-zinc-500 leading-relaxed mb-5 min-h-[2.5rem]">
-                    {platform.question}
-                  </p>
-                  
-                  {/* Open Button */}
-                  <div className="w-full mt-auto">
-                    <div className="bg-red-600 hover:bg-red-500 text-white text-base font-medium py-2.5 px-5 rounded-lg transition-colors">
-                      Open
+              {intelligentEnterprise.map((platform) => {
+                const Logo = platform.Logo
+                return (
+                  <button
+                    key={platform.id}
+                    onClick={() => onSelectPlatform(platform.id)}
+                    className={cn(
+                      "bg-zinc-900 rounded-xl p-5 flex flex-col items-center text-center transition-all border border-zinc-800",
+                      "hover:bg-zinc-800/80 hover:border-red-600/50 hover:shadow-lg cursor-pointer active:scale-[0.98]"
+                    )}
+                  >
+                    {/* Logo Icon */}
+                    <div className="w-16 h-16 flex items-center justify-center mb-4">
+                      <Logo size={64} />
                     </div>
-                  </div>
-                </button>
-              ))}
+                    
+                    {/* Title */}
+                    <h3 className="text-base font-semibold text-zinc-100 leading-tight mb-3 min-h-[3rem]">
+                      {platform.name}
+                    </h3>
+                    
+                    {/* Question */}
+                    <p className="text-sm text-zinc-500 leading-relaxed mb-5 min-h-[2.5rem]">
+                      {platform.question}
+                    </p>
+                    
+                    {/* Open Button */}
+                    <div className="w-full mt-auto">
+                      <div className="bg-red-600 hover:bg-red-500 text-white text-base font-medium py-2.5 px-5 rounded-lg transition-colors">
+                        Open
+                      </div>
+                    </div>
+                  </button>
+                )
+              })}
             </div>
           </div>
 
@@ -180,7 +170,7 @@ export function LandingPage({
             {/* 3 Cards in a row */}
             <div className="grid grid-cols-3 gap-5">
               {rgmPillars.map((pillar) => {
-                const Icon = pillar.icon
+                const Logo = pillar.Logo
                 return (
                   <button
                     key={pillar.id}
@@ -190,9 +180,9 @@ export function LandingPage({
                       "hover:bg-zinc-800/80 hover:border-red-600/50 hover:shadow-lg cursor-pointer active:scale-[0.98]"
                     )}
                   >
-                    {/* Icon */}
-                    <div className={cn("w-16 h-16 rounded-full flex items-center justify-center mb-4", pillar.iconBg)}>
-                      <Icon className={cn("h-8 w-8", pillar.iconColor)} />
+                    {/* Logo Icon */}
+                    <div className="w-16 h-16 flex items-center justify-center mb-4">
+                      <Logo size={64} />
                     </div>
                     
                     {/* Title */}

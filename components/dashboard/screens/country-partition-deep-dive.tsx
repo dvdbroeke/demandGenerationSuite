@@ -68,14 +68,14 @@ const countryData: Record<string, {
       items: [
         "Flavour (esp. Cherry/Bold) is a primary driver of incrementality",
         "Pack size is less dominant than in Italy",
-        "CCZS substitution logic differs vs CCOT when Zero is absent",
+        "Brand B substitution logic differs vs Brand A when Zero variant is absent",
         "Strong convenience channel reliance for impulse occasions"
       ]
     },
     howToWin: {
       title: "Implications for How to Win",
       items: [
-        "Strengthen CCZS differentiation vs CCOT",
+        "Strengthen Brand B differentiation vs Brand A",
         "Ensure media sufficiency for CCZS",
         "Close Zero distribution gaps in independents and forecourts",
         "Build Cherry and Caffeine-free scale in AH and AFH"
@@ -137,7 +137,7 @@ const countryData: Record<string, {
       title: "Where to Play (DE)",
       items: [
         "Cola Zero is market leader in zero-sugar — defend position",
-        "Energy highly competitive — Monster/Red Bull pressure",
+        "Energy highly competitive — Competitor X/Competitor Y pressure",
         "Advanced Hydration growing from strong base",
         "Nutrition/Protein most developed in Europe"
       ]

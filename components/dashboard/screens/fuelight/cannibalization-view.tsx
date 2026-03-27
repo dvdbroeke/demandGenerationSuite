@@ -20,34 +20,34 @@ interface CannibalizationViewProps {
 }
 
 const promoSourceData = {
-  cokeRegular: {
-    name: "Coke Regular",
+  productARegular: {
+    name: "Product A Regular",
     sources: [
-      { brand: "Coke Regular", percentage: 94, color: "bg-red-600" },
-      { brand: "Coke", percentage: 2, color: "bg-zinc-500" },
-      { brand: "Diet Coke", percentage: 2, color: "bg-zinc-500" },
-      { brand: "Coke Zero", percentage: 2, color: "bg-zinc-500" },
+      { brand: "Product A Regular", percentage: 94, color: "bg-red-600" },
+      { brand: "Product A", percentage: 2, color: "bg-zinc-500" },
+      { brand: "Product A Diet", percentage: 2, color: "bg-zinc-500" },
+      { brand: "Product A Zero", percentage: 2, color: "bg-zinc-500" },
     ],
     promoSpend: "2",
     netROI: "0.2"
   },
-  dietCoke: {
-    name: "Diet Coke",
+  productADiet: {
+    name: "Product A Diet",
     sources: [
-      { brand: "Coke Regular", percentage: 52, color: "bg-zinc-500" },
-      { brand: "Coke Zero", percentage: 37, color: "bg-red-600", highlighted: true, annotation: "When Diet is on promo, 37% of volume is sourced from Coke Zero" },
-      { brand: "Diet Coke", percentage: 9, color: "bg-zinc-500" },
+      { brand: "Product A Regular", percentage: 52, color: "bg-zinc-500" },
+      { brand: "Product A Zero", percentage: 37, color: "bg-red-600", highlighted: true, annotation: "When Diet is on promo, 37% of volume is sourced from Product A Zero" },
+      { brand: "Product A Diet", percentage: 9, color: "bg-zinc-500" },
       { brand: "Others", percentage: 1, color: "bg-zinc-500" },
     ],
     promoSpend: "30",
     netROI: "0.2"
   },
-  cokeZero: {
-    name: "Coke Zero",
+  productAZero: {
+    name: "Product A Zero",
     sources: [
-      { brand: "Coke Zero", percentage: 90, color: "bg-red-600" },
-      { brand: "Coke Regular", percentage: 1, color: "bg-zinc-500" },
-      { brand: "Coke", percentage: 5, color: "bg-zinc-500" },
+      { brand: "Product A Zero", percentage: 90, color: "bg-red-600" },
+      { brand: "Product A Regular", percentage: 1, color: "bg-zinc-500" },
+      { brand: "Product A", percentage: 5, color: "bg-zinc-500" },
       { brand: "Others", percentage: 3, color: "bg-zinc-500" },
     ],
     promoSpend: "36",
@@ -67,17 +67,17 @@ const getValueColor = (value: number): string => {
 const fanBaseData = {
   categories: ["Regular", "Diet", "Zero"],
   columns: [
-    { category: "Regular", brands: ["CC Regular", "Pepsi"] },
-    { category: "Diet", brands: ["Diet Coke", "Diet Pepsi"] },
-    { category: "Zero", brands: ["Coca-Cola Zero", "Pepsi Max"] },
+    { category: "Regular", brands: ["Brand A Regular", "Brand B"] },
+    { category: "Diet", brands: ["Brand A Diet", "Brand B Diet"] },
+    { category: "Zero", brands: ["Brand B", "Brand B Max"] },
   ],
   rows: [
-    { category: "Regular", brand: "Coca-Cola Regular", values: [6.6, 3.7, 3.7, 0.8, 1.8, 1.0] },
-    { category: "Regular", brand: "Pepsi", values: [3.7, 8.4, 0.9, 2.4, 1.2, 1.8] },
-    { category: "Diet", brand: "Diet Coke", values: [3.7, 0.9, 14.1, 3.4, 3.3, 7.5] },
-    { category: "Diet", brand: "Diet Pepsi", values: [0.8, 2.4, 3.4, 7.3, 3.0, 4.6] },
-    { category: "Zero", brand: "Coca-Cola Zero", values: [1.8, 1.2, 3.3, 3.0, 5.5, 3.7], highlightCol: 4 },
-    { category: "Zero", brand: "Pepsi Max", values: [1.0, 1.8, 7.5, 4.6, 3.7, 15.9] },
+    { category: "Regular", brand: "Brand A Regular", values: [6.6, 3.7, 3.7, 0.8, 1.8, 1.0] },
+    { category: "Regular", brand: "Brand B", values: [3.7, 8.4, 0.9, 2.4, 1.2, 1.8] },
+    { category: "Diet", brand: "Brand A Diet", values: [3.7, 0.9, 14.1, 3.4, 3.3, 7.5] },
+    { category: "Diet", brand: "Brand B Diet", values: [0.8, 2.4, 3.4, 7.3, 3.0, 4.6] },
+    { category: "Zero", brand: "Brand B", values: [1.8, 1.2, 3.3, 3.0, 5.5, 3.7], highlightCol: 4 },
+    { category: "Zero", brand: "Brand B Max", values: [1.0, 1.8, 7.5, 4.6, 3.7, 15.9] },
   ]
 }
 
@@ -91,7 +91,7 @@ const fanBaseMatrix = fanBaseData.rows.map((row) => ({
   }))
 }));
 
-export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, onLaunchInitiative, onNavigateToRGMPromotion }: CannibalizationViewProps) {
+export function ArtemisCannibalizationView({ onBack, onNavigateToOpportunity, onLaunchInitiative, onNavigateToRGMPromotion }: CannibalizationViewProps) {
   return (
     <div className="p-8 space-y-6">
       {/* Header */}
@@ -109,7 +109,7 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
           <div className="h-6 w-px bg-zinc-800" />
           <div>
             <h1 className="text-xl font-bold text-zinc-100">Root Cause Analysis</h1>
-            <p className="text-sm text-zinc-500">Diet Coke → Coke Zero Cannibalization</p>
+            <p className="text-sm text-zinc-500">Product A Diet → Product A Zero Cannibalization</p>
           </div>
         </div>
       </div>
@@ -128,7 +128,7 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
               </div>
               <div className="text-left">
                 <span className="text-sm font-medium text-amber-300">Launch Initiative</span>
-                <p className="text-xs text-amber-400/70">Shift Media Investment from Diet Coke to Coke Zero - GB</p>
+                <p className="text-xs text-amber-400/70">Shift Media Investment from Product A Diet to Product A Zero - GB</p>
               </div>
             </div>
             <ChevronRight className="h-5 w-5 text-amber-400 group-hover:translate-x-1 transition-transform" />
@@ -140,10 +140,10 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
             </div>
             <div className="flex-1">
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
-                Given inferior fan bases of Coke Zero, we see large own cannibalization when Diet Coke is on promo
+                Given inferior fan bases of Product A Zero, we see large own cannibalization when Product A Diet is on promo
               </h2>
               <p className="text-sm text-zinc-400 mb-4">
-                When Diet Coke runs promotions, 37% of the triggered volume comes from consumers who would otherwise buy Coke Zero. 
+                When Product A Diet runs promotions, 37% of the triggered volume comes from consumers who would otherwise buy Product A Zero. 
                 This creates internal cannibalization rather than category growth.
               </p>
               <div className="flex items-center gap-4">
@@ -167,7 +167,7 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
               <div className="flex items-center justify-between">
                 <CardTitle className="text-sm font-semibold text-zinc-100">{brand.name}</CardTitle>
                 <div className="w-6 h-6 rounded-full bg-red-600 flex items-center justify-center">
-                  <span className="text-white text-[8px] font-bold">CC</span>
+                  <span className="text-white text-[8px] font-bold">A</span>
                 </div>
               </div>
               <p className="text-[10px] text-zinc-500">
@@ -226,7 +226,7 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
           <div className="flex items-start justify-between">
             <div>
               <CardTitle className="text-base font-semibold text-zinc-100">
-                Coca-Cola Zero with inferior fan base vs. Diet Coke and Pepsi Max
+                Brand B with inferior fan base vs. Brand A Diet and Brand B Max
               </CardTitle>
               <p className="text-xs text-zinc-500 mt-1">
                 Brand loyalty index - All ages. Higher values indicate stronger exclusive preference.
@@ -258,12 +258,12 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
                   </th>
                 </tr>
                 <tr>
-                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">CC Regular</th>
-                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Pepsi</th>
-                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Diet Coke</th>
-                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Diet Pepsi</th>
-                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Coca-Cola Zero</th>
-                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Pepsi Max</th>
+                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand A Regular</th>
+                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand B</th>
+                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand A Diet</th>
+                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand B Diet</th>
+                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand B</th>
+                  <th className="text-center p-2 text-[11px] text-zinc-400 font-normal bg-zinc-800/20 border border-zinc-700/50 min-w-[90px]">Brand B Max</th>
                 </tr>
               </thead>
               <tbody>
@@ -352,8 +352,8 @@ export function FuelightCannibalizationView({ onBack, onNavigateToOpportunity, o
             <div className="flex items-start gap-2">
               <Info className="h-4 w-4 text-amber-400 flex-shrink-0 mt-0.5" />
               <p className="text-xs text-amber-300">
-                Coca-Cola Zero has a fan base score of only <strong>5.5</strong> compared to Diet Coke's <strong>14.1</strong> and Pepsi Max's <strong>15.9</strong>. 
-                This makes Coke Zero vulnerable to competitive and internal cannibalization.
+                Brand B has a fan base score of only <strong>5.5</strong> compared to Brand A Diet&apos;s <strong>14.1</strong> and Brand B Max&apos;s <strong>15.9</strong>. 
+                This makes Brand B vulnerable to competitive and internal cannibalization.
               </p>
             </div>
           </div>

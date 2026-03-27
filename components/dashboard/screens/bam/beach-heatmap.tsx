@@ -17,7 +17,7 @@ import { AlertTriangle, ArrowLeft, ArrowRight, ChevronRight, Zap } from "lucide-
 
 interface BeachHeatmapProps {
   onBack: () => void
-  onNavigateToFuelight: () => void
+  onNavigateToArtemis: () => void
 }
 
 const markets = [
@@ -46,10 +46,10 @@ const ageGroups = [
   { id: "boomers", name: "Boomers+ (60+)" },
 ]
 
-// Cola brand data by age group (BEACH data)
-const colaBrandDataByAge: Record<string, { categories: string[], data: number[][] }> = {
+// Variant data by age group (BEACH data)
+const variantDataByAge: Record<string, { categories: string[], data: number[][] }> = {
   all: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [4.9, 1.9, 1.4],
       [1.9, 10.3, 4.1],
@@ -57,7 +57,7 @@ const colaBrandDataByAge: Record<string, { categories: string[], data: number[][
     ]
   },
   genz: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [4.8, 3.4, 1.8],
       [3.4, 9.8, 5.8],
@@ -65,7 +65,7 @@ const colaBrandDataByAge: Record<string, { categories: string[], data: number[][
     ]
   },
   millennials: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [5.2, 2.1, 1.6],
       [2.1, 10.8, 4.5],
@@ -73,7 +73,7 @@ const colaBrandDataByAge: Record<string, { categories: string[], data: number[][
     ]
   },
   genx: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [4.6, 1.5, 1.2],
       [1.5, 11.2, 3.6],
@@ -81,7 +81,7 @@ const colaBrandDataByAge: Record<string, { categories: string[], data: number[][
     ]
   },
   boomers: {
-    categories: ["Regular", "Diet", "Zero"],
+    categories: ["Tier 1", "Tier 2", "Tier 3"],
     data: [
       [4.3, 1.2, 0.9],
       [1.2, 12.1, 2.8],
@@ -97,12 +97,12 @@ const getColaBrandColor = (value: number): string => {
   return "bg-teal-800"
 }
 
-export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapProps) {
+export function BAMBeachHeatmap({ onBack, onNavigateToArtemis }: BeachHeatmapProps) {
   const [selectedMarket, setSelectedMarket] = useState("gb")
   const [selectedYear, setSelectedYear] = useState("2025")
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("all")
 
-  const currentColaBrandData = colaBrandDataByAge[selectedAgeGroup] || colaBrandDataByAge.all
+  const currentVariantData = variantDataByAge[selectedAgeGroup] || variantDataByAge.all
   const isGenZ = selectedAgeGroup === "genz"
 
   return (
@@ -163,7 +163,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
         <CardContent className="p-6">
           {/* Action CTA at top */}
           <button
-            onClick={onNavigateToFuelight}
+            onClick={onNavigateToArtemis}
             className="w-full mb-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/50 transition-all flex items-center justify-between group"
           >
             <div className="flex items-center gap-3">
@@ -171,7 +171,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
                 <ArrowRight className="h-4 w-4 text-emerald-400" />
               </div>
               <div className="text-left">
-                <span className="text-sm font-medium text-emerald-300">View Coke Zero Performance in Fuelight</span>
+                <span className="text-sm font-medium text-emerald-300">View Segment A2 Performance in Artemis</span>
                 <p className="text-xs text-emerald-400/70">Analyze investment efficiency and optimization opportunities</p>
               </div>
             </div>
@@ -184,11 +184,11 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
             </div>
             <div className="flex-1">
               <h2 className="text-lg font-semibold text-zinc-100 mb-2">
-                Strategic Insight: Cola Sub-Brand Positioning
+                Strategic Insight: Product Variant Positioning
               </h2>
               <p className="text-sm text-zinc-400 mb-4">
-                Younger generations (Gen Z) show significantly higher cross-consumption between Diet and Zero variants. 
-                The Diet-Zero overlap increases from 4.1 (all ages) to 5.8 (Gen Z), indicating these sub-brands 
+                Younger generations (Gen Z) show significantly higher cross-consumption between Tier 2 and Tier 3 variants. 
+                The Tier 2-Tier 3 overlap increases from 4.1 (all ages) to 5.8 (Gen Z), indicating these variants 
                 are increasingly perceived as interchangeable by younger consumers.
               </p>
               <div className="flex items-center gap-4 mb-4">
@@ -201,7 +201,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
               </div>
               <div className="p-3 bg-zinc-800/50 rounded-lg border border-zinc-700/50">
                 <p className="text-sm text-zinc-100 font-medium">
-                  <span className="text-amber-400 underline">Implication:</span> Today, each Coca-Cola sub-brand must be treated as a standalone asset with distinct positioning to capture Gen Z loyalty.
+                  <span className="text-amber-400 underline">Implication:</span> Today, each Brand A variant must be treated as a standalone asset with distinct positioning to capture Gen Z loyalty.
                 </p>
               </div>
             </div>
@@ -211,8 +211,8 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
 
       {/* Page Title */}
       <div>
-        <h2 className="text-lg font-semibold text-zinc-100">BEACH Data - Cola Brand Overlap by Age</h2>
-        <p className="text-sm text-zinc-500">Consumer crossover between Regular, Diet, and Zero cola variants by age cohort</p>
+        <h2 className="text-lg font-semibold text-zinc-100">BEACH Data - Brand Overlap by Age</h2>
+        <p className="text-sm text-zinc-500">Consumer crossover between Tier 1, Tier 2, and Tier 3 product variants by age cohort</p>
       </div>
 
       {/* Age Group Selector */}
@@ -253,7 +253,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
                       <span className="text-zinc-600">{ageGroups.find(g => g.id === selectedAgeGroup)?.name || "All ages"}</span>
                     </div>
                   </th>
-                  {currentColaBrandData.categories.map((cat, idx) => (
+                  {currentVariantData.categories.map((cat, idx) => (
                     <th key={idx} className="p-3 text-center text-sm font-semibold text-zinc-300 bg-zinc-800/50 border border-zinc-700/50 min-w-[100px]">
                       {cat}
                     </th>
@@ -261,17 +261,17 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
                 </tr>
               </thead>
               <tbody>
-                {currentColaBrandData.categories.map((rowCat, rowIdx) => (
+                {currentVariantData.categories.map((rowCat, rowIdx) => (
                   <tr key={rowIdx}>
                     <td className={cn(
                       "p-3 text-sm font-medium border border-zinc-700/50",
-                      rowCat === "Regular" && "bg-red-500/20 text-red-300",
-                      rowCat === "Diet" && "bg-zinc-700/50 text-zinc-300",
-                      rowCat === "Zero" && "bg-emerald-500/20 text-emerald-300"
+                      rowCat === "Tier 1" && "bg-red-500/20 text-red-300",
+                      rowCat === "Tier 2" && "bg-zinc-700/50 text-zinc-300",
+                      rowCat === "Tier 3" && "bg-emerald-500/20 text-emerald-300"
                     )}>
                       {rowCat}
                     </td>
-                    {currentColaBrandData.data[rowIdx].map((value, colIdx) => (
+                    {currentVariantData.data[rowIdx].map((value, colIdx) => (
                       <td key={colIdx} className="p-1 border border-zinc-700/50">
                         <div className={cn(
                           "py-4 px-4 text-center text-lg font-bold text-zinc-900 rounded-sm",
@@ -303,7 +303,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
               {isGenZ && (
                 <div className="flex items-start gap-2 text-xs text-amber-400">
                   <Zap className="h-3 w-3 mt-0.5 flex-shrink-0" />
-                  <span>Gen Z shows higher cross-brand consumption: Diet-Zero overlap increases from 4.1 to 5.8</span>
+                  <span>Gen Z shows higher cross-brand consumption: Tier 2-Tier 3 overlap increases from 4.1 to 5.8</span>
                 </div>
               )}
             </div>
@@ -341,9 +341,9 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-sm font-bold text-zinc-300">1</div>
                 <div>
                   <p className="text-sm text-zinc-300 leading-relaxed">
-                    Across brands, <span className="text-amber-400 font-semibold">Cola Regular, Diet and Zero attract distinct consumers</span>
+                    Across brands, <span className="text-amber-400 font-semibold">Tier 1, Tier 2, and Tier 3 attract distinct consumers</span>
                   </p>
-                  <p className="text-xs text-zinc-500 mt-1">Diagonal values (4.9, 10.3, 4.7) indicate strong brand-specific loyalty</p>
+                  <p className="text-xs text-zinc-500 mt-1">Diagonal values (4.9, 10.3, 4.7) indicate strong variant-specific loyalty</p>
                 </div>
               </div>
               
@@ -351,9 +351,9 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-sm font-bold text-zinc-300">2</div>
                 <div>
                   <p className="text-sm text-zinc-300 leading-relaxed">
-                    <span className="text-red-400 font-semibold">Younger generations are more indifferent</span> between Diet and Zero, and consume more across categories
+                    <span className="text-red-400 font-semibold">Younger generations are more indifferent</span> between Tier 2 and Tier 3, and consume more across categories
                   </p>
-                  <p className="text-xs text-zinc-500 mt-1">Gen Z Diet-Zero overlap: 5.8 vs All Ages: 4.1 (+41%)</p>
+                  <p className="text-xs text-zinc-500 mt-1">Gen Z Tier 2-Tier 3 overlap: 5.8 vs All Ages: 4.1 (+41%)</p>
                 </div>
               </div>
 
@@ -361,9 +361,9 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-sm font-bold text-zinc-300">3</div>
                 <div>
                   <p className="text-sm text-zinc-300 leading-relaxed">
-                    <span className="text-emerald-400 font-semibold">Zero has weaker brand loyalty</span> compared to Diet across all age groups
+                    <span className="text-emerald-400 font-semibold">Tier 3 has weaker brand loyalty</span> compared to Tier 2 across all age groups
                   </p>
-                  <p className="text-xs text-zinc-500 mt-1">Zero diagonal (4.7) vs Diet diagonal (10.3) shows 2x weaker retention</p>
+                  <p className="text-xs text-zinc-500 mt-1">Tier 3 diagonal (4.7) vs Tier 2 diagonal (10.3) shows 2x weaker retention</p>
                 </div>
               </div>
             </div>
@@ -371,7 +371,7 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
             {/* Implication Box */}
             <div className="mt-6 p-4 bg-amber-500/10 rounded-lg border border-amber-500/20">
               <p className="text-sm text-amber-300 font-medium leading-relaxed">
-                <span className="underline">Implication:</span> Today, each Coca-Cola sub-brand must be treated as a standalone asset with distinct positioning, media investment, and consumer targeting strategy.
+                <span className="underline">Implication:</span> Today, each Brand A variant must be treated as a standalone asset with distinct positioning, media investment, and consumer targeting strategy.
               </p>
             </div>
 
@@ -381,11 +381,11 @@ export function BAMBeachHeatmap({ onBack, onNavigateToFuelight }: BeachHeatmapPr
               <ul className="space-y-2 text-sm text-zinc-400">
                 <li className="flex items-start gap-2">
                   <ChevronRight className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <span>Review Coke Zero media investment efficiency in Fuelight</span>
+                  <span>Review Segment A2 media investment efficiency in Artemis</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <span>Assess cannibalization risk from Diet Coke promotions</span>
+                  <span>Assess cannibalization risk from Brand A Tier 2 promotions</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />

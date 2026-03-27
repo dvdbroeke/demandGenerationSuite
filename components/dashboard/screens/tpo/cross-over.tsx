@@ -54,19 +54,19 @@ const baseSkuData: SkuSource[] = skuMaster.map(s => {
 })
 
 const tierPackMap: Record<string, string[]> = { "Single Serve": ["150ml","250ml","330ml"], "On-the-Go": ["500ml"], "Multi Serve": ["1.25L","1.5L","1.75L","2L"], "Multipack": ["8x330ml","18x330ml","24x330ml"] }
-const retailerMult: Record<string, number> = { "Esselunga":1.08,"Conad":1.04,"Coop Italia":0.96,"Carrefour IT":0.98,"Eurospin":0.88,"Lidl IT":0.90,"PAM":1.04,"Despar":0.95 }
+const retailerMult: Record<string, number> = { "Retailer A":1.08,"Retailer B":1.04,"Retailer C":0.96,"Retailer D":0.98,"Retailer E":0.88,"Retailer F":0.90,"Retailer G":1.04,"Retailer H":0.95 }
 const mechMult: Record<string, number> = { "TPR":1.0,"Multibuy":1.1,"BOGOF":0.88,"Meal Deal":0.92,"\u20ac1 PMP":0.78,"Display Only":1.06 }
 
 const insightTemplates = [
-  { type: "negative" as const, cond: (r: string) => r === "All Retailers", text: "CC Classic 1.5L has 35% pull-forward -- highest in portfolio. Promotion is borrowing from future sales, not creating genuine incrementality." },
-  { type: "positive" as const, cond: (r: string) => r === "All Retailers", text: "CC Zero 330ml drives 42% volume from competitor switching -- the strongest conquest SKU. Prioritize competitive pack formats." },
-  { type: "warning" as const, cond: (r: string) => r === "All Retailers", text: "Diet Coke 330ml loses 28% of promo volume to CC Zero and CC Classic -- internal cannibalization exceeds competitive gains." },
-  { type: "positive" as const, cond: (r: string) => r === "All Retailers", text: "Fanta Orange 330ml achieves 38% category expansion -- the highest net-new volume in portfolio. Ideal for Display + TPR." },
-  { type: "negative" as const, cond: () => true, text: "Sprite 500ml suffers 21% same-brand size switching from 330ml. Avoid running promos on both sizes simultaneously." },
-  { type: "positive" as const, cond: (r: string) => r === "Esselunga", text: "Esselunga delivers 8% higher incremental volume across all SKUs vs. portfolio average -- premium shopper profile." },
-  { type: "warning" as const, cond: (r: string) => r === "Carrefour IT", text: "Carrefour IT shows 4% lower category expansion -- promotional overlap with competitor activity is higher." },
-  { type: "positive" as const, cond: (r: string) => r === "Conad", text: "Conad delivers 12% higher competitor switching. Strong local shopper profile aligns well with zero-sugar variants." },
-  { type: "negative" as const, cond: (r: string) => r === "Eurospin", text: "Eurospin promos show high pull-forward (32%) and low competitor switching. Volume is primarily own-brand redistribution." },
+  { type: "negative" as const, cond: (r: string) => r === "All Retailers", text: "Brand A 1.5L has 35% pull-forward -- highest in portfolio. Promotion is borrowing from future sales, not creating genuine incrementality." },
+  { type: "positive" as const, cond: (r: string) => r === "All Retailers", text: "Brand B 330ml drives 42% volume from competitor switching -- the strongest conquest SKU. Prioritize competitive pack formats." },
+  { type: "warning" as const, cond: (r: string) => r === "All Retailers", text: "Brand C 330ml loses 28% of promo volume to Brand B and Brand A -- internal cannibalization exceeds competitive gains." },
+  { type: "positive" as const, cond: (r: string) => r === "All Retailers", text: "Brand D 330ml achieves 38% category expansion -- the highest net-new volume in portfolio. Ideal for Display + TPR." },
+  { type: "negative" as const, cond: () => true, text: "Brand E 500ml suffers 21% same-brand size switching from 330ml. Avoid running promos on both sizes simultaneously." },
+  { type: "positive" as const, cond: (r: string) => r === "Retailer A", text: "Retailer A delivers 8% higher incremental volume across all SKUs vs. portfolio average -- premium shopper profile." },
+  { type: "warning" as const, cond: (r: string) => r === "Retailer D", text: "Retailer D shows 4% lower category expansion -- promotional overlap with competitor activity is higher." },
+  { type: "positive" as const, cond: (r: string) => r === "Retailer B", text: "Retailer B delivers 12% higher competitor switching. Strong local shopper profile aligns well with Brand B." },
+  { type: "negative" as const, cond: (r: string) => r === "Retailer H", text: "Retailer H promos show high pull-forward (32%) and low competitor switching. Volume is primarily own-brand redistribution." },
 ]
 
 export function TPOCrossOver({ onNavigate }: CrossOverProps) {

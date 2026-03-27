@@ -10,7 +10,7 @@ import {
   AlertTriangle
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { FuelightLogo } from "@/components/ui/platform-logos"
+import { ArtemisLogo } from "@/components/ui/platform-logos"
 
 interface PartitionsMatrixProps {
   onBack: () => void
@@ -18,40 +18,40 @@ interface PartitionsMatrixProps {
 }
 
 const matrixData = [
-  { row: "Coca-Cola Regular", values: [
-    { brand: "CC Regular", value: 94, overlap: "low" },
-    { brand: "Diet Coke", value: 12, overlap: "low" },
-    { brand: "Coke Zero", value: 8, overlap: "low" },
-    { brand: "Fanta", value: 15, overlap: "low" },
-    { brand: "Sprite", value: 10, overlap: "low" },
+  { row: "Product A Regular", values: [
+    { brand: "Product A", value: 94, overlap: "low" },
+    { brand: "Product A Diet", value: 12, overlap: "low" },
+    { brand: "Product A Zero", value: 8, overlap: "low" },
+    { brand: "Product B", value: 15, overlap: "low" },
+    { brand: "Product C", value: 10, overlap: "low" },
   ]},
-  { row: "Diet Coke", values: [
-    { brand: "CC Regular", value: 18, overlap: "low" },
-    { brand: "Diet Coke", value: 85, overlap: "low" },
-    { brand: "Coke Zero", value: 37, overlap: "high", highlighted: true, annotation: "High overlap - cannibalization risk" },
-    { brand: "Fanta", value: 8, overlap: "low" },
-    { brand: "Sprite", value: 5, overlap: "low" },
+  { row: "Product A Diet", values: [
+    { brand: "Product A", value: 18, overlap: "low" },
+    { brand: "Product A Diet", value: 85, overlap: "low" },
+    { brand: "Product A Zero", value: 37, overlap: "high", highlighted: true, annotation: "High overlap - cannibalization risk" },
+    { brand: "Product B", value: 8, overlap: "low" },
+    { brand: "Product C", value: 5, overlap: "low" },
   ]},
-  { row: "Coke Zero", values: [
-    { brand: "CC Regular", value: 15, overlap: "low" },
-    { brand: "Diet Coke", value: 42, overlap: "high", highlighted: true },
-    { brand: "Coke Zero", value: 78, overlap: "low" },
-    { brand: "Fanta", value: 6, overlap: "low" },
-    { brand: "Sprite", value: 4, overlap: "low" },
+  { row: "Product A Zero", values: [
+    { brand: "Product A", value: 15, overlap: "low" },
+    { brand: "Product A Diet", value: 42, overlap: "high", highlighted: true },
+    { brand: "Product A Zero", value: 78, overlap: "low" },
+    { brand: "Product B", value: 6, overlap: "low" },
+    { brand: "Product C", value: 4, overlap: "low" },
   ]},
-  { row: "Fanta", values: [
-    { brand: "CC Regular", value: 22, overlap: "medium" },
-    { brand: "Diet Coke", value: 5, overlap: "low" },
-    { brand: "Coke Zero", value: 4, overlap: "low" },
-    { brand: "Fanta", value: 88, overlap: "low" },
-    { brand: "Sprite", value: 28, overlap: "medium" },
+  { row: "Product B", values: [
+    { brand: "Product A", value: 22, overlap: "medium" },
+    { brand: "Product A Diet", value: 5, overlap: "low" },
+    { brand: "Product A Zero", value: 4, overlap: "low" },
+    { brand: "Product B", value: 88, overlap: "low" },
+    { brand: "Product C", value: 28, overlap: "medium" },
   ]},
-  { row: "Sprite", values: [
-    { brand: "CC Regular", value: 18, overlap: "low" },
-    { brand: "Diet Coke", value: 4, overlap: "low" },
-    { brand: "Coke Zero", value: 3, overlap: "low" },
-    { brand: "Fanta", value: 25, overlap: "medium" },
-    { brand: "Sprite", value: 90, overlap: "low" },
+  { row: "Product C", values: [
+    { brand: "Product A", value: 18, overlap: "low" },
+    { brand: "Product A Diet", value: 4, overlap: "low" },
+    { brand: "Product A Zero", value: 3, overlap: "low" },
+    { brand: "Product B", value: 25, overlap: "medium" },
+    { brand: "Product C", value: 90, overlap: "low" },
   ]},
 ]
 
@@ -63,7 +63,7 @@ const getOverlapColor = (value: number, overlap: string, highlighted?: boolean) 
   return "bg-zinc-700"
 }
 
-export function FuelightPartitionsMatrix({ onBack, onSelectBrand }: PartitionsMatrixProps) {
+export function ArtemisPartitionsMatrix({ onBack, onSelectBrand }: PartitionsMatrixProps) {
   const [hoveredCell, setHoveredCell] = useState<string | null>(null)
 
   return (
@@ -83,7 +83,7 @@ export function FuelightPartitionsMatrix({ onBack, onSelectBrand }: PartitionsMa
           <div className="h-6 w-px bg-zinc-800" />
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-zinc-800/50 flex items-center justify-center">
-              <FuelightLogo size="md" />
+              <ArtemisLogo size="md" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-zinc-100">Partition Interactions</h1>
@@ -121,7 +121,7 @@ export function FuelightPartitionsMatrix({ onBack, onSelectBrand }: PartitionsMa
           <div className="flex items-center gap-3">
             <AlertTriangle className="h-5 w-5 text-amber-400" />
             <p className="text-sm text-zinc-300">
-              <strong className="text-amber-400">High cannibalization detected:</strong> Diet Coke and Coke Zero show 37-42% consumer overlap. 
+              <strong className="text-amber-400">High cannibalization detected:</strong> Product A Diet and Product A Zero show 37-42% consumer overlap. 
               Click on highlighted cells to investigate.
             </p>
           </div>
@@ -173,7 +173,7 @@ export function FuelightPartitionsMatrix({ onBack, onSelectBrand }: PartitionsMa
                     {row.values.map((cell) => (
                       <td key={`${row.row}-${cell.brand}`} className="p-2">
                         <button
-                          onClick={() => cell.highlighted && onSelectBrand("Coke Zero")}
+                          onClick={() => cell.highlighted && onSelectBrand("Product A Zero")}
                           onMouseEnter={() => setHoveredCell(`${row.row}-${cell.brand}`)}
                           onMouseLeave={() => setHoveredCell(null)}
                           className={cn(
@@ -214,13 +214,13 @@ export function FuelightPartitionsMatrix({ onBack, onSelectBrand }: PartitionsMa
         <CardContent className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-sm font-semibold text-zinc-100">Investigate Diet Coke ↔ Coke Zero Overlap</h3>
+              <h3 className="text-sm font-semibold text-zinc-100">Investigate Product A Diet ↔ Product A Zero Overlap</h3>
               <p className="text-xs text-zinc-500 mt-1">
                 Click on the highlighted cells above or use this button to open the diagnostic flow
               </p>
             </div>
             <Button
-              onClick={() => onSelectBrand("Coke Zero")}
+              onClick={() => onSelectBrand("Product A Zero")}
               className="bg-amber-500 hover:bg-amber-600 text-zinc-900"
             >
               Open Diagnostic

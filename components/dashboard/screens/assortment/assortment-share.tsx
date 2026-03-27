@@ -34,7 +34,7 @@ interface ChannelData {
   // Shelf/assortment composition when drilling down
   shelfComposition: {
     brand: string
-    portfolio: "TCCC" | "Pepsi" | "Dr Pepper" | "Private Label" | "Other"
+    portfolio: "Brand Owner" | "Competitor" | "Alternative" | "Private Label" | "Other"
     facings: number
     shareOfShelf: number
     color: string
@@ -55,14 +55,14 @@ const atHomeChannels: ChannelData[] = [
     trend: "up",
     trendValue: 2.3,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 24, shareOfShelf: 18, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 12, shareOfShelf: 9, color: "#f97316" },
-      { brand: "Sprite", portfolio: "TCCC", facings: 8, shareOfShelf: 6, color: "#22c55e" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 6, shareOfShelf: 5, color: "#dc2626" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 18, shareOfShelf: 14, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 10, shareOfShelf: 8, color: "#16a34a" },
-      { brand: "Mirinda", portfolio: "Pepsi", facings: 8, shareOfShelf: 6, color: "#ea580c" },
-      { brand: "Dr Pepper", portfolio: "Dr Pepper", facings: 12, shareOfShelf: 9, color: "#7c3aed" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 24, shareOfShelf: 18, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 12, shareOfShelf: 9, color: "#f97316" },
+      { brand: "Brand C", portfolio: "Brand Owner", facings: 8, shareOfShelf: 6, color: "#22c55e" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 6, shareOfShelf: 5, color: "#dc2626" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 18, shareOfShelf: 14, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 10, shareOfShelf: 8, color: "#16a34a" },
+      { brand: "Competitor Y", portfolio: "Competitor", facings: 8, shareOfShelf: 6, color: "#ea580c" },
+      { brand: "Alternative Brand", portfolio: "Alternative", facings: 12, shareOfShelf: 9, color: "#7c3aed" },
       { brand: "Private Label", portfolio: "Private Label", facings: 20, shareOfShelf: 15, color: "#6b7280" },
       { brand: "Other", portfolio: "Other", facings: 12, shareOfShelf: 10, color: "#a1a1aa" },
     ]
@@ -79,13 +79,13 @@ const atHomeChannels: ChannelData[] = [
     trend: "up",
     trendValue: 1.8,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 20, shareOfShelf: 20, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 10, shareOfShelf: 10, color: "#f97316" },
-      { brand: "Sprite", portfolio: "TCCC", facings: 7, shareOfShelf: 7, color: "#22c55e" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 5, shareOfShelf: 5, color: "#dc2626" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 14, shareOfShelf: 14, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 8, shareOfShelf: 8, color: "#16a34a" },
-      { brand: "Dr Pepper", portfolio: "Dr Pepper", facings: 10, shareOfShelf: 10, color: "#7c3aed" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 20, shareOfShelf: 20, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 10, shareOfShelf: 10, color: "#f97316" },
+      { brand: "Brand C", portfolio: "Brand Owner", facings: 7, shareOfShelf: 7, color: "#22c55e" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 5, shareOfShelf: 5, color: "#dc2626" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 14, shareOfShelf: 14, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 8, shareOfShelf: 8, color: "#16a34a" },
+      { brand: "Alternative Brand", portfolio: "Alternative", facings: 10, shareOfShelf: 10, color: "#7c3aed" },
       { brand: "Private Label", portfolio: "Private Label", facings: 16, shareOfShelf: 16, color: "#6b7280" },
       { brand: "Other", portfolio: "Other", facings: 10, shareOfShelf: 10, color: "#a1a1aa" },
     ]
@@ -102,12 +102,12 @@ const atHomeChannels: ChannelData[] = [
     trend: "down",
     trendValue: -1.2,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 8, shareOfShelf: 20, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 4, shareOfShelf: 10, color: "#f97316" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 2, shareOfShelf: 5, color: "#dc2626" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 8, shareOfShelf: 20, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 4, shareOfShelf: 10, color: "#16a34a" },
-      { brand: "Dr Pepper", portfolio: "Dr Pepper", facings: 4, shareOfShelf: 10, color: "#7c3aed" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 8, shareOfShelf: 20, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 4, shareOfShelf: 10, color: "#f97316" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 2, shareOfShelf: 5, color: "#dc2626" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 8, shareOfShelf: 20, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 4, shareOfShelf: 10, color: "#16a34a" },
+      { brand: "Alternative Brand", portfolio: "Alternative", facings: 4, shareOfShelf: 10, color: "#7c3aed" },
       { brand: "Private Label", portfolio: "Private Label", facings: 6, shareOfShelf: 15, color: "#6b7280" },
       { brand: "Other", portfolio: "Other", facings: 4, shareOfShelf: 10, color: "#a1a1aa" },
     ]
@@ -124,10 +124,10 @@ const atHomeChannels: ChannelData[] = [
     trend: "flat",
     trendValue: 0.2,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 6, shareOfShelf: 15, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 3, shareOfShelf: 8, color: "#f97316" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 2, shareOfShelf: 5, color: "#dc2626" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 6, shareOfShelf: 15, color: "#2563eb" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 6, shareOfShelf: 15, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 3, shareOfShelf: 8, color: "#f97316" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 2, shareOfShelf: 5, color: "#dc2626" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 6, shareOfShelf: 15, color: "#2563eb" },
       { brand: "Private Label", portfolio: "Private Label", facings: 18, shareOfShelf: 45, color: "#6b7280" },
       { brand: "Other", portfolio: "Other", facings: 5, shareOfShelf: 12, color: "#a1a1aa" },
     ]
@@ -148,12 +148,12 @@ const awayFromHomeChannels: ChannelData[] = [
     trend: "up",
     trendValue: 4.2,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 5, shareOfShelf: 28, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 3, shareOfShelf: 15, color: "#f97316" },
-      { brand: "Sprite", portfolio: "TCCC", facings: 2, shareOfShelf: 10, color: "#22c55e" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 1, shareOfShelf: 5, color: "#dc2626" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 3, shareOfShelf: 18, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 2, shareOfShelf: 12, color: "#16a34a" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 5, shareOfShelf: 28, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 3, shareOfShelf: 15, color: "#f97316" },
+      { brand: "Brand C", portfolio: "Brand Owner", facings: 2, shareOfShelf: 10, color: "#22c55e" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 1, shareOfShelf: 5, color: "#dc2626" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 3, shareOfShelf: 18, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 2, shareOfShelf: 12, color: "#16a34a" },
       { brand: "Other", portfolio: "Other", facings: 2, shareOfShelf: 12, color: "#a1a1aa" },
     ]
   },
@@ -169,11 +169,11 @@ const awayFromHomeChannels: ChannelData[] = [
     trend: "up",
     trendValue: 2.8,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 4, shareOfShelf: 22, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 2, shareOfShelf: 12, color: "#f97316" },
-      { brand: "Sprite", portfolio: "TCCC", facings: 2, shareOfShelf: 11, color: "#22c55e" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 4, shareOfShelf: 22, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 2, shareOfShelf: 11, color: "#16a34a" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 4, shareOfShelf: 22, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 2, shareOfShelf: 12, color: "#f97316" },
+      { brand: "Brand C", portfolio: "Brand Owner", facings: 2, shareOfShelf: 11, color: "#22c55e" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 4, shareOfShelf: 22, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 2, shareOfShelf: 11, color: "#16a34a" },
       { brand: "Other", portfolio: "Other", facings: 4, shareOfShelf: 22, color: "#a1a1aa" },
     ]
   },
@@ -189,11 +189,11 @@ const awayFromHomeChannels: ChannelData[] = [
     trend: "up",
     trendValue: 3.5,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 6, shareOfShelf: 30, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 3, shareOfShelf: 15, color: "#f97316" },
-      { brand: "Sprite", portfolio: "TCCC", facings: 1, shareOfShelf: 7, color: "#22c55e" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 4, shareOfShelf: 20, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 2, shareOfShelf: 10, color: "#16a34a" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 6, shareOfShelf: 30, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 3, shareOfShelf: 15, color: "#f97316" },
+      { brand: "Brand C", portfolio: "Brand Owner", facings: 1, shareOfShelf: 7, color: "#22c55e" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 4, shareOfShelf: 20, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 2, shareOfShelf: 10, color: "#16a34a" },
       { brand: "Other", portfolio: "Other", facings: 4, shareOfShelf: 18, color: "#a1a1aa" },
     ]
   },
@@ -209,11 +209,11 @@ const awayFromHomeChannels: ChannelData[] = [
     trend: "flat",
     trendValue: 0.8,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 3, shareOfShelf: 20, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 2, shareOfShelf: 12, color: "#f97316" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 1, shareOfShelf: 10, color: "#dc2626" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 3, shareOfShelf: 20, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 2, shareOfShelf: 13, color: "#16a34a" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 3, shareOfShelf: 20, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 2, shareOfShelf: 12, color: "#f97316" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 1, shareOfShelf: 10, color: "#dc2626" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 3, shareOfShelf: 20, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 2, shareOfShelf: 13, color: "#16a34a" },
       { brand: "Other", portfolio: "Other", facings: 4, shareOfShelf: 25, color: "#a1a1aa" },
     ]
   },
@@ -229,12 +229,12 @@ const awayFromHomeChannels: ChannelData[] = [
     trend: "up",
     trendValue: 1.5,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 8, shareOfShelf: 35, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 4, shareOfShelf: 18, color: "#f97316" },
-      { brand: "Sprite", portfolio: "TCCC", facings: 2, shareOfShelf: 8, color: "#22c55e" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 1, shareOfShelf: 4, color: "#dc2626" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 4, shareOfShelf: 18, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 2, shareOfShelf: 9, color: "#16a34a" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 8, shareOfShelf: 35, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 4, shareOfShelf: 18, color: "#f97316" },
+      { brand: "Brand C", portfolio: "Brand Owner", facings: 2, shareOfShelf: 8, color: "#22c55e" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 1, shareOfShelf: 4, color: "#dc2626" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 4, shareOfShelf: 18, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 2, shareOfShelf: 9, color: "#16a34a" },
       { brand: "Other", portfolio: "Other", facings: 2, shareOfShelf: 8, color: "#a1a1aa" },
     ]
   },
@@ -250,12 +250,12 @@ const awayFromHomeChannels: ChannelData[] = [
     trend: "up",
     trendValue: 2.1,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 5, shareOfShelf: 25, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 2, shareOfShelf: 10, color: "#f97316" },
-      { brand: "Sprite", portfolio: "TCCC", facings: 2, shareOfShelf: 8, color: "#22c55e" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 1, shareOfShelf: 5, color: "#dc2626" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 4, shareOfShelf: 20, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 2, shareOfShelf: 10, color: "#16a34a" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 5, shareOfShelf: 25, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 2, shareOfShelf: 10, color: "#f97316" },
+      { brand: "Brand C", portfolio: "Brand Owner", facings: 2, shareOfShelf: 8, color: "#22c55e" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 1, shareOfShelf: 5, color: "#dc2626" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 4, shareOfShelf: 20, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 2, shareOfShelf: 10, color: "#16a34a" },
       { brand: "Other", portfolio: "Other", facings: 4, shareOfShelf: 22, color: "#a1a1aa" },
     ]
   },
@@ -271,12 +271,12 @@ const awayFromHomeChannels: ChannelData[] = [
     trend: "down",
     trendValue: -0.8,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 5, shareOfShelf: 28, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 2, shareOfShelf: 12, color: "#f97316" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 2, shareOfShelf: 10, color: "#dc2626" },
-      { brand: "Sprite", portfolio: "TCCC", facings: 1, shareOfShelf: 5, color: "#22c55e" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 4, shareOfShelf: 22, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 2, shareOfShelf: 10, color: "#16a34a" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 5, shareOfShelf: 28, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 2, shareOfShelf: 12, color: "#f97316" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 2, shareOfShelf: 10, color: "#dc2626" },
+      { brand: "Brand C", portfolio: "Brand Owner", facings: 1, shareOfShelf: 5, color: "#22c55e" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 4, shareOfShelf: 22, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 2, shareOfShelf: 10, color: "#16a34a" },
       { brand: "Other", portfolio: "Other", facings: 2, shareOfShelf: 13, color: "#a1a1aa" },
     ]
   },
@@ -292,12 +292,12 @@ const awayFromHomeChannels: ChannelData[] = [
     trend: "up",
     trendValue: 3.2,
     shelfComposition: [
-      { brand: "Coca-Cola", portfolio: "TCCC", facings: 7, shareOfShelf: 35, color: "#ef4444" },
-      { brand: "Fanta", portfolio: "TCCC", facings: 3, shareOfShelf: 15, color: "#f97316" },
-      { brand: "Sprite", portfolio: "TCCC", facings: 2, shareOfShelf: 8, color: "#22c55e" },
-      { brand: "CC Zero", portfolio: "TCCC", facings: 1, shareOfShelf: 4, color: "#dc2626" },
-      { brand: "Pepsi", portfolio: "Pepsi", facings: 4, shareOfShelf: 20, color: "#2563eb" },
-      { brand: "7UP", portfolio: "Pepsi", facings: 2, shareOfShelf: 10, color: "#16a34a" },
+      { brand: "Brand A", portfolio: "Brand Owner", facings: 7, shareOfShelf: 35, color: "#ef4444" },
+      { brand: "Brand D", portfolio: "Brand Owner", facings: 3, shareOfShelf: 15, color: "#f97316" },
+      { brand: "Brand C", portfolio: "Brand Owner", facings: 2, shareOfShelf: 8, color: "#22c55e" },
+      { brand: "Brand B", portfolio: "Brand Owner", facings: 1, shareOfShelf: 4, color: "#dc2626" },
+      { brand: "Competitor X", portfolio: "Competitor", facings: 4, shareOfShelf: 20, color: "#2563eb" },
+      { brand: "Competitor W", portfolio: "Competitor", facings: 2, shareOfShelf: 10, color: "#16a34a" },
       { brand: "Other", portfolio: "Other", facings: 2, shareOfShelf: 8, color: "#a1a1aa" },
     ]
   },
@@ -308,9 +308,9 @@ const channelData: ChannelData[] = [...atHomeChannels, ...awayFromHomeChannels]
 
 // Portfolio colors for aggregation
 const portfolioColors: Record<string, string> = {
-  "TCCC": "#ef4444",
-  "Pepsi": "#2563eb",
-  "Dr Pepper": "#7c3aed",
+  "Brand Owner": "#ef4444",
+  "Competitor": "#2563eb",
+  "Alternative": "#7c3aed",
   "Private Label": "#6b7280",
   "Other": "#a1a1aa",
 }
@@ -318,22 +318,21 @@ const portfolioColors: Record<string, string> = {
 // Slicer options
 const categoryOptions = [
   { value: "all", label: "All Categories" },
-  { value: "cola-regular", label: "Cola Regular" },
-  { value: "cola-zero", label: "Cola Zero" },
-  { value: "cola-diet", label: "Cola Diet" },
-  { value: "citrus-fruity", label: "Citrus/Fruity" },
-  { value: "citrus-zero", label: "Citrus Zero" },
-  { value: "bold", label: "Bold Flavors" },
+  { value: "cola-regular", label: "Category A" },
+  { value: "cola-zero", label: "Category B" },
+  { value: "cola-diet", label: "Category C" },
+  { value: "citrus-fruity", label: "Category D" },
+  { value: "citrus-zero", label: "Category E" },
+  { value: "bold", label: "Category F" },
 ]
 
 const brandOptions = [
   { value: "all", label: "All Brands" },
-  { value: "coca-cola", label: "Coca-Cola Classic" },
-  { value: "coca-cola-zero", label: "Coca-Cola Zero" },
-  { value: "diet-coke", label: "Diet Coke" },
-  { value: "fanta", label: "Fanta" },
-  { value: "sprite", label: "Sprite" },
-  { value: "cherry-coke", label: "Cherry Coke" },
+  { value: "brand-a", label: "Brand A" },
+  { value: "brand-b", label: "Brand B" },
+  { value: "brand-c", label: "Brand C" },
+  { value: "brand-d", label: "Brand D" },
+  { value: "brand-e", label: "Brand E" },
 ]
 
 const yearOptions = [

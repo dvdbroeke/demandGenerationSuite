@@ -35,15 +35,15 @@ const packSizeOptions = [
 
 // Categories
 const categories = [
-  { id: "cola-regular", label: "Cola Regular" },
-  { id: "cola-diet", label: "Cola Diet" },
-  { id: "cola-zero", label: "Cola Zero" },
-  { id: "citrus-fruity", label: "Citrus/Fruity" },
-  { id: "citrus-zero", label: "Citrus Zero" },
-  { id: "bold", label: "Bold Flavors" },
+  { id: "cola-regular", label: "Category A" },
+  { id: "cola-diet", label: "Category B" },
+  { id: "cola-zero", label: "Category C" },
+  { id: "citrus-fruity", label: "Category D" },
+  { id: "citrus-zero", label: "Category E" },
+  { id: "bold", label: "Category F" },
 ]
 
-// TCCC Brand data with yearly pricing
+// Portfolio Brand data with yearly pricing
 interface BrandYearlyData {
   category: string
   yearly: {
@@ -53,9 +53,9 @@ interface BrandYearlyData {
   }
 }
 
-// Coca-Cola brand data with more realistic promo/non-promo spreads
+// Brand Owner data with more realistic promo/non-promo spreads
 const tcccBrandData: Record<string, BrandYearlyData> = {
-  "Coca-Cola Classic": {
+  "Brand A": {
     category: "cola-regular",
     yearly: {
       "2023": { overall: 100, promo: 82, noPromo: 122, volume: 118.2 },
@@ -63,7 +63,7 @@ const tcccBrandData: Record<string, BrandYearlyData> = {
       "2025": { overall: 104, promo: 86, noPromo: 128, volume: 124.4 },
     }
   },
-  "Coca-Cola Zero": {
+  "Brand B": {
     category: "cola-zero",
     yearly: {
       "2023": { overall: 98, promo: 80, noPromo: 120, volume: 82.1 },
@@ -71,7 +71,7 @@ const tcccBrandData: Record<string, BrandYearlyData> = {
       "2025": { overall: 100, promo: 82, noPromo: 124, volume: 90.4 },
     }
   },
-  "Diet Coke": {
+  "Brand C": {
     category: "cola-diet",
     yearly: {
       "2023": { overall: 102, promo: 85, noPromo: 125, volume: 52.8 },
@@ -79,7 +79,7 @@ const tcccBrandData: Record<string, BrandYearlyData> = {
       "2025": { overall: 104, promo: 87, noPromo: 130, volume: 56.4 },
     }
   },
-  "Fanta Orange": {
+  "Brand D": {
     category: "citrus-fruity",
     yearly: {
       "2023": { overall: 92, promo: 75, noPromo: 115, volume: 62.5 },
@@ -87,44 +87,12 @@ const tcccBrandData: Record<string, BrandYearlyData> = {
       "2025": { overall: 94, promo: 77, noPromo: 120, volume: 67.2 },
     }
   },
-  "Fanta Zero": {
-    category: "citrus-zero",
-    yearly: {
-      "2023": { overall: 96, promo: 78, noPromo: 118, volume: 18.5 },
-      "2024": { overall: 97, promo: 79, noPromo: 120, volume: 20.2 },
-      "2025": { overall: 98, promo: 80, noPromo: 122, volume: 22.2 },
-    }
-  },
-  "Sprite": {
+  "Brand E": {
     category: "citrus-fruity",
     yearly: {
       "2023": { overall: 94, promo: 76, noPromo: 116, volume: 48.5 },
       "2024": { overall: 95, promo: 77, noPromo: 118, volume: 50.4 },
       "2025": { overall: 96, promo: 78, noPromo: 120, volume: 52.3 },
-    }
-  },
-  "Sprite Zero": {
-    category: "citrus-zero",
-    yearly: {
-      "2023": { overall: 97, promo: 79, noPromo: 119, volume: 12.2 },
-      "2024": { overall: 98, promo: 80, noPromo: 121, volume: 13.4 },
-      "2025": { overall: 99, promo: 81, noPromo: 123, volume: 14.7 },
-    }
-  },
-  "Cherry Coke": {
-    category: "bold",
-    yearly: {
-      "2023": { overall: 108, promo: 88, noPromo: 135, volume: 18.2 },
-      "2024": { overall: 110, promo: 90, noPromo: 138, volume: 19.4 },
-      "2025": { overall: 112, promo: 92, noPromo: 142, volume: 20.7 },
-    }
-  },
-  "Vanilla Coke": {
-    category: "bold",
-    yearly: {
-      "2023": { overall: 112, promo: 92, noPromo: 140, volume: 9.8 },
-      "2024": { overall: 114, promo: 94, noPromo: 143, volume: 10.5 },
-      "2025": { overall: 116, promo: 96, noPromo: 146, volume: 11.3 },
     }
   },
 }
@@ -148,10 +116,10 @@ interface CompetitorPortfolioData {
   }>
 }
 
-// Italian market competitors (CCH operates in Italy)
+// Market competitors
 const competitorPortfolios: CompetitorPortfolioData[] = [
   {
-    name: "Pepsi",
+    name: "Competitor X",
     color: "#2563eb",
     yearly: {
       "2023": { overall: 94, promo: 78, noPromo: 112, volume: 185.4 },
@@ -168,7 +136,7 @@ const competitorPortfolios: CompetitorPortfolioData[] = [
     }
   },
   {
-    name: "San Benedetto",
+    name: "Competitor Y",
     color: "#0891b2",
     yearly: {
       "2023": { overall: 88, promo: 72, noPromo: 108, volume: 145.5 },
@@ -182,7 +150,7 @@ const competitorPortfolios: CompetitorPortfolioData[] = [
     }
   },
   {
-    name: "Schweppes",
+    name: "Competitor Z",
     color: "#eab308",
     yearly: {
       "2023": { overall: 108, promo: 88, noPromo: 132, volume: 78.5 },
@@ -196,7 +164,7 @@ const competitorPortfolios: CompetitorPortfolioData[] = [
     }
   },
   {
-    name: "Lurisia",
+    name: "Competitor W",
     color: "#16a34a",
     yearly: {
       "2023": { overall: 118, promo: 98, noPromo: 145, volume: 42.5 },
@@ -226,8 +194,8 @@ const competitorPortfolios: CompetitorPortfolioData[] = [
   },
 ]
 
-// Calculate TCCC portfolio totals
-const getTCCCPortfolioData = () => {
+// Calculate Portfolio portfolio totals
+const getPortfolioPortfolioData = () => {
   const result: Record<string, { overall: number; promo: number; noPromo: number; volume: number }> = {}
   years.forEach(year => {
     const brands = Object.values(tcccBrandData)
@@ -240,8 +208,8 @@ const getTCCCPortfolioData = () => {
   return result
 }
 
-// Calculate TCCC category data
-const getTCCCCategoryData = (category: string) => {
+// Calculate Portfolio category data
+const getPortfolioCategoryData = (category: string) => {
   const result: Record<string, { overall: number; promo: number; noPromo: number; volume: number }> = {}
   years.forEach(year => {
     const brands = Object.entries(tcccBrandData).filter(([_, b]) => b.category === category)
@@ -271,10 +239,10 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
     return data.overall
   }
 
-  // TCCC portfolio data
-  const tcccPortfolio = useMemo(() => getTCCCPortfolioData(), [])
+  // Portfolio portfolio data
+  const tcccPortfolio = useMemo(() => getPortfolioPortfolioData(), [])
 
-  // Chart 1: Brand-level yearly data (TCCC vs competitors over time)
+  // Chart 1: Brand-level yearly data (Portfolio vs competitors over time)
   const brandYearlyData = useMemo(() => {
     const data: { year: string; tccc: { index: number; volume: number }; competitors: { name: string; index: number; volume: number; color: string }[] }[] = []
     
@@ -309,7 +277,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
     const catsToShow = selectedCategory === "all" ? categories : categories.filter(c => c.id === selectedCategory)
     
     catsToShow.forEach(cat => {
-      const tcccCatData = getTCCCCategoryData(cat.id)[selectedYear]
+      const tcccCatData = getPortfolioCategoryData(cat.id)[selectedYear]
       const competitorCatData: { name: string; index: number; volume: number; color: string }[] = []
       
       competitorPortfolios.forEach(comp => {
@@ -415,7 +383,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
                   <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30 text-[9px]">High Confidence</Badge>
                 </div>
                 <p className="text-xs text-amber-400/90 mb-2">
-                  Citrus/Fruity category (Fanta, Sprite) is underpriced vs. competitors by 8-12%. 
+                  Category D (Brand D, Brand C) is underpriced vs. competitors by 8-12%. 
                   Price index at 94-96 vs. competitor average of 105-110. Opportunity to increase margin without volume loss.
                 </p>
                 <button 
@@ -434,7 +402,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
         <div className="grid grid-cols-4 gap-3">
           <Card className="bg-zinc-900 border-zinc-800">
             <CardContent className="p-3">
-              <p className="text-[10px] text-zinc-500 mb-0.5">Coca-Cola Price Index</p>
+              <p className="text-[10px] text-zinc-500 mb-0.5">Portfolio Price Index</p>
               <p className="text-lg font-bold text-zinc-100">{kpiSummary.currentIndex}</p>
               <p className="text-[10px] text-zinc-500">vs parity (100)</p>
             </CardContent>
@@ -516,7 +484,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
                   </div>
                   
                   {/* Player dots with connected lines - Brand colors with tints for promo/avg/non-promo */}
-                  {/* TCCC (Red brand color with tints) */}
+                  {/* Portfolio (Red brand color with tints) */}
                   {years.map((year, yi) => {
                     const xPos = (yi + 0.5) / years.length * 100
                     const yearData = tcccPortfolio[year]
@@ -544,19 +512,19 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
                         <div 
                           className="absolute w-2.5 h-2.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-150 hover:z-50 transition-transform z-10 border border-white/30"
                           style={{ left: `${xPos}%`, top: `${promoY}%`, backgroundColor: promoColor }}
-                          title={`Coca-Cola ${year}\nPromo Price Index: ${yearData.promo}\nVolume: ${yearData.volume.toFixed(1)}M L\nSpread vs Non-Promo: ${spreadPct}%`}
+                          title={`Portfolio ${year}\nPromo Price Index: ${yearData.promo}\nVolume: ${yearData.volume.toFixed(1)}M L\nSpread vs Non-Promo: ${spreadPct}%`}
                         />
                         {/* Avg dot (main brand color, larger) */}
                         <div 
                           className="absolute w-3.5 h-3.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-150 hover:z-50 transition-transform z-20 border-2 border-white/40"
                           style={{ left: `${xPos}%`, top: `${avgY}%`, backgroundColor: avgColor }}
-                          title={`Coca-Cola ${year}\nAverage Price Index: ${yearData.overall}\nVolume: ${yearData.volume.toFixed(1)}M L\nPromo-NonPromo Spread: ${spreadPct}%`}
+                          title={`Portfolio ${year}\nAverage Price Index: ${yearData.overall}\nVolume: ${yearData.volume.toFixed(1)}M L\nPromo-NonPromo Spread: ${spreadPct}%`}
                         />
                         {/* Non-promo dot (darker tint) */}
                         <div 
                           className="absolute w-2.5 h-2.5 rounded-full transform -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-150 hover:z-50 transition-transform z-10 border border-white/20"
                           style={{ left: `${xPos}%`, top: `${noPromoY}%`, backgroundColor: noPromoColor }}
-                          title={`Coca-Cola ${year}\nNon-Promo Price Index: ${yearData.noPromo}\nVolume: ${yearData.volume.toFixed(1)}M L\nPremium vs Promo: +${spreadPct}%`}
+                          title={`Portfolio ${year}\nNon-Promo Price Index: ${yearData.noPromo}\nVolume: ${yearData.volume.toFixed(1)}M L\nPremium vs Promo: +${spreadPct}%`}
                         />
                       </div>
                     )
@@ -653,7 +621,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
                     Price Index by Category ({selectedYear})
                     <Info className="h-3 w-3 text-zinc-500" />
                   </CardTitle>
-                  <p className="text-[10px] text-zinc-500">All categories with Coca-Cola and competitor positions</p>
+                  <p className="text-[10px] text-zinc-500">All categories with Portfolio and competitor positions</p>
                 </div>
               </div>
               {/* Filters inside chart card */}
@@ -768,7 +736,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
                             }}
                           />
                         )}
-                        {/* TCCC bubble */}
+                        {/* Portfolio bubble */}
                         {cat.tccc && (
                           <div 
                             className={cn(
@@ -781,7 +749,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
                               width: getBubbleSize(cat.tccc.volume, maxCategoryVolume),
                               height: getBubbleSize(cat.tccc.volume, maxCategoryVolume),
                             }}
-                            title={`Coca-Cola ${cat.label}: ${cat.tccc.index} (${cat.tccc.volume.toFixed(0)}M L)${shouldHighlight ? " - UNDERPRICED vs competitors" : ""}`}
+                            title={`Portfolio ${cat.label}: ${cat.tccc.index} (${cat.tccc.volume.toFixed(0)}M L)${shouldHighlight ? " - UNDERPRICED vs competitors" : ""}`}
                           >
                             {cat.tccc.index}
                           </div>
@@ -835,7 +803,7 @@ export function PricingPerformance({ onNavigate, highlightCitrusFruity = true }:
         <div className="flex items-center justify-center gap-4 pt-1 flex-wrap">
           <div className="flex items-center gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-            <span className="text-[10px] text-zinc-400">Coca-Cola</span>
+            <span className="text-[10px] text-zinc-400">Portfolio</span>
           </div>
           {competitorPortfolios.map(c => (
             <div key={c.name} className="flex items-center gap-1.5">

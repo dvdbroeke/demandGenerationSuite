@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Zap, Eye, Pencil, ChevronDown, Plus, X, Calendar } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { FuelightLogo } from "@/components/ui/platform-logos"
+import { ArtemisLogo } from "@/components/ui/platform-logos"
 
 interface OptimizerConfigProps {
   onNavigateToView?: () => void
@@ -27,15 +27,15 @@ interface OptimizerConfigProps {
 }
 
 const fundingSources = [
-  { value: "tccc", label: "TCCC Funding" },
-  { value: "system", label: "System Funding" },
-  { value: "bottler", label: "Bottler Funding" },
+  { value: "total", label: "Total Investment" },
+  { value: "marketing", label: "Marketing Investment" },
+  { value: "trade", label: "Trade Investment" },
 ]
 
 const outcomeMetrics = [
   { value: "sell-out-volume", label: "Sell-out Volume" },
-  { value: "system-nsr", label: "System NSR" },
-  { value: "system-gp", label: "System GP" },
+  { value: "net-revenue", label: "Net Revenue" },
+  { value: "gross-profit", label: "Gross Profit" },
   { value: "market-share", label: "Market Share" },
 ]
 
@@ -58,7 +58,7 @@ interface Constraint {
   value: string
 }
 
-export function FuelightOptimizerConfig({ 
+export function ArtemisOptimizerConfig({ 
   onNavigateToView,
   onNavigateToEdit,
   onRunOptimization,
@@ -66,7 +66,7 @@ export function FuelightOptimizerConfig({
   const [scenarioName, setScenarioName] = useState("Demo Optimization")
   const [startDate, setStartDate] = useState("2025-01-01")
   const [endDate, setEndDate] = useState("2025-12-31")
-  const [fundingSource, setFundingSource] = useState("tccc")
+  const [fundingSource, setFundingSource] = useState("brand-owner")
   const [approach, setApproach] = useState<"flexible" | "fixed">("flexible")
   const [outcomeMetric, setOutcomeMetric] = useState("")
   const [fundingTarget, setFundingTarget] = useState<"total" | "additional">("total")
@@ -100,7 +100,7 @@ export function FuelightOptimizerConfig({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-lg bg-zinc-800/50 flex items-center justify-center">
-            <FuelightLogo size="md" />
+            <ArtemisLogo size="md" />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -162,7 +162,7 @@ export function FuelightOptimizerConfig({
             className="bg-transparent text-zinc-300 text-sm border-none outline-none w-28"
           />
         </div>
-        <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Coca-Cola</Badge>
+        <Badge variant="outline" className="bg-zinc-800/50 border-zinc-700 text-zinc-300 px-3 py-1">Brand A</Badge>
       </div>
 
       {/* Main Content - Two Column Layout */}
@@ -221,7 +221,7 @@ export function FuelightOptimizerConfig({
                       Achieve a goal with flexible funding
                     </p>
                     <p className="text-xs text-zinc-500 mt-1">
-                      Define your goals and let Fuelight determine the funding need and allocation.
+                      Define your goals and let Artemis determine the funding need and allocation.
                     </p>
                   </div>
                 </div>
@@ -376,7 +376,7 @@ export function FuelightOptimizerConfig({
                 />
               </div>
               <p className="text-xs text-zinc-500">
-                Updated Total TCCC Funding: EUR {totalFunding.toLocaleString()}
+                Updated Total Brand Owner Funding: EUR {totalFunding.toLocaleString()}
               </p>
             </div>
           )}

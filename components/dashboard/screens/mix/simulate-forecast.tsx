@@ -15,7 +15,7 @@ import { allSkuNames, retailerOptions as sharedRetailers } from "../shared-sku-d
 interface SimulateForecastProps {
   onNavigate?: (screen: MixScreen) => void
   onLaunchInitiative?: () => void
-  onNavigateToFuelight?: () => void
+  onNavigateToArtemis?: () => void
   onNavigateToPromotion?: () => void
 }
 
@@ -37,21 +37,21 @@ const scenarioTypes = [
 const skuOptions = allSkuNames
 
 // Pre-selected SKUs based on storyline findings:
-// - 8 underperformers from PQA (CC Zero 1.5L, Diet Coke 500ml, etc.)
-// - CC Classic 500ml to 330ml shift opportunity
+// - 8 underperformers from PQA (Brand B 1.5L, Brand C 500ml, etc.)
+// - Brand A 500ml to 330ml shift opportunity
 const storylinePreselectedSkus = [
   // Underperformers flagged for delist
-  "CC Zero 1.5L",
-  "Diet Coke 500ml", 
-  "Diet Coke 1.25L",
-  "Diet Coke 1.75L",
-  "Fanta Orange 1.25L",
-  "Fanta Orange 1.75L",
-  "Sprite 1.75L",
-  "Sprite 2L",
-  // CC Classic pack size shift opportunity
-  "CC Classic 500ml",
-  "CC Classic 330ml",
+  "Brand B 1.5L",
+  "Brand C 500ml", 
+  "Brand C 1.25L",
+  "Brand C 1.75L",
+  "Brand D 1.25L",
+  "Brand D 1.75L",
+  "Brand E 1.75L",
+  "Brand E 2L",
+  // Brand A pack size shift opportunity
+  "Brand A 500ml",
+  "Brand A 330ml",
 ]
 
 const channelOptions = ["All Channels", "Convenience", "Modern Trade", "Ecommerce", "On-Premise"]
@@ -74,13 +74,13 @@ interface ActionItem {
 // Storyline-aligned actions based on PQA findings
 const baseActions: ActionItem[] = [
   // Pack size shift: reduce 500ml, expand 330ml in Convenience
-  { id: "1", sku: "CC Classic 330ml", actionType: "expand", metric: "WD in Convenience", baseValue: 15, minValue: 0, maxValue: 25, unit: "%", confidence: "High" },
-  { id: "2", sku: "CC Classic 500ml", actionType: "reduce", metric: "Facing reduction", baseValue: 2, minValue: 0, maxValue: 4, unit: " facings", confidence: "High" },
+  { id: "1", sku: "Brand A 330ml", actionType: "expand", metric: "WD in Convenience", baseValue: 15, minValue: 0, maxValue: 25, unit: "%", confidence: "High" },
+  { id: "2", sku: "Brand A 500ml", actionType: "reduce", metric: "Facing reduction", baseValue: 2, minValue: 0, maxValue: 4, unit: " facings", confidence: "High" },
   // Delist underperformers
-  { id: "3", sku: "CC Zero 1.5L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 30, minValue: 0, maxValue: 50, unit: "%", confidence: "High" },
-  { id: "4", sku: "Diet Coke 500ml", actionType: "delist", metric: "Delist from bottom stores", baseValue: 25, minValue: 0, maxValue: 40, unit: "%", confidence: "Medium" },
-  { id: "5", sku: "Fanta Orange 1.75L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 40, minValue: 0, maxValue: 60, unit: "%", confidence: "High" },
-  { id: "6", sku: "Diet Coke 330ml", actionType: "add-facing", metric: "Add facings (Sleeper activation)", baseValue: 1, minValue: 0, maxValue: 3, unit: "", confidence: "Medium" },
+  { id: "3", sku: "Brand B 1.5L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 30, minValue: 0, maxValue: 50, unit: "%", confidence: "High" },
+  { id: "4", sku: "Brand C 500ml", actionType: "delist", metric: "Delist from bottom stores", baseValue: 25, minValue: 0, maxValue: 40, unit: "%", confidence: "Medium" },
+  { id: "5", sku: "Brand D 1.75L", actionType: "delist", metric: "Delist from bottom stores", baseValue: 40, minValue: 0, maxValue: 60, unit: "%", confidence: "High" },
+  { id: "6", sku: "Brand C 330ml", actionType: "add-facing", metric: "Add facings (Sleeper activation)", baseValue: 1, minValue: 0, maxValue: 3, unit: "", confidence: "Medium" },
 ]
 
 // Calculate impact based on action values - aligned to storyline
@@ -132,17 +132,17 @@ interface ImpactItem {
 
 // Storyline-aligned impacts on other SKUs
 const otherImpacts: ImpactItem[] = [
-  { sku: "CC Classic 500ml", impact: "-4.2% volume", direction: "negative", detail: "Facing reduction & cannibalization from 330ml expansion" },
-  { sku: "CC Classic 330ml", impact: "+8.5% volume", direction: "positive", detail: "Distribution expansion in Convenience captures 500ml demand" },
-  { sku: "CC Zero 330ml", impact: "+2.1% volume", direction: "positive", detail: "Halo effect from improved shelf presence" },
-  { sku: "CC Classic 1.5L", impact: "+1.2% volume", direction: "positive", detail: "Multi-serve benefits from cleaner assortment" },
-  { sku: "Diet Coke 330ml", impact: "+3.8% volume", direction: "positive", detail: "Sleeper activation from added facings" },
-  { sku: "Sprite 330ml", impact: "No change", direction: "neutral", detail: "Different brand, separate consumption occasion" },
+  { sku: "Brand A 500ml", impact: "-4.2% volume", direction: "negative", detail: "Facing reduction & cannibalization from 330ml expansion" },
+  { sku: "Brand A 330ml", impact: "+8.5% volume", direction: "positive", detail: "Distribution expansion in Convenience captures 500ml demand" },
+  { sku: "Brand B 330ml", impact: "+2.1% volume", direction: "positive", detail: "Halo effect from improved shelf presence" },
+  { sku: "Brand A 1.5L", impact: "+1.2% volume", direction: "positive", detail: "Multi-serve benefits from cleaner assortment" },
+  { sku: "Brand C 330ml", impact: "+3.8% volume", direction: "positive", detail: "Sleeper activation from added facings" },
+  { sku: "Brand D 330ml", impact: "No change", direction: "neutral", detail: "Different brand, separate consumption occasion" },
 ]
 
 const existingInitiatives = ["Mix Upgrade Programme Q3 2026", "Promo Discipline Wave 2"]
 
-export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToFuelight, onNavigateToPromotion }: SimulateForecastProps) {
+export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToArtemis, onNavigateToPromotion }: SimulateForecastProps) {
   const [scenario, setScenario] = useState("mix-shift")
   const [selectedSkus, setSelectedSkus] = useState<string[]>(storylinePreselectedSkus)
   const [channel, setChannel] = useState("Convenience")
@@ -151,9 +151,9 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
   const [hasRun, setHasRun] = useState(false) // Results only appear after clicking "Run Simulation"
   const [showInitPanel, setShowInitPanel] = useState(false)
   
-  // Fuelight Import Modal state
-  const [showFuelightImportModal, setShowFuelightImportModal] = useState(false)
-  const [fuelightImportStep, setFuelightImportStep] = useState<"review" | "add-another">("review")
+  // Artemis Import Modal state
+  const [showArtemisImportModal, setShowArtemisImportModal] = useState(false)
+  const [fuelightImportStep, setArtemisImportStep] = useState<"review" | "add-another">("review")
   
   // Adjustable action values
   const [actionValues, setActionValues] = useState<Record<string, number>>(() => {
@@ -364,13 +364,13 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   </div>
                 </div>
                 
-                {/* Import to Fuelight button */}
+                {/* Import to Artemis button */}
                 <Button 
-                  onClick={() => setShowFuelightImportModal(true)}
+                  onClick={() => setShowArtemisImportModal(true)}
                   className="w-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 hover:border-amber-500/50"
                 >
                   <Upload className="h-4 w-4 mr-2" />
-                  Import Simulation into Fuelight
+                  Import Simulation into Artemis
                   <Sparkles className="h-3 w-3 ml-2 text-amber-400" />
                 </Button>
                 
@@ -389,16 +389,16 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
         </div>
       )}
 
-      {/* Fuelight Import Modal */}
-      {showFuelightImportModal && (
+      {/* Artemis Import Modal */}
+      {showArtemisImportModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
           <div className="w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl">
             <div className="flex items-center justify-between p-4 border-b border-zinc-800">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-amber-400" />
-                <h3 className="text-sm font-semibold text-zinc-100">Import to Fuelight</h3>
+                <h3 className="text-sm font-semibold text-zinc-100">Import to Artemis</h3>
               </div>
-              <button onClick={() => setShowFuelightImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
+              <button onClick={() => setShowArtemisImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -406,7 +406,7 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
             <div className="p-5">
               {fuelightImportStep === "review" && (
                 <div className="space-y-4">
-                  <p className="text-xs text-zinc-400">Import your simulations into Fuelight for comprehensive optimization across all investment areas.</p>
+                  <p className="text-xs text-zinc-400">Import your simulations into Artemis for comprehensive optimization across all investment areas.</p>
                   
                   {/* Simulation Summary - Shows both Pricing AND Assortment */}
                   <div className="space-y-3">
@@ -419,7 +419,7 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                         </div>
                         <span className="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full px-2 py-0.5">Imported</span>
                       </div>
-                      <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Sprite & Fanta SKUs (+4% revenue impact)</p>
+                      <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Brand C & Brand D SKUs (+4% revenue impact)</p>
                     </div>
                     
                     {/* Assortment & Mix Simulation - current */}
@@ -436,7 +436,7 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     
                     {/* Promotion - not configured yet */}
                     <button 
-                      onClick={() => setFuelightImportStep("add-another")}
+                      onClick={() => setArtemisImportStep("add-another")}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 border-dashed hover:border-zinc-600 transition-colors text-left"
                     >
                       <div className="flex items-center justify-between">
@@ -452,7 +452,7 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   <div className="flex gap-3 pt-2">
                     <Button 
                       variant="outline" 
-                      onClick={() => setFuelightImportStep("add-another")}
+                      onClick={() => setArtemisImportStep("add-another")}
                       className="flex-1 border-zinc-700 text-zinc-300"
                     >
                       <Plus className="h-4 w-4 mr-2" />
@@ -460,12 +460,12 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     </Button>
                     <Button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
-                        onNavigateToFuelight?.()
+                        setShowArtemisImportModal(false)
+                        onNavigateToArtemis?.()
                       }}
                       className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
                     >
-                      Continue to Fuelight
+                      Continue to Artemis
                       <ChevronRight className="h-4 w-4 ml-2" />
                     </Button>
                   </div>
@@ -474,12 +474,12 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
               
               {fuelightImportStep === "add-another" && (
                 <div className="space-y-4">
-                  <p className="text-xs text-zinc-400">Select another investment area to add to your Fuelight scenario:</p>
+                  <p className="text-xs text-zinc-400">Select another investment area to add to your Artemis scenario:</p>
                   
                   <div className="space-y-2">
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToPromotion?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left"
@@ -513,19 +513,19 @@ export function MixSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   <div className="flex gap-3 pt-2">
                     <Button 
                       variant="outline" 
-                      onClick={() => setFuelightImportStep("review")}
+                      onClick={() => setArtemisImportStep("review")}
                       className="flex-1 border-zinc-700 text-zinc-300"
                     >
                       Back
                     </Button>
                     <Button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
-                        onNavigateToFuelight?.()
+                        setShowArtemisImportModal(false)
+                        onNavigateToArtemis?.()
                       }}
                       className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
                     >
-                      Continue to Fuelight
+                      Continue to Artemis
                       <ChevronRight className="h-4 w-4 ml-2" />
                     </Button>
                   </div>

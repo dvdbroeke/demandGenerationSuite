@@ -22,11 +22,11 @@ type PriceTier = { tier: string; rangeMin: number; rangeMax: number; skuCount: n
 
 const priceTiers: PriceTier[] = [
   { tier: "Value (<\u20ac1.00)", rangeMin: 0.60, rangeMax: 0.99, skuCount: 0, skus: [], shareOfShelf: 0, revShare: 0, status: "Gap", insight: "No presence in value tier -- \u20ac1.8M addressable market from price-sensitive shoppers trading to PL" },
-  { tier: "Mainstream (\u20ac1.00-\u20ac1.29)", rangeMin: 1.00, rangeMax: 1.29, skuCount: 4, skus: ["Sprite 330ml (\u20ac1.19)","Fanta 330ml (\u20ac1.25)","Diet Coke 330ml (\u20ac1.29)","CC Classic 330ml (\u20ac1.35)"], shareOfShelf: 35, revShare: 32, status: "Crowded", insight: "4 SKUs competing within \u20ac0.16 band -- high internal overlap. CC Classic & Diet Coke at parity encourages unintended switching" },
-  { tier: "Mid (\u20ac1.30-\u20ac1.69)", rangeMin: 1.30, rangeMax: 1.69, skuCount: 5, skus: ["CC Zero 330ml (\u20ac1.39)","Sprite 500ml (\u20ac1.65)","Fanta 500ml (\u20ac1.69)","Sprite 1.5L (\u20ac1.79)","Diet Coke 500ml (\u20ac1.79)"], shareOfShelf: 22, revShare: 24, status: "Balanced", insight: "Adequate coverage -- CC Zero well-positioned as trading-up option from Mainstream. Sprite 500ml underperforms at this tier" },
-  { tier: "Upper Mid (\u20ac1.70-\u20ac1.99)", rangeMin: 1.70, rangeMax: 1.99, skuCount: 5, skus: ["CC Classic 500ml (\u20ac1.89)","Fanta 2L (\u20ac1.89)","CC Zero 500ml (\u20ac1.95)","Diet Coke 1.5L (\u20ac1.99)","CC Classic 1.5L (\u20ac2.15)"], shareOfShelf: 28, revShare: 26, status: "Crowded", insight: "5 SKUs in tight range. Diet Coke 1.5L & Fanta 2L weakest performers -- 2L PET cannibalised by 1.5L at similar price point" },
-  { tier: "Take Home (\u20ac2.00-\u20ac2.29)", rangeMin: 2.00, rangeMax: 2.29, skuCount: 4, skus: ["CC Zero 1.5L (\u20ac2.19)","CC Classic 2L (\u20ac2.19)","CC Zero 2L (\u20ac2.15)","CC Classic 1.5L (\u20ac2.15)"], shareOfShelf: 12, revShare: 14, status: "Balanced", insight: "Take-home tier is well-spaced, but CC Zero 2L at only 58% distribution represents an expansion opportunity" },
-  { tier: "Multipack (>\u20ac3.50)", rangeMin: 3.50, rangeMax: 5.00, skuCount: 2, skus: ["CC Classic 6x330ml (\u20ac4.00)","CC Zero 6x330ml (\u20ac4.20)"], shareOfShelf: 8, revShare: 12, status: "Gap", insight: "Only 2 multipack SKUs -- whitespace for Fanta/Sprite 6x330ml or 12-pack formats to capture \u20ac3.2M bulk-buy occasion" },
+  { tier: "Mainstream (\u20ac1.00-\u20ac1.29)", rangeMin: 1.00, rangeMax: 1.29, skuCount: 4, skus: ["Brand C 330ml (\u20ac1.19)","Brand D 330ml (\u20ac1.25)","Brand B 330ml (\u20ac1.29)","Brand A 330ml (\u20ac1.35)"], shareOfShelf: 35, revShare: 32, status: "Crowded", insight: "4 SKUs competing within \u20ac0.16 band -- high internal overlap. Brand A & Brand B at parity encourages unintended switching" },
+  { tier: "Mid (\u20ac1.30-\u20ac1.69)", rangeMin: 1.30, rangeMax: 1.69, skuCount: 5, skus: ["Brand B 330ml (\u20ac1.39)","Brand C 500ml (\u20ac1.65)","Brand D 500ml (\u20ac1.69)","Brand C 1.5L (\u20ac1.79)","Brand B 500ml (\u20ac1.79)"], shareOfShelf: 22, revShare: 24, status: "Balanced", insight: "Adequate coverage -- Brand B well-positioned as trading-up option from Mainstream. Brand C 500ml underperforms at this tier" },
+  { tier: "Upper Mid (\u20ac1.70-\u20ac1.99)", rangeMin: 1.70, rangeMax: 1.99, skuCount: 5, skus: ["Brand A 500ml (\u20ac1.89)","Brand D 2L (\u20ac1.89)","Brand B 500ml (\u20ac1.95)","Brand B 1.5L (\u20ac1.99)","Brand A 1.5L (\u20ac2.15)"], shareOfShelf: 28, revShare: 26, status: "Crowded", insight: "5 SKUs in tight range. Brand B 1.5L & Brand D 2L weakest performers -- 2L PET cannibalised by 1.5L at similar price point" },
+  { tier: "Take Home (\u20ac2.00-\u20ac2.29)", rangeMin: 2.00, rangeMax: 2.29, skuCount: 4, skus: ["Brand B 1.5L (\u20ac2.19)","Brand A 2L (\u20ac2.19)","Brand B 2L (\u20ac2.15)","Brand A 1.5L (\u20ac2.15)"], shareOfShelf: 12, revShare: 14, status: "Balanced", insight: "Take-home tier is well-spaced, but Brand B 2L at only 58% distribution represents an expansion opportunity" },
+  { tier: "Multipack (>\u20ac3.50)", rangeMin: 3.50, rangeMax: 5.00, skuCount: 2, skus: ["Brand A 6x330ml (\u20ac4.00)","Brand B 6x330ml (\u20ac4.20)"], shareOfShelf: 8, revShare: 12, status: "Gap", insight: "Only 2 multipack SKUs -- whitespace for Brand D/Brand C 6x330ml or 12-pack formats to capture \u20ac3.2M bulk-buy occasion" },
 ]
 
 // ---------- Cross-Elasticity Matrix ----------
@@ -34,51 +34,51 @@ const priceTiers: PriceTier[] = [
 type XElasticity = { from: string; to: string; elasticity: number }
 
 const crossElasticities: XElasticity[] = [
-  { from: "CC Classic 330ml", to: "CC Zero 330ml", elasticity: -0.22 },
-  { from: "CC Classic 330ml", to: "Diet Coke 330ml", elasticity: -0.15 },
-  { from: "CC Classic 330ml", to: "Pepsi 330ml", elasticity: -0.35 },
-  { from: "CC Classic 500ml", to: "CC Classic 330ml", elasticity: -0.18 },
-  { from: "CC Classic 500ml", to: "CC Classic 1.5L", elasticity: -0.14 },
-  { from: "CC Classic 500ml", to: "Pepsi 500ml", elasticity: -0.30 },
-  { from: "CC Classic 1.5L", to: "CC Classic 2L", elasticity: -0.32 },
-  { from: "CC Classic 2L", to: "CC Classic 1.5L", elasticity: -0.28 },
-  { from: "CC Classic 2L", to: "Pepsi 2L", elasticity: -0.38 },
-  { from: "CC Classic 6x330ml", to: "CC Classic 330ml", elasticity: -0.24 },
-  { from: "CC Classic 6x330ml", to: "Pepsi 6-pack", elasticity: -0.32 },
-  { from: "CC Zero 330ml", to: "Diet Coke 330ml", elasticity: -0.42 },
-  { from: "CC Zero 330ml", to: "CC Classic 330ml", elasticity: -0.12 },
-  { from: "CC Zero 330ml", to: "Pepsi Max 330ml", elasticity: -0.28 },
-  { from: "CC Zero 500ml", to: "Diet Coke 500ml", elasticity: -0.32 },
-  { from: "CC Zero 1.5L", to: "CC Classic 1.5L", elasticity: -0.22 },
-  { from: "CC Zero 2L", to: "CC Zero 1.5L", elasticity: -0.26 },
-  { from: "CC Zero 2L", to: "CC Classic 2L", elasticity: -0.18 },
-  { from: "CC Zero 6x330ml", to: "CC Zero 330ml", elasticity: -0.20 },
-  { from: "CC Zero 6x330ml", to: "CC Classic 6x330ml", elasticity: -0.15 },
-  { from: "Diet Coke 330ml", to: "CC Zero 330ml", elasticity: -0.38 },
-  { from: "Diet Coke 330ml", to: "Pepsi Max 330ml", elasticity: -0.25 },
-  { from: "Diet Coke 500ml", to: "CC Zero 500ml", elasticity: -0.32 },
-  { from: "Diet Coke 500ml", to: "CC Classic 500ml", elasticity: -0.10 },
-  { from: "Diet Coke 1.5L", to: "CC Zero 1.5L", elasticity: -0.30 },
-  { from: "Diet Coke 1.5L", to: "CC Classic 1.5L", elasticity: -0.16 },
-  { from: "Fanta Orange 330ml", to: "Sprite 330ml", elasticity: -0.20 },
-  { from: "Fanta Orange 330ml", to: "Fanta (Comp)", elasticity: -0.15 },
-  { from: "Fanta Orange 500ml", to: "Fanta Orange 330ml", elasticity: -0.18 },
-  { from: "Fanta Orange 2L", to: "Fanta Orange 500ml", elasticity: -0.24 },
-  { from: "Fanta Orange 2L", to: "Mirinda 2L (Comp)", elasticity: -0.20 },
-  { from: "Sprite 330ml", to: "Fanta Orange 330ml", elasticity: -0.18 },
-  { from: "Sprite 500ml", to: "Fanta Orange 500ml", elasticity: -0.22 },
-  { from: "Sprite 1.5L", to: "Sprite 500ml", elasticity: -0.16 },
-  { from: "Sprite 1.5L", to: "7Up 1.5L (Comp)", elasticity: -0.28 },
+  { from: "Brand A 330ml", to: "Brand B 330ml", elasticity: -0.22 },
+  { from: "Brand A 330ml", to: "Brand B 330ml", elasticity: -0.15 },
+  { from: "Brand A 330ml", to: "Competitor X 330ml", elasticity: -0.35 },
+  { from: "Brand A 500ml", to: "Brand A 330ml", elasticity: -0.18 },
+  { from: "Brand A 500ml", to: "Brand A 1.5L", elasticity: -0.14 },
+  { from: "Brand A 500ml", to: "Competitor X 500ml", elasticity: -0.30 },
+  { from: "Brand A 1.5L", to: "Brand A 2L", elasticity: -0.32 },
+  { from: "Brand A 2L", to: "Brand A 1.5L", elasticity: -0.28 },
+  { from: "Brand A 2L", to: "Competitor X 2L", elasticity: -0.38 },
+  { from: "Brand A 6x330ml", to: "Brand A 330ml", elasticity: -0.24 },
+  { from: "Brand A 6x330ml", to: "Competitor X 6-pack", elasticity: -0.32 },
+  { from: "Brand B 330ml", to: "Brand B 330ml", elasticity: -0.42 },
+  { from: "Brand B 330ml", to: "Brand A 330ml", elasticity: -0.12 },
+  { from: "Brand B 330ml", to: "Competitor X Max 330ml", elasticity: -0.28 },
+  { from: "Brand B 500ml", to: "Brand B 500ml", elasticity: -0.32 },
+  { from: "Brand B 1.5L", to: "Brand A 1.5L", elasticity: -0.22 },
+  { from: "Brand B 2L", to: "Brand B 1.5L", elasticity: -0.26 },
+  { from: "Brand B 2L", to: "Brand A 2L", elasticity: -0.18 },
+  { from: "Brand B 6x330ml", to: "Brand B 330ml", elasticity: -0.20 },
+  { from: "Brand B 6x330ml", to: "Brand A 6x330ml", elasticity: -0.15 },
+  { from: "Brand B 330ml", to: "Brand B 330ml", elasticity: -0.38 },
+  { from: "Brand B 330ml", to: "Competitor X Max 330ml", elasticity: -0.25 },
+  { from: "Brand B 500ml", to: "Brand B 500ml", elasticity: -0.32 },
+  { from: "Brand B 500ml", to: "Brand A 500ml", elasticity: -0.10 },
+  { from: "Brand B 1.5L", to: "Brand B 1.5L", elasticity: -0.30 },
+  { from: "Brand B 1.5L", to: "Brand A 1.5L", elasticity: -0.16 },
+  { from: "Brand D 330ml", to: "Brand D 330ml", elasticity: -0.20 },
+  { from: "Brand D 330ml", to: "Competitor Y (Comp)", elasticity: -0.15 },
+  { from: "Brand D 500ml", to: "Brand D 330ml", elasticity: -0.18 },
+  { from: "Brand D 2L", to: "Brand D 500ml", elasticity: -0.24 },
+  { from: "Brand D 2L", to: "Competitor Z 2L (Comp)", elasticity: -0.20 },
+  { from: "Brand D 330ml", to: "Brand D 330ml", elasticity: -0.18 },
+  { from: "Brand D 500ml", to: "Brand D 500ml", elasticity: -0.22 },
+  { from: "Brand D 1.5L", to: "Brand D 500ml", elasticity: -0.16 },
+  { from: "Brand D 1.5L", to: "Competitor W 1.5L (Comp)", elasticity: -0.28 },
 ]
 
 const retailerOptions = ["All Retailers","Esselunga","Conad","Coop Italia","Carrefour IT","Eurospin","Lidl IT","PAM","Despar"]
 const channelOptions = ["All Channels","Convenience","Modern Trade"]
 
 const aiInsights = [
-  { icon: Search, color: "text-blue-400", bg: "bg-blue-500/10", text: "Value tier (\u003c\u20ac1.00) is a complete whitespace -- PL colas capture 14% share in this band. A \u20ac0.89 PMP 330ml Fanta or Sprite would address \u20ac1.8M opportunity without cannibalising core." },
-  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Mainstream tier is over-crowded: 4 SKUs within \u20ac0.10. CC Classic 330ml and Diet Coke 330ml at identical \u20ac1.29 creates -0.15 cross-elasticity. Recommend \u20ac0.10 separation." },
-  { icon: Layers, color: "text-purple-400", bg: "bg-purple-500/10", text: "Multipack tier is severely under-represented: only CC Classic & CC Zero 6x330ml. Fanta/Sprite 6x330ml or 12-pack formats would capture \u20ac3.2M addressable bulk-buy occasion." },
-  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Cross-elasticity shows Diet Coke \u2192 CC Zero substitution is -0.42, the strongest internal pair. Pricing Diet Coke \u20ac0.10 below CC Zero would reduce cannib by ~8pp and protect both tiers." },
+  { icon: Search, color: "text-blue-400", bg: "bg-blue-500/10", text: "Value tier (\u003c\u20ac1.00) is a complete whitespace -- PL colas capture 14% share in this band. A \u20ac0.89 PMP 330ml Brand D or Brand C would address \u20ac1.8M opportunity without cannibalising core." },
+  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Mainstream tier is over-crowded: 4 SKUs within \u20ac0.10. Brand A 330ml and Brand B 330ml at identical \u20ac1.29 creates -0.15 cross-elasticity. Recommend \u20ac0.10 separation." },
+  { icon: Layers, color: "text-purple-400", bg: "bg-purple-500/10", text: "Multipack tier is severely under-represented: only Brand A & Brand B 6x330ml. Brand D/Brand C 6x330ml or 12-pack formats would capture \u20ac3.2M addressable bulk-buy occasion." },
+  { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Cross-elasticity shows Brand B \u2192 Brand B substitution is -0.42, the strongest internal pair. Pricing Brand B \u20ac0.10 below Brand B would reduce cannib by ~8pp and protect both tiers." },
 ]
 
 // ---------- Component ----------
@@ -91,7 +91,7 @@ export function PAMAdjacencyWhitespace({ onNavigate }: Props) {
   // Filter cross-elasticity by internal vs competitor
   const [xeFilter, setXeFilter] = useState<"all" | "internal" | "competitor">("all")
   const filteredXE = useMemo(() => {
-    const compKeywords = ["Pepsi", "Comp", "PL", "Monster"]
+    const compKeywords = ["Competitor X", "Comp", "PL", "Monster"]
     if (xeFilter === "internal") return crossElasticities.filter(x => !compKeywords.some(k => x.to.includes(k)))
     if (xeFilter === "competitor") return crossElasticities.filter(x => compKeywords.some(k => x.to.includes(k)))
     return crossElasticities
@@ -246,7 +246,7 @@ export function PAMAdjacencyWhitespace({ onNavigate }: Props) {
                     {filteredXE.sort((a, b) => a.elasticity - b.elasticity).map((x, i) => {
                       const sev = Math.abs(x.elasticity) >= 0.35 ? "High" : Math.abs(x.elasticity) >= 0.20 ? "Moderate" : "Low"
                       const sevC = sev === "High" ? "bg-red-500/15 text-red-300 border-red-500/30" : sev === "Moderate" ? "bg-amber-500/15 text-amber-300 border-amber-500/30" : "bg-emerald-500/15 text-emerald-300 border-emerald-500/30"
-                      const isInternal = !["Pepsi","Comp","PL","Monster"].some(k => x.to.includes(k))
+                      const isInternal = !["Competitor X","Comp","PL","Monster"].some(k => x.to.includes(k))
                       return (
                         <tr key={i} className="border-b border-zinc-800/30 hover:bg-zinc-800/20">
                           <td className="py-2 px-2 text-zinc-200 font-medium">{x.from}</td>

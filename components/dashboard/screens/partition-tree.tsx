@@ -74,14 +74,14 @@ const treeData: TreeNode = {
               children: [
                 {
                   name: "Lemon-Lime",
-                  description: "Sprite, 7UP and variants",
+                  description: "Brand C, alternatives and variants",
                   value: "€0.9B",
                   growth: "+5.2%",
                   color: "bg-lime-500",
                 },
                 {
                   name: "Orange",
-                  description: "Fanta and orange variants",
+                  description: "Brand D and orange variants",
                   value: "€0.6B",
                   growth: "+4.8%",
                   color: "bg-orange-500",
@@ -111,7 +111,7 @@ const treeData: TreeNode = {
               children: [
                 {
                   name: "Traditional Energy",
-                  description: "Red Bull, Monster style",
+                  description: "Traditional energy drinks style",
                   value: "€1.2B",
                   growth: "+14.8%",
                   color: "bg-emerald-400",

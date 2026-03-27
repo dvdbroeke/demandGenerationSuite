@@ -33,7 +33,7 @@ interface Initiative {
   linkedBrand: string
   linkedCountry: string
   status: "draft" | "under-review" | "approved" | "in-execution"
-  owner: "TCCC" | "CCEP"
+  owner: "Enterprise" | "Partner"
   keyStakeholders: string[]
   nextDecisionGate: string
   nextForum: string
@@ -50,50 +50,50 @@ interface InitiativesPortfolioScreenProps {
 const initiatives: Initiative[] = [
   {
     id: "1",
-    name: "Shift Media Investment from Diet Coke to Coke Zero - GB",
-    linkedPartition: "Cola Zero",
-    linkedBrand: "Coca-Cola Zero Sugar",
-    linkedCountry: "Great Britain",
+    name: "Shift Media Investment from Brand B to Brand B - Region 1",
+    linkedPartition: "Category A - Zero Variant",
+    linkedBrand: "Brand B",
+    linkedCountry: "Region 1",
     status: "draft",
-    owner: "TCCC",
-    keyStakeholders: ["Media Director GB", "Brand Manager Coke Zero", "CCEP Marketing Lead"],
+    owner: "Enterprise",
+    keyStakeholders: ["Media Director Region 1", "Brand Manager Brand B", "Partner Marketing Lead"],
     nextDecisionGate: "Business Case Review",
     nextForum: "Marketing Board - Feb 28",
     sizeOfPrize: "€12M incremental volume",
     submittedDate: "2024-01-22",
-    strategicPlay: "Zero Sugar Leadership",
-    sourcePlatform: "Fuelight"
+    strategicPlay: "Zero Variant Leadership",
+    sourcePlatform: "Artemis"
   },
   {
     id: "2",
-    name: "Coke Zero Fan Base Expansion via Social & Online Video",
-    linkedPartition: "Cola Zero",
-    linkedBrand: "Coca-Cola Zero Sugar",
-    linkedCountry: "Great Britain",
+    name: "Brand B Fan Base Expansion via Social & Online Video",
+    linkedPartition: "Category A - Zero Variant",
+    linkedBrand: "Brand B",
+    linkedCountry: "Region 1",
     status: "under-review",
-    owner: "TCCC",
+    owner: "Enterprise",
     keyStakeholders: ["Digital Marketing Director", "Social Media Lead", "Media Agency Partner"],
     nextDecisionGate: "Channel Mix Approval",
     nextForum: "Digital Board - Mar 5",
     sizeOfPrize: "2.2x ROI on TikTok, 3.5x on Meta",
     submittedDate: "2024-01-20",
-    strategicPlay: "Zero Sugar Leadership",
-    sourcePlatform: "Fuelight"
+    strategicPlay: "Zero Variant Leadership",
+    sourcePlatform: "Artemis"
   },
   {
     id: "3",
-    name: "Improve Perceived Affordability of Coca-Cola Zero Pet 2L",
-    linkedPartition: "Cola Zero >1L",
-    linkedBrand: "Coca-Cola Zero Sugar",
-    linkedCountry: "Great Britain",
+    name: "Improve Perceived Affordability of Brand B Large Format",
+    linkedPartition: "Category A - Large Format",
+    linkedBrand: "Brand B",
+    linkedCountry: "Region 1",
     status: "in-execution",
-    owner: "CCEP",
-    keyStakeholders: ["RGM Director GB", "Shopper Marketing Lead", "Category Manager - Grocery"],
+    owner: "Partner",
+    keyStakeholders: ["RGM Director Region 1", "Shopper Marketing Lead", "Category Manager - Grocery"],
     nextDecisionGate: "Q1 Performance Review",
     nextForum: "RGM Board - Mar 15",
-    sizeOfPrize: "Close affordability gap vs Pepsi Max",
+    sizeOfPrize: "Close affordability gap vs Competitor X Max",
     submittedDate: "2024-01-10",
-    strategicPlay: "Zero Sugar Leadership",
+    strategicPlay: "Zero Variant Leadership",
     sourcePlatform: "BAM"
   },
 ]
@@ -130,8 +130,8 @@ const statusConfig = {
 }
 
 const ownerConfig = {
-  "TCCC": { color: "text-red-400", bg: "bg-red-500/10", border: "border-red-500/20" },
-  "CCEP": { color: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/20" },
+  "Enterprise": { color: "text-red-400", bg: "bg-red-500/10", border: "border-red-500/20" },
+  "Partner": { color: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/20" },
 }
 
 export function InitiativesPortfolioScreen({ onNavigateToInitiativeDetail }: InitiativesPortfolioScreenProps) {
@@ -186,8 +186,8 @@ export function InitiativesPortfolioScreen({ onNavigateToInitiativeDetail }: Ini
               </SelectTrigger>
               <SelectContent className="bg-zinc-900 border-zinc-800">
                 <SelectItem value="all" className="text-zinc-100">All Owners</SelectItem>
-                <SelectItem value="TCCC" className="text-zinc-100">TCCC</SelectItem>
-                <SelectItem value="CCEP" className="text-zinc-100">CCEP</SelectItem>
+                <SelectItem value="Enterprise" className="text-zinc-100">Enterprise</SelectItem>
+                <SelectItem value="Partner" className="text-zinc-100">Partner</SelectItem>
               </SelectContent>
             </Select>
 

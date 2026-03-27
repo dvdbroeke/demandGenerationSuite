@@ -16,7 +16,7 @@ import { allSkuNames } from "../shared-sku-data"
 interface SimulateForecastProps {
   onNavigate?: (screen: PPAScreen) => void
   onLaunchInitiative?: () => void
-  onNavigateToFuelight?: () => void
+  onNavigateToArtemis?: () => void
   onNavigateToAssortmentMix?: () => void
   onNavigateToPromotion?: () => void
 }
@@ -34,7 +34,7 @@ const scenarioTypes = [
   { value: "ladder", label: "Price Ladder Redesign" },
 ]
 
-// All SKUs available for simulation - includes Citrus/Fruity
+// All SKUs available for simulation - includes Category D
 const skuOptions = allSkuNames
 const channelOptions = ["All Channels", "Convenience", "Modern Trade", "Ecommerce", "On-Premise"]
 const periodOptions = [{ value: "q2-2026", label: "Q2 2026" }, { value: "q3-2026", label: "Q3 2026" }, { value: "q4-2026", label: "Q4 2026" }]
@@ -51,19 +51,19 @@ interface PriceActionItem {
   confidence: "High" | "Medium" | "Low"
 }
 
-// Citrus/Fruity focused price actions for storyline
+// Category D focused price actions for storyline
 const citrusFruityPriceActions: PriceActionItem[] = [
-  { id: "sprite-330", sku: "Sprite 330ml", currentPrice: 1.10, suggestedPrice: 1.25, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.25, confidence: "High" },
-  { id: "sprite-500", sku: "Sprite 500ml", currentPrice: 1.48, suggestedPrice: 1.59, minPrice: 1.40, maxPrice: 1.70, elasticity: -0.35, confidence: "High" },
-  { id: "fanta-330", sku: "Fanta Orange 330ml", currentPrice: 1.12, suggestedPrice: 1.22, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.30, confidence: "High" },
-  { id: "fanta-500", sku: "Fanta Orange 500ml", currentPrice: 1.55, suggestedPrice: 1.65, minPrice: 1.45, maxPrice: 1.79, elasticity: -0.40, confidence: "Medium" },
+  { id: "brand-d-330", sku: "Brand D 330ml", currentPrice: 1.10, suggestedPrice: 1.25, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.25, confidence: "High" },
+  { id: "brand-d-500", sku: "Brand D 500ml", currentPrice: 1.48, suggestedPrice: 1.59, minPrice: 1.40, maxPrice: 1.70, elasticity: -0.35, confidence: "High" },
+  { id: "brand-e-330", sku: "Brand E 330ml", currentPrice: 1.12, suggestedPrice: 1.22, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.30, confidence: "High" },
+  { id: "brand-e-500", sku: "Brand E 500ml", currentPrice: 1.55, suggestedPrice: 1.65, minPrice: 1.45, maxPrice: 1.79, elasticity: -0.40, confidence: "Medium" },
 ]
 
 const basePriceActions: PriceActionItem[] = [
-  { id: "1", sku: "CC Classic 330ml", currentPrice: 1.35, suggestedPrice: 1.39, minPrice: 1.25, maxPrice: 1.49, elasticity: -0.3, confidence: "High" },
-  { id: "2", sku: "CC Zero 330ml", currentPrice: 1.39, suggestedPrice: 1.45, minPrice: 1.29, maxPrice: 1.55, elasticity: -0.15, confidence: "High" },
-  { id: "3", sku: "CC Classic 500ml", currentPrice: 1.89, suggestedPrice: 1.79, minPrice: 1.59, maxPrice: 1.99, elasticity: -1.2, confidence: "Medium" },
-  { id: "4", sku: "CC Classic 6x330ml", currentPrice: 4.00, suggestedPrice: 3.75, minPrice: 3.50, maxPrice: 4.50, elasticity: -2.5, confidence: "Medium" },
+  { id: "1", sku: "Brand A 330ml", currentPrice: 1.35, suggestedPrice: 1.39, minPrice: 1.25, maxPrice: 1.49, elasticity: -0.3, confidence: "High" },
+  { id: "2", sku: "Brand B 330ml", currentPrice: 1.39, suggestedPrice: 1.45, minPrice: 1.29, maxPrice: 1.55, elasticity: -0.15, confidence: "High" },
+  { id: "3", sku: "Brand A 500ml", currentPrice: 1.89, suggestedPrice: 1.79, minPrice: 1.59, maxPrice: 1.99, elasticity: -1.2, confidence: "Medium" },
+  { id: "4", sku: "Brand A 8x330ml", currentPrice: 4.00, suggestedPrice: 3.75, minPrice: 3.50, maxPrice: 4.50, elasticity: -2.5, confidence: "Medium" },
 ]
 
 // Calculate impact based on price values
@@ -101,10 +101,10 @@ interface PriceImpactItem {
 }
 
 const otherPriceImpacts: PriceImpactItem[] = [
-  { sku: "CC Classic 1.5L", impact: "-3.2% volume", direction: "negative", cannibRate: "8.4%", detail: "Price cut on 500ml draws take-home buyers" },
-  { sku: "Diet Coke 330ml", impact: "+1.5% volume", direction: "positive", cannibRate: "2.1%", detail: "Price increase on Classic 330ml shifts some demand" },
-  { sku: "Pepsi Regular 330ml", impact: "+2.8% volume", direction: "negative", cannibRate: "-", detail: "Competitor gains from our price increase" },
-  { sku: "CC Zero 500ml", impact: "No change", direction: "neutral", cannibRate: "0%", detail: "Different pack size occasion" },
+  { sku: "Brand A 1.5L", impact: "-3.2% volume", direction: "negative", cannibRate: "8.4%", detail: "Price cut on 500ml draws take-home buyers" },
+  { sku: "Brand C 330ml", impact: "+1.5% volume", direction: "positive", cannibRate: "2.1%", detail: "Price increase on Brand A 330ml shifts some demand" },
+  { sku: "Competitor X Regular 330ml", impact: "+2.8% volume", direction: "negative", cannibRate: "-", detail: "Competitor gains from our price increase" },
+  { sku: "Brand B 500ml", impact: "No change", direction: "neutral", cannibRate: "0%", detail: "Different pack size occasion" },
 ]
 
 const existingInitiatives = ["Price Ladder Review Q3", "Premium SKU Price Increase"]
@@ -120,22 +120,22 @@ interface CompetitorReaction {
 }
 
 const competitorReactions: CompetitorReaction[] = [
-  { competitor: "Pepsi", likelyAction: "Match price reduction on comparable SKUs", probability: "72%", impactOnUs: "-8% volume vs. baseline", timing: "1-2 weeks", recommendation: "Consider shorter promo window or exclusive retailer deal" },
+  { competitor: "Competitor X", likelyAction: "Match price reduction on comparable SKUs", probability: "72%", impactOnUs: "-8% volume vs. baseline", timing: "1-2 weeks", recommendation: "Consider shorter promo window or exclusive retailer deal" },
   { competitor: "Private Label", likelyAction: "Maintain current pricing (margin focus)", probability: "85%", impactOnUs: "Neutral", timing: "N/A", recommendation: "Good opportunity for brand switching capture" },
-  { competitor: "Dr Pepper", likelyAction: "Increase promotional frequency", probability: "54%", impactOnUs: "-3% volume in flavor segment", timing: "2-4 weeks", recommendation: "Monitor and adjust Fanta/Sprite promos accordingly" },
+  { competitor: "Alternative", likelyAction: "Increase promotional frequency", probability: "54%", impactOnUs: "-3% volume in flavor segment", timing: "2-4 weeks", recommendation: "Monitor and adjust Brand C/Brand D promos accordingly" },
 ]
 
 // Data Clean Room entities
 const dcrEntities = [
-  { id: "cch", name: "Coca-Cola HBC", region: "Europe" },
-  { id: "ccep", name: "Coca-Cola Europacific Partners", region: "Western Europe" },
-  { id: "swire", name: "Swire Coca-Cola", region: "Asia Pacific" },
-  { id: "ccba", name: "Coca-Cola Beverages Africa", region: "Africa" },
+  { id: "region-1", name: "Regional Partner Europe", region: "Europe" },
+  { id: "region-2", name: "Regional Partner West", region: "Western Europe" },
+  { id: "region-3", name: "Regional Partner APAC", region: "Asia Pacific" },
+  { id: "region-4", name: "Regional Partner Africa", region: "Africa" },
 ]
 
-export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToFuelight, onNavigateToAssortmentMix, onNavigateToPromotion }: SimulateForecastProps) {
+export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToArtemis, onNavigateToAssortmentMix, onNavigateToPromotion }: SimulateForecastProps) {
   const [scenario, setScenario] = useState("price-increase")
-  const [selectedSkus, setSelectedSkus] = useState<string[]>(["Sprite 330ml", "Sprite 500ml", "Fanta Orange 330ml", "Fanta Orange 500ml"])
+  const [selectedSkus, setSelectedSkus] = useState<string[]>(["Brand D 330ml", "Brand D 500ml", "Brand C 330ml", "Brand C 500ml"])
   const [channel, setChannel] = useState("All Channels")
   const [period, setPeriod] = useState("q3-2026")
   const [hasRun, setHasRun] = useState(false) // Results appear after clicking "Run Simulation"
@@ -147,9 +147,9 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
   const [dcrAuthStep, setDcrAuthStep] = useState<"select" | "auth" | "loading" | "success">("select")
   const [dcrPassword, setDcrPassword] = useState("")
   
-  // Fuelight Import Modal state
-  const [showFuelightImportModal, setShowFuelightImportModal] = useState(false)
-  const [fuelightImportStep, setFuelightImportStep] = useState<"review" | "add-another">("review")
+  // Artemis Import Modal state
+  const [showArtemisImportModal, setShowArtemisImportModal] = useState(false)
+  const [fuelightImportStep, setArtemisImportStep] = useState<"review" | "add-another">("review")
   
   // Use Citrus/Fruity actions for the storyline
   const activeActions = citrusFruityPriceActions
@@ -201,9 +201,9 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
     return diff > 0 ? `+\u20ac${diff.toFixed(2)}` : `-\u20ac${Math.abs(diff).toFixed(2)}`
   }
 
-  const handleImportToFuelight = () => {
-    setShowFuelightImportModal(true)
-    setFuelightImportStep("review")
+  const handleImportToArtemis = () => {
+    setShowArtemisImportModal(true)
+    setArtemisImportStep("review")
   }
 
   return (
@@ -423,13 +423,13 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   </div>
                 </div>
                 
-                {/* Import to Fuelight button */}
+                {/* Import to Artemis button */}
                 <Button 
-                  onClick={handleImportToFuelight}
+                  onClick={handleImportToArtemis}
                   className="w-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 hover:border-amber-500/50"
                 >
                   <Upload className="h-4 w-4 mr-2" />
-                  Import Simulation into Fuelight
+                  Import Simulation into Artemis
                   <Sparkles className="h-3 w-3 ml-2 text-amber-400" />
                 </Button>
                 
@@ -488,7 +488,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
             </div>
             
             <div className="mt-4 p-3 rounded-lg bg-amber-500/5 border border-amber-500/20">
-              <p className="text-[11px] text-amber-300"><strong>Recommendation:</strong> Given high probability of Pepsi price matching, consider exclusive retailer partnerships or shorter promotion windows to minimize competitive response time.</p>
+              <p className="text-[11px] text-amber-300"><strong>Recommendation:</strong> Given high probability of Competitor X price matching, consider exclusive retailer partnerships or shorter promotion windows to minimize competitive response time.</p>
             </div>
           </CardContent>
         </Card>
@@ -636,16 +636,16 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
         </div>
       )}
 
-      {/* Fuelight Import Modal */}
-      {showFuelightImportModal && (
+      {/* Artemis Import Modal */}
+      {showArtemisImportModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
           <div className="w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl">
             <div className="flex items-center justify-between p-4 border-b border-zinc-800">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-amber-400" />
-                <h3 className="text-sm font-semibold text-zinc-100">Import to Fuelight</h3>
+                <h3 className="text-sm font-semibold text-zinc-100">Import to Artemis</h3>
               </div>
-              <button onClick={() => setShowFuelightImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
+              <button onClick={() => setShowArtemisImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -653,7 +653,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
             <div className="p-5">
               {fuelightImportStep === "review" && (
                 <div className="space-y-4">
-                  <p className="text-xs text-zinc-400">Import your pricing simulation into Fuelight for comprehensive optimization across all investment areas.</p>
+                  <p className="text-xs text-zinc-400">Import your pricing simulation into Artemis for comprehensive optimization across all investment areas.</p>
                   
                   {/* Simulation Summary */}
                   <div className="space-y-3">
@@ -665,12 +665,12 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                         </div>
                         <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 text-[9px]">Active Simulation</Badge>
                       </div>
-                      <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Sprite & Fanta SKUs (+{Math.abs(impact.totalVol).toFixed(1)}% volume impact, +{"\u20ac"}{impact.totalRev.toFixed(0)}K revenue)</p>
+                      <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Brand C & Brand D SKUs (+{Math.abs(impact.totalVol).toFixed(1)}% volume impact, +{"\u20ac"}{impact.totalRev.toFixed(0)}K revenue)</p>
                     </div>
                     
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToAssortmentMix?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 border-dashed hover:border-zinc-600 transition-colors text-left"
@@ -686,7 +686,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToPromotion?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 border-dashed hover:border-zinc-600 transition-colors text-left"
@@ -704,7 +704,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   <div className="flex gap-3 pt-2">
                     <Button 
                       variant="outline" 
-                      onClick={() => setFuelightImportStep("add-another")}
+                      onClick={() => setArtemisImportStep("add-another")}
                       className="flex-1 border-zinc-700 text-zinc-300"
                     >
                       <Plus className="h-4 w-4 mr-2" />
@@ -712,12 +712,12 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     </Button>
                     <Button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
-                        onNavigateToFuelight?.()
+                        setShowArtemisImportModal(false)
+                        onNavigateToArtemis?.()
                       }}
                       className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
                     >
-                      Continue to Fuelight
+                      Continue to Artemis
                       <ChevronRight className="h-4 w-4 ml-2" />
                     </Button>
                   </div>
@@ -726,12 +726,12 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
               
               {fuelightImportStep === "add-another" && (
                 <div className="space-y-4">
-                  <p className="text-xs text-zinc-400">Select another investment area to add to your Fuelight scenario:</p>
+                  <p className="text-xs text-zinc-400">Select another investment area to add to your Artemis scenario:</p>
                   
                   <div className="space-y-2">
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToAssortmentMix?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left"
@@ -747,7 +747,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                     
                     <button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
+                        setShowArtemisImportModal(false)
                         onNavigateToPromotion?.()
                       }}
                       className="w-full p-4 rounded-lg bg-zinc-800/50 border border-zinc-700 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all text-left"
@@ -775,19 +775,19 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   <div className="flex gap-3 pt-2">
                     <Button 
                       variant="outline" 
-                      onClick={() => setFuelightImportStep("review")}
+                      onClick={() => setArtemisImportStep("review")}
                       className="flex-1 border-zinc-700 text-zinc-300"
                     >
                       Back
                     </Button>
                     <Button 
                       onClick={() => {
-                        setShowFuelightImportModal(false)
-                        onNavigateToFuelight?.()
+                        setShowArtemisImportModal(false)
+                        onNavigateToArtemis?.()
                       }}
                       className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
                     >
-                      Continue to Fuelight
+                      Continue to Artemis
                       <ChevronRight className="h-4 w-4 ml-2" />
                     </Button>
                   </div>

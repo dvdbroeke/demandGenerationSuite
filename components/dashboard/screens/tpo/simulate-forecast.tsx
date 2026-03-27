@@ -16,17 +16,17 @@ import { allSkuNames, retailerOptions as sharedRetailers, mechanicOptions as sha
 interface SimulateForecastProps {
   onNavigate?: (screen: TPOScreen) => void
   onLaunchInitiative?: () => void
-  onNavigateToFuelight?: () => void
+  onNavigateToArtemis?: () => void
 }
 
 // ---------- Config options ----------
 const brands = [
   { value: "all", label: "All Brands" },
-  { value: "cc-classic", label: "Coca-Cola Classic" },
-  { value: "cc-zero", label: "Coca-Cola Zero" },
-  { value: "diet-coke", label: "Diet Coke" },
-  { value: "fanta", label: "Fanta" },
-  { value: "sprite", label: "Sprite" },
+  { value: "brand-a", label: "Brand A" },
+  { value: "brand-b", label: "Brand B" },
+  { value: "brand-c", label: "Brand C" },
+  { value: "brand-d", label: "Brand D" },
+  { value: "brand-e", label: "Brand E" },
 ]
 const skuOptions = allSkuNames
 const retailerOptions = [...sharedRetailers] as string[]
@@ -66,19 +66,19 @@ interface PromoRecommendation {
 }
 
 const recommendations: PromoRecommendation[] = [
-  { sku: "CC Zero 330ml", retailer: "Esselunga", mechanic: "TPR -15%", depth: "15%", weeks: "W22-W25", currentROI: 1.12, forecastROI: 1.68, incrVolume: "+42K L", cannibPct: 8.2, confidence: "High" },
-  { sku: "CC Classic 500ml", retailer: "Conad", mechanic: "Multibuy 2 for \u20ac2", depth: "22%", weeks: "W24-W27", currentROI: 0.98, forecastROI: 1.45, incrVolume: "+38K L", cannibPct: 12.1, confidence: "High" },
-  { sku: "Fanta Orange 330ml", retailer: "Carrefour IT", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W24", currentROI: 1.24, forecastROI: 1.82, incrVolume: "+31K L", cannibPct: 5.4, confidence: "High" },
-  { sku: "CC Classic 1.5L", retailer: "Coop Italia", mechanic: "\u20ac1 PMP", depth: "18%", weeks: "W26-W29", currentROI: 0.88, forecastROI: 1.22, incrVolume: "+22K L", cannibPct: 18.7, confidence: "Medium" },
-  { sku: "Diet Coke 500ml", retailer: "PAM", mechanic: "Meal Deal", depth: "12%", weeks: "W23-W26", currentROI: 0.72, forecastROI: 1.08, incrVolume: "+15K L", cannibPct: 22.3, confidence: "Medium" },
-  { sku: "Sprite 330ml", retailer: "Despar", mechanic: "TPR -12%", depth: "12%", weeks: "W28-W30", currentROI: 0.91, forecastROI: 1.15, incrVolume: "+12K L", cannibPct: 14.5, confidence: "Medium" },
-  { sku: "CC Zero 1.5L", retailer: "Eurospin", mechanic: "BOGOF", depth: "50%", weeks: "W25-W26", currentROI: 0.65, forecastROI: 0.92, incrVolume: "+8K L", cannibPct: 28.1, confidence: "Low" },
-  { sku: "CC Classic 2L", retailer: "Carrefour IT", mechanic: "TPR -12%", depth: "12%", weeks: "W23-W26", currentROI: 0.82, forecastROI: 1.18, incrVolume: "+18K L", cannibPct: 14.2, confidence: "Medium" },
-  { sku: "CC Classic 6x330ml", retailer: "Esselunga", mechanic: "Multibuy 2 for \u20ac7", depth: "12.5%", weeks: "W24-W28", currentROI: 1.08, forecastROI: 1.52, incrVolume: "+28K L", cannibPct: 10.0, confidence: "High" },
-  { sku: "CC Zero 6x330ml", retailer: "Conad", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W25", currentROI: 0.95, forecastROI: 1.38, incrVolume: "+22K L", cannibPct: 15.2, confidence: "Medium" },
-  { sku: "Fanta Orange 2L", retailer: "Coop Italia", mechanic: "\u20ac1 PMP", depth: "20%", weeks: "W26-W29", currentROI: 0.78, forecastROI: 1.12, incrVolume: "+14K L", cannibPct: 12.0, confidence: "Medium" },
-  { sku: "Diet Coke 1.5L", retailer: "Lidl IT", mechanic: "TPR -10%", depth: "10%", weeks: "W24-W27", currentROI: 0.68, forecastROI: 0.98, incrVolume: "+10K L", cannibPct: 16.0, confidence: "Low" },
-  { sku: "Sprite 1.5L", retailer: "Carrefour IT", mechanic: "Multibuy 2 for \u20ac3", depth: "16%", weeks: "W25-W28", currentROI: 0.72, forecastROI: 1.05, incrVolume: "+8K L", cannibPct: 14.0, confidence: "Low" },
+  { sku: "Brand B 330ml", retailer: "Retailer A", mechanic: "TPR -15%", depth: "15%", weeks: "W22-W25", currentROI: 1.12, forecastROI: 1.68, incrVolume: "+42K L", cannibPct: 8.2, confidence: "High" },
+  { sku: "Brand A 500ml", retailer: "Retailer B", mechanic: "Multibuy 2 for \u20ac2", depth: "22%", weeks: "W24-W27", currentROI: 0.98, forecastROI: 1.45, incrVolume: "+38K L", cannibPct: 12.1, confidence: "High" },
+  { sku: "Brand D 330ml", retailer: "Retailer D", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W24", currentROI: 1.24, forecastROI: 1.82, incrVolume: "+31K L", cannibPct: 5.4, confidence: "High" },
+  { sku: "Brand A 1.5L", retailer: "Retailer C", mechanic: "\u20ac1 PMP", depth: "18%", weeks: "W26-W29", currentROI: 0.88, forecastROI: 1.22, incrVolume: "+22K L", cannibPct: 18.7, confidence: "Medium" },
+  { sku: "Brand C 500ml", retailer: "Retailer E", mechanic: "Meal Deal", depth: "12%", weeks: "W23-W26", currentROI: 0.72, forecastROI: 1.08, incrVolume: "+15K L", cannibPct: 22.3, confidence: "Medium" },
+  { sku: "Brand E 330ml", retailer: "Retailer F", mechanic: "TPR -12%", depth: "12%", weeks: "W28-W30", currentROI: 0.91, forecastROI: 1.15, incrVolume: "+12K L", cannibPct: 14.5, confidence: "Medium" },
+  { sku: "Brand B 1.5L", retailer: "Retailer H", mechanic: "BOGOF", depth: "50%", weeks: "W25-W26", currentROI: 0.65, forecastROI: 0.92, incrVolume: "+8K L", cannibPct: 28.1, confidence: "Low" },
+  { sku: "Brand A 2L", retailer: "Retailer D", mechanic: "TPR -12%", depth: "12%", weeks: "W23-W26", currentROI: 0.82, forecastROI: 1.18, incrVolume: "+18K L", cannibPct: 14.2, confidence: "Medium" },
+  { sku: "Brand A 8x330ml", retailer: "Retailer A", mechanic: "Multibuy 2 for \u20ac7", depth: "12.5%", weeks: "W24-W28", currentROI: 1.08, forecastROI: 1.52, incrVolume: "+28K L", cannibPct: 10.0, confidence: "High" },
+  { sku: "Brand B 8x330ml", retailer: "Retailer B", mechanic: "Display + TPR -10%", depth: "10%", weeks: "W22-W25", currentROI: 0.95, forecastROI: 1.38, incrVolume: "+22K L", cannibPct: 15.2, confidence: "Medium" },
+  { sku: "Brand D 2L", retailer: "Retailer C", mechanic: "\u20ac1 PMP", depth: "20%", weeks: "W26-W29", currentROI: 0.78, forecastROI: 1.12, incrVolume: "+14K L", cannibPct: 12.0, confidence: "Medium" },
+  { sku: "Brand C 1.5L", retailer: "Retailer G", mechanic: "TPR -10%", depth: "10%", weeks: "W24-W27", currentROI: 0.68, forecastROI: 0.98, incrVolume: "+10K L", cannibPct: 16.0, confidence: "Low" },
+  { sku: "Brand E 1.5L", retailer: "Retailer D", mechanic: "Multibuy 2 for \u20ac3", depth: "16%", weeks: "W25-W28", currentROI: 0.72, forecastROI: 1.05, incrVolume: "+8K L", cannibPct: 14.0, confidence: "Low" },
 ]
 
 // Forecast ROI over weeks
@@ -87,17 +87,17 @@ const forecastBaseline = [1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 
 const forecastOptimized = [1.02, 1.28, 1.52, 1.61, 1.55, 1.48, 1.42, 1.38, 1.22, 1.08]
 
 // ---------- Component ----------
-export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToFuelight }: SimulateForecastProps) {
+export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToArtemis }: SimulateForecastProps) {
   const [hasRun, setHasRun] = useState(false)
-  const [selectedBrand, setSelectedBrand] = useState("diet-coke") // STORYLINE: Pre-select Diet Coke
-  // STORYLINE: Pre-select the bad performing Diet Coke SKUs from Trade v Client Matrix
+  const [selectedBrand, setSelectedBrand] = useState("brand-c") // STORYLINE: Pre-select Brand C
+  // STORYLINE: Pre-select the bad performing Brand C SKUs from Trade v Client Matrix
   const [selectedSkus, setSelectedSkus] = useState<string[]>([
-    "Diet Coke 330ml",
-    "Diet Coke 500ml", 
-    "Diet Coke 1.25L",
-    "Diet Coke 1.5L",
-    "Diet Coke 1.75L",
-    "Diet Coke 2L"
+    "Brand C 330ml",
+    "Brand C 500ml", 
+    "Brand C 1.25L",
+    "Brand C 1.5L",
+    "Brand C 1.75L",
+    "Brand C 2L"
   ])
   const [selectedRetailers, setSelectedRetailers] = useState<string[]>(["All Retailers"])
   const [selectedMechanic, setSelectedMechanic] = useState("Price Cut") // STORYLINE: Price Cut mechanic
@@ -108,8 +108,8 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
   const [minROI, setMinROI] = useState("1.2")
   const [initiativeMode, setInitiativeMode] = useState<"new" | "existing" | null>(null)
   
-  // Fuelight Import Modal state
-  const [showFuelightImportModal, setShowFuelightImportModal] = useState(false)
+  // Artemis Import Modal state
+  const [showArtemisImportModal, setShowArtemisImportModal] = useState(false)
 
   const toggleSku = (sku: string) => {
     setSelectedSkus(prev => prev.includes(sku) ? prev.filter(s => s !== sku) : [...prev, sku])
@@ -147,7 +147,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
       </div>
 
       {!hasRun ? (
-        /* ===== CONFIG VIEW (Fuelight optimizer style) ===== */
+        /* ===== CONFIG VIEW (Artemis optimizer style) ===== */
         <div className="flex flex-col items-center pt-4">
           <div className="max-w-2xl w-full space-y-6">
             {/* Header */}
@@ -372,7 +372,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
               </div>
               <div className="space-y-2 text-[11px] text-zinc-300 leading-relaxed">
                 <p>The optimized promo plan delivers a <span className="text-emerald-400 font-semibold">1.42x portfolio ROI</span> vs. the 1.08x current baseline, generating <span className="text-emerald-400 font-semibold">+168K L incremental volume</span> within the <span className="text-zinc-100 font-semibold">€218K</span> budget (vs. €250K cap).</p>
-                <p>Key recommendations: Lead with <span className="text-zinc-100">CC Zero 330ml TPR at Esselunga</span> (highest confidence, 1.68x ROI) and <span className="text-zinc-100">Fanta Orange 330ml Display+TPR at Carrefour IT</span> (strongest category expansion at 38%). Avoid BOGOF on CC Zero 1.5L at Eurospin where cannibalization reaches 28% and ROI stays below 1.0x.</p>
+                <p>Key recommendations: Lead with <span className="text-zinc-100">Brand B 330ml TPR at Esselunga</span> (highest confidence, 1.68x ROI) and <span className="text-zinc-100">Brand D 330ml Display+TPR at Carrefour IT</span> (strongest category expansion at 38%). Avoid BOGOF on Brand B 1.5L at Eurospin where cannibalization reaches 28% and ROI stays below 1.0x.</p>
                 <p>Timing-wise, concentrate promos in W22-W27 to align with the summer media campaign window for maximum synergy lift.</p>
               </div>
             </CardContent>
@@ -399,8 +399,8 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                 // Media flight windows
                 const mediaFlights = [
                   { label: "Summer Campaign TV + Digital", start: 0, end: 4, color: "bg-blue-500", textColor: "text-blue-300", borderColor: "border-blue-500/40" },
-                  { label: "CC Zero Social Push", start: 2, end: 5, color: "bg-cyan-500", textColor: "text-cyan-300", borderColor: "border-cyan-500/40" },
-                  { label: "Fanta Festival Activation", start: 5, end: 7, color: "bg-orange-500", textColor: "text-orange-300", borderColor: "border-orange-500/40" },
+                  { label: "Brand B Social Push", start: 2, end: 5, color: "bg-cyan-500", textColor: "text-cyan-300", borderColor: "border-cyan-500/40" },
+                  { label: "Brand D Festival Activation", start: 5, end: 7, color: "bg-orange-500", textColor: "text-orange-300", borderColor: "border-orange-500/40" },
                 ]
 
                 // Cultural / seasonal events
@@ -414,11 +414,11 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
 
                 // Recommended promo activations (from simulation results)
                 const promoActivations = [
-                  { sku: "CC Zero 330ml", retailer: "Esselunga", start: 0, end: 3, roi: 1.68, color: "bg-emerald-500" },
-                  { sku: "CC Classic 500ml", retailer: "Conad", start: 2, end: 5, roi: 1.45, color: "bg-emerald-500" },
-                  { sku: "Fanta Orange 330ml", retailer: "Carrefour IT", start: 0, end: 2, roi: 1.82, color: "bg-emerald-500" },
-                  { sku: "CC Classic 1.5L", retailer: "Coop Italia", start: 4, end: 7, roi: 1.22, color: "bg-amber-500" },
-                  { sku: "Diet Coke 500ml", retailer: "PAM", start: 1, end: 4, roi: 1.08, color: "bg-amber-500" },
+                  { sku: "Brand B 330ml", retailer: "Esselunga", start: 0, end: 3, roi: 1.68, color: "bg-emerald-500" },
+                  { sku: "Brand A 500ml", retailer: "Conad", start: 2, end: 5, roi: 1.45, color: "bg-emerald-500" },
+                  { sku: "Brand D 330ml", retailer: "Carrefour IT", start: 0, end: 2, roi: 1.82, color: "bg-emerald-500" },
+                  { sku: "Brand A 1.5L", retailer: "Coop Italia", start: 4, end: 7, roi: 1.22, color: "bg-amber-500" },
+                  { sku: "Brand B 500ml", retailer: "PAM", start: 1, end: 4, roi: 1.08, color: "bg-amber-500" },
                 ]
 
                 // Synergy score per week (how well promos align with media + events)
@@ -617,8 +617,8 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                       <SelectTrigger className="h-8 w-[220px] bg-zinc-900 border-zinc-800 text-zinc-200 text-[11px]"><SelectValue /></SelectTrigger>
                       <SelectContent className="bg-zinc-900 border-zinc-800">
                         <SelectItem value="init-1" className="text-zinc-200 text-xs">Summer Promo Activation 2026</SelectItem>
-                        <SelectItem value="init-2" className="text-zinc-200 text-xs">CC Zero Growth Plan Q3</SelectItem>
-                        <SelectItem value="init-3" className="text-zinc-200 text-xs">Fanta Relaunch Modern Trade</SelectItem>
+                        <SelectItem value="init-2" className="text-zinc-200 text-xs">Brand B Growth Plan Q3</SelectItem>
+                        <SelectItem value="init-3" className="text-zinc-200 text-xs">Brand D Relaunch Modern Trade</SelectItem>
                       </SelectContent>
                     </Select>
                     <Button size="sm" className="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] h-7 px-3">
@@ -628,14 +628,14 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                 )}
               </div>
               
-              {/* Import to Fuelight */}
+              {/* Import to Artemis */}
               <div className="mt-4 pt-4 border-t border-zinc-800">
                 <Button 
-                  onClick={() => setShowFuelightImportModal(true)}
+                  onClick={() => setShowArtemisImportModal(true)}
                   className="w-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 hover:border-amber-500/50"
                 >
                   <Upload className="h-4 w-4 mr-2" />
-                  Import Simulation into Fuelight
+                  Import Simulation into Artemis
                   <Sparkles className="h-3 w-3 ml-2 text-amber-400" />
                 </Button>
               </div>
@@ -644,23 +644,23 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
         </div>
       )}
 
-      {/* Fuelight Import Modal - Shows all 3 simulations */}
-      {showFuelightImportModal && (
+      {/* Artemis Import Modal - Shows all 3 simulations */}
+      {showArtemisImportModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
           <div className="w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl">
             <div className="flex items-center justify-between p-4 border-b border-zinc-800">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-amber-400" />
-                <h3 className="text-sm font-semibold text-zinc-100">Import to Fuelight</h3>
+                <h3 className="text-sm font-semibold text-zinc-100">Import to Artemis</h3>
               </div>
-              <button onClick={() => setShowFuelightImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
+              <button onClick={() => setShowArtemisImportModal(false)} className="text-zinc-500 hover:text-zinc-300">
                 <X className="h-5 w-5" />
               </button>
             </div>
             
             <div className="p-5">
               <div className="space-y-4">
-                <p className="text-xs text-zinc-400">Import all RGM simulations into Fuelight for comprehensive optimization across all investment areas.</p>
+                <p className="text-xs text-zinc-400">Import all RGM simulations into Artemis for comprehensive optimization across all investment areas.</p>
                 
                 {/* All 3 Simulations Summary */}
                 <div className="space-y-3">
@@ -673,7 +673,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                       </div>
                       <span className="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full px-2 py-0.5">Ready</span>
                     </div>
-                    <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Sprite & Fanta SKUs (+4% revenue impact)</p>
+                    <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Brand C & Brand D SKUs (+4% revenue impact)</p>
                   </div>
                   
                   {/* Assortment & Mix Simulation */}
@@ -697,7 +697,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                       </div>
                       <span className="text-[9px] bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full px-2 py-0.5">Active Simulation</span>
                     </div>
-                    <p className="text-[10px] text-zinc-400">Diet Coke promo optimization: 30%+ price cuts, 2-week duration (+0.50x ROI uplift)</p>
+                    <p className="text-[10px] text-zinc-400">Brand B promo optimization: 30%+ price cuts, 2-week duration (+0.50x ROI uplift)</p>
                   </div>
                 </div>
                 
@@ -705,7 +705,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                   <div className="flex items-start gap-2">
                     <Sparkles className="h-4 w-4 text-amber-400 mt-0.5" />
                     <div>
-                      <p className="text-[10px] text-amber-300 font-medium">All 3 RGM simulations ready for Fuelight</p>
+                      <p className="text-[10px] text-amber-300 font-medium">All 3 RGM simulations ready for Artemis</p>
                       <p className="text-[9px] text-zinc-400 mt-0.5">Combined impact: +4% pricing, +3% mix optimization, +8% promo ROI improvement</p>
                     </div>
                   </div>
@@ -714,19 +714,19 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                 <div className="flex gap-3 pt-2">
                   <Button 
                     variant="outline" 
-                    onClick={() => setShowFuelightImportModal(false)}
+                    onClick={() => setShowArtemisImportModal(false)}
                     className="flex-1 border-zinc-700 text-zinc-300"
                   >
                     Cancel
                   </Button>
                   <Button 
                     onClick={() => {
-                      setShowFuelightImportModal(false)
-                      onNavigateToFuelight?.()
+                      setShowArtemisImportModal(false)
+                      onNavigateToArtemis?.()
                     }}
                     className="flex-1 bg-amber-500 hover:bg-amber-600 text-white"
                   >
-                    Continue to Fuelight
+                    Continue to Artemis
                     <ChevronRight className="h-4 w-4 ml-2" />
                   </Button>
                 </div>

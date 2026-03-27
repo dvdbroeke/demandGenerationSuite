@@ -70,7 +70,7 @@ const decisionsPending: Decision[] = [
   {
     id: "5",
     title: "Energy portfolio architecture",
-    description: "Define clear brand roles between Coca-Cola Energy and Monster to avoid cannibalization.",
+    description: "Define clear brand roles between Brand A Energy and Brand E to avoid cannibalization.",
     status: "pending",
     date: "Due: Feb 28, 2026",
     owner: "Brand Council",

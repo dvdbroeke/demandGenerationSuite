@@ -16,7 +16,7 @@ import {
   ChevronDown
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { FuelightLogo } from "@/components/ui/platform-logos"
+import { ArtemisLogo } from "@/components/ui/platform-logos"
 
 interface EditParametersProps {
   onNavigateToView: () => void
@@ -44,7 +44,7 @@ const initialPlatformData = [
   { name: "X (Twitter)", values: [null, null, null, null, null, null, null, null] },
 ]
 
-export function FuelightEditParameters({ onNavigateToView, onNavigateToOptimize }: EditParametersProps) {
+export function ArtemisEditParameters({ onNavigateToView, onNavigateToOptimize }: EditParametersProps) {
   const [platformData, setPlatformData] = useState(initialPlatformData)
   const [editingCell, setEditingCell] = useState<{ row: number; col: number } | null>(null)
   const [hasChanges, setHasChanges] = useState(false)
@@ -86,7 +86,7 @@ export function FuelightEditParameters({ onNavigateToView, onNavigateToOptimize 
       <div className="flex-shrink-0 border-b border-zinc-800 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <FuelightLogo size={32} />
+            <ArtemisLogo size={32} />
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl font-bold">Demo</h1>
@@ -133,7 +133,7 @@ export function FuelightEditParameters({ onNavigateToView, onNavigateToOptimize 
         
         {/* Filters Row */}
         <div className="flex items-center gap-3 mt-4">
-          {["TR", "₺ - TRY", "360", "Jun 30, 2024 - Oct 5, 2024", "System Funding", "Coca-Cola"].map((filter, i) => (
+          {["TR", "₺ - TRY", "360", "Jun 30, 2024 - Oct 5, 2024", "Total Investment", "Brand A"].map((filter, i) => (
             <button 
               key={i}
               className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 rounded-lg text-sm text-zinc-300 hover:bg-zinc-700"

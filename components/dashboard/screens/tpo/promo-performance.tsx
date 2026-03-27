@@ -18,12 +18,12 @@ interface PromoPerformanceProps {
 // Categories matching pricing-performance
 const categories = [
   { id: "all", label: "All Categories" },
-  { id: "cola-regular", label: "Cola - Regular Calorie" },
-  { id: "cola-diet", label: "Cola - Diet" },
-  { id: "cola-zero", label: "Cola - Zero" },
-  { id: "citrus-fruity", label: "Citrus/Fruity" },
-  { id: "citrus-zero", label: "Citrus/Fruity - No Calorie" },
-  { id: "bold", label: "Bold" },
+  { id: "cola-regular", label: "Category A" },
+  { id: "cola-diet", label: "Category B" },
+  { id: "cola-zero", label: "Category C" },
+  { id: "citrus-fruity", label: "Category D" },
+  { id: "citrus-zero", label: "Category E" },
+  { id: "bold", label: "Category F" },
 ]
 
 // Pack sizes
@@ -37,15 +37,11 @@ const packSizes = [
 
 // Brand to category mapping
 const brandCategoryMap: Record<string, string> = {
-  "CC Classic": "cola-regular",
-  "CC Zero": "cola-zero",
-  "Diet Coke": "cola-diet",
-  "Fanta": "citrus-fruity",
-  "Fanta Zero": "citrus-zero",
-  "Sprite": "citrus-fruity",
-  "Sprite Zero": "citrus-zero",
-  "Cherry Coke": "bold",
-  "Vanilla Coke": "bold",
+  "Brand A": "cola-regular",
+  "Brand B": "cola-zero",
+  "Brand C": "cola-diet",
+  "Brand D": "citrus-fruity",
+  "Brand E": "citrus-fruity",
 }
 
 // Seeded random
@@ -59,7 +55,7 @@ function hashStr(str: string): number {
   return Math.abs(h)
 }
 
-// Coca-Cola Brand promo performance data
+// Brand Owner promo performance data
 interface BrandPerformanceData {
   category: string
   roi: number
@@ -72,18 +68,14 @@ interface BrandPerformanceData {
   incrementalRevenue: number
 }
 
-// STORYLINE: Diet Coke category showing declining ROI over last 3 months
-const tcccBrandData: Record<string, BrandPerformanceData> = {
-  "CC Classic": { category: "cola-regular", roi: 1.42, roiChange: 0.08, totalPromos: 156, goodPromos: 98, badPromos: 32, avgLift: 38, avgDiscount: 22, incrementalRevenue: 4.2 },
-  "CC Zero": { category: "cola-zero", roi: 1.68, roiChange: 0.12, totalPromos: 124, goodPromos: 86, badPromos: 18, avgLift: 45, avgDiscount: 18, incrementalRevenue: 3.8 },
-  // STORYLINE: Diet Coke has significantly declining ROI - key problem area
-  "Diet Coke": { category: "cola-diet", roi: 0.92, roiChange: -0.28, totalPromos: 142, goodPromos: 48, badPromos: 72, avgLift: 18, avgDiscount: 15, incrementalRevenue: 1.4 },
-  "Fanta": { category: "citrus-fruity", roi: 1.35, roiChange: 0.04, totalPromos: 98, goodPromos: 62, badPromos: 22, avgLift: 34, avgDiscount: 20, incrementalRevenue: 2.1 },
-  "Fanta Zero": { category: "citrus-zero", roi: 1.48, roiChange: 0.10, totalPromos: 72, goodPromos: 52, badPromos: 12, avgLift: 42, avgDiscount: 16, incrementalRevenue: 1.6 },
-  "Sprite": { category: "citrus-fruity", roi: 1.28, roiChange: 0.02, totalPromos: 88, goodPromos: 54, badPromos: 24, avgLift: 32, avgDiscount: 21, incrementalRevenue: 1.9 },
-  "Sprite Zero": { category: "citrus-zero", roi: 1.52, roiChange: 0.08, totalPromos: 64, goodPromos: 46, badPromos: 10, avgLift: 40, avgDiscount: 15, incrementalRevenue: 1.4 },
-  "Cherry Coke": { category: "bold", roi: 1.22, roiChange: -0.02, totalPromos: 56, goodPromos: 32, badPromos: 16, avgLift: 30, avgDiscount: 24, incrementalRevenue: 0.9 },
-  "Vanilla Coke": { category: "bold", roi: 1.18, roiChange: 0.01, totalPromos: 48, goodPromos: 28, badPromos: 14, avgLift: 28, avgDiscount: 22, incrementalRevenue: 0.8 },
+// STORYLINE: Brand C category showing declining ROI over last 3 months
+const portfolioBrandData: Record<string, BrandPerformanceData> = {
+  "Brand A": { category: "cola-regular", roi: 1.42, roiChange: 0.08, totalPromos: 156, goodPromos: 98, badPromos: 32, avgLift: 38, avgDiscount: 22, incrementalRevenue: 4.2 },
+  "Brand B": { category: "cola-zero", roi: 1.68, roiChange: 0.12, totalPromos: 124, goodPromos: 86, badPromos: 18, avgLift: 45, avgDiscount: 18, incrementalRevenue: 3.8 },
+  // STORYLINE: Brand C has significantly declining ROI - key problem area
+  "Brand C": { category: "cola-diet", roi: 0.92, roiChange: -0.28, totalPromos: 142, goodPromos: 48, badPromos: 72, avgLift: 18, avgDiscount: 15, incrementalRevenue: 1.4 },
+  "Brand D": { category: "citrus-fruity", roi: 1.35, roiChange: 0.04, totalPromos: 98, goodPromos: 62, badPromos: 22, avgLift: 34, avgDiscount: 20, incrementalRevenue: 2.1 },
+  "Brand E": { category: "citrus-fruity", roi: 1.28, roiChange: 0.02, totalPromos: 88, goodPromos: 54, badPromos: 24, avgLift: 32, avgDiscount: 21, incrementalRevenue: 1.9 },
 }
 
 // Generate time series data for promo performance
@@ -96,7 +88,7 @@ interface TimeSeriesPoint {
 
 const generateTimeSeriesData = (brand: string, timeGranularity: "week" | "month", seed: number): TimeSeriesPoint[] => {
   const rng = seededRandom(seed)
-  const baseData = tcccBrandData[brand] || { roi: 1.3, avgLift: 35, totalPromos: 100 }
+  const baseData = portfolioBrandData[brand] || { roi: 1.3, avgLift: 35, totalPromos: 100 }
   const periods = timeGranularity === "week" ? 12 : 12
   const data: TimeSeriesPoint[] = []
   
@@ -141,17 +133,17 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
   const [timeGranularity, setTimeGranularity] = useState<"week" | "month">("month")
   const [dateRange, setDateRange] = useState({ start: "2025-01", end: "2025-12" })
 
-  // Filter Coca-Cola brands by category
-  const filteredTCCCBrands = useMemo(() => {
-    const brands = Object.keys(tcccBrandData)
+  // Filter portfolio brands by category
+  const filteredPortfolioBrands = useMemo(() => {
+    const brands = Object.keys(portfolioBrandData)
     if (selectedCategory === "all") return brands
-    return brands.filter(b => tcccBrandData[b].category === selectedCategory)
+    return brands.filter(b => portfolioBrandData[b].category === selectedCategory)
   }, [selectedCategory])
 
   // Brand options based on category
   const brandOptions = useMemo(() => {
-    return ["all", ...filteredTCCCBrands]
-  }, [filteredTCCCBrands])
+    return ["all", ...filteredPortfolioBrands]
+  }, [filteredPortfolioBrands])
 
   // Reset brand when category changes
   const handleCategoryChange = (cat: string) => {
@@ -159,37 +151,37 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
     setSelectedBrand("all")
   }
 
-  // Get Coca-Cola data for display
-  const tcccDisplayData = useMemo(() => {
+  // Get portfolio data for display
+  const portfolioDisplayData = useMemo(() => {
     if (selectedBrand !== "all") {
-      const data = tcccBrandData[selectedBrand]
+      const data = portfolioBrandData[selectedBrand]
       if (!data) return []
       return [{ brand: selectedBrand, ...data }]
     }
-    return filteredTCCCBrands.map(brand => ({ brand, ...tcccBrandData[brand] }))
-  }, [selectedBrand, filteredTCCCBrands])
+    return filteredPortfolioBrands.map(brand => ({ brand, ...portfolioBrandData[brand] }))
+  }, [selectedBrand, filteredPortfolioBrands])
 
   // Calculate aggregates
-  const tcccAvgROI = useMemo(() => {
-    if (tcccDisplayData.length === 0) return 0
-    return tcccDisplayData.reduce((s, d) => s + d.roi, 0) / tcccDisplayData.length
-  }, [tcccDisplayData])
+  const portfolioAvgROI = useMemo(() => {
+    if (portfolioDisplayData.length === 0) return 0
+    return portfolioDisplayData.reduce((s, d) => s + d.roi, 0) / portfolioDisplayData.length
+  }, [portfolioDisplayData])
 
   const totalPromos = useMemo(() => {
-    return tcccDisplayData.reduce((s, d) => s + d.totalPromos, 0)
-  }, [tcccDisplayData])
+    return portfolioDisplayData.reduce((s, d) => s + d.totalPromos, 0)
+  }, [portfolioDisplayData])
 
   const totalGood = useMemo(() => {
-    return tcccDisplayData.reduce((s, d) => s + d.goodPromos, 0)
-  }, [tcccDisplayData])
+    return portfolioDisplayData.reduce((s, d) => s + d.goodPromos, 0)
+  }, [portfolioDisplayData])
 
   const totalBad = useMemo(() => {
-    return tcccDisplayData.reduce((s, d) => s + d.badPromos, 0)
-  }, [tcccDisplayData])
+    return portfolioDisplayData.reduce((s, d) => s + d.badPromos, 0)
+  }, [portfolioDisplayData])
 
   const totalIncremental = useMemo(() => {
-    return tcccDisplayData.reduce((s, d) => s + d.incrementalRevenue, 0)
-  }, [tcccDisplayData])
+    return portfolioDisplayData.reduce((s, d) => s + d.incrementalRevenue, 0)
+  }, [portfolioDisplayData])
 
   // Generate time series data based on filters
   const timeSeriesData = useMemo(() => {
@@ -204,39 +196,39 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
     }
     
     // Show top 3-4 brands when "all" is selected
-    const topBrands = filteredTCCCBrands.slice(0, 4)
+    const topBrands = filteredPortfolioBrands.slice(0, 4)
     return topBrands.map((brand, idx) => ({
       brand,
       color: brandColors[brand] || ["#ef4444", "#f97316", "#eab308", "#22c55e"][idx % 4],
       data: generateTimeSeriesData(brand, timeGranularity, seed + idx * 100),
     }))
-  }, [selectedBrand, selectedCategory, selectedPackSize, timeGranularity, dateRange, filteredTCCCBrands])
+  }, [selectedBrand, selectedCategory, selectedPackSize, timeGranularity, dateRange, filteredPortfolioBrands])
 
-  // AI Insights - STORYLINE: Highlight Diet Coke declining ROI
+  // AI Insights - STORYLINE: Highlight Brand C declining ROI
   const aiInsights = useMemo(() => {
     const insights: { type: "positive" | "warning" | "negative"; text: string; highlight?: boolean }[] = []
     
-    // STORYLINE KEY INSIGHT: Diet Coke ROI declining
+    // STORYLINE KEY INSIGHT: Brand C ROI declining
     insights.push({ 
       type: "negative", 
-      text: "Cola - Diet category showing severe ROI decline: Diet Coke ROI dropped from 1.20x to 0.92x (-0.28x) over the last 3 months. 72 of 142 promos underperforming.",
+      text: "Category B showing severe ROI decline: Brand C ROI dropped from 1.20x to 0.92x (-0.28x) over the last 3 months. 72 of 142 promos underperforming.",
       highlight: true
     })
     
     insights.push({
       type: "warning",
-      text: "Diet Coke promos have low discount depth (avg 15%) and long durations. Pepsi's 'fewer, deeper' approach suggests increasing price cut to 30%+ may improve performance.",
+      text: "Brand C promos have low discount depth (avg 15%) and long durations. Competitor's 'fewer, deeper' approach suggests increasing price cut to 30%+ may improve performance.",
       highlight: true
     })
 
     const badRate = totalBad / totalPromos * 100
     if (badRate > 25) {
-      insights.push({ type: "negative", text: `${badRate.toFixed(0)}% of promotions underperforming (${totalBad} of ${totalPromos}) -- Diet Coke driving majority of underperformers.` })
+      insights.push({ type: "negative", text: `${badRate.toFixed(0)}% of promotions underperforming (${totalBad} of ${totalPromos}) -- Brand C driving majority of underperformers.` })
     } else if (badRate > 15) {
       insights.push({ type: "warning", text: `${badRate.toFixed(0)}% of promotions underperforming -- review mechanics of ${totalBad} low-ROI promos.` })
     }
 
-    insights.push({ type: "warning", text: "Recommendation: Navigate to Trade vs Client Matrix to identify which specific Diet Coke promo events are dragging performance." })
+    insights.push({ type: "warning", text: "Recommendation: Navigate to Trade vs Client Matrix to identify which specific Brand C promo events are dragging performance." })
 
     return insights.slice(0, 4)
   }, [totalBad, totalPromos])
@@ -403,7 +395,7 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
         <div className="ml-auto flex items-center gap-3 text-[10px] text-zinc-400">
           <span className="flex items-center gap-1.5">
             <span className="w-3 h-3 rounded-full bg-red-500" />
-            Coca-Cola
+Portfolio Brands
           </span>
         </div>
       </div>
@@ -416,7 +408,7 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
               <Target className="h-4 w-4 text-red-400" />
               <span className="text-xs text-zinc-400">Avg ROI</span>
             </div>
-            <div className="text-2xl font-bold text-zinc-100">{tcccAvgROI.toFixed(2)}x</div>
+            <div className="text-2xl font-bold text-zinc-100">{portfolioAvgROI.toFixed(2)}x</div>
             <div className="text-xs text-zinc-500 mt-1">Target: 1.2x</div>
           </CardContent>
         </Card>
@@ -591,7 +583,7 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
               </div>
 
               {/* Brand rows */}
-              {tcccDisplayData.map((item) => (
+              {portfolioDisplayData.map((item) => (
                 <div 
                   key={item.brand}
                   onClick={() => setSelectedBrand(item.brand)}

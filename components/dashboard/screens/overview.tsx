@@ -32,7 +32,7 @@ const kpiData = [
     icon: Package,
   },
   {
-    title: "TCCC Share",
+    title: "Enterprise Share",
     value: "50%",
     change: "Market Leader",
     changeLabel: "",
@@ -55,7 +55,7 @@ const executiveSummary = [
     trend: "up",
   },
   {
-    text: "TCCC maintains 50% market share with strong positioning in core Cola segments",
+    text: "Enterprise maintains 50% market share with strong positioning in core Cola segments",
     trend: "neutral",
   },
   {
@@ -63,7 +63,7 @@ const executiveSummary = [
     trend: "up",
   },
   {
-    text: "Energy segment expanding rapidly but TCCC share remains under-indexed at 23%",
+    text: "Energy segment expanding rapidly but Enterprise share remains under-indexed at 23%",
     trend: "down",
   },
   {
@@ -94,14 +94,14 @@ const priorityInsights = [
     type: "Brand",
     title: "Zero Portfolio Momentum",
     insight:
-      "Coca-Cola Zero Sugar capturing 68% of zero-segment growth. Opportunity to extend zero positioning to Fanta and Sprite.",
+      "Brand B capturing 68% of zero-segment growth. Opportunity to extend zero positioning to Brand C and Brand D.",
     impact: "High",
   },
   {
     type: "Partition",
     title: "Energy Gap Closure",
     insight:
-      "Monster and Red Bull dominating energy with 77% combined share. Costa Coffee RTD and energy hybrids represent entry vector.",
+      "Competitor X and Competitor Y dominating energy with 77% combined share. Brand E RTD and energy hybrids represent entry vector.",
     impact: "High",
   },
   {

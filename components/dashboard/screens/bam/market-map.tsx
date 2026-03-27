@@ -40,118 +40,118 @@ interface PartitionData {
   name: string
   category: string
   partitionCagr: { value: number; volume: number }
-  tcccCagr: { value: number; volume: number }
-  tcccShare: { value: number; volume: number }
+  enterpriseCagr: { value: number; volume: number }
+  enterpriseShare: { value: number; volume: number }
   marketSize: number
   status: "hotspot" | "stronghold" | "pressure" | "emerging"
 }
 
 const partitions: PartitionData[] = [
   {
-    name: "Cola Regular",
-    category: "SSD - Cola",
+    name: "Segment A1 Core",
+    category: "Category A - Core",
     partitionCagr: { value: 2.4, volume: 1.1 },
-    tcccCagr: { value: 2.7, volume: 1.3 },
-    tcccShare: { value: 59, volume: 55 },
+    enterpriseCagr: { value: 2.7, volume: 1.3 },
+    enterpriseShare: { value: 59, volume: 55 },
     marketSize: 2.6,
     status: "stronghold",
   },
   {
-    name: "Cola Zero <500ml",
-    category: "SSD - Cola",
+    name: "Segment A2 Small",
+    category: "Category A - Premium",
     partitionCagr: { value: 15.8, volume: 11.4 },
-    tcccCagr: { value: 13.6, volume: 9.2 },
-    tcccShare: { value: 43, volume: 40 },
+    enterpriseCagr: { value: 13.6, volume: 9.2 },
+    enterpriseShare: { value: 43, volume: 40 },
     marketSize: 0.7,
     status: "hotspot",
   },
   {
-    name: "Cola Zero 500ml+",
-    category: "SSD - Cola",
+    name: "Segment A2 Large",
+    category: "Category A - Premium",
     partitionCagr: { value: 18.9, volume: 14.1 },
-    tcccCagr: { value: 16.7, volume: 12.3 },
-    tcccShare: { value: 46, volume: 43 },
+    enterpriseCagr: { value: 16.7, volume: 12.3 },
+    enterpriseShare: { value: 46, volume: 43 },
     marketSize: 0.6,
     status: "hotspot",
   },
   {
-    name: "Cola Diet",
-    category: "SSD - Cola",
+    name: "Segment A3 Classic",
+    category: "Category A - Classic",
     partitionCagr: { value: 2.1, volume: -0.2 },
-    tcccCagr: { value: 2.4, volume: 0.4 },
-    tcccShare: { value: 68, volume: 66 },
+    enterpriseCagr: { value: 2.4, volume: 0.4 },
+    enterpriseShare: { value: 68, volume: 66 },
     marketSize: 1.1,
     status: "stronghold",
   },
   {
-    name: "Citrus/Fruity Regular",
-    category: "SSD - Citrus/Fruity",
+    name: "Segment B1 Core",
+    category: "Category B - Core",
     partitionCagr: { value: 11.4, volume: 7.8 },
-    tcccCagr: { value: 10.1, volume: 6.6 },
-    tcccShare: { value: 63, volume: 60 },
+    enterpriseCagr: { value: 10.1, volume: 6.6 },
+    enterpriseShare: { value: 63, volume: 60 },
     marketSize: 0.8,
     status: "hotspot",
   },
   {
-    name: "Citrus/Fruity No Cal",
-    category: "SSD - Citrus/Fruity",
+    name: "Segment B2 Premium",
+    category: "Category B - Premium",
     partitionCagr: { value: 4.8, volume: 2.7 },
-    tcccCagr: { value: 4.4, volume: 2.2 },
-    tcccShare: { value: 51, volume: 48 },
+    enterpriseCagr: { value: 4.4, volume: 2.2 },
+    enterpriseShare: { value: 51, volume: 48 },
     marketSize: 0.5,
     status: "stronghold",
   },
   {
-    name: "Cherry/Dark Fruit",
-    category: "SSD - Bold",
+    name: "Segment C Specialty",
+    category: "Category C - Specialty",
     partitionCagr: { value: 12.9, volume: 9.1 },
-    tcccCagr: { value: 10.6, volume: 7.0 },
-    tcccShare: { value: 40, volume: 37 },
+    enterpriseCagr: { value: 10.6, volume: 7.0 },
+    enterpriseShare: { value: 40, volume: 37 },
     marketSize: 0.6,
     status: "hotspot",
   },
   {
-    name: "Energy >=500ml",
-    category: "Performance - Energy",
+    name: "Segment D1 Large",
+    category: "Category D - Emerging",
     partitionCagr: { value: 20.8, volume: 17.2 },
-    tcccCagr: { value: 9.4, volume: 6.9 },
-    tcccShare: { value: 8, volume: 7 },
+    enterpriseCagr: { value: 9.4, volume: 6.9 },
+    enterpriseShare: { value: 8, volume: 7 },
     marketSize: 0.9,
     status: "pressure",
   },
   {
-    name: "Energy <500ml",
-    category: "Performance - Energy",
+    name: "Segment D1 Small",
+    category: "Category D - Emerging",
     partitionCagr: { value: 16.2, volume: 12.4 },
-    tcccCagr: { value: 7.1, volume: 5.3 },
-    tcccShare: { value: 9, volume: 8 },
+    enterpriseCagr: { value: 7.1, volume: 5.3 },
+    enterpriseShare: { value: 9, volume: 8 },
     marketSize: 1.0,
     status: "pressure",
   },
   {
-    name: "Advanced Hydration",
-    category: "Performance",
+    name: "Segment D2 Innovation",
+    category: "Category D - Innovation",
     partitionCagr: { value: 13.8, volume: 10.6 },
-    tcccCagr: { value: 28.9, volume: 24.1 },
-    tcccShare: { value: 4, volume: 4 },
+    enterpriseCagr: { value: 28.9, volume: 24.1 },
+    enterpriseShare: { value: 4, volume: 4 },
     marketSize: 0.8,
     status: "emerging",
   },
   {
-    name: "Juices & Smoothies",
-    category: "Traditional",
+    name: "Segment E1 Traditional",
+    category: "Category E - Traditional",
     partitionCagr: { value: 4.6, volume: 2.1 },
-    tcccCagr: { value: 11.4, volume: 7.6 },
-    tcccShare: { value: 31, volume: 29 },
+    enterpriseCagr: { value: 11.4, volume: 7.6 },
+    enterpriseShare: { value: 31, volume: 29 },
     marketSize: 1.3,
     status: "stronghold",
   },
   {
-    name: "Water, Tea & Coffee",
-    category: "Traditional",
+    name: "Segment E2 Staples",
+    category: "Category E - Staples",
     partitionCagr: { value: 5.9, volume: 3.6 },
-    tcccCagr: { value: 3.6, volume: 2.1 },
-    tcccShare: { value: 4, volume: 4 },
+    enterpriseCagr: { value: 3.6, volume: 2.1 },
+    enterpriseShare: { value: 4, volume: 4 },
     marketSize: 1.6,
     status: "pressure",
   },
@@ -209,7 +209,7 @@ export function BAMMarketMap({ onNavigate }: BAMMarketMapProps) {
           </div>
           <div>
             <h1 className="text-xl font-bold text-zinc-100">Brand Accelerator Model</h1>
-            <p className="text-xs text-zinc-500">Market Map - TCCC Performance by Partition</p>
+            <p className="text-xs text-zinc-500">Market Map - Enterprise Performance by Partition</p>
           </div>
         </div>
         
@@ -322,9 +322,9 @@ export function BAMMarketMap({ onNavigate }: BAMMarketMapProps) {
         {partitions.map((partition) => {
           const status = statusConfig[partition.status]
           const cagr = view === "value" ? partition.partitionCagr.value : partition.partitionCagr.volume
-          const tcccCagr = view === "value" ? partition.tcccCagr.value : partition.tcccCagr.volume
-          const share = view === "value" ? partition.tcccShare.value : partition.tcccShare.volume
-          const outperforming = tcccCagr > cagr
+          const enterpriseCagr = view === "value" ? partition.enterpriseCagr.value : partition.enterpriseCagr.volume
+          const share = view === "value" ? partition.enterpriseShare.value : partition.enterpriseShare.volume
+          const outperforming = enterpriseCagr > cagr
 
           return (
             <Card
@@ -371,21 +371,21 @@ export function BAMMarketMap({ onNavigate }: BAMMarketMapProps) {
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-zinc-500">TCCC CAGR</span>
+                    <span className="text-zinc-500">Enterprise CAGR</span>
                     <div className="flex items-center gap-2">
                       <span
                         className={cn(
                           "font-medium",
-                          tcccCagr >= 10
+                          enterpriseCagr >= 10
                             ? "text-emerald-400"
-                            : tcccCagr >= 5
+                            : enterpriseCagr >= 5
                               ? "text-teal-400"
-                              : tcccCagr >= 0
+                              : enterpriseCagr >= 0
                                 ? "text-zinc-300"
                                 : "text-red-400"
                         )}
                       >
-                        {formatCagr(tcccCagr)}
+                        {formatCagr(enterpriseCagr)}
                       </span>
                       {outperforming ? (
                         <span className="text-[9px] px-1.5 py-0.5 bg-emerald-500/10 text-emerald-400 rounded">
@@ -403,7 +403,7 @@ export function BAMMarketMap({ onNavigate }: BAMMarketMapProps) {
                 {/* Share Bar */}
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-zinc-500">TCCC Share</span>
+                    <span className="text-zinc-500">Enterprise Share</span>
                     <span className="font-semibold text-zinc-100">{share}%</span>
                   </div>
                   <div className="relative h-1.5 bg-zinc-800 rounded-full overflow-hidden">
@@ -449,10 +449,10 @@ export function BAMMarketMap({ onNavigate }: BAMMarketMapProps) {
             </div>
             <div className="flex items-center gap-4 text-zinc-500">
               <span>
-                <span className="text-emerald-400">Outperforming</span> = TCCC CAGR {">"} Partition CAGR
+                <span className="text-emerald-400">Outperforming</span> = Enterprise CAGR {">"} Partition CAGR
               </span>
               <span>
-                <span className="text-red-400">Lagging</span> = TCCC CAGR {"<"} Partition CAGR
+                <span className="text-red-400">Lagging</span> = Enterprise CAGR {"<"} Partition CAGR
               </span>
             </div>
           </div>

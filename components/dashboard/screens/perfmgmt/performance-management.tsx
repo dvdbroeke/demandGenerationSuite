@@ -72,11 +72,11 @@ const sellInPerformance = [
 ]
 
 const sellOutMarketShare = [
-  { category: "Cola Regular", volume: "58.2M", share: "48.2%", vsPY: 0.8 },
-  { category: "Cola Zero", volume: "24.8M", share: "52.4%", vsPY: 1.2 },
-  { category: "Cola Diet", volume: "12.1M", share: "38.6%", vsPY: -0.4 },
-  { category: "Citrus/Fruity", volume: "32.4M", share: "34.8%", vsPY: 0.2 },
-  { category: "Tea/Coffee", volume: "14.5M", share: "28.4%", vsPY: -0.6 },
+  { category: "Category A", volume: "58.2M", share: "48.2%", vsPY: 0.8 },
+  { category: "Category B", volume: "24.8M", share: "52.4%", vsPY: 1.2 },
+  { category: "Category C", volume: "12.1M", share: "38.6%", vsPY: -0.4 },
+  { category: "Category D", volume: "32.4M", share: "34.8%", vsPY: 0.2 },
+  { category: "Category E", volume: "14.5M", share: "28.4%", vsPY: -0.6 },
 ]
 
 const externalEnvironment = [
@@ -90,37 +90,37 @@ const externalEnvironment = [
 const bigBetsData = [
   {
     id: 1,
-    title: "Reignite CCOT enhancing relevance of Gen Z",
+    title: "Reignite Brand A enhancing relevance of Gen Z",
     kbis: [
-      { metric: "CCOT Volume", actual: "58.2M", vsPY: 2.4, vsBP: 1.2 },
-      { metric: "CCOT Volume Share", actual: "48.2%", vsPY: 0.8, vsBP: 0.4 },
-      { metric: "CCOT Lead Ratio", actual: "1.42", vsPY: 0.08, vsBP: 0.02 },
-      { metric: "CCOT Total Drinkers", actual: "12.4M", vsPY: 1.8, vsBP: -0.2 },
-      { metric: "CCOT Gen Z Drinkers", actual: "2.8M", vsPY: 4.2, vsBP: 1.8 },
+      { metric: "Brand A Volume", actual: "58.2M", vsPY: 2.4, vsBP: 1.2 },
+      { metric: "Brand A Volume Share", actual: "48.2%", vsPY: 0.8, vsBP: 0.4 },
+      { metric: "Brand A Lead Ratio", actual: "1.42", vsPY: 0.08, vsBP: 0.02 },
+      { metric: "Brand A Total Drinkers", actual: "12.4M", vsPY: 1.8, vsBP: -0.2 },
+      { metric: "Brand A Gen Z Drinkers", actual: "2.8M", vsPY: 4.2, vsBP: 1.8 },
       { metric: "Brand Power (Gen Z)", actual: "68.4", vsPY: 2.1, vsBP: 0.8 },
       { metric: "HH Penetration", actual: "62.4%", vsPY: 0.4, vsBP: -0.1 },
       { metric: "Purchase Frequency", actual: "4.2x", vsPY: 0.2, vsBP: 0.1 },
       { metric: "Num Distribution Entry Pack", actual: "84.2%", vsPY: 1.2, vsBP: 0.4 },
-      { metric: "SSD IPP", actual: "2.4", vsPY: 0.08, vsBP: -0.02 },
+      { metric: "Category IPP", actual: "2.4", vsPY: 0.08, vsBP: -0.02 },
     ],
     comments: "Gen Z engagement shows strong momentum with Brand Power up +2.1pp. Digital activation driving increased frequency among younger cohort.",
   },
   {
     id: 2,
-    title: "Accelerate Fuze Tea",
+    title: "Accelerate Brand E",
     kbis: [
-      { metric: "Fuze Tea Volume", actual: "8.4M", vsPY: 8.2, vsBP: 2.4 },
-      { metric: "Fuze Tea Volume Share", actual: "18.4%", vsPY: 2.8, vsBP: 1.2 },
-      { metric: "Fuze Tea Awareness", actual: "42.8%", vsPY: 4.2, vsBP: 1.8 },
-      { metric: "Fuze Tea Total Drinkers", actual: "1.8M", vsPY: 12.4, vsBP: 4.2 },
-      { metric: "Fuze Tea Salience", actual: "28.4%", vsPY: 2.4, vsBP: 0.8 },
-      { metric: "Fuze Tea Incidence", actual: "14.2%", vsPY: 1.8, vsBP: 0.4 },
+      { metric: "Brand E Volume", actual: "8.4M", vsPY: 8.2, vsBP: 2.4 },
+      { metric: "Brand E Volume Share", actual: "18.4%", vsPY: 2.8, vsBP: 1.2 },
+      { metric: "Brand E Awareness", actual: "42.8%", vsPY: 4.2, vsBP: 1.8 },
+      { metric: "Brand E Total Drinkers", actual: "1.8M", vsPY: 12.4, vsBP: 4.2 },
+      { metric: "Brand E Salience", actual: "28.4%", vsPY: 2.4, vsBP: 0.8 },
+      { metric: "Brand E Incidence", actual: "14.2%", vsPY: 1.8, vsBP: 0.4 },
       { metric: "Volume per Trip", actual: "1.8 UC", vsPY: 0.2, vsBP: 0.1 },
       { metric: "Num Distribution", actual: "68.4%", vsPY: 4.8, vsBP: 2.1 },
       { metric: "Share of Shelf", actual: "22.4%", vsPY: 2.2, vsBP: 0.8 },
       { metric: "Cooler Doors", actual: "42.8%", vsPY: 4.2, vsBP: 1.4 },
     ],
-    comments: "Fuze Tea outperforming all KPIs. Distribution expansion driving awareness gains. Cooler placement strategy showing strong ROI.",
+    comments: "Brand E outperforming all KPIs. Distribution expansion driving awareness gains. Cooler placement strategy showing strong ROI.",
   },
   {
     id: 3,
@@ -243,8 +243,8 @@ export function PerformanceManagement({ activeScreen, onNavigate }: PerformanceM
     setTimeout(() => {
       setAiSynthesis(
         `Executive Summary: The market shows positive momentum with ${selectedMarket === "italy" ? "Italy" : selectedMarket} performing above plan on key volume metrics. ` +
-        `Key wins include strong Gen Z engagement and Fuze Tea acceleration exceeding targets. ` +
-        `Primary watchouts center on HORECA recovery pace and competitive promotional pressure in Modern Trade. ` +
+        `Key wins include strong Gen Z engagement and Brand E acceleration exceeding targets. ` +
+        `Primary watchouts center on On-Premise recovery pace and competitive promotional pressure in Modern Trade. ` +
         `Recommended actions focus on accelerating distribution for innovation SKUs and optimizing promotional depth strategy.`
       )
       setIsGeneratingSynthesis(false)
@@ -688,7 +688,7 @@ export function PerformanceManagement({ activeScreen, onNavigate }: PerformanceM
               onChange={(e) => setWhatIsWorking(e.target.value)}
               placeholder="• Enter bullet points for what's working well...
 • Strong Gen Z engagement
-• Fuze Tea distribution gains
+• Brand E distribution gains
 • HORECA recovery momentum"
               className="min-h-[200px] bg-zinc-800 border-zinc-700 text-zinc-200 placeholder:text-zinc-600 resize-none"
             />
