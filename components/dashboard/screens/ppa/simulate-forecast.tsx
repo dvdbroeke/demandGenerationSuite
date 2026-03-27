@@ -53,17 +53,17 @@ interface PriceActionItem {
 
 // Citrus/Fruity focused price actions for storyline
 const citrusFruityPriceActions: PriceActionItem[] = [
-  { id: "sprite-330", sku: "Sprite 330ml", currentPrice: 1.10, suggestedPrice: 1.25, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.25, confidence: "High" },
-  { id: "sprite-500", sku: "Sprite 500ml", currentPrice: 1.48, suggestedPrice: 1.59, minPrice: 1.40, maxPrice: 1.70, elasticity: -0.35, confidence: "High" },
-  { id: "fanta-330", sku: "Fanta Orange 330ml", currentPrice: 1.12, suggestedPrice: 1.22, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.30, confidence: "High" },
-  { id: "fanta-500", sku: "Fanta Orange 500ml", currentPrice: 1.55, suggestedPrice: 1.65, minPrice: 1.45, maxPrice: 1.79, elasticity: -0.40, confidence: "Medium" },
+  { id: "brand-d-330", sku: "Brand D 330ml", currentPrice: 1.10, suggestedPrice: 1.25, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.25, confidence: "High" },
+  { id: "brand-d-500", sku: "Brand D 500ml", currentPrice: 1.48, suggestedPrice: 1.59, minPrice: 1.40, maxPrice: 1.70, elasticity: -0.35, confidence: "High" },
+  { id: "brand-c-330", sku: "Brand C Orange 330ml", currentPrice: 1.12, suggestedPrice: 1.22, minPrice: 1.05, maxPrice: 1.35, elasticity: -0.30, confidence: "High" },
+  { id: "brand-c-500", sku: "Brand C Orange 500ml", currentPrice: 1.55, suggestedPrice: 1.65, minPrice: 1.45, maxPrice: 1.79, elasticity: -0.40, confidence: "Medium" },
 ]
 
 const basePriceActions: PriceActionItem[] = [
-  { id: "1", sku: "CC Classic 330ml", currentPrice: 1.35, suggestedPrice: 1.39, minPrice: 1.25, maxPrice: 1.49, elasticity: -0.3, confidence: "High" },
-  { id: "2", sku: "CC Zero 330ml", currentPrice: 1.39, suggestedPrice: 1.45, minPrice: 1.29, maxPrice: 1.55, elasticity: -0.15, confidence: "High" },
-  { id: "3", sku: "CC Classic 500ml", currentPrice: 1.89, suggestedPrice: 1.79, minPrice: 1.59, maxPrice: 1.99, elasticity: -1.2, confidence: "Medium" },
-  { id: "4", sku: "CC Classic 6x330ml", currentPrice: 4.00, suggestedPrice: 3.75, minPrice: 3.50, maxPrice: 4.50, elasticity: -2.5, confidence: "Medium" },
+  { id: "1", sku: "Brand A Classic 330ml", currentPrice: 1.35, suggestedPrice: 1.39, minPrice: 1.25, maxPrice: 1.49, elasticity: -0.3, confidence: "High" },
+  { id: "2", sku: "Brand A Zero 330ml", currentPrice: 1.39, suggestedPrice: 1.45, minPrice: 1.29, maxPrice: 1.55, elasticity: -0.15, confidence: "High" },
+  { id: "3", sku: "Brand A Classic 500ml", currentPrice: 1.89, suggestedPrice: 1.79, minPrice: 1.59, maxPrice: 1.99, elasticity: -1.2, confidence: "Medium" },
+  { id: "4", sku: "Brand A Classic 8x330ml", currentPrice: 4.00, suggestedPrice: 3.75, minPrice: 3.50, maxPrice: 4.50, elasticity: -2.5, confidence: "Medium" },
 ]
 
 // Calculate impact based on price values
@@ -101,10 +101,10 @@ interface PriceImpactItem {
 }
 
 const otherPriceImpacts: PriceImpactItem[] = [
-  { sku: "CC Classic 1.5L", impact: "-3.2% volume", direction: "negative", cannibRate: "8.4%", detail: "Price cut on 500ml draws take-home buyers" },
-  { sku: "Diet Coke 330ml", impact: "+1.5% volume", direction: "positive", cannibRate: "2.1%", detail: "Price increase on Classic 330ml shifts some demand" },
-  { sku: "Pepsi Regular 330ml", impact: "+2.8% volume", direction: "negative", cannibRate: "-", detail: "Competitor gains from our price increase" },
-  { sku: "CC Zero 500ml", impact: "No change", direction: "neutral", cannibRate: "0%", detail: "Different pack size occasion" },
+  { sku: "Brand A Classic 1.5L", impact: "-3.2% volume", direction: "negative", cannibRate: "8.4%", detail: "Price cut on 500ml draws take-home buyers" },
+  { sku: "Brand B 330ml", impact: "+1.5% volume", direction: "positive", cannibRate: "2.1%", detail: "Price increase on Classic 330ml shifts some demand" },
+  { sku: "Competitor X Regular 330ml", impact: "+2.8% volume", direction: "negative", cannibRate: "-", detail: "Competitor gains from our price increase" },
+  { sku: "Brand A Zero 500ml", impact: "No change", direction: "neutral", cannibRate: "0%", detail: "Different pack size occasion" },
 ]
 
 const existingInitiatives = ["Price Ladder Review Q3", "Premium SKU Price Increase"]
@@ -120,22 +120,22 @@ interface CompetitorReaction {
 }
 
 const competitorReactions: CompetitorReaction[] = [
-  { competitor: "Pepsi", likelyAction: "Match price reduction on comparable SKUs", probability: "72%", impactOnUs: "-8% volume vs. baseline", timing: "1-2 weeks", recommendation: "Consider shorter promo window or exclusive retailer deal" },
+  { competitor: "Competitor X", likelyAction: "Match price reduction on comparable SKUs", probability: "72%", impactOnUs: "-8% volume vs. baseline", timing: "1-2 weeks", recommendation: "Consider shorter promo window or exclusive retailer deal" },
   { competitor: "Private Label", likelyAction: "Maintain current pricing (margin focus)", probability: "85%", impactOnUs: "Neutral", timing: "N/A", recommendation: "Good opportunity for brand switching capture" },
-  { competitor: "Dr Pepper", likelyAction: "Increase promotional frequency", probability: "54%", impactOnUs: "-3% volume in flavor segment", timing: "2-4 weeks", recommendation: "Monitor and adjust Fanta/Sprite promos accordingly" },
+  { competitor: "Alternative", likelyAction: "Increase promotional frequency", probability: "54%", impactOnUs: "-3% volume in flavor segment", timing: "2-4 weeks", recommendation: "Monitor and adjust Brand C/Brand D promos accordingly" },
 ]
 
 // Data Clean Room entities
 const dcrEntities = [
-  { id: "cch", name: "Coca-Cola HBC", region: "Europe" },
-  { id: "ccep", name: "Coca-Cola Europacific Partners", region: "Western Europe" },
-  { id: "swire", name: "Swire Coca-Cola", region: "Asia Pacific" },
-  { id: "ccba", name: "Coca-Cola Beverages Africa", region: "Africa" },
+  { id: "region-1", name: "Regional Partner Europe", region: "Europe" },
+  { id: "region-2", name: "Regional Partner West", region: "Western Europe" },
+  { id: "region-3", name: "Regional Partner APAC", region: "Asia Pacific" },
+  { id: "region-4", name: "Regional Partner Africa", region: "Africa" },
 ]
 
 export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigateToFuelight, onNavigateToAssortmentMix, onNavigateToPromotion }: SimulateForecastProps) {
   const [scenario, setScenario] = useState("price-increase")
-  const [selectedSkus, setSelectedSkus] = useState<string[]>(["Sprite 330ml", "Sprite 500ml", "Fanta Orange 330ml", "Fanta Orange 500ml"])
+  const [selectedSkus, setSelectedSkus] = useState<string[]>(["Brand D 330ml", "Brand D 500ml", "Brand C Orange 330ml", "Brand C Orange 500ml"])
   const [channel, setChannel] = useState("All Channels")
   const [period, setPeriod] = useState("q3-2026")
   const [hasRun, setHasRun] = useState(false) // Results appear after clicking "Run Simulation"
@@ -665,7 +665,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                         </div>
                         <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 text-[9px]">Active Simulation</Badge>
                       </div>
-                      <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Sprite & Fanta SKUs (+{Math.abs(impact.totalVol).toFixed(1)}% volume impact, +{"\u20ac"}{impact.totalRev.toFixed(0)}K revenue)</p>
+                      <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Brand C & Brand D SKUs (+{Math.abs(impact.totalVol).toFixed(1)}% volume impact, +{"\u20ac"}{impact.totalRev.toFixed(0)}K revenue)</p>
                     </div>
                     
                     <button 

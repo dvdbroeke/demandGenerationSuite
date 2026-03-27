@@ -75,7 +75,7 @@ interface BrandPromoData {
   promoPressure: number[]
 }
 
-const tcccBrandData: Record<string, BrandPromoData> = {
+const portfolioBrandData: Record<string, BrandPromoData> = {
   "Brand A Classic": { category: "cola-regular", promoIntensity: [48, 55, 62], priceCut: [20, 28, 32], promoPressure: [10, 15, 18] },
   "Brand A Zero": { category: "cola-zero", promoIntensity: [39, 51, 58], priceCut: [15, 26, 30], promoPressure: [6, 13, 16] },
   "Brand B": { category: "cola-diet", promoIntensity: [68, 73, 78], priceCut: [30, 35, 38], promoPressure: [21, 25, 28] },
@@ -138,7 +138,7 @@ interface BrandMetricData {
 }
 
 // AI Insights generator - STORYLINE: Highlight Competitor X's strategy shift
-function generateInsights(tcccAvg: number[], competitorAvg: number[], selectedCategory: string) {
+function generateInsights(portfolioAvg: number[], competitorAvg: number[], selectedCategory: string) {
   const insights: { type: "positive" | "warning" | "negative"; text: string; highlight?: boolean }[] = []
   
   // STORYLINE KEY INSIGHT: Competitor X doing less promos but higher price cuts
@@ -149,24 +149,24 @@ function generateInsights(tcccAvg: number[], competitorAvg: number[], selectedCa
   })
   
   // Compare Portfolio vs competitors
-  const tccc2024 = tcccAvg[2]
+  const portfolio2024 = portfolioAvg[2]
   const comp2024 = competitorAvg[2]
-  const diff = tccc2024 - comp2024
+  const diff = portfolio2024 - comp2024
   
   if (diff > 5) {
-    insights.push({ type: "negative", text: `Portfolio promo intensity (${tccc2024}%) exceeds competitors (${comp2024}%) by ${diff.toFixed(0)}pp -- risk of promotion dependency while competitors optimize.` })
+    insights.push({ type: "negative", text: `Portfolio promo intensity (${portfolio2024}%) exceeds competitors (${comp2024}%) by ${diff.toFixed(0)}pp -- risk of promotion dependency while competitors optimize.` })
   } else if (diff < -5) {
-    insights.push({ type: "positive", text: `Portfolio maintains lower promo intensity (${tccc2024}%) vs competitors (${comp2024}%) -- healthier promotional posture.` })
+    insights.push({ type: "positive", text: `Portfolio maintains lower promo intensity (${portfolio2024}%) vs competitors (${comp2024}%) -- healthier promotional posture.` })
   } else {
-    insights.push({ type: "warning", text: `Portfolio promo intensity (${tccc2024}%) is at parity with competitors (${comp2024}%) -- consider Competitor X's 'fewer, deeper' approach.` })
+    insights.push({ type: "warning", text: `Portfolio promo intensity (${portfolio2024}%) is at parity with competitors (${comp2024}%) -- consider Competitor X's 'fewer, deeper' approach.` })
   }
   
   // YoY trend
-  const tcccGrowth = tcccAvg[2] - tcccAvg[0]
-  if (tcccGrowth > 10) {
-    insights.push({ type: "negative", text: `Promo intensity increased +${tcccGrowth.toFixed(0)}pp since 2022 while Competitor X reduced theirs -- evaluate if higher frequency is driving diminishing returns.` })
-  } else if (tcccGrowth < 5) {
-    insights.push({ type: "positive", text: `Promo intensity well-controlled (+${tcccGrowth.toFixed(0)}pp since 2022) -- maintain promotional discipline.` })
+  const portfolioGrowth = portfolioAvg[2] - portfolioAvg[0]
+  if (portfolioGrowth > 10) {
+    insights.push({ type: "negative", text: `Promo intensity increased +${portfolioGrowth.toFixed(0)}pp since 2022 while Competitor X reduced theirs -- evaluate if higher frequency is driving diminishing returns.` })
+  } else if (portfolioGrowth < 5) {
+    insights.push({ type: "positive", text: `Promo intensity well-controlled (+${portfolioGrowth.toFixed(0)}pp since 2022) -- maintain promotional discipline.` })
   }
   
   insights.push({ type: "warning", text: "Recommendation: Navigate to Promo Performance to evaluate if shifting to 'fewer, deeper' promos could improve our ROI." })
@@ -186,9 +186,9 @@ interface MetricSectionProps {
   label: string
   subtitle: string
   iconColor: string
-  tcccData: BrandMetricData[]
+  portfolioData: BrandMetricData[]
   competitorData: BrandMetricData[]
-  tcccAvg: number[]
+  portfolioAvg: number[]
   marketAvg: number[]
   competitorPortfolios: PortfolioMetricData[]
   selectedYears: string[]
@@ -196,16 +196,16 @@ interface MetricSectionProps {
   isPortfolioView: boolean
 }
 
-function MetricSection({ label, subtitle, iconColor, tcccData, competitorData, tcccAvg, marketAvg, competitorPortfolios, selectedYears, showCompetitors, isPortfolioView }: MetricSectionProps) {
+function MetricSection({ label, subtitle, iconColor, portfolioData, competitorData, portfolioAvg, marketAvg, competitorPortfolios, selectedYears, showCompetitors, isPortfolioView }: MetricSectionProps) {
   // Build groups based on view mode
-  const allGroups: { label: string; values: number[]; isTCCC: boolean; isAvg: boolean; isMarket?: boolean; color?: string }[] = []
+  const allGroups: { label: string; values: number[]; isPortfolio: boolean; isAvg: boolean; isMarket?: boolean; color?: string }[] = []
   
   if (isPortfolioView) {
-    // Portfolio view - show TCCC, Market, and competitor portfolios
+    // Portfolio view - show Brand Owner, Market, and competitor portfolios
     allGroups.push({ 
       label: "Brand Portfolio", 
-      values: tcccAvg, 
-      isTCCC: true, 
+      values: portfolioAvg, 
+      isPortfolio: true, 
       isAvg: true,
       color: "#ef4444" 
     })
@@ -214,7 +214,7 @@ function MetricSection({ label, subtitle, iconColor, tcccData, competitorData, t
     allGroups.push({ 
       label: "Market Avg", 
       values: marketAvg, 
-      isTCCC: false, 
+      isPortfolio: false, 
       isAvg: true,
       isMarket: true,
       color: "#a1a1aa" 
@@ -226,7 +226,7 @@ function MetricSection({ label, subtitle, iconColor, tcccData, competitorData, t
         allGroups.push({ 
           label: p.portfolio, 
           values: p.values, 
-          isTCCC: false, 
+          isPortfolio: false, 
           isAvg: false, 
           color: p.color 
         })
@@ -234,16 +234,16 @@ function MetricSection({ label, subtitle, iconColor, tcccData, competitorData, t
     }
   } else {
     // Brand view - show specific brand vs relevant individual competitors
-    if (tcccData.length > 0) {
+    if (portfolioData.length > 0) {
       allGroups.push(
-        ...tcccData.map(b => ({ label: b.brand, values: b.values, isTCCC: true, isAvg: false, color: brandColors[b.brand] || "#ef4444" }))
+        ...portfolioData.map(b => ({ label: b.brand, values: b.values, isPortfolio: true, isAvg: false, color: brandColors[b.brand] || "#ef4444" }))
       )
     }
     
     if (showCompetitors) {
       // Add individual competitors (filtered to same category)
       allGroups.push(
-        ...competitorData.map(b => ({ label: b.brand, values: b.values, isTCCC: false, isAvg: false, color: b.color })),
+        ...competitorData.map(b => ({ label: b.brand, values: b.values, isPortfolio: false, isAvg: false, color: b.color })),
       )
     }
   }
@@ -262,7 +262,7 @@ function MetricSection({ label, subtitle, iconColor, tcccData, competitorData, t
 
       <div className="flex gap-2 overflow-x-auto pb-2">
         {allGroups.map((group, gi) => {
-          const isCompetitorSection = !group.isTCCC && gi > 0 && allGroups[gi - 1]?.isTCCC
+          const isCompetitorSection = !group.isPortfolio && gi > 0 && allGroups[gi - 1]?.isPortfolio
           return (
             <div key={group.label} className={cn(
               "flex-shrink-0",
@@ -271,7 +271,7 @@ function MetricSection({ label, subtitle, iconColor, tcccData, competitorData, t
             )}>
               <p className={cn(
                 "text-[9px] font-semibold mb-2 text-center whitespace-nowrap truncate max-w-[80px]",
-                group.isTCCC ? "text-zinc-300" : "text-zinc-500"
+                group.isPortfolio ? "text-zinc-300" : "text-zinc-500"
               )} title={group.label}>
                 {group.label}
               </p>
@@ -284,14 +284,14 @@ function MetricSection({ label, subtitle, iconColor, tcccData, competitorData, t
                   const isNeg = val < 0
                   const isHatched = yr === "2022"
                   const barColor = group.isAvg 
-                    ? (group.isTCCC ? "#ef4444" : "#6366f1")
+                    ? (group.isPortfolio ? "#ef4444" : "#6366f1")
                     : (group.color || yearColors[yr].bar)
 
                   return (
                     <div key={yr} className="flex flex-col items-center" style={{ width: 22 }}>
                       <span className={cn(
                         "text-[9px] font-mono font-semibold mb-0.5",
-                        group.isTCCC ? yearColors[yr].label : "text-zinc-500"
+                        group.isPortfolio ? yearColors[yr].label : "text-zinc-500"
                       )}>{val}%</span>
                       <div className="relative" style={{ height: h }}>
                         {isHatched && !group.isAvg ? (
@@ -310,7 +310,7 @@ function MetricSection({ label, subtitle, iconColor, tcccData, competitorData, t
                               width: 22,
                               height: h,
                               backgroundColor: barColor,
-                              opacity: group.isTCCC ? (isNeg ? 0.4 : 0.85) : (isNeg ? 0.3 : 0.5),
+                              opacity: group.isPortfolio ? (isNeg ? 0.4 : 0.85) : (isNeg ? 0.3 : 0.5),
                             }}
                           />
                         )}
@@ -340,17 +340,17 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
     setSelectedYears(prev => prev.includes(yr) ? prev.filter(y => y !== yr) : [...prev, yr])
   }
 
-  // Filter TCCC brands by category
-  const filteredTCCCBrands = useMemo(() => {
-    const brands = Object.keys(tcccBrandData)
+  // Filter portfolio brands by category
+  const filteredPortfolioBrands = useMemo(() => {
+    const brands = Object.keys(portfolioBrandData)
     if (selectedCategory === "all") return brands
-    return brands.filter(b => tcccBrandData[b].category === selectedCategory)
+    return brands.filter(b => portfolioBrandData[b].category === selectedCategory)
   }, [selectedCategory])
 
   // Brand options based on category
   const brandOptions = useMemo(() => {
-    return ["all", ...filteredTCCCBrands]
-  }, [filteredTCCCBrands])
+    return ["all", ...filteredPortfolioBrands]
+  }, [filteredPortfolioBrands])
 
   // Reset brand when category changes
   const handleCategoryChange = (cat: string) => {
@@ -358,10 +358,10 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
     setSelectedBrand("all")
   }
 
-  // Get TCCC data for display - only show individual brand when specific brand selected
-  const tcccDisplayData = useMemo(() => {
+  // Get portfolio data for display - only show individual brand when specific brand selected
+  const portfolioDisplayData = useMemo(() => {
     if (selectedBrand !== "all") {
-      const data = tcccBrandData[selectedBrand]
+      const data = portfolioBrandData[selectedBrand]
       if (!data) return []
       return [{ brand: selectedBrand, ...data }]
     }
@@ -373,7 +373,7 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
   const competitorDisplayData = useMemo(() => {
     if (selectedBrand !== "all") {
       // When specific brand selected, only show competitors in the same category
-      const brandCategory = tcccBrandData[selectedBrand]?.category
+      const brandCategory = portfolioBrandData[selectedBrand]?.category
       if (brandCategory) {
         return competitorData.filter(c => c.category === brandCategory)
       }
@@ -391,44 +391,44 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
     return 0.9 + rng() * 0.2
   }, [geoSeed])
 
-  // TCCC averages - calculated from filteredTCCCBrands (all brands in selected category)
-  const tcccAvgIntensity = useMemo(() => {
+  // Portfolio averages - calculated from filteredPortfolioBrands (all brands in selected category)
+  const portfolioAvgIntensity = useMemo(() => {
     const brandsToAvg = selectedBrand !== "all" 
       ? [selectedBrand] 
-      : filteredTCCCBrands
+      : filteredPortfolioBrands
     if (brandsToAvg.length === 0) return [0, 0, 0]
     return years.map((_, yi) => {
-      const avg = brandsToAvg.reduce((s, b) => s + (tcccBrandData[b]?.promoIntensity[yi] || 0), 0) / brandsToAvg.length
+      const avg = brandsToAvg.reduce((s, b) => s + (portfolioBrandData[b]?.promoIntensity[yi] || 0), 0) / brandsToAvg.length
       return Math.round(avg * geoMult)
     })
-  }, [selectedBrand, filteredTCCCBrands, geoMult])
+  }, [selectedBrand, filteredPortfolioBrands, geoMult])
 
-  const tcccAvgPriceCut = useMemo(() => {
+  const portfolioAvgPriceCut = useMemo(() => {
     const brandsToAvg = selectedBrand !== "all" 
       ? [selectedBrand] 
-      : filteredTCCCBrands
+      : filteredPortfolioBrands
     if (brandsToAvg.length === 0) return [0, 0, 0]
     return years.map((_, yi) => {
-      const avg = brandsToAvg.reduce((s, b) => s + (tcccBrandData[b]?.priceCut[yi] || 0), 0) / brandsToAvg.length
+      const avg = brandsToAvg.reduce((s, b) => s + (portfolioBrandData[b]?.priceCut[yi] || 0), 0) / brandsToAvg.length
       return Math.round(avg * geoMult)
     })
-  }, [selectedBrand, filteredTCCCBrands, geoMult])
+  }, [selectedBrand, filteredPortfolioBrands, geoMult])
 
-  const tcccAvgPressure = useMemo(() => {
+  const portfolioAvgPressure = useMemo(() => {
     const brandsToAvg = selectedBrand !== "all" 
       ? [selectedBrand] 
-      : filteredTCCCBrands
+      : filteredPortfolioBrands
     if (brandsToAvg.length === 0) return [0, 0, 0]
     return years.map((_, yi) => {
-      const avg = brandsToAvg.reduce((s, b) => s + (tcccBrandData[b]?.promoPressure[yi] || 0), 0) / brandsToAvg.length
+      const avg = brandsToAvg.reduce((s, b) => s + (portfolioBrandData[b]?.promoPressure[yi] || 0), 0) / brandsToAvg.length
       return Math.round(avg * geoMult)
     })
-  }, [selectedBrand, filteredTCCCBrands, geoMult])
+  }, [selectedBrand, filteredPortfolioBrands, geoMult])
 
-  // Market-wide averages (TCCC + all competitors)
+  // Market-wide averages (Portfolio + all competitors)
   const marketAvgIntensity = useMemo(() => {
-    const tcccBrands = Object.values(tcccBrandData)
-    const allData = [...tcccBrands.map(d => d.promoIntensity), ...competitorData.map(d => d.promoIntensity)]
+    const portfolioBrands = Object.values(portfolioBrandData)
+    const allData = [...portfolioBrands.map(d => d.promoIntensity), ...competitorData.map(d => d.promoIntensity)]
     return years.map((_, yi) => {
       const avg = allData.reduce((s, d) => s + d[yi], 0) / allData.length
       return Math.round(avg * geoMult)
@@ -436,8 +436,8 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
   }, [geoMult])
 
   const marketAvgPriceCut = useMemo(() => {
-    const tcccBrands = Object.values(tcccBrandData)
-    const allData = [...tcccBrands.map(d => d.priceCut), ...competitorData.map(d => d.priceCut)]
+    const portfolioBrands = Object.values(portfolioBrandData)
+    const allData = [...portfolioBrands.map(d => d.priceCut), ...competitorData.map(d => d.priceCut)]
     return years.map((_, yi) => {
       const avg = allData.reduce((s, d) => s + d[yi], 0) / allData.length
       return Math.round(avg * geoMult)
@@ -445,8 +445,8 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
   }, [geoMult])
 
   const marketAvgPressure = useMemo(() => {
-    const tcccBrands = Object.values(tcccBrandData)
-    const allData = [...tcccBrands.map(d => d.promoPressure), ...competitorData.map(d => d.promoPressure)]
+    const portfolioBrands = Object.values(portfolioBrandData)
+    const allData = [...portfolioBrands.map(d => d.promoPressure), ...competitorData.map(d => d.promoPressure)]
     return years.map((_, yi) => {
       const avg = allData.reduce((s, d) => s + d[yi], 0) / allData.length
       return Math.round(avg * geoMult)
@@ -492,8 +492,8 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
 
   // AI Insights
   const aiInsights = useMemo(() => 
-    generateInsights(tcccAvgIntensity, marketAvgIntensity, selectedCategory),
-    [tcccAvgIntensity, marketAvgIntensity, selectedCategory]
+    generateInsights(portfolioAvgIntensity, marketAvgIntensity, selectedCategory),
+    [portfolioAvgIntensity, marketAvgIntensity, selectedCategory]
   )
 
   return (
@@ -597,7 +597,7 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
         <div className="ml-auto flex items-center gap-3 text-[10px] text-zinc-400">
           <span className="flex items-center gap-1.5">
             <span className="w-3 h-3 rounded-full bg-red-500" />
-            Coca-Cola
+            Portfolio Brands
           </span>
           {showCompetitors && (
             <span className="flex items-center gap-1.5">
@@ -634,9 +634,9 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
           label="Promo Intensity"
           subtitle="(%, Promo Vol./Tot. Vol)"
           iconColor="bg-red-600"
-          tcccData={tcccDisplayData.map(d => ({ brand: d.brand, values: d.promoIntensity.map(v => Math.round(v * geoMult)) }))}
+          portfolioData={portfolioDisplayData.map(d => ({ brand: d.brand, values: d.promoIntensity.map(v => Math.round(v * geoMult)) }))}
           competitorData={competitorDisplayData.map(d => ({ brand: d.name, values: d.promoIntensity.map(v => Math.round(v * geoMult)), color: d.color }))}
-          tcccAvg={tcccAvgIntensity}
+          portfolioAvg={portfolioAvgIntensity}
           marketAvg={marketAvgIntensity}
           competitorPortfolios={portfolioIntensityData}
           selectedYears={selectedYears}
@@ -648,9 +648,9 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
           label="Price Cut"
           subtitle="(% avg discount depth)"
           iconColor="bg-red-700"
-          tcccData={tcccDisplayData.map(d => ({ brand: d.brand, values: d.priceCut.map(v => Math.round(v * geoMult)) }))}
+          portfolioData={portfolioDisplayData.map(d => ({ brand: d.brand, values: d.priceCut.map(v => Math.round(v * geoMult)) }))}
           competitorData={competitorDisplayData.map(d => ({ brand: d.name, values: d.priceCut.map(v => Math.round(v * geoMult)), color: d.color }))}
-          tcccAvg={tcccAvgPriceCut}
+          portfolioAvg={portfolioAvgPriceCut}
           marketAvg={marketAvgPriceCut}
           competitorPortfolios={portfolioPriceCutData}
           selectedYears={selectedYears}
@@ -662,9 +662,9 @@ export function TPOPromoEvolution({ onNavigate }: PromoEvolutionProps) {
           label="Promo Pressure"
           subtitle="(% weeks/SKUs on promo)"
           iconColor="bg-red-800"
-          tcccData={tcccDisplayData.map(d => ({ brand: d.brand, values: d.promoPressure.map(v => Math.round(v * geoMult)) }))}
+          portfolioData={portfolioDisplayData.map(d => ({ brand: d.brand, values: d.promoPressure.map(v => Math.round(v * geoMult)) }))}
           competitorData={competitorDisplayData.map(d => ({ brand: d.name, values: d.promoPressure.map(v => Math.round(v * geoMult)), color: d.color }))}
-          tcccAvg={tcccAvgPressure}
+          portfolioAvg={portfolioAvgPressure}
           marketAvg={marketAvgPressure}
           competitorPortfolios={portfolioPressureData}
           selectedYears={selectedYears}

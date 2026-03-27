@@ -109,9 +109,9 @@ const quarterData: Record<string, number[]> = {
 
 // Key insights (callout boxes under each row) - STORYLINE aligned
 const insightCallouts = [
-  { text: "Avoid cut price without leaflet and display - Diet Coke over-indexes here", color: "bg-red-500/10 border-red-500/20 text-red-400" },
+  { text: "Avoid cut price without leaflet and display - Brand B over-indexes here", color: "bg-red-500/10 border-red-500/20 text-red-400" },
   { text: "Price cut 30-35% is optimal - drives lift without excessive forward buying", color: "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" },
-  { text: "Control forward buying (<50%) is critical - Diet Coke promos show 72% FWD buy", color: "bg-red-500/10 border-red-500/20 text-red-400" },
+  { text: "Control forward buying (<50%) is critical - Brand B promos show 72% FWD buy", color: "bg-red-500/10 border-red-500/20 text-red-400" },
 ]
 
 // Seeded random for filter variations
@@ -209,9 +209,9 @@ function StackedBarGroup({ title, segments, data, showInsight }: StackedBarGroup
 
 const aiInsights = [
   { type: "positive" as const, text: "Top performers cluster at 30-35% price cut depth (43% of top promos). This is the 'sweet spot' - deep enough to drive trial, not so deep it triggers excessive forward buying.", highlight: true },
-  { type: "negative" as const, text: "Worst performers show 54% of promos with shallow cuts (10-15%). Diet Coke's average 15% cut is in this danger zone - insufficient to drive incremental lift.", highlight: true },
+  { type: "negative" as const, text: "Worst performers show 54% of promos with shallow cuts (10-15%). Brand B's average 15% cut is in this danger zone - insufficient to drive incremental lift.", highlight: true },
   { type: "warning" as const, text: "Avoid 40%+ price cuts - these trigger forward buying above 50%, destroying true incrementality. Keep price cuts in the 30-35% optimal range." },
-  { type: "positive" as const, text: "Recommendation: Navigate to Promotion Optimizer to simulate Diet Coke SKUs with 30-35% price cuts and shorter 2-week durations." },
+  { type: "positive" as const, text: "Recommendation: Navigate to Promotion Optimizer to simulate Brand B SKUs with 30-35% price cuts and shorter 2-week durations." },
 ]
 
 // ---------- Main Component ----------

@@ -73,7 +73,7 @@ interface BrandPerformanceData {
 }
 
 // STORYLINE: Brand B category showing declining ROI over last 3 months
-const tcccBrandData: Record<string, BrandPerformanceData> = {
+const portfolioBrandData: Record<string, BrandPerformanceData> = {
   "Brand A Classic": { category: "cola-regular", roi: 1.42, roiChange: 0.08, totalPromos: 156, goodPromos: 98, badPromos: 32, avgLift: 38, avgDiscount: 22, incrementalRevenue: 4.2 },
   "Brand A Zero": { category: "cola-zero", roi: 1.68, roiChange: 0.12, totalPromos: 124, goodPromos: 86, badPromos: 18, avgLift: 45, avgDiscount: 18, incrementalRevenue: 3.8 },
   // STORYLINE: Brand B has significantly declining ROI - key problem area
@@ -96,7 +96,7 @@ interface TimeSeriesPoint {
 
 const generateTimeSeriesData = (brand: string, timeGranularity: "week" | "month", seed: number): TimeSeriesPoint[] => {
   const rng = seededRandom(seed)
-  const baseData = tcccBrandData[brand] || { roi: 1.3, avgLift: 35, totalPromos: 100 }
+  const baseData = portfolioBrandData[brand] || { roi: 1.3, avgLift: 35, totalPromos: 100 }
   const periods = timeGranularity === "week" ? 12 : 12
   const data: TimeSeriesPoint[] = []
   
@@ -141,17 +141,17 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
   const [timeGranularity, setTimeGranularity] = useState<"week" | "month">("month")
   const [dateRange, setDateRange] = useState({ start: "2025-01", end: "2025-12" })
 
-  // Filter Coca-Cola brands by category
-  const filteredTCCCBrands = useMemo(() => {
-    const brands = Object.keys(tcccBrandData)
+  // Filter portfolio brands by category
+  const filteredPortfolioBrands = useMemo(() => {
+    const brands = Object.keys(portfolioBrandData)
     if (selectedCategory === "all") return brands
-    return brands.filter(b => tcccBrandData[b].category === selectedCategory)
+    return brands.filter(b => portfolioBrandData[b].category === selectedCategory)
   }, [selectedCategory])
 
   // Brand options based on category
   const brandOptions = useMemo(() => {
-    return ["all", ...filteredTCCCBrands]
-  }, [filteredTCCCBrands])
+    return ["all", ...filteredPortfolioBrands]
+  }, [filteredPortfolioBrands])
 
   // Reset brand when category changes
   const handleCategoryChange = (cat: string) => {
@@ -159,37 +159,37 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
     setSelectedBrand("all")
   }
 
-  // Get Coca-Cola data for display
-  const tcccDisplayData = useMemo(() => {
+  // Get portfolio data for display
+  const portfolioDisplayData = useMemo(() => {
     if (selectedBrand !== "all") {
-      const data = tcccBrandData[selectedBrand]
+      const data = portfolioBrandData[selectedBrand]
       if (!data) return []
       return [{ brand: selectedBrand, ...data }]
     }
-    return filteredTCCCBrands.map(brand => ({ brand, ...tcccBrandData[brand] }))
-  }, [selectedBrand, filteredTCCCBrands])
+    return filteredPortfolioBrands.map(brand => ({ brand, ...portfolioBrandData[brand] }))
+  }, [selectedBrand, filteredPortfolioBrands])
 
   // Calculate aggregates
-  const tcccAvgROI = useMemo(() => {
-    if (tcccDisplayData.length === 0) return 0
-    return tcccDisplayData.reduce((s, d) => s + d.roi, 0) / tcccDisplayData.length
-  }, [tcccDisplayData])
+  const portfolioAvgROI = useMemo(() => {
+    if (portfolioDisplayData.length === 0) return 0
+    return portfolioDisplayData.reduce((s, d) => s + d.roi, 0) / portfolioDisplayData.length
+  }, [portfolioDisplayData])
 
   const totalPromos = useMemo(() => {
-    return tcccDisplayData.reduce((s, d) => s + d.totalPromos, 0)
-  }, [tcccDisplayData])
+    return portfolioDisplayData.reduce((s, d) => s + d.totalPromos, 0)
+  }, [portfolioDisplayData])
 
   const totalGood = useMemo(() => {
-    return tcccDisplayData.reduce((s, d) => s + d.goodPromos, 0)
-  }, [tcccDisplayData])
+    return portfolioDisplayData.reduce((s, d) => s + d.goodPromos, 0)
+  }, [portfolioDisplayData])
 
   const totalBad = useMemo(() => {
-    return tcccDisplayData.reduce((s, d) => s + d.badPromos, 0)
-  }, [tcccDisplayData])
+    return portfolioDisplayData.reduce((s, d) => s + d.badPromos, 0)
+  }, [portfolioDisplayData])
 
   const totalIncremental = useMemo(() => {
-    return tcccDisplayData.reduce((s, d) => s + d.incrementalRevenue, 0)
-  }, [tcccDisplayData])
+    return portfolioDisplayData.reduce((s, d) => s + d.incrementalRevenue, 0)
+  }, [portfolioDisplayData])
 
   // Generate time series data based on filters
   const timeSeriesData = useMemo(() => {
@@ -204,13 +204,13 @@ export function TPOPromoPerformance({ onNavigate }: PromoPerformanceProps) {
     }
     
     // Show top 3-4 brands when "all" is selected
-    const topBrands = filteredTCCCBrands.slice(0, 4)
+    const topBrands = filteredPortfolioBrands.slice(0, 4)
     return topBrands.map((brand, idx) => ({
       brand,
       color: brandColors[brand] || ["#ef4444", "#f97316", "#eab308", "#22c55e"][idx % 4],
       data: generateTimeSeriesData(brand, timeGranularity, seed + idx * 100),
     }))
-  }, [selectedBrand, selectedCategory, selectedPackSize, timeGranularity, dateRange, filteredTCCCBrands])
+  }, [selectedBrand, selectedCategory, selectedPackSize, timeGranularity, dateRange, filteredPortfolioBrands])
 
   // AI Insights - STORYLINE: Highlight Brand B declining ROI
   const aiInsights = useMemo(() => {
@@ -416,7 +416,7 @@ Portfolio Brands
               <Target className="h-4 w-4 text-red-400" />
               <span className="text-xs text-zinc-400">Avg ROI</span>
             </div>
-            <div className="text-2xl font-bold text-zinc-100">{tcccAvgROI.toFixed(2)}x</div>
+            <div className="text-2xl font-bold text-zinc-100">{portfolioAvgROI.toFixed(2)}x</div>
             <div className="text-xs text-zinc-500 mt-1">Target: 1.2x</div>
           </CardContent>
         </Card>
@@ -591,7 +591,7 @@ Portfolio Brands
               </div>
 
               {/* Brand rows */}
-              {tcccDisplayData.map((item) => (
+              {portfolioDisplayData.map((item) => (
                 <div 
                   key={item.brand}
                   onClick={() => setSelectedBrand(item.brand)}

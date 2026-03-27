@@ -372,7 +372,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
               </div>
               <div className="space-y-2 text-[11px] text-zinc-300 leading-relaxed">
                 <p>The optimized promo plan delivers a <span className="text-emerald-400 font-semibold">1.42x portfolio ROI</span> vs. the 1.08x current baseline, generating <span className="text-emerald-400 font-semibold">+168K L incremental volume</span> within the <span className="text-zinc-100 font-semibold">€218K</span> budget (vs. €250K cap).</p>
-                <p>Key recommendations: Lead with <span className="text-zinc-100">CC Zero 330ml TPR at Esselunga</span> (highest confidence, 1.68x ROI) and <span className="text-zinc-100">Fanta Orange 330ml Display+TPR at Carrefour IT</span> (strongest category expansion at 38%). Avoid BOGOF on CC Zero 1.5L at Eurospin where cannibalization reaches 28% and ROI stays below 1.0x.</p>
+                <p>Key recommendations: Lead with <span className="text-zinc-100">Brand A Zero 330ml TPR at Esselunga</span> (highest confidence, 1.68x ROI) and <span className="text-zinc-100">Brand D Orange 330ml Display+TPR at Carrefour IT</span> (strongest category expansion at 38%). Avoid BOGOF on Brand A Zero 1.5L at Eurospin where cannibalization reaches 28% and ROI stays below 1.0x.</p>
                 <p>Timing-wise, concentrate promos in W22-W27 to align with the summer media campaign window for maximum synergy lift.</p>
               </div>
             </CardContent>
@@ -399,8 +399,8 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                 // Media flight windows
                 const mediaFlights = [
                   { label: "Summer Campaign TV + Digital", start: 0, end: 4, color: "bg-blue-500", textColor: "text-blue-300", borderColor: "border-blue-500/40" },
-                  { label: "CC Zero Social Push", start: 2, end: 5, color: "bg-cyan-500", textColor: "text-cyan-300", borderColor: "border-cyan-500/40" },
-                  { label: "Fanta Festival Activation", start: 5, end: 7, color: "bg-orange-500", textColor: "text-orange-300", borderColor: "border-orange-500/40" },
+                  { label: "Brand A Zero Social Push", start: 2, end: 5, color: "bg-cyan-500", textColor: "text-cyan-300", borderColor: "border-cyan-500/40" },
+                  { label: "Brand D Festival Activation", start: 5, end: 7, color: "bg-orange-500", textColor: "text-orange-300", borderColor: "border-orange-500/40" },
                 ]
 
                 // Cultural / seasonal events
@@ -414,11 +414,11 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
 
                 // Recommended promo activations (from simulation results)
                 const promoActivations = [
-                  { sku: "CC Zero 330ml", retailer: "Esselunga", start: 0, end: 3, roi: 1.68, color: "bg-emerald-500" },
-                  { sku: "CC Classic 500ml", retailer: "Conad", start: 2, end: 5, roi: 1.45, color: "bg-emerald-500" },
-                  { sku: "Fanta Orange 330ml", retailer: "Carrefour IT", start: 0, end: 2, roi: 1.82, color: "bg-emerald-500" },
-                  { sku: "CC Classic 1.5L", retailer: "Coop Italia", start: 4, end: 7, roi: 1.22, color: "bg-amber-500" },
-                  { sku: "Diet Coke 500ml", retailer: "PAM", start: 1, end: 4, roi: 1.08, color: "bg-amber-500" },
+                  { sku: "Brand A Zero 330ml", retailer: "Esselunga", start: 0, end: 3, roi: 1.68, color: "bg-emerald-500" },
+                  { sku: "Brand A Classic 500ml", retailer: "Conad", start: 2, end: 5, roi: 1.45, color: "bg-emerald-500" },
+                  { sku: "Brand D Orange 330ml", retailer: "Carrefour IT", start: 0, end: 2, roi: 1.82, color: "bg-emerald-500" },
+                  { sku: "Brand A Classic 1.5L", retailer: "Coop Italia", start: 4, end: 7, roi: 1.22, color: "bg-amber-500" },
+                  { sku: "Brand B 500ml", retailer: "PAM", start: 1, end: 4, roi: 1.08, color: "bg-amber-500" },
                 ]
 
                 // Synergy score per week (how well promos align with media + events)
@@ -617,8 +617,8 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                       <SelectTrigger className="h-8 w-[220px] bg-zinc-900 border-zinc-800 text-zinc-200 text-[11px]"><SelectValue /></SelectTrigger>
                       <SelectContent className="bg-zinc-900 border-zinc-800">
                         <SelectItem value="init-1" className="text-zinc-200 text-xs">Summer Promo Activation 2026</SelectItem>
-                        <SelectItem value="init-2" className="text-zinc-200 text-xs">CC Zero Growth Plan Q3</SelectItem>
-                        <SelectItem value="init-3" className="text-zinc-200 text-xs">Fanta Relaunch Modern Trade</SelectItem>
+                        <SelectItem value="init-2" className="text-zinc-200 text-xs">Brand A Zero Growth Plan Q3</SelectItem>
+                        <SelectItem value="init-3" className="text-zinc-200 text-xs">Brand D Relaunch Modern Trade</SelectItem>
                       </SelectContent>
                     </Select>
                     <Button size="sm" className="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] h-7 px-3">
@@ -673,7 +673,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                       </div>
                       <span className="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full px-2 py-0.5">Ready</span>
                     </div>
-                    <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Sprite & Fanta SKUs (+4% revenue impact)</p>
+                    <p className="text-[10px] text-zinc-400">Citrus/Fruity price increase: Brand C & Brand D SKUs (+4% revenue impact)</p>
                   </div>
                   
                   {/* Assortment & Mix Simulation */}
@@ -697,7 +697,7 @@ export function TPOSimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
                       </div>
                       <span className="text-[9px] bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full px-2 py-0.5">Active Simulation</span>
                     </div>
-                    <p className="text-[10px] text-zinc-400">Diet Coke promo optimization: 30%+ price cuts, 2-week duration (+0.50x ROI uplift)</p>
+                    <p className="text-[10px] text-zinc-400">Brand B promo optimization: 30%+ price cuts, 2-week duration (+0.50x ROI uplift)</p>
                   </div>
                 </div>
                 

@@ -18,51 +18,51 @@ const tabs: { id: PPAScreen; label: string }[] = [
   { id: "simulate-forecast", label: "Simulate & Forecast" },
 ]
 
-// Competitor SKUs mapped by brand -- Italian / European market competitors
+// Competitor SKUs mapped by brand -- market competitors
 const competitorSkus: Record<string, Array<{ sku: string; brand: string; packMl: number; ppl: number; revM: number }>> = {
-  "CC Classic": [
-    { sku: "Pepsi 150ml",       brand: "Pepsi",    packMl: 150,  ppl: 6.00, revM: 0.4 },
-    { sku: "Pepsi 330ml",       brand: "Pepsi",    packMl: 330,  ppl: 3.64, revM: 4.2 },
-    { sku: "Pepsi 500ml",       brand: "Pepsi",    packMl: 500,  ppl: 3.38, revM: 3.1 },
-    { sku: "Pepsi 1.5L",        brand: "Pepsi",    packMl: 1500, ppl: 1.26, revM: 2.8 },
-    { sku: "Pepsi 2L",          brand: "Pepsi",    packMl: 2000, ppl: 1.00, revM: 1.9 },
+  "Brand A Classic": [
+    { sku: "Competitor X 150ml",       brand: "Competitor X",    packMl: 150,  ppl: 6.00, revM: 0.4 },
+    { sku: "Competitor X 330ml",       brand: "Competitor X",    packMl: 330,  ppl: 3.64, revM: 4.2 },
+    { sku: "Competitor X 500ml",       brand: "Competitor X",    packMl: 500,  ppl: 3.38, revM: 3.1 },
+    { sku: "Competitor X 1.5L",        brand: "Competitor X",    packMl: 1500, ppl: 1.26, revM: 2.8 },
+    { sku: "Competitor X 2L",          brand: "Competitor X",    packMl: 2000, ppl: 1.00, revM: 1.9 },
   ],
-  "CC Zero": [
-    { sku: "Pepsi Max 150ml",   brand: "Pepsi Max", packMl: 150,  ppl: 6.33, revM: 0.3 },
-    { sku: "Pepsi Max 330ml",   brand: "Pepsi Max", packMl: 330,  ppl: 3.79, revM: 3.0 },
-    { sku: "Pepsi Max 500ml",   brand: "Pepsi Max", packMl: 500,  ppl: 3.58, revM: 2.2 },
-    { sku: "Pepsi Max 1.5L",    brand: "Pepsi Max", packMl: 1500, ppl: 1.33, revM: 1.8 },
-    { sku: "Pepsi Max 2L",      brand: "Pepsi Max", packMl: 2000, ppl: 1.05, revM: 1.2 },
+  "Brand A Zero": [
+    { sku: "Competitor X Max 150ml",   brand: "Competitor X Max", packMl: 150,  ppl: 6.33, revM: 0.3 },
+    { sku: "Competitor X Max 330ml",   brand: "Competitor X Max", packMl: 330,  ppl: 3.79, revM: 3.0 },
+    { sku: "Competitor X Max 500ml",   brand: "Competitor X Max", packMl: 500,  ppl: 3.58, revM: 2.2 },
+    { sku: "Competitor X Max 1.5L",    brand: "Competitor X Max", packMl: 1500, ppl: 1.33, revM: 1.8 },
+    { sku: "Competitor X Max 2L",      brand: "Competitor X Max", packMl: 2000, ppl: 1.05, revM: 1.2 },
   ],
-  "Diet Coke": [
-    { sku: "Pepsi Max 330ml",   brand: "Pepsi Max", packMl: 330,  ppl: 3.79, revM: 3.0 },
-    { sku: "Pepsi Max 500ml",   brand: "Pepsi Max", packMl: 500,  ppl: 3.58, revM: 2.2 },
-    { sku: "Pepsi Max 1.5L",    brand: "Pepsi Max", packMl: 1500, ppl: 1.33, revM: 1.8 },
+  "Brand B": [
+    { sku: "Competitor X Max 330ml",   brand: "Competitor X Max", packMl: 330,  ppl: 3.79, revM: 3.0 },
+    { sku: "Competitor X Max 500ml",   brand: "Competitor X Max", packMl: 500,  ppl: 3.58, revM: 2.2 },
+    { sku: "Competitor X Max 1.5L",    brand: "Competitor X Max", packMl: 1500, ppl: 1.33, revM: 1.8 },
   ],
-  "Fanta": [
-    { sku: "Aranciata SanPell 330ml", brand: "SanPellegrino", packMl: 330,  ppl: 4.85, revM: 1.6 },
-    { sku: "Aranciata SanPell 500ml", brand: "SanPellegrino", packMl: 500,  ppl: 3.80, revM: 1.0 },
-    { sku: "Aranciata SanPell 1.25L", brand: "SanPellegrino", packMl: 1250, ppl: 2.00, revM: 0.6 },
-    { sku: "Estathe Limone 330ml",    brand: "Estathe",       packMl: 330,  ppl: 4.24, revM: 1.2 },
+  "Brand C": [
+    { sku: "Competitor Y Orange 330ml", brand: "Competitor Y", packMl: 330,  ppl: 4.85, revM: 1.6 },
+    { sku: "Competitor Y Orange 500ml", brand: "Competitor Y", packMl: 500,  ppl: 3.80, revM: 1.0 },
+    { sku: "Competitor Y Orange 1.25L", brand: "Competitor Y", packMl: 1250, ppl: 2.00, revM: 0.6 },
+    { sku: "Competitor Z Lemon 330ml",  brand: "Competitor Z", packMl: 330,  ppl: 4.24, revM: 1.2 },
   ],
-  "Sprite": [
-    { sku: "7Up 330ml",         brand: "7Up",      packMl: 330,  ppl: 3.33, revM: 1.4 },
-    { sku: "7Up 500ml",         brand: "7Up",      packMl: 500,  ppl: 2.98, revM: 0.9 },
-    { sku: "7Up 1.5L",          brand: "7Up",      packMl: 1500, ppl: 1.13, revM: 0.8 },
-    { sku: "Schweppes Lemon 330ml", brand: "Schweppes", packMl: 330, ppl: 4.09, revM: 0.7 },
+  "Brand D": [
+    { sku: "Competitor W 330ml",         brand: "Competitor W",  packMl: 330,  ppl: 3.33, revM: 1.4 },
+    { sku: "Competitor W 500ml",         brand: "Competitor W",  packMl: 500,  ppl: 2.98, revM: 0.9 },
+    { sku: "Competitor W 1.5L",          brand: "Competitor W",  packMl: 1500, ppl: 1.13, revM: 0.8 },
+    { sku: "Competitor V Lemon 330ml",   brand: "Competitor V",  packMl: 330,  ppl: 4.09, revM: 0.7 },
   ],
 }
 
 const compBrandColors: Record<string, string> = {
-  "Pepsi": "#2563eb", "Pepsi Max": "#1e40af", "SanPellegrino": "#dc2626",
-  "Estathe": "#d97706", "7Up": "#16a34a", "Schweppes": "#ca8a04",
+  "Competitor X": "#2563eb", "Competitor X Max": "#1e40af", "Competitor Y": "#dc2626",
+  "Competitor Z": "#d97706", "Competitor W": "#16a34a", "Competitor V": "#ca8a04",
   "Competitors": "#6366f1",
 }
 
 // Add Portfolio Avg to brandColors for consolidated view
 const extendedBrandColors: Record<string, string> = {
   ...brandColors,
-  "Portfolio Avg": "#ef4444", // Red for Coca-Cola Portfolio average
+  "Portfolio Avg": "#ef4444", // Red for Portfolio average
 }
 
 const skuData = skuMaster.map(s => ({
@@ -73,7 +73,7 @@ const skuData = skuMaster.map(s => ({
 const allSkus = allSkuNames
 const retailers = [...sharedRetailers]
 const brandOptions = ["All Brands", ...allBrands]
-const retailerMult: Record<string, number> = { Esselunga: 1.0, Conad: 1.02, "Coop Italia": 0.96, "Carrefour IT": 0.98, Eurospin: 0.88, "Lidl IT": 0.90, PAM: 1.04, Despar: 0.95 }
+const retailerMult: Record<string, number> = { "Retailer A": 1.0, "Retailer B": 1.02, "Retailer C": 0.96, "Retailer D": 0.98, "Retailer E": 0.88, "Retailer F": 0.90, "Retailer G": 1.04, "Retailer H": 0.95 }
 
 // Tooltip component
 function ChartTooltip({ x, y, sku, lines, visible }: { x: number; y: number; sku: string; lines: string[]; visible: boolean }) {
@@ -314,11 +314,11 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
 
   // Category definitions for price curve analysis
   const categoryDefs = [
-    { id: "cola", label: "Cola", brands: ["CC Classic", "CC Zero", "Diet Coke"], color: "#ef4444", compBrands: ["Pepsi", "Pepsi Max"] },
-    { id: "citrus", label: "Citrus/Sprite", brands: ["Sprite", "Fanta"], color: "#22c55e", compBrands: ["7Up", "SanPellegrino"] },
+    { id: "cola", label: "Cola", brands: ["Brand A Classic", "Brand A Zero", "Brand B"], color: "#ef4444", compBrands: ["Competitor X", "Competitor X Max"] },
+    { id: "citrus", label: "Citrus/Fruity", brands: ["Brand D", "Brand C"], color: "#22c55e", compBrands: ["Competitor W", "Competitor Y"] },
   ]
 
-  // Calculate category-level curves for Coca-Cola
+  // Calculate category-level curves for Portfolio
   const categoryCurves = useMemo(() => {
     return categoryDefs.map(cat => {
       const catSkus = skuData.filter(d => cat.brands.includes(d.brand))
@@ -432,20 +432,20 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
   const priceAlerts = useMemo((): PriceAlert[] => {
     const alerts: PriceAlert[] = []
     
-    // Check for Single Serve Sprite underpricing (key storyline item)
-    // Sprite 330ml at ppl 2.73 vs expected ~4.0 for 330ml = -32% below ladder
+    // Check for Single Serve Brand C underpricing (key storyline item)
+    // Brand C 330ml at ppl 2.73 vs expected ~4.0 for 330ml = -32% below ladder
     const sprite330 = skuData.find(d => d.sku.toLowerCase().includes("sprite") && d.packMl === 330)
     if (sprite330) {
       const expectedPpl = getExpectedPpl(330)
       const actualPpl = sprite330.ppl
       const gap = ((actualPpl - expectedPpl) / expectedPpl * 100)
-      // This should trigger since Sprite 330ml is at 2.73 vs expected ~4.0 = -32%
+      // This should trigger since Brand C 330ml is at 2.73 vs expected ~4.0 = -32%
       if (gap < -15) {
         alerts.push({
           id: "sprite-330",
           type: "anomaly",
-          title: "Price ladder anomaly for Single Serve Sprite",
-          detail: `Sprite 330ml priced at \u20ac${actualPpl.toFixed(2)}/L vs. portfolio avg \u20ac${expectedPpl.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% below pack-size expectation - significantly underpriced vs pack ladder.`,
+          title: "Price ladder anomaly for Single Serve Brand C",
+          detail: `Brand C 330ml priced at \u20ac${actualPpl.toFixed(2)}/L vs. portfolio avg \u20ac${expectedPpl.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% below pack-size expectation - significantly underpriced vs pack ladder.`,
           sku: sprite330.sku,
           packMl: 330,
           gap: `${gap.toFixed(0)}%`,
@@ -456,7 +456,7 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
     
     // Check for Citrus/Fruity category underpricing vs competitors
     if (showCompetitors) {
-      const citrusBrands = ["Sprite", "Fanta"]
+      const citrusBrands = ["Brand C", "Brand D"]
       const citrusSkus = skuData.filter(d => citrusBrands.some(b => d.brand.includes(b)))
       const citrusCompSkus = Object.values(competitorSkus).flat().filter(d => 
         ["7Up", "SanPellegrino", "Schweppes"].some(b => d.brand.includes(b))
@@ -472,7 +472,7 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
             id: "citrus-underpriced",
             type: "opportunity",
             title: "Citrus/Fruity category underpriced vs. competitors",
-            detail: `Fanta & Sprite avg \u20ac${citrusAvg.toFixed(2)}/L vs. competitor avg \u20ac${citrusCompAvg.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% margin opportunity.`,
+            detail: `Brand D & Brand C avg \u20ac${citrusAvg.toFixed(2)}/L vs. competitor avg \u20ac${citrusCompAvg.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% margin opportunity.`,
             gap: `${gap.toFixed(0)}%`,
             actionable: true
           })
@@ -597,7 +597,7 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
               <span className="w-px h-2 bg-zinc-700" />
               <span className="flex items-center gap-1">
                 <svg width="14" height="2"><line x1="0" y1="1" x2="14" y2="1" stroke="#ef4444" strokeWidth="2" strokeDasharray="3 2" /></svg>
-                Coca-Cola Avg
+                Portfolio Avg
               </span>
               {selectedBrand === "All Brands" && showCompetitors && (
                 <span className="flex items-center gap-1">
@@ -660,7 +660,7 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
               <text x={W / 2} y={H - 6} textAnchor="middle" className="fill-zinc-400 text-[11px] font-medium">Pack Size (mL)</text>
               <text x={16} y={H / 2} textAnchor="middle" className="fill-zinc-400 text-[11px] font-medium" transform={`rotate(-90,16,${H / 2})`}>{`Price per Litre (\u20ac/L)`}</text>
 
-              {/* Coca-Cola Portfolio Average Curve */}
+              {/* Brand Portfolio Average Curve */}
               <g 
                 onMouseEnter={() => setHoveredAvgLine("ours")} 
                 onMouseLeave={() => setHoveredAvgLine(null)}
@@ -681,12 +681,12 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
                   stroke="transparent" 
                   strokeWidth="12"
                 />
-                {/* Tooltip for Coca-Cola avg line in All Brands view */}
+                {/* Tooltip for portfolio avg line in All Brands view */}
                 {hoveredAvgLine === "ours" && selectedBrand === "All Brands" && (
                   <AverageLineTooltip 
                     x={toX(800)} 
                     y={toY(curvePoints.find(p => p.ml >= 800)?.ppl || 3)} 
-                    label="Coca-Cola Portfolio Average" 
+                    label="Brand Portfolio Average" 
                     visible 
                     lines={[
                       `Avg Price/L: \u20ac${comparisonStats.ourAvg.toFixed(2)}`,
@@ -728,7 +728,7 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
                       visible 
                       lines={[
                         `Avg Price/L: \u20ac${comparisonStats.compAvg.toFixed(2)}`,
-                        `${comparisonStats.diffPct > 0 ? "" : "+"}${(-comparisonStats.diffPct).toFixed(1)}% vs Coca-Cola avg`,
+                        `${comparisonStats.diffPct > 0 ? "" : "+"}${(-comparisonStats.diffPct).toFixed(1)}% vs portfolio avg`,
                         `Includes: Pepsi, 7Up, SanPellegrino, Schweppes`
                       ]} 
                     />
@@ -736,7 +736,7 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
                 </g>
               )}
 
-              {/* Category-level curves for Coca-Cola (only in All Brands view) */}
+              {/* Category-level curves for portfolio (only in All Brands view) */}
               {selectedBrand === "All Brands" && categoryCurves.map((cat: { id: string; label: string; color: string; curvePoints: Array<{ml: number; ppl: number}>; avgPpl: number; skuCount: number } | null) => {
                 if (!cat) return null
                 const isHovered = hoveredCatCurve === `tccc-${cat.id}`
@@ -765,7 +765,7 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
                       <AverageLineTooltip 
                         x={toX(600)} 
                         y={toY(cat.curvePoints.find(p => p.ml >= 600)?.ppl || 3)} 
-                        label={`Coca-Cola ${cat.label}`} 
+                        label={`Portfolio ${cat.label}`} 
                         visible 
                         lines={[
                           `Avg Price/L: \u20ac${cat.avgPpl.toFixed(2)}`,

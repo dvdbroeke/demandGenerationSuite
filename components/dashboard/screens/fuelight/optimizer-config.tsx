@@ -27,15 +27,15 @@ interface OptimizerConfigProps {
 }
 
 const fundingSources = [
-  { value: "brand-owner", label: "Brand Owner Funding" },
-  { value: "system", label: "System Funding" },
-  { value: "partner", label: "Partner Funding" },
+  { value: "total", label: "Total Investment" },
+  { value: "marketing", label: "Marketing Investment" },
+  { value: "trade", label: "Trade Investment" },
 ]
 
 const outcomeMetrics = [
   { value: "sell-out-volume", label: "Sell-out Volume" },
-  { value: "system-nsr", label: "System NSR" },
-  { value: "system-gp", label: "System GP" },
+  { value: "net-revenue", label: "Net Revenue" },
+  { value: "gross-profit", label: "Gross Profit" },
   { value: "market-share", label: "Market Share" },
 ]
 

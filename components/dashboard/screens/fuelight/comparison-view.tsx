@@ -267,8 +267,8 @@ export function FuelightComparisonView({
           <Select value={selectedFunding} onValueChange={setSelectedFunding}>
             <SelectTrigger className="w-[140px] h-8 bg-zinc-900 border-zinc-800 text-zinc-100 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent className="bg-zinc-900 border-zinc-800">
-              <SelectItem value="system" className="text-zinc-100 text-xs">System Funding</SelectItem>
-              <SelectItem value="brand-owner" className="text-zinc-100 text-xs">Brand Owner Funding</SelectItem>
+              <SelectItem value="total" className="text-zinc-100 text-xs">Total Investment</SelectItem>
+              <SelectItem value="marketing" className="text-zinc-100 text-xs">Marketing Investment</SelectItem>
             </SelectContent>
           </Select>
           <Badge variant="outline" className="bg-emerald-500/10 border-emerald-500/30 text-emerald-400 px-3 py-1">Product A Zero</Badge>

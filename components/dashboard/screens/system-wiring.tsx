@@ -17,34 +17,34 @@ import { cn } from "@/lib/utils"
 
 interface Ownership {
   area: string
-  tccc: string[]
-  bottlers: string[]
+  brandOwner: string[]
+  distributors: string[]
   joint: string[]
 }
 
 const ownershipMatrix: Ownership[] = [
   {
     area: "Brand & Marketing",
-    tccc: ["Brand strategy", "Global creative", "Consumer insights", "Media planning"],
-    bottlers: ["Local activation", "In-store execution", "Trade marketing"],
+    brandOwner: ["Brand strategy", "Global creative", "Consumer insights", "Media planning"],
+    distributors: ["Local activation", "In-store execution", "Trade marketing"],
     joint: ["Campaign measurement", "Market-specific adaptation"]
   },
   {
     area: "Commercial & Sales",
-    tccc: ["Pricing strategy", "Trade terms framework", "Channel strategy"],
-    bottlers: ["Customer relationships", "Order management", "Route-to-market", "Sales execution"],
+    brandOwner: ["Pricing strategy", "Trade terms framework", "Channel strategy"],
+    distributors: ["Customer relationships", "Order management", "Route-to-market", "Sales execution"],
     joint: ["Key account planning", "Revenue growth management"]
   },
   {
     area: "Supply Chain",
-    tccc: ["Concentrate supply", "Quality standards", "Innovation pipeline"],
-    bottlers: ["Manufacturing", "Distribution", "Cold drink equipment", "Local sourcing"],
+    brandOwner: ["Concentrate supply", "Quality standards", "Innovation pipeline"],
+    distributors: ["Manufacturing", "Distribution", "Cold drink equipment", "Local sourcing"],
     joint: ["Demand planning", "Capacity planning"]
   },
   {
     area: "Portfolio & Innovation",
-    tccc: ["Portfolio architecture", "NPD pipeline", "Reformulation"],
-    bottlers: ["Local variants", "Pack formats", "Production feasibility"],
+    brandOwner: ["Portfolio architecture", "NPD pipeline", "Reformulation"],
+    distributors: ["Local variants", "Pack formats", "Production feasibility"],
     joint: ["Launch execution", "Performance tracking"]
   },
 ]
@@ -58,26 +58,26 @@ interface ExecutionHandoff {
 
 const executionHandoffs: ExecutionHandoff[] = [
   {
-    from: "TCCC Strategy",
-    to: "Bottler Commercial",
+    from: "Brand Owner Strategy",
+    to: "Distributor Commercial",
     trigger: "Strategic choice approved at SteerCo",
     artifact: "Growth Cell brief with investment envelope"
   },
   {
-    from: "TCCC Marketing",
-    to: "Bottler Trade Marketing",
+    from: "Brand Owner Marketing",
+    to: "Distributor Trade Marketing",
     trigger: "Campaign creative approved",
     artifact: "Activation toolkit and media plan"
   },
   {
-    from: "Bottler Sales",
-    to: "TCCC Analytics",
+    from: "Distributor Sales",
+    to: "Brand Owner Analytics",
     trigger: "Execution complete",
     artifact: "Performance data and market feedback"
   },
   {
-    from: "TCCC Innovation",
-    to: "Bottler Supply Chain",
+    from: "Brand Owner Innovation",
+    to: "Distributor Supply Chain",
     trigger: "NPD approved for launch",
     artifact: "Product specs and volume forecast"
   },
@@ -85,18 +85,18 @@ const executionHandoffs: ExecutionHandoff[] = [
 
 interface CapabilityOwner {
   capability: string
-  owner: "TCCC" | "Bottlers" | "Shared"
+  owner: "Brand Owner" | "Distributors" | "Shared"
   maturity: "strong" | "building" | "gap"
   notes: string
 }
 
 const capabilities: CapabilityOwner[] = [
-  { capability: "Consumer Insights & Analytics", owner: "TCCC", maturity: "strong", notes: "Centralized data platform" },
+  { capability: "Consumer Insights & Analytics", owner: "Brand Owner", maturity: "strong", notes: "Centralized data platform" },
   { capability: "Revenue Growth Management", owner: "Shared", maturity: "building", notes: "Joint analytics team in place" },
-  { capability: "Execution Excellence Tracking", owner: "Bottlers", maturity: "building", notes: "New tools rolling out" },
+  { capability: "Execution Excellence Tracking", owner: "Distributors", maturity: "building", notes: "New tools rolling out" },
   { capability: "Digital Commerce", owner: "Shared", maturity: "gap", notes: "Capability acceleration needed" },
   { capability: "Sustainability & ESG", owner: "Shared", maturity: "building", notes: "Joint roadmap in progress" },
-  { capability: "Cold Drink Equipment", owner: "Bottlers", maturity: "strong", notes: "Core bottler competency" },
+  { capability: "Cold Drink Equipment", owner: "Distributors", maturity: "strong", notes: "Core distributor competency" },
 ]
 
 const maturityConfig = {
@@ -106,8 +106,8 @@ const maturityConfig = {
 }
 
 const ownerConfig = {
-  "TCCC": { color: "text-red-400", bg: "bg-red-500/10" },
-  "Bottlers": { color: "text-blue-400", bg: "bg-blue-500/10" },
+  "Brand Owner": { color: "text-red-400", bg: "bg-red-500/10" },
+  "Distributors": { color: "text-blue-400", bg: "bg-blue-500/10" },
   "Shared": { color: "text-purple-400", bg: "bg-purple-500/10" },
 }
 
@@ -118,7 +118,7 @@ export function SystemWiringScreen() {
       <div>
         <h1 className="text-2xl font-bold text-zinc-100">System Wiring</h1>
         <p className="text-sm text-zinc-500 mt-1">
-          Who decides what (TCCC vs Bottlers), execution handoffs, and capability ownership
+          Who decides what (Brand Owner vs Distributors), execution handoffs, and capability ownership
         </p>
       </div>
 
@@ -126,11 +126,11 @@ export function SystemWiringScreen() {
       <div className="flex items-center gap-6 p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500" />
-          <span className="text-sm text-zinc-300">TCCC</span>
+          <span className="text-sm text-zinc-300">Brand Owner</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-blue-500" />
-          <span className="text-sm text-zinc-300">Bottlers (CCEP, CCH)</span>
+          <span className="text-sm text-zinc-300">Distributors</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-purple-500" />
@@ -161,10 +161,10 @@ export function SystemWiringScreen() {
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-2 h-2 rounded-full bg-red-500" />
-                      <span className="text-xs font-medium text-red-400">TCCC Leads</span>
+                      <span className="text-xs font-medium text-red-400">Brand Owner Leads</span>
                     </div>
                     <ul className="space-y-1">
-                      {area.tccc.map((item, i) => (
+                      {area.brandOwner.map((item, i) => (
                         <li key={i} className="text-xs text-zinc-400 flex items-start gap-1.5">
                           <CheckCircle2 className="h-3 w-3 text-zinc-600 mt-0.5 flex-shrink-0" />
                           {item}
@@ -175,10 +175,10 @@ export function SystemWiringScreen() {
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-2 h-2 rounded-full bg-blue-500" />
-                      <span className="text-xs font-medium text-blue-400">Bottlers Lead</span>
+                      <span className="text-xs font-medium text-blue-400">Distributors Lead</span>
                     </div>
                     <ul className="space-y-1">
-                      {area.bottlers.map((item, i) => (
+                      {area.distributors.map((item, i) => (
                         <li key={i} className="text-xs text-zinc-400 flex items-start gap-1.5">
                           <CheckCircle2 className="h-3 w-3 text-zinc-600 mt-0.5 flex-shrink-0" />
                           {item}

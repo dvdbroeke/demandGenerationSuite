@@ -75,14 +75,14 @@ const partitionDetails: Record<string, {
     ],
     structuralSignals: [
       "Category growing faster than NARTD overall",
-      "Monster and Red Bull driving market, TCCC under-indexed",
+      "Competition X and Y driving market, Brand Owner under-indexed",
       "Convenience and Impulse channels showing strongest growth",
       "Innovation driving premiumization opportunity"
     ],
     whatThisMeans: [
       "Must accelerate to capture fair share of growth",
       "Requires differentiated positioning vs established players",
-      "Opportunity to leverage Coke brand into functional space",
+      "Opportunity to leverage core brand into functional space",
       "System execution capability is current bottleneck"
     ]
   },

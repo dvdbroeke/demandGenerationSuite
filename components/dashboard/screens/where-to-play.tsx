@@ -22,7 +22,7 @@ interface GrowthCell {
   sizeValue: number
   strategicRole: "scale-now" | "prepare" | "optional"
   classification: "core" | "accelerator"
-  tcccShare: number
+  brandOwnerShare: number
   growthRate: string
   rationale: string
 }
@@ -37,7 +37,7 @@ const growthCells: GrowthCell[] = [
     sizeValue: 420,
     strategicRole: "scale-now",
     classification: "core",
-    tcccShare: 52,
+    brandOwnerShare: 52,
     growthRate: "+8.2%",
     rationale: "Largest Zero opportunity in Europe; strong brand equity; capacity available"
   },
@@ -50,9 +50,9 @@ const growthCells: GrowthCell[] = [
     sizeValue: 380,
     strategicRole: "scale-now",
     classification: "accelerator",
-    tcccShare: 18,
+    brandOwnerShare: 18,
     growthRate: "+12.4%",
-    rationale: "Monster momentum strong; execution capability proven; high margin"
+    rationale: "Strong momentum; execution capability proven; high margin"
   },
   {
     id: "3",
@@ -63,7 +63,7 @@ const growthCells: GrowthCell[] = [
     sizeValue: 240,
     strategicRole: "prepare",
     classification: "accelerator",
-    tcccShare: 4,
+    brandOwnerShare: 4,
     growthRate: "+18.7%",
     rationale: "Category emerging; need distribution partnerships before scaling"
   },
@@ -76,7 +76,7 @@ const growthCells: GrowthCell[] = [
     sizeValue: 85,
     strategicRole: "prepare",
     classification: "accelerator",
-    tcccShare: 12,
+    brandOwnerShare: 12,
     growthRate: "+22.3%",
     rationale: "Costa brand building; supply chain not yet optimized for volume"
   },
@@ -89,7 +89,7 @@ const growthCells: GrowthCell[] = [
     sizeValue: 520,
     strategicRole: "scale-now",
     classification: "core",
-    tcccShare: 68,
+    brandOwnerShare: 68,
     growthRate: "+1.2%",
     rationale: "Defend position; optimize efficiency; fund growth elsewhere"
   },
@@ -102,7 +102,7 @@ const growthCells: GrowthCell[] = [
     sizeValue: 145,
     strategicRole: "optional",
     classification: "core",
-    tcccShare: 8,
+    brandOwnerShare: 8,
     growthRate: "-2.1%",
     rationale: "Low share in competitive market; not differentiated; deprioritize"
   },
@@ -308,8 +308,8 @@ function GrowthCellCard({ cell }: { cell: GrowthCell }) {
             <p className="text-[10px] text-zinc-500">Size of Prize</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-zinc-800/50">
-            <p className="text-lg font-bold text-zinc-100">{cell.tcccShare}%</p>
-            <p className="text-[10px] text-zinc-500">TCCC Share</p>
+            <p className="text-lg font-bold text-zinc-100">{cell.brandOwnerShare}%</p>
+            <p className="text-[10px] text-zinc-500">Brand Owner Share</p>
           </div>
           <div className="text-center p-2 rounded-lg bg-zinc-800/50">
             <p className={cn("text-lg font-bold", cell.growthRate.startsWith("+") ? "text-emerald-400" : "text-red-400")}>

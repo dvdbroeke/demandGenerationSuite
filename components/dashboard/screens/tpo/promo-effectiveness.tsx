@@ -98,13 +98,13 @@ const aiInsights = [
   { type: "positive" as const, text: "Brand A Zero 330ml TPR at Retailer A delivers 1.72x ROI -- 28% above portfolio average. Consider scaling to Retailer B." },
   { type: "warning" as const, text: "BOGOF mechanics on 1.5L packs show declining incrementality (was 42%, now 31%). Multibuy outperforms by 18pp." },
   { type: "positive" as const, text: "Summer weeks (W22-W30) show 35% higher promo ROI vs. average. Align major promotions with this window." },
-  { type: "negative" as const, text: "PAM Meal Deal promos on Diet Coke 500ml have negative incremental margin. Review pricing or exit mechanic." },
+  { type: "negative" as const, text: "PAM Meal Deal promos on Brand B 500ml have negative incremental margin. Review pricing or exit mechanic." },
 ]
 
 // ---------- Component ----------
 
 export function TPOPromoEffectiveness({ onNavigate }: PromoEffectivenessProps) {
-  const [selectedSku, setSelectedSku] = useState("CC Classic 330ml")
+  const [selectedSku, setSelectedSku] = useState("Brand A Classic 330ml")
   const [selectedPack, setSelectedPack] = useState("All Packs")
   const [selectedMechanic, setSelectedMechanic] = useState("All Mechanics")
   const [selectedRetailer, setSelectedRetailer] = useState("All Retailers")
