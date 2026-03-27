@@ -95,8 +95,8 @@ function generateChannelData(category: string, geography: string): ChannelData[]
       cagr: Math.round((ch.baseCagr + (rng() - 0.5) * 4) * 10) / 10,
       tcccCoverage,
       competitors: [
-        { name: "Pepsi", coverage: Math.min(92, Math.round((tcccCoverage - 8 + rng() * 12) * (0.85 + rng() * 0.3))), color: "#2563eb" },
-        { name: "Dr Pepper", coverage: Math.min(85, Math.round((tcccCoverage - 20 + rng() * 15) * (0.7 + rng() * 0.4))), color: "#7c3aed" },
+        { name: "Competitor X", coverage: Math.min(92, Math.round((tcccCoverage - 8 + rng() * 12) * (0.85 + rng() * 0.3))), color: "#2563eb" },
+        { name: "Competitor Y", coverage: Math.min(85, Math.round((tcccCoverage - 20 + rng() * 15) * (0.7 + rng() * 0.4))), color: "#7c3aed" },
         { name: "Private Label", coverage: Math.min(98, Math.round((60 + rng() * 35) * (0.9 + rng() * 0.2))), color: "#6b7280" },
       ]
     }

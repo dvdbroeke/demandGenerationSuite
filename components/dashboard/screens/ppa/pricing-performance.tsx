@@ -168,7 +168,7 @@ const competitorPortfolios: CompetitorPortfolioData[] = [
     }
   },
   {
-    name: "San Benedetto",
+    name: "Competitor Y",
     color: "#0891b2",
     yearly: {
       "2023": { overall: 88, promo: 72, noPromo: 108, volume: 145.5 },
@@ -182,7 +182,7 @@ const competitorPortfolios: CompetitorPortfolioData[] = [
     }
   },
   {
-    name: "Schweppes",
+    name: "Competitor Z",
     color: "#eab308",
     yearly: {
       "2023": { overall: 108, promo: 88, noPromo: 132, volume: 78.5 },
@@ -196,7 +196,7 @@ const competitorPortfolios: CompetitorPortfolioData[] = [
     }
   },
   {
-    name: "Lurisia",
+    name: "Competitor W",
     color: "#16a34a",
     yearly: {
       "2023": { overall: 118, promo: 98, noPromo: 145, volume: 42.5 },

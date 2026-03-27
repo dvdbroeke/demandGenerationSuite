@@ -22,7 +22,7 @@ const aiInsights = [
   { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Premium tier delivers 45% of revenue from 25% of units -- highest margin density. Shifting just 3pp of volume from Traffic to Premium would add \u20ac1.2M in GP annually." },
   { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Traffic tier is over-indexed on volume (30% units) vs revenue (20%). Revenue-per-litre in Traffic is \u20ac0.65 vs \u20ac1.82 in Premium -- a 2.8x margin gap." },
   { icon: TrendingDown, color: "text-red-400", bg: "bg-red-500/10", text: "Mix has shifted -1.4pp towards Traffic in last 6 months driven by promotional depth on multi-serve. Reducing promo frequency on 1.75L/2L would stabilise mix." },
-  { icon: Sparkles, color: "text-blue-400", bg: "bg-blue-500/10", text: "CC Zero and CC Classic single-serve show 8-15% growth with premium PPL. These are the strongest mix-upgrade candidates: promoting single-serve in convenience drives +0.8pp premium mix shift." },
+  { icon: Sparkles, color: "text-blue-400", bg: "bg-blue-500/10", text: "Brand A Zero and Brand A Classic single-serve show 8-15% growth with premium PPL. These are the strongest mix-upgrade candidates: promoting single-serve in convenience drives +0.8pp premium mix shift." },
 ]
 
 export function MixPerformance({ onNavigate }: Props) {

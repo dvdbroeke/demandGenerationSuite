@@ -432,21 +432,21 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
   const priceAlerts = useMemo((): PriceAlert[] => {
     const alerts: PriceAlert[] = []
     
-    // Check for Single Serve Brand C underpricing (key storyline item)
-    // Brand C 330ml at ppl 2.73 vs expected ~4.0 for 330ml = -32% below ladder
-    const sprite330 = skuData.find(d => d.sku.toLowerCase().includes("sprite") && d.packMl === 330)
-    if (sprite330) {
+    // Check for Single Serve Brand D underpricing (key storyline item)
+    // Brand D 330ml at ppl 2.73 vs expected ~4.0 for 330ml = -32% below ladder
+    const brandD330 = skuData.find(d => d.sku.toLowerCase().includes("brand d") && d.packMl === 330)
+    if (brandD330) {
       const expectedPpl = getExpectedPpl(330)
-      const actualPpl = sprite330.ppl
+      const actualPpl = brandD330.ppl
       const gap = ((actualPpl - expectedPpl) / expectedPpl * 100)
-      // This should trigger since Brand C 330ml is at 2.73 vs expected ~4.0 = -32%
+      // This should trigger since Brand D 330ml is at 2.73 vs expected ~4.0 = -32%
       if (gap < -15) {
         alerts.push({
-          id: "sprite-330",
+          id: "brand-d-330",
           type: "anomaly",
-          title: "Price ladder anomaly for Single Serve Brand C",
-          detail: `Brand C 330ml priced at \u20ac${actualPpl.toFixed(2)}/L vs. portfolio avg \u20ac${expectedPpl.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% below pack-size expectation - significantly underpriced vs pack ladder.`,
-          sku: sprite330.sku,
+          title: "Price ladder anomaly for Single Serve Brand D",
+          detail: `Brand D 330ml priced at \u20ac${actualPpl.toFixed(2)}/L vs. portfolio avg \u20ac${expectedPpl.toFixed(2)}/L. ${Math.abs(gap).toFixed(0)}% below pack-size expectation - significantly underpriced vs pack ladder.`,
+          sku: brandD330.sku,
           packMl: 330,
           gap: `${gap.toFixed(0)}%`,
           actionable: true
@@ -454,13 +454,13 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
       }
     }
     
-    // Check for Citrus/Fruity category underpricing vs competitors
-    if (showCompetitors) {
-      const citrusBrands = ["Brand C", "Brand D"]
-      const citrusSkus = skuData.filter(d => citrusBrands.some(b => d.brand.includes(b)))
-      const citrusCompSkus = Object.values(competitorSkus).flat().filter(d => 
-        ["7Up", "SanPellegrino", "Schweppes"].some(b => d.brand.includes(b))
-      )
+// Check for Citrus/Fruity category underpricing vs competitors
+      if (showCompetitors) {
+        const citrusBrands = ["Brand C", "Brand D"]
+        const citrusSkus = skuData.filter(d => citrusBrands.some(b => d.brand.includes(b)))
+        const citrusCompSkus = Object.values(competitorSkus).flat().filter(d => 
+          ["Competitor Y", "Competitor Z", "Competitor W"].some(b => d.brand.includes(b))
+        )
       
       if (citrusSkus.length > 0 && citrusCompSkus.length > 0) {
         const citrusAvg = citrusSkus.reduce((s, d) => s + d.ppl, 0) / citrusSkus.length
@@ -729,7 +729,7 @@ export function PPAPriceIncentive({ onNavigate }: Props) {
                       lines={[
                         `Avg Price/L: \u20ac${comparisonStats.compAvg.toFixed(2)}`,
                         `${comparisonStats.diffPct > 0 ? "" : "+"}${(-comparisonStats.diffPct).toFixed(1)}% vs portfolio avg`,
-                        `Includes: Pepsi, 7Up, SanPellegrino, Schweppes`
+                        `Includes: Competitor X, Competitor Y, Competitor Z, Competitor W`
                       ]} 
                     />
                   )}

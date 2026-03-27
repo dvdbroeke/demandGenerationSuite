@@ -44,9 +44,9 @@ function classifySku(skus: typeof skuMaster) {
 
 const aiInsights = [
   { icon: TrendingUp, color: "text-emerald-400", bg: "bg-emerald-500/10", text: "Premium tier delivers 45% of revenue on only 25% of units -- highest margin density. Focus distribution expansion on premium single-serve SKUs where current weighted distribution is below 50%." },
-  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Traffic tier contributes 20% of revenue but accounts for 30% of units -- margin dilution risk. Consider rationalizing multi-serve 1.75L packs across Fanta and Sprite where velocity is below 1.0 units/WD%." },
+  { icon: AlertTriangle, color: "text-amber-400", bg: "bg-amber-500/10", text: "Traffic tier contributes 20% of revenue but accounts for 30% of units -- margin dilution risk. Consider rationalizing multi-serve 1.75L packs across Brand C and Brand D where velocity is below 1.0 units/WD%." },
   { icon: TrendingDown, color: "text-red-400", bg: "bg-red-500/10", text: "Bottom 20% of SKUs generate only 7% of total revenue. Delisting lowest-velocity traffic packs (18x330ml across brands) could free 12% of shelf space for high-performing core and premium SKUs." },
-  { icon: Sparkles, color: "text-blue-400", bg: "bg-blue-500/10", text: "CC Zero and CC Classic single-serve formats (150ml, 250ml) show 8-15% volume growth YoY with cannibalization under 4%. These are the strongest candidates for expanded distribution and increased shelf allocation." },
+  { icon: Sparkles, color: "text-blue-400", bg: "bg-blue-500/10", text: "Brand A Zero and Brand A Classic single-serve formats (150ml, 250ml) show 8-15% volume growth YoY with cannibalization under 4%. These are the strongest candidates for expanded distribution and increased shelf allocation." },
 ]
 
 // ---------- Component ----------

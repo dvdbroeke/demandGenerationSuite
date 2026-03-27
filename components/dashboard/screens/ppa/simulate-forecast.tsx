@@ -488,7 +488,7 @@ export function PPASimulateForecast({ onNavigate, onLaunchInitiative, onNavigate
             </div>
             
             <div className="mt-4 p-3 rounded-lg bg-amber-500/5 border border-amber-500/20">
-              <p className="text-[11px] text-amber-300"><strong>Recommendation:</strong> Given high probability of Pepsi price matching, consider exclusive retailer partnerships or shorter promotion windows to minimize competitive response time.</p>
+              <p className="text-[11px] text-amber-300"><strong>Recommendation:</strong> Given high probability of Competitor X price matching, consider exclusive retailer partnerships or shorter promotion windows to minimize competitive response time.</p>
             </div>
           </CardContent>
         </Card>
